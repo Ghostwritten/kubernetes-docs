@@ -66,7 +66,7 @@ def markdown_title_name(dire, base_dir,filename):
     f = open(path_filename,'r')
     lines = f.readlines()
     for line in lines:
-      if "catalog" in line:
+      if "catalog:" in line:
          firstline = line.split()[2]
 
     if firstline == '' or firstline == '---':
