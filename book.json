@@ -1,7 +1,7 @@
 {
   "title": "Kubernetes Docs",
   "author": "宗勋 - zongxun",
-  "description": "这是一本关于 [Python](https://www.python.org/) 的书籍",
+  "description": "这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍",
   "language": "zh-hans",
   "links": {
      "sharing": {
@@ -56,6 +56,7 @@
     "sharing-plus",
     "sidebar-style",
     "simple-mind-map",
+    "youtube",
     "theme-default",
     "tags",
     "tbfed-pagefooter"
@@ -70,7 +71,7 @@
       "buttons": [
         {
           "user": "Ghostwritten",
-          "repo": "python-docs", 
+          "repo": "kubernetes-docs", 
           "type": "star",
           "count": true,
           "size": "small"
@@ -128,7 +129,7 @@
     },
 
     "sidebar-style": {
-       "title": "《Python Docs》",
+       "title": "《Kubernetes Docs》",
        "author": "宗勋"
     },
 
@@ -157,9 +158,9 @@
     },
 
     "rss": {
-      "title": "Python Docs",
+      "title": "Kubernetes Docs",
       "description": "This is the best book ever.",
-      "author": "Zong Xun",
+      "author": "宗勋",
       "feed_url": "http://smoothies.com.cn/rss",
       "site_url": "https://smoothies.com.cn/kubernetes-docs/",
       "managingEditor": "writer@smoothies.com.cn (Zong Xun)",

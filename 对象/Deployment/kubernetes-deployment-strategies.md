@@ -1,5 +1,6 @@
 #   Deployment 策略
 tags: Deployment
+<-- catalog: 策略 -->
 
 ##  1. 简介
 在Kubernetes中有几种不同的方式发布应用，所以为了让应用在升级期间依然平稳提供服务，选择一个正确的发布策略就非常重要了。

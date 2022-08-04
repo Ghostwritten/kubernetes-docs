@@ -1,5 +1,6 @@
 #  Deployment 原理
 tags: 原理,Deployment
+<-- catalog: 原理 -->
 
 ## 1. deployment控制器实现流程
 

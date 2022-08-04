@@ -62,14 +62,23 @@ def mdfile_in_dir(dire):
 
 def markdown_title_name(dire, base_dir,filename):
     path_filename = os.path.join(os.path.relpath(dire, base_dir), filename)
-    with open(path_filename) as f:
+    firstline=''
+    f = open(path_filename,'r')
+    lines = f.readlines()
+    for line in lines:
+      if "catalog" in line:
+         firstline = line.split()[2]
+
+    if firstline == '' or firstline == '---':
+      with open(path_filename) as f:
         firstline = f.readline().rstrip()
 
     #if not firstline.isalnum():
     if firstline == '' or firstline == '---':
       title = filename.split('.',1)[0]
     else:
-      title = firstline.lower().strip()
+      #title = firstline.lower().strip()
+      title = firstline.strip()
       for i in range(0, len(title)):
         if not title[i].isalnum():
            title = title[0:i] + ' ' + title[i+1:]

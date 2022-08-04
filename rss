@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Python Docs]]></title>
+        <description><![CDATA[This is the best book ever.]]></description>
+        <link>https://smoothies.com.cn/kubernetes-docs/</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 03 Aug 2022 15:38:48 GMT</lastBuildDate>
+        <atom:link href="http://smoothies.com.cn/rss" rel="self" type="application/rss+xml"/>
+        <author><![CDATA[Zong Xun]]></author>
+        <managingEditor><![CDATA[writer@smoothies.com.cn (Zong Xun)]]></managingEditor>
+        <webMaster><![CDATA[webmaster@smoothies.com.cn (Zong Xun)]]></webMaster>
+        <category><![CDATA[kubernetes]]></category>
+        <item>
+            <title><![CDATA[序言]]></title>
+            <description><![CDATA[这是一本关于集合 kubernetes 的书。]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/</guid>
+            <dc:creator><![CDATA[Zong Xun]]></dc:creator>
+        </item>
+    </channel>
+</rss>
