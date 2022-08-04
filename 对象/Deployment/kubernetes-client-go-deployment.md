@@ -1,6 +1,6 @@
 # kubernetes client-go 管理 deployment
 tags: client-go,Deployment
-<-- catalog: 开发 -->
+<!-- catalog: 开发 -->
 
 ## 1. deployment控制器实现流程：
 

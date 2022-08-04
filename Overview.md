@@ -8,7 +8,7 @@
 - [日志](日志/README.md)
 - [入门](入门/README.md)
 - [网络](网络/README.md)
-
+- [资源](资源/README.md)
   * [yum repo](资源/kubernetes-yum.md)
 
   * [Ubuntu Minikube deploy Kubernetes](部署/kubernetes-minikube-deploy.md)
