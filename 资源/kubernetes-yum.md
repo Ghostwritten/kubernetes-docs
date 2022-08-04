@@ -1,4 +1,6 @@
-#  yum repo 
+#  Kuberentes Yum 
+tags: 资源
+<!-- catalog: Yum -->
 
 ##  1. linux yum
 阿里云

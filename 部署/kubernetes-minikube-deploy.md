@@ -1,5 +1,7 @@
 #  Ubuntu Minikube deploy Kubernetes
 tags: kubernetes,部署,minikube
+<!-- catalog: minikube 部署 -->
+
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/a791f04c33564d8ca34f240c443356d4.png)](https://www.rottentomatoes.com/m/forrest_gump)
 
 *Life was like a box of chocolates, you never know what you're going to get.*

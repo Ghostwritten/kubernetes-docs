@@ -1,5 +1,7 @@
 # kubernetes 手动部署
 tags: 部署
+<!-- catalog: 手动部署 -->
+
 Kubernetes 版本查阅地址： [https://github.com/kubernetes/kubernetes/releases](https://github.com/kubernetes/kubernetes/releases)
 
 ## 1. 实践环境准备
