@@ -39,7 +39,7 @@
   * [DaemonSet](对象/kubernetes-DaemonSet-Overview.md)
 - [存储](存储/README.md)
 - [管理](管理/README.md)
-
+- [组件](组件/README.md)
   - [Kubeadm](组件/Kubeadm/README.md)
     * [命令](组件/Kubeadm/kubeadm-command.md)
   * [Kube proxy](组件/Kubernetes-Kube-Proxy.md)
