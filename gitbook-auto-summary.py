@@ -7,7 +7,7 @@ import argparse
 import os
 import re
 
-teshu_list = ['_book', 'node_modules', 'img']
+teshu_list = ['_book', 'node_modules', 'img', 'gitbook']
 
 def output_markdown(dire, base_dir, output_file, append, iter_depth=0):
     """Main iterator for get information from every file/folder
