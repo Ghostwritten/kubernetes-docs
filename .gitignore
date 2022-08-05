@@ -9,7 +9,6 @@
 
 # Book build output
 _book
-gitbook
 
 # eBook build output
 *.epub
