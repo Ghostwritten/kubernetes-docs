@@ -1,7 +1,6 @@
 # 目录
 
 * [目录](./Overview.md)
-* [Tags](./tags.md)
 * [序言](./README.md)
 - [工具](工具/README.md)
 - [概念](概念/README.md)
@@ -46,3 +45,4 @@
   * [安装](安全/Kubernetes-Security-trivy-install.md)
   * [falco 入门](安全/kubernetes-Security-falco-basics.md)
   * [自定义策略](安全/Kubernetes-Security-trivy-defined-Policy.md)
+* [标签](./tags.md)

@@ -14,15 +14,15 @@
 
      "sidebar": {
         "Blog": "https://smoothies.com.cn",
-        "Command": "https://smoothies.com.cn/linux-command-docs/",
-        "Linux": "https://smoothies.com.cn/linux-docs/",
-        "Gitbook": "https://smoothies.com.cn/gitbook-docs/",
-        "Prometheus": "https://smoothies.com.cn/prometheus-docs/",
-        "Docker": "https://smoothies.com.cn/docker-docs/",
-        "Kubernetes": "https://smoothies.com.cn/kubernetes-docs/",
-        "Shell": "https://smoothies.com.cn/shell-docs/",
-        "Python": "https://smoothies.com.cn/python-docs/",
-        "Go": "https://smoothies.com.cn/go-docs/",
+        "Command": "https://smoothies.com.cn/linux-command-docs/Overview.html",
+        "Linux": "https://smoothies.com.cn/linux-docs/Overview.html",
+        "Gitbook": "https://smoothies.com.cn/gitbook-docs/Overview.html",
+        "Prometheus": "https://smoothies.com.cn/prometheus-docs/Overview.html",
+        "Docker": "https://smoothies.com.cn/docker-docs/Overview.html",
+        "Kubernetes": "https://smoothies.com.cn/kubernetes-docs/Overview.html",
+        "Shell": "https://smoothies.com.cn/shell-docs/Overview.html",
+        "Python": "https://smoothies.com.cn/python-docs/Overview.html",
+        "Go": "https://smoothies.com.cn/go-docs/Overview.html",
         "Exam": "https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"
      }
   },
@@ -89,7 +89,7 @@
 
     "chapter-fold":{},
 
-    "favicon": "assets/imgs/1_girl.ico",
+    "favicon": "assets/imgs/kubernetes.ico",
 
     "donate": {
       "button": "打赏",

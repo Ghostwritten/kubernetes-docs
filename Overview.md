@@ -1,7 +1,7 @@
 # Summary
 
 * [Summary](./Overview.md)
-* [Tags](./tags.md)
+* [标签](./tags.md)
 * [序言](./README.md)
 - [工具](工具/README.md)
 - [概念](概念/README.md)
