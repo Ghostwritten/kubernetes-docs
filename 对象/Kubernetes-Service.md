@@ -1,5 +1,5 @@
 #  Kubernetes Service
-tags: Service
+tags: Service,对象
 <!-- catalog: Service -->
 
 

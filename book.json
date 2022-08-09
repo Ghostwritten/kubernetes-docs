@@ -57,6 +57,7 @@
     "sidebar-style",
     "simple-mind-map",
     "youtube",
+    "zymplayer",
     "theme-default",
     "tags",
     "tbfed-pagefooter"
@@ -82,7 +83,7 @@
     "change_girls" : {
       "time" : 10,
       "urls" : [
-          "https://pic2.zhimg.com/80/v2-82f9192cb78a38307f969f9e19244ba9_1440w.jpg", "https://pic4.zhimg.com/80/v2-a8207582fe89a64450bd262deb5ef943_1440w.jpg", "https://pic4.zhimg.com/80/v2-d8f1fb514b611e1a40d9465e79314387_1440w.jpg", "https://pic2.zhimg.com/80/v2-50aee9aa49821ffafe91e79dd9936325_1440w.jpg", "https://pic1.zhimg.com/80/v2-11e46e2888a7b949bba549b3b700c680_1440w.jpg", "https://pic3.zhimg.com/80/v2-3d4dbc9f8af54dd418835827795d4b32_1440w.jpg", "https://pic3.zhimg.com/80/v2-4ca4130ddee79d65d4336d433624fe1a_1440w.jpg", "https://pic2.zhimg.com/80/v2-c012b5b799a9d6b41af5363f22adaed9_1440w.jpg", "https://pic4.zhimg.com/80/v2-893518c7a30970e6aed26a3c835eb187_1440w.jpg", "https://pic3.zhimg.com/80/v2-91d75c25aace41ec767d2114e13c2056_1440w.jpg", "https://pic2.zhimg.com/80/v2-b90c58131f223afd9d81b70913cabd75_1440w.jpg", "https://pic2.zhimg.com/80/v2-9e82ae1993458d826e2b978c37436ad5_1440w.jpg", "https://pic2.zhimg.com/80/v2-3643794f777aba6676d19856a9463a51_1440w.jpg"
+         "https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"
       ]
     },
 
@@ -152,6 +153,25 @@
       "url": "https://pic1.zhimg.com/80/v2-4b2cfc61824c35b4d577c4e5d5dc1134_1440w.jpg",
       "style": "background: none; max-height: 120px; min-height: 120px"
     },
+
+
+    "zymplayer": {
+      "element": "body", 
+      "width": "350px", 
+      "mode": "random", 
+      "show": "all", 
+      "list": {
+          "path": "assets/music/musicList.json",
+          "height": 180, 
+          "expand": false 
+      },
+      "position": {
+          "pos": "fixed", 
+          "right": "0px",
+          "bottom": "0px" 
+          }
+    },
+
 
     "rss": {
       "title": "Kubernetes Docs",

@@ -1,6 +1,6 @@
 #  kubernetes NetworkPolicy
-tags: NetworkPolicy
-<-- catalog: NetworkPolicy -->
+tags: NetworkPolicy,对象
+<!-- catalog: NetworkPolicy -->
 
 [
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3f7f29fb855943a2b9702efed119b286.png)](https://www.rottentomatoes.com/m/beautiful_mind)
