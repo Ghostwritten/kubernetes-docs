@@ -1,6 +1,5 @@
 #  trivy 漏洞扫描工具安装
 tags: 安全,trivy
-<!-- catalog:trivy 安装:-->
 
 
 {% youtube %}

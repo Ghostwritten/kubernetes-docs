@@ -1,6 +1,6 @@
 #  kubernetes pod PodSecurityPolicy
 tags: 对象,pod,PodSecurityPolicy
-<!-- catalog: PodSecurityPolicy -->
+<!-- catalog~PodSecurityPolicy~-->
 
 
 [

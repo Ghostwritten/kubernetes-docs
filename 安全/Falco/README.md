@@ -1,10 +1,5 @@
 # falco 入门
-tags： 安全
-
-
-@[toc]
-
----
+tags： 安全,falco
 
 [![印度电影已经在《宿敌》中将教材政治渗透问题得到体现](https://img-blog.csdnimg.cn/7906f1d234cc4c858152ea10bca15be6.png)](https://movie.douban.com/subject/35882880/)
 *印度电影已经在《宿敌》中将教材政治渗透问题得到体现。*

@@ -1,6 +1,6 @@
 #  Kubernetes DaemonSet
 tags: DaemonSet,对象
-<!-- catalog: DaemonSet -->
+<!-- catalog~DaemonSet~-->
 
 [
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0f9a370fdd4741c6bcdd41d80742c785.png#pic_center)](https://www.rottentomatoes.com/m/blade_runner_2049)

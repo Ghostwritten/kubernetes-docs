@@ -57,7 +57,6 @@
     "sidebar-style",
     "simple-mind-map",
     "youtube",
-    "zymplayer",
     "theme-default",
     "tags",
     "tbfed-pagefooter"
@@ -152,24 +151,6 @@
     "insert-logo": {
       "url": "https://pic1.zhimg.com/80/v2-4b2cfc61824c35b4d577c4e5d5dc1134_1440w.jpg",
       "style": "background: none; max-height: 120px; min-height: 120px"
-    },
-
-
-    "zymplayer": {
-      "element": "body", 
-      "width": "350px", 
-      "mode": "random", 
-      "show": "all", 
-      "list": {
-          "path": "assets/music/musicList.json",
-          "height": 180, 
-          "expand": false 
-      },
-      "position": {
-          "pos": "fixed", 
-          "right": "0px",
-          "bottom": "0px" 
-          }
     },
 
 

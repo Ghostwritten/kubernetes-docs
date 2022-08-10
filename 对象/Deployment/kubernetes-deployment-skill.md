@@ -1,6 +1,6 @@
 #  Deployment 技巧
 tags: Deployment
-<!-- catalog: 技巧 -->
+<!-- catalog: ~技巧~ -->
 
 ##  1. patch 管理 deployment
 ###  1.2 patch 以 yaml 格式合并更新 Deployment

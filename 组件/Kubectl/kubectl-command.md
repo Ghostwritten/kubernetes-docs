@@ -1,6 +1,6 @@
 # kubectl 命令
 tags: kubectl,命令
-<!-- catalog: 命令 -->
+<!-- catalog: ~命令~ -->
 
 
 

@@ -1,13 +1,12 @@
 #  kubernetes NetworkPolicy
 tags: NetworkPolicy,对象
-<!-- catalog: NetworkPolicy -->
+<!-- catalog~NetworkPolicy~-->
 
 [
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3f7f29fb855943a2b9702efed119b286.png)](https://www.rottentomatoes.com/m/beautiful_mind)
 
 *《美丽心灵》是关于20世纪伟大数学家小约翰•福布斯-纳什的人物传记片。*
 
----
 
 ## 1. 简介
 **网络策略**（NetworkPolicy）是一种关于 Pod 间及与其他网络端点间所允许的通信规则的规范。

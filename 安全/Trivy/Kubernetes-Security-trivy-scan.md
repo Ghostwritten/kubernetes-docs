@@ -1,6 +1,6 @@
 #  trivy 工具漏洞扫描应用
 tags: trivy,安全
-<!-- catalog:trivy 扫描应用:-->
+<!-- catalog:~扫描应用~:-->
 
 
 

@@ -1,6 +1,6 @@
 #  trivy 自定义扫描策略
 tags: trivy,安全
-<!-- catalog:trivy 自定义策略:-->
+<!-- catalog:~自定义策略~:-->
 
 
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/b123158028954aa8b256df24d69c89e9.png)](https://www.rottentomatoes.com/tv/for_all_mankind)

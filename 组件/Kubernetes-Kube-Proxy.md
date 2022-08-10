@@ -1,6 +1,6 @@
 #  kubernetes kube-proxy
 tags: kube-proxy
-<!-- catalog: Kube-proxy -->
+<!-- catalog: ~Kube-proxy~ -->
 
 [
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f89f89db2d1c4e1c98a7a8511b34a180.png)](https://www.rottentomatoes.com/m/gravity_2013)

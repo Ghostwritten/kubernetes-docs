@@ -1,6 +1,6 @@
 #  kuberenetes pod SecurityContext
 tags: Pod,对象
-<!-- catalog: SecurityContext -->
+<!-- catalog: ~SecurityContext~ -->
 
 ## 1. 简介
 **安全上下文**（Security Context）定义 Pod 或 Container 的特权与访问控制设置。安全上下文包括但不限于：

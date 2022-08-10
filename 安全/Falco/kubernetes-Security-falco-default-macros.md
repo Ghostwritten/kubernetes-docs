@@ -1,6 +1,6 @@
 #  falco default macros
 tags: falco,安全
-<!-- catalog:falco default macros:-->
+<!-- catalog:~default macros~:-->
 
 
  Falco 规则集定义了许多宏，可以更轻松地开始编写规则。这些宏为许多常见场景提供了快捷方式，并且可以在任何用户定义的规则集中使用。Falco 还提供了应该由用户覆盖的宏，以提供特定于用户环境的设置。提供的宏也可以附加到本地规则文件中。
