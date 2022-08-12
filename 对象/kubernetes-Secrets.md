@@ -1,5 +1,6 @@
 #  kubernetes secret
 tags:对象,secret
+<!-- catalog: ~secret~ -->
 
 
 [

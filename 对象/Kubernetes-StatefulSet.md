@@ -1,6 +1,6 @@
 #  Kubernetes StatefulSet
 tags: StatefulSet,对象
-<!-- catalog~StatefulSet~ -->
+<!-- catalog:~StatefulSet~ -->
 
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/460956329232480db2fd5ac90846da30.png)](https://www.rottentomatoes.com/m/alien)
 
