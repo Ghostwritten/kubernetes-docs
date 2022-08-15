@@ -1,6 +1,6 @@
 #  kubernetes ingress 如何通过域名访问您的应用
 tags: 对象, Ingress
-<!-- catalog~Ingress~-->
+<!-- catalog:~Ingress~ -->
 
 
 ##  0. 背景

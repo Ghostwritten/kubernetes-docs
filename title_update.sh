@@ -55,7 +55,8 @@ dirs=`grep -E '\- ' SUMMARY-GitBook-auto-summary.md  | awk '{print $2}'`
 
 for dir in $dirs
 do
-  dir_README=`grep -E "\[${dir}\]" SUMMARY.md | sed 's/^[ \t]*//g'`
+  dir_sm=`echo $dir | sed 's/-/ /g'`
+  dir_README=`grep -E "\[${dir_sm}\]" SUMMARY.md | sed 's/^[ \t]*//g'`
   dir_README=${dir_README//\//\\\/}
   dir_README=${dir_README//\[/\\[}
   dir_README=${dir_README//\]/\\]}
@@ -66,10 +67,11 @@ do
 done
 
 mv SUMMARY-GitBook-auto-summary.md SUMMARY.md
-cp SUMMARY.md Overview.md
 sed -r -i 's/Summary/目录/g' SUMMARY.md
 #sed -r -i   '/序言/a\* \[目录\]\(.\/Overview\.md\)' SUMMARY.md 
-tags=`grep 'tags.md' SUMMARY.md` && sed -i '/tags.md/d' SUMMARY.md  && sed -i '/^$/d' SUMMARY.md && sed -i "\$a $tags" SUMMARY.md
+tags=`grep 'tags.md' SUMMARY.md` && sed -i '/tags.md/d' SUMMARY.md  && sed -i '/^$/d' SUMMARY.md && awk NF SUMMARY.md > SUMMARY1.md && sed -i "\$a $tags" SUMMARY1.md
+mv SUMMARY1.md SUMMARY.md
+cp SUMMARY.md Overview.md
 
 }
 

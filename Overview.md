@@ -1,7 +1,5 @@
-# Summary
-
-* [Summary](./Overview.md)
-* [标签](./tags.md)
+# 目录
+* [目录](./Overview.md)
 * [序言](./README.md)
 - [工具](工具/README.md)
 - [概念](概念/README.md)
@@ -14,8 +12,6 @@
   * [minikube](部署/kubernetes-minikube-deploy.md)
   * [手动](部署/kubernetes-manually-deploy.md)
 - [对象](对象/README.md)
-  
-    * [原理](对象/RuntimeClass/kubernetes-object-RuntimeClass-principle.md)
   - [Deployment](对象/Deployment/README.md)
     * [技巧](对象/Deployment/kubernetes-deployment-skill.md)
     * [开发](对象/Deployment/kubernetes-client-go-deployment.md)
@@ -25,13 +21,15 @@
   * [Volumes](对象/kubernetes-PersistentVolume.md)
   * [StatefulSet](对象/Kubernetes-StatefulSet.md)
   * [kubernetes job](对象/Kubernetes-Job.md)
+  - [Runtimeclass](对象/Runtimeclass/README.md)
+    * [原理](对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md)
   * [kubernetes pod PodSecurityPolicy](对象/Kubernetes-PodSecurityPolicy.md)
   * [ConfigMap](对象/Kubernetes-ConfigMaps.md)
   - [Pod](对象/Pod/README.md)
     * [Probes](对象/Pod/Kubernetes-Pod-Probes.md)
     * [SecurityContext](对象/Pod/Kubernetes-Pod-SecurityContext.md)
   * [secret](对象/kubernetes-Secrets.md)
-  * [kubernetes ingress 如何通过域名访问您的应用](对象/Kubernetes-Ingress.md)
+  * [Ingress](对象/Kubernetes-Ingress.md)
   * [Kubernetes Service](对象/Kubernetes-Service.md)
   * [kubernetes NetworkPolicy](对象/Kubernetes-NetworkPolicy.md)
   - [RBAC](对象/RBAC/README.md)
@@ -64,3 +62,4 @@
   - [Trivy](安全/Trivy/README.md)
     * [扫描应用](安全/Trivy/Kubernetes-Security-trivy-scan.md)
     * [自定义策略](安全/Trivy/Kubernetes-Security-trivy-defined-Policy.md)
+* [标签](./tags.md)
