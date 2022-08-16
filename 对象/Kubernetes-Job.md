@@ -1,6 +1,6 @@
 #  kubernetes job
 tags: job,cronjob,对象
-<!-- catalog~Job~-->
+<!-- catalog:~Job~ -->
 
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/be4a0543d7684afbbe08be998faedfb1.png)](https://www.rottentomatoes.com/m/the_help)
 

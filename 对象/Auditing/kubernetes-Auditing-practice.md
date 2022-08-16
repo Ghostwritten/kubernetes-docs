@@ -1,6 +1,6 @@
 #  kubernetes  Auditing 实战
-tags:   Auditing
-<!-- catalg:~实战~ -->
+tags: Auditing
+<!-- catalg: ~实战~ -->
 
 
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/10f20b77ee5d4fedaf45cb77430da99d.gif#pic_center)](https://www.behance.net/gallery/87137241/Terminator-x-Game-for-peace)
