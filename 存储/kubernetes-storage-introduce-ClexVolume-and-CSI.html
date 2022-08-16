@@ -1,0 +1,1715 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>FlexVolume CSI · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kubernetes-storage-write-CSI.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../Overview.html">
+            
+                <a href="../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../工具/">
+            
+                <a href="../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../概念/">
+            
+                <a href="../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../升级/">
+            
+                <a href="../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../日志/">
+            
+                <a href="../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../网络/">
+            
+                <a href="../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../资源/">
+            
+                <a href="../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../资源/kubernetes-yum.html">
+            
+                <a href="../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../部署/">
+            
+                <a href="../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../对象/">
+            
+                <a href="../对象/">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../对象/Deployment/">
+            
+                <a href="../对象/Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../对象/Kubernetes-DaemonSet.html">
+            
+                <a href="../对象/Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../对象/kubernetes-PersistentVolume.html">
+            
+                <a href="../对象/kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../对象/Kubernetes-StatefulSet.html">
+            
+                <a href="../对象/Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../对象/Kubernetes-Job.html">
+            
+                <a href="../对象/Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../对象/Runtimeclass/">
+            
+                <a href="../对象/Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../对象/Kubernetes-ConfigMaps.html">
+            
+                <a href="../对象/Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../对象/Pod/">
+            
+                <a href="../对象/Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../对象/kubernetes-Secrets.html">
+            
+                <a href="../对象/kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../对象/Kubernetes-Ingress.html">
+            
+                <a href="../对象/Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../对象/Kubernetes-Service.html">
+            
+                <a href="../对象/Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../对象/Kubernetes-NetworkPolicy.html">
+            
+                <a href="../对象/Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../对象/RBAC/">
+            
+                <a href="../对象/RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../对象/Auditing/">
+            
+                <a href="../对象/Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.11.1" data-path="kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="kubernetes-storage-write-CSI.html">
+            
+                <a href="kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="kuberentes-storage-volumes-principle.html">
+            
+                <a href="kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../策略/">
+            
+                <a href="../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../策略/OPA/">
+            
+                <a href="../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../组件/">
+            
+                <a href="../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../组件/Kubeadm/">
+            
+                <a href="../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../组件/Kubectl/">
+            
+                <a href="../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../组件/Kubelet/">
+            
+                <a href="../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../安全/">
+            
+                <a href="../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../安全/Falco/">
+            
+                <a href="../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../安全/Apparmor/">
+            
+                <a href="../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../安全/Trivy/">
+            
+                <a href="../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../tags.html">
+            
+                <a href="../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >FlexVolume CSI</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x5982;&#x4F55;&#x7406;&#x89E3;-kubernetes-&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;flexvolume&#x3001;csi"><b></b>&#x5982;&#x4F55;&#x7406;&#x89E3; kubernetes &#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;FlexVolume&#x3001;CSI</a></li><ul><li><span class="title-icon "></span><a href="#1-flexvolume&#x539F;&#x7406;"><b></b>1. FlexVolume&#x539F;&#x7406;</a></li><li><span class="title-icon "></span><a href="#2-container-storage-interface&#xFF08;csi&#xFF09;&#x539F;&#x7406;"><b></b>2. Container Storage Interface&#xFF08;CSI&#xFF09;&#x539F;&#x7406;</a></li><ul><li><span class="title-icon "></span><a href="#21-&#x4E09;&#x4E2A;-external-components"><b></b>2.1 &#x4E09;&#x4E2A; External Components</a></li><li><span class="title-icon "></span><a href="#22-csi-&#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;"><b></b>2.2 CSI &#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;</a></li></ul><li><span class="title-icon "></span><a href="#3-&#x603B;&#x7ED3;"><b></b>3. &#x603B;&#x7ED3;</a></li></ul></ul></div><a href="#&#x5982;&#x4F55;&#x7406;&#x89E3;-kubernetes-&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;flexvolume&#x3001;csi" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x5982;&#x4F55;&#x7406;&#x89E3;-kubernetes-&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;flexvolume&#x3001;csi"><a name="&#x5982;&#x4F55;&#x7406;&#x89E3;-kubernetes-&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;flexvolume&#x3001;csi" class="anchor-navigation-ex-anchor" href="#&#x5982;&#x4F55;&#x7406;&#x89E3;-kubernetes-&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;flexvolume&#x3001;csi"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x7406;&#x89E3; kubernetes &#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF1A;FlexVolume&#x3001;CSI</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../tags.html#&#x5B58;&#x50A8;">&#x5B58;&#x50A8;</a></p></div><!-- tagsstop --><!-- catalog: ~FlexVolume、CSI~ -->
+<h2 id="1-flexvolume&#x539F;&#x7406;"><a name="1-flexvolume&#x539F;&#x7406;" class="anchor-navigation-ex-anchor" href="#1-flexvolume&#x539F;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>1. FlexVolume&#x539F;&#x7406;</h2>
+<p>&#x5728; Kubernetes &#x4E2D;&#xFF0C;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#x7684;&#x5F00;&#x53D1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;<strong>FlexVolume &#x548C; CSI</strong>&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8981;&#x7F16;&#x5199;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; NFS &#x5B9E;&#x73B0;&#x7684; FlexVolume &#x63D2;&#x4EF6;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A; FlexVolume &#x7C7B;&#x578B;&#x7684; PV &#x6765;&#x8BF4;&#xFF0C;&#x5B83;&#x7684; YAML &#x6587;&#x4EF6;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-flex-nfs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  flexVolume:
+    driver: <span class="token string">&quot;k8s/nfs&quot;</span>
+    fsType: <span class="token string">&quot;nfs&quot;</span>
+    options:
+      server: <span class="token string">&quot;10.10.0.25&quot;</span> <span class="token comment"># &#x6539;&#x6210;&#x4F60;&#x81EA;&#x5DF1;&#x7684;NFS&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;</span>
+      share: <span class="token string">&quot;export&quot;</span>
+</code></pre>
+<p>Volume &#x7684; options &#x5B57;&#x6BB5;:&#x7C7B;&#x578B;&#x662F; <code>map[string]string</code>
+options &#x5B57;&#x6BB5;&#x6307;&#x5B9A;&#x4E86; NFS &#x670D;&#x52A1;&#x5668;&#x7684;&#x5730;&#x5740;&#xFF08;server: &#x201C;10.10.0.25&#x201D;&#xFF09;&#xFF0C;&#x4EE5;&#x53CA; NFS &#x5171;&#x4EAB;&#x76EE;&#x5F55;&#x7684;&#x540D;&#x5B57;&#xFF08;share: &#x201C;export&#x201D;&#xFF09;,&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x540E;&#x9762;&#x90FD;&#x4F1A;&#x88AB; FlexVolume &#x62FF;&#x5230;&#x3002;</p>
+<p><strong>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; <a href="https://github.com/ehough/docker-nfs-server" target="_blank">Docker &#x955C;&#x50CF;</a>&#x8F7B;&#x677E;&#x5730;&#x90E8;&#x7F72;&#x4E00;&#x4E2A;&#x8BD5;&#x9A8C;&#x7528;&#x7684; NFS &#x670D;&#x52A1;&#x5668;&#x3002;</strong></p>
+<p>&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A; PV &#x88AB;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x4E00;&#x65E6;&#x548C;&#x67D0;&#x4E2A; PVC &#x7ED1;&#x5B9A;&#x8D77;&#x6765;&#xFF0C;&#x8FD9;&#x4E2A; <code>FlexVolume</code> &#x7C7B;&#x578B;&#x7684; Volume &#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x5230;&#x201C;&#x4E24;&#x9636;&#x6BB5;&#x5904;&#x7406;&#x201D;&#xFF0C;&#x5373;&#x201C;Attach &#x9636;&#x6BB5;&#x201D;&#x548C;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x3002;&#x5B83;&#x4EEC;&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#xFF0C;&#x662F;&#x5728; Pod &#x6240;&#x7ED1;&#x5B9A;&#x7684;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#xFF0C;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A; Volume &#x76EE;&#x5F55;&#x7684;&#x6301;&#x4E45;&#x5316;&#x8FC7;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;&#x4E3A;&#x865A;&#x62DF;&#x673A;&#x6302;&#x8F7D;&#x78C1;&#x76D8;&#xFF08;Attach&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x6302;&#x8F7D;&#x4E00;&#x4E2A; NFS &#x7684;&#x5171;&#x4EAB;&#x76EE;&#x5F55;&#xFF08;Mount&#xFF09;&#x3002;</p>
+<p>&#x800C;&#x5728;&#x5177;&#x4F53;&#x7684;&#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x5B9E;&#x9645;&#x4E0A;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x6B63;&#x662F; Kubernetes &#x7684; <code>pkg/volume</code> &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF08;Volume Plugin&#xFF09;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x91CC;&#xFF0C;&#x5C31;&#x662F; <code>pkg/volume/flexvolume</code> &#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5176;&#x5B9E;&#x53EA;&#x662F; FlexVolume &#x63D2;&#x4EF6;&#x7684;&#x5165;&#x53E3;&#x3002;&#x4EE5;&#x201C;<code>Mount &#x9636;&#x6BB5;</code>&#x201D;&#x4E3A;&#x4F8B;&#xFF0C;&#x5728; FlexVolume &#x76EE;&#x5F55;&#x91CC;&#xFF0C;&#x5B83;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">// SetUpAt creates new directory.
+func <span class="token punctuation">(</span>f *flexVolumeMounter<span class="token punctuation">)</span> SetUpAt<span class="token punctuation">(</span>dir string, fsGroup *int64<span class="token punctuation">)</span> error <span class="token punctuation">{</span>
+  <span class="token punctuation">..</span>.
+  call :<span class="token operator">=</span> f.plugin.NewDriverCall<span class="token punctuation">(</span>mountCmd<span class="token punctuation">)</span>
+
+  // Interface parameters
+  call.Append<span class="token punctuation">(</span>dir<span class="token punctuation">)</span>
+
+  extraOptions :<span class="token operator">=</span> make<span class="token punctuation">(</span>map<span class="token punctuation">[</span>string<span class="token punctuation">]</span>string<span class="token punctuation">)</span>
+
+  // pod metadata
+  extraOptions<span class="token punctuation">[</span>optionKeyPodName<span class="token punctuation">]</span> <span class="token operator">=</span> f.podName
+  extraOptions<span class="token punctuation">[</span>optionKeyPodNamespace<span class="token punctuation">]</span> <span class="token operator">=</span> f.podNamespace
+
+  <span class="token punctuation">..</span>.
+
+  call.AppendSpec<span class="token punctuation">(</span>f.spec, f.plugin.host, extraOptions<span class="token punctuation">)</span>
+
+  _, err <span class="token operator">=</span> call.Run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">..</span>.
+
+  <span class="token builtin class-name">return</span> nil
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x9762;&#x8FD9;&#x4E2A;&#x540D;&#x53EB; <code>SetUpAt()</code> &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6B63;&#x662F; FlexVolume &#x63D2;&#x4EF6;&#x5BF9;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x7684;&#x5B9E;&#x73B0;&#x4F4D;&#x7F6E;&#x3002;&#x800C; SetUpAt() &#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x505A;&#x4E86;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5C01;&#x88C5;&#x51FA;&#x4E86;&#x4E00;&#x884C;&#x547D;&#x4EE4;&#xFF08;&#x5373;&#xFF1A;<code>NewDriverCall</code>&#xFF09;&#xFF0C;&#x7531; kubelet &#x5728;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x53BB;&#x6267;&#x884C;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<strong>kubelet &#x8981;&#x901A;&#x8FC7;&#x63D2;&#x4EF6;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;</strong>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">/usr/libexec/kubernetes/kubelet-plugins/volume/exec/k8s~nfs/nfs <span class="token function">mount</span> <span class="token operator">&lt;</span>mount dir<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>json param<span class="token operator">&gt;</span>
+</code></pre>
+<ul>
+<li><code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/k8s~nfs/nfs</code> &#x5C31;&#x662F;&#x63D2;&#x4EF6;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;</li>
+<li><code>nfs &#x7684;&#x6587;&#x4EF6;</code>&#xFF0C;&#x6B63;&#x662F;&#x4F60;&#x8981;&#x7F16;&#x5199;&#x7684;&#x63D2;&#x4EF6;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x3002;&#x603B;&#x4E4B;&#xFF0C;&#x53EA;&#x8981;&#x80FD;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x88AB;&#x6267;&#x884C;&#x8D77;&#x6765;&#x5373;&#x53EF;&#x3002;</li>
+<li>k8s~nfs &#x90E8;&#x5206;&#xFF0C;&#x6B63;&#x662F;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x5728; Kubernetes &#x91CC;&#x7684;&#x540D;&#x5B57;&#x3002;&#x5B83;&#x662F;&#x4ECE; <code>driver=&quot;k8s/nfs&quot;</code>&#x5B57;&#x6BB5;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;&#x3002;&#x8FD9;&#x4E2A; driver &#x5B57;&#x6BB5;&#x7684;&#x683C;&#x5F0F;&#x662F;&#xFF1A;<code>vendor/driver</code>&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E00;&#x5BB6;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#x7684;<strong>&#x63D0;&#x4F9B;&#x5546;</strong>&#xFF08;vendor&#xFF09;&#x7684;&#x540D;&#x5B57;&#x53EB;&#x4F5C; <code>k8s</code>&#xFF0C;&#x63D0;&#x4F9B;&#x7684;<strong>&#x5B58;&#x50A8;&#x9A71;&#x52A8;</strong>&#xFF08;driver&#xFF09;&#x662F; <code>nfs</code>&#xFF0C;&#x90A3;&#x4E48; Kubernetes &#x5C31;&#x4F1A;&#x4F7F;&#x7528; <code>k8s~nfs</code> &#x6765;&#x4F5C;&#x4E3A;&#x63D2;&#x4EF6;&#x540D;&#x3002;</li>
+<li>&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;<strong>&#x5F53;&#x4F60;&#x7F16;&#x5199;&#x5B8C;&#x4E86; FlexVolume &#x7684;&#x5B9E;&#x73B0;&#x4E4B;&#x540E;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x628A;&#x5B83;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;</strong>&#x3002;</li>
+<li>&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x540E;&#x9762;&#x7684;&#x201C;<code>mount</code>&#x201D;&#x53C2;&#x6570;&#xFF0C;&#x5B9A;&#x4E49;&#x7684;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5728; FlexVolume &#x91CC;&#xFF0C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x53C2;&#x6570;&#x7684;&#x540D;&#x5B57;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x6BD4;&#x5982; <code>init&#x3001;mount&#x3001;unmount&#x3001;attach&#xFF0C;</code>&#x4EE5;&#x53CA; <code>dettach</code> &#x7B49;&#x7B49;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684; Volume &#x5904;&#x7406;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x800C;&#x8DDF;&#x5728; mount &#x53C2;&#x6570;&#x540E;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#xFF1A;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mount</span> <span class="token attr-name">dir</span><span class="token punctuation">&gt;</span></span></code>&#x548C;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>json</span> <span class="token attr-name">params</span><span class="token punctuation">&gt;</span></span></code>&#xFF0C;&#x5219;&#x662F; FlexVolume &#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x7ED9;&#x8FD9;&#x6761;&#x547D;&#x4EE4;&#x7684;&#x4E24;&#x4E2A;&#x6267;&#x884C;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x53C2;&#x6570;<mount dir="">&#xFF0C;&#x6B63;&#x662F; kubelet &#x8C03;&#x7528; SetUpAt() &#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x6765;&#x7684; dir &#x7684;&#x503C;&#x3002;&#x5B83;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x5904;&#x7406;&#x7684; Volume &#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x76EE;&#x5F55;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x91CC;&#xFF0C;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</mount></li>
+</ul>
+<pre class="language-"><code class="lang-bash">/var/lib/kubelet/pods/<span class="token operator">&lt;</span>Pod ID<span class="token operator">&gt;</span>/volumes/k8s~nfs/test
+</code></pre>
+<p><strong>test &#x6B63;&#x662F;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x5B9A;&#x4E49;&#x7684; PV &#x7684;&#x540D;&#x5B57;&#xFF1B;&#x800C; k8s~nfs&#xFF0C;&#x5219;&#x662F;&#x63D2;&#x4EF6;&#x7684;&#x540D;&#x5B57;</strong>&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x63D2;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#x6B63;&#x662F;&#x4ECE;&#x4F60;&#x58F0;&#x660E;&#x7684; driver=&quot;k8s/nfs&quot;&#x5B57;&#x6BB5;&#x91CC;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<ul>
+<li>&#x7B2C;&#x4E8C;&#x4E2A;&#x6267;&#x884C;&#x53C2;&#x6570;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>json</span> <span class="token attr-name">params</span><span class="token punctuation">&gt;</span></span></code>&#xFF0C;&#x5219;&#x662F;&#x4E00;&#x4E2A; JSON Map &#x683C;&#x5F0F;&#x7684;&#x53C2;&#x6570;&#x5217;&#x8868;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x524D;&#x9762; PV &#x91CC;&#x5B9A;&#x4E49;&#x7684; options&#x5B57;&#x6BB5;&#x7684;&#x503C;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x8FFD;&#x52A0;&#x5728;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x91CC;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5728; SetUpAt() &#x65B9;&#x6CD5;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5217;&#x8868;&#x91CC;&#x8FD8;&#x5305;&#x62EC;&#x4E86; Pod &#x7684;&#x540D;&#x5B57;&#x3001;Namespace&#x7B49;&#x5143;&#x6570;&#x636E;&#xFF08;Metadata&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x7F16;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; shell &#x811A;&#x672C;&#x6765;&#x4F5C;&#x4E3A;&#x63D2;&#x4EF6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5B83;&#x5BF9;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># Notes:</span>
+<span class="token comment">#  - Please install &quot;jq&quot; package before using this driver.</span>
+<span class="token function-name function">usage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    err <span class="token string">&quot;Invalid usage. Usage: &quot;</span>
+    err <span class="token string">&quot;<span class="token entity" title="\t">\t</span><span class="token variable">$0</span> init&quot;</span>
+    err <span class="token string">&quot;<span class="token entity" title="\t">\t</span><span class="token variable">$0</span> mount &lt;mount dir&gt; &lt;json params&gt;&quot;</span>
+    err <span class="token string">&quot;<span class="token entity" title="\t">\t</span><span class="token variable">$0</span> unmount &lt;mount dir&gt;&quot;</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">err</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> -ne <span class="token variable">$*</span> <span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> -ne <span class="token variable">$*</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;1</span>
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">ismounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token assign-left variable">MOUNT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>findmnt -n $<span class="token punctuation">{</span>MNTPATH<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null <span class="token operator">|</span> <span class="token function">cut</span> -d<span class="token string">&apos; &apos;</span> -f1<span class="token variable">`</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${MOUNT}</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;<span class="token variable">${MNTPATH}</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;1&quot;</span>
+    <span class="token keyword">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;0&quot;</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">domount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token assign-left variable">MNTPATH</span><span class="token operator">=</span><span class="token variable">$1</span>
+
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">NFS_SERVER</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $2 <span class="token operator">|</span> jq -r <span class="token string">&apos;.server&apos;</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">SHARE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $2 <span class="token operator">|</span> jq -r <span class="token string">&apos;.share&apos;</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">PROTOCOL</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $2 <span class="token operator">|</span> jq -r <span class="token string">&apos;.protocol&apos;</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">ATIME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $2 <span class="token operator">|</span> jq -r <span class="token string">&apos;.atime&apos;</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">READONLY</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $2 <span class="token operator">|</span> jq -r <span class="token string">&apos;.readonly&apos;</span><span class="token variable">)</span></span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">${PROTOCOL}</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable">PROTOCOL</span><span class="token operator">=</span><span class="token string">&quot;tcp&quot;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">${ATIME}</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable">ATIME</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">${READONLY}</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable">READONLY</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${PROTOCOL}</span>&quot;</span> <span class="token operator">!=</span> <span class="token string">&quot;tcp&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${PROTOCOL}</span>&quot;</span> <span class="token operator">!=</span> <span class="token string">&quot;udp&quot;</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+        err <span class="token string">&quot;{ <span class="token entity" title="\&quot;">\&quot;</span>status<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failure<span class="token entity" title="\&quot;">\&quot;</span>, <span class="token entity" title="\&quot;">\&quot;</span>message<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Invalid protocol <span class="token variable">${PROTOCOL}</span><span class="token entity" title="\&quot;">\&quot;</span>}&quot;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span>ismounted<span class="token variable">)</span></span> -eq <span class="token number">1</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+        log <span class="token string">&apos;{&quot;status&quot;: &quot;Success&quot;}&apos;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token function">mkdir</span> -p <span class="token variable">${MNTPATH}</span> <span class="token operator">&amp;&gt;</span> /dev/null
+
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">NFSOPTS</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${PROTOCOL}</span>,_netdev,soft,timeo=10,intr&quot;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${ATIME}</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;0&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable">NFSOPTS</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${NFSOPTS}</span>,noatime&quot;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${READONLY}</span>&quot;</span> <span class="token operator">!=</span> <span class="token string">&quot;0&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token assign-left variable">NFSOPTS</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${NFSOPTS}</span>,ro&quot;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token function">mount</span> -t nfs -o<span class="token variable">${NFSOPTS}</span> <span class="token variable">${NFS_SERVER}</span>:/<span class="token variable">${SHARE}</span> <span class="token variable">${MNTPATH}</span> <span class="token operator">&amp;&gt;</span> /dev/null
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        err <span class="token string">&quot;{ <span class="token entity" title="\&quot;">\&quot;</span>status<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failure<span class="token entity" title="\&quot;">\&quot;</span>, <span class="token entity" title="\&quot;">\&quot;</span>message<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failed to mount <span class="token variable">${NFS_SERVER}</span>:<span class="token variable">${SHARE}</span> at <span class="token variable">${MNTPATH}</span><span class="token entity" title="\&quot;">\&quot;</span>}&quot;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+    <span class="token keyword">fi</span>
+    log <span class="token string">&apos;{&quot;status&quot;: &quot;Success&quot;}&apos;</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">unmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token assign-left variable">MNTPATH</span><span class="token operator">=</span><span class="token variable">$1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span>ismounted<span class="token variable">)</span></span> -eq <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+        log <span class="token string">&apos;{&quot;status&quot;: &quot;Success&quot;}&apos;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token function">umount</span> <span class="token variable">${MNTPATH}</span> <span class="token operator">&amp;&gt;</span> /dev/null
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        err <span class="token string">&quot;{ <span class="token entity" title="\&quot;">\&quot;</span>status<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failed<span class="token entity" title="\&quot;">\&quot;</span>, <span class="token entity" title="\&quot;">\&quot;</span>message<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failed to unmount volume at <span class="token variable">${MNTPATH}</span><span class="token entity" title="\&quot;">\&quot;</span>}&quot;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+    <span class="token keyword">fi</span>
+
+    log <span class="token string">&apos;{&quot;status&quot;: &quot;Success&quot;}&apos;</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token assign-left variable">op</span><span class="token operator">=</span><span class="token variable">$1</span>
+
+<span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> -v jq <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    err <span class="token string">&quot;{ <span class="token entity" title="\&quot;">\&quot;</span>status<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>Failure<span class="token entity" title="\&quot;">\&quot;</span>, <span class="token entity" title="\&quot;">\&quot;</span>message<span class="token entity" title="\&quot;">\&quot;</span>: <span class="token entity" title="\&quot;">\&quot;</span>&apos;jq&apos; binary not found. Please install jq package before using this driver<span class="token entity" title="\&quot;">\&quot;</span>}&quot;</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">$op</span>&quot;</span> <span class="token operator">=</span> <span class="token string">&quot;init&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    log <span class="token string">&apos;{&quot;status&quot;: &quot;Success&quot;, &quot;capabilities&quot;: {&quot;attach&quot;: false}}&apos;</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$#</span> -lt <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    usage
+<span class="token keyword">fi</span>
+
+<span class="token builtin class-name">shift</span>
+
+<span class="token keyword">case</span> <span class="token string">&quot;<span class="token variable">$op</span>&quot;</span> <span class="token keyword">in</span>
+    <span class="token function">mount</span><span class="token punctuation">)</span>
+        domount <span class="token variable">$*</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    unmount<span class="token punctuation">)</span>
+        unmount <span class="token variable">$*</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    *<span class="token punctuation">)</span>
+        log <span class="token string">&apos;{&quot;status&quot;: &quot;Not supported&quot;}&apos;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token keyword">esac</span>
+
+<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</code></pre>
+<p>&#x89E3;&#x91CA;
+&#x5F53; kubelet &#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x6267;&#x884C;&#x201C;<code>nfs mount <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mount</span> <span class="token attr-name">dir</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>json</span> <span class="token attr-name">params</span><span class="token punctuation">&gt;</span></span></code>&#x201D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x540D;&#x53EB; nfs &#x7684;&#x811A;&#x672C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mount</span> <span class="token attr-name">dir</span><span class="token punctuation">&gt;</span></span></code>&#x53C2;&#x6570;&#x91CC;&#x62FF;&#x5230; Volume &#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x5373;&#xFF1A;<code>MNTPATH=$1</code>&#x3002;&#x800C;&#x4F60;&#x5728; PV &#x7684; options &#x5B57;&#x6BB5;&#x91CC;&#x5B9A;&#x4E49;&#x7684; NFS &#x7684;&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#xFF08;<code>options.server</code>&#xFF09;&#x548C;&#x5171;&#x4EAB;&#x76EE;&#x5F55;&#x540D;&#x5B57;&#xFF08;<code>options.share</code>&#xFF09;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4ECE;&#x7B2C;&#x4E8C;&#x4E2A;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>json</span> <span class="token attr-name">params</span><span class="token punctuation">&gt;</span></span></code>&#x53C2;&#x6570;&#x91CC;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x3002;</p>
+<p><strong>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5F53;&#x8FD9;&#x4E2A; mount -t nfs &#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x628A;&#x4E00;&#x4E2A; JOSN &#x683C;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;{&#x201C;status&#x201D;: &#x201C;Success&#x201D;}&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; kubelet&#x3002;&#x8FD9;&#x662F; kubelet &#x5224;&#x65AD;&#x8FD9;&#x6B21;&#x8C03;&#x7528;&#x662F;&#x5426;&#x6210;&#x529F;&#x7684;&#x552F;&#x4E00;&#x4F9D;&#x636E;&#x3002;</strong></p>
+<p>&#x7EFC;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x5728;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#xFF0C;kubelet &#x7684; <code>VolumeManagerReconcile</code> &#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x91CC;&#x7684;&#x4E00;&#x6B21;&#x201C;&#x8C03;&#x8C10;&#x201D;&#x64CD;&#x4F5C;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubelet --<span class="token operator">&gt;</span> pkg/volume/flexvolume.SetUpAt<span class="token punctuation">(</span><span class="token punctuation">)</span> --<span class="token operator">&gt;</span> /usr/libexec/kubernetes/kubelet-plugins/volume/exec/k8s~nfs/nfs <span class="token function">mount</span> <span class="token operator">&lt;</span>mount dir<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>json param<span class="token operator">&gt;</span>
+</code></pre>
+<blockquote>
+<p>&#x5907;&#x6CE8;&#xFF1A;&#x8FD9;&#x4E2A; NFS &#x7684; FlexVolume &#x7684;&#x5B8C;&#x6574;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A; <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/flexvolume/nfs" target="_blank">GitHub &#x5E93;</a>&#x91CC;&#x3002;&#x800C;&#x4F60;&#x5982;&#x679C;&#x60F3;&#x7528; Go &#x8BED;&#x8A00;&#x7F16;&#x5199; FlexVolume&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;<a href="https://github.com/kubernetes/frakti/tree/master/pkg/flexvolume" target="_blank">&#x5F88;&#x597D;&#x7684;&#x4F8B;&#x5B50;</a>&#x4F9B;&#x4F60;&#x53C2;&#x8003;&#x3002;</p>
+</blockquote>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x5728;&#x524D;&#x9762;&#x6587;&#x7AE0;&#x4E2D;&#x6211;&#x4E5F;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;<strong>&#x50CF; NFS &#x8FD9;&#x6837;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5B58;&#x50A8;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x6302;&#x8F7D;&#x78C1;&#x76D8;&#x6216;&#x8005;&#x5757;&#x8BBE;&#x5907;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5B9E;&#x73B0; attach &#x548C; dettach &#x64CD;&#x4F5C;&#x4E86;</strong>&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF0C;&#x8DDF; Kubernetes &#x5185;&#x7F6E;&#x7684; <code>NFS</code> &#x63D2;&#x4EF6;&#x7C7B;&#x4F3C;&#xFF0C;&#x8FD9;&#x4E2A; <code>NFS FlexVolume</code> &#x63D2;&#x4EF6;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x652F;&#x6301; <code>Dynamic Provisioning</code>&#xFF08;&#x5373;&#xFF1A;&#x4E3A;&#x6BCF;&#x4E2A; PVC &#x81EA;&#x52A8;&#x521B;&#x5EFA; PV &#x548C;&#x5BF9;&#x5E94;&#x7684; Volume&#xFF09;&#x3002;&#x9664;&#x975E;&#x4F60;&#x518D;&#x4E3A;&#x5B83;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x4E13;&#x95E8;&#x7684; <code>External Provisioner</code>&#x3002;</p>
+<p>&#x518D;&#x6BD4;&#x5982;&#xFF0C;&#x6211;&#x7684;&#x63D2;&#x4EF6;&#x5728;&#x6267;&#x884C; mount &#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E9B;&#x6302;&#x8F7D;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x5728;&#x540E;&#x9762;&#x6267;&#x884C; unmount &#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x3002;&#x53EF;&#x662F;&#xFF0C;&#x5728;&#x4E0A;&#x8FF0; FlexVolume &#x7684;&#x5B9E;&#x73B0;&#x91CC;&#xFF0C;&#x4F60;&#x6CA1;&#x529E;&#x6CD5;&#x628A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x91CC;&#xFF0C;&#x7B49;&#x5230; unmount &#x7684;&#x65F6;&#x5019;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#x4E5F;&#x5F88;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF1A;<strong>FlexVolume &#x6BCF;&#x4E00;&#x6B21;&#x5BF9;&#x63D2;&#x4EF6;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x90FD;&#x662F;&#x4E00;&#x6B21;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#x7684;&#x64CD;&#x4F5C;</strong>&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x628A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x7B49;&#x5230; unmount &#x7684;&#x65F6;&#x5019;&#x518D;&#x53BB;&#x8BFB;&#x53D6;&#x3002;</p>
+<p>&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6709; Container Storage Interface&#xFF08;CSI&#xFF09;&#x8FD9;&#x6837;&#x66F4;&#x5B8C;&#x5584;&#x3001;&#x66F4;&#x7F16;&#x7A0B;&#x53CB;&#x597D;&#x7684;&#x63D2;&#x4EF6;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="2-container-storage-interface&#xFF08;csi&#xFF09;&#x539F;&#x7406;"><a name="2-container-storage-interface&#xFF08;csi&#xFF09;&#x539F;&#x7406;" class="anchor-navigation-ex-anchor" href="#2-container-storage-interface&#xFF08;csi&#xFF09;&#x539F;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>2. Container Storage Interface&#xFF08;CSI&#xFF09;&#x539F;&#x7406;</h2>
+<p>&#x5176;&#x5B9E;&#xFF0C;&#x901A;&#x8FC7;&#x524D;&#x9762;&#x5BF9; FlexVolume &#x7684;&#x8BB2;&#x8FF0;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x660E;&#x767D;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Kubernetes &#x91CC;&#x901A;&#x8FC7;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x793A;&#x610F;&#x56FE;&#x6765;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<p><img src="https://img-blog.csdnimg.cn/a309f3bc1152495d9d50424175326446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;">
+&#x5728;&#x4E0A;&#x8FF0;&#x4F53;&#x7CFB;&#x4E0B;&#xFF0C;&#x65E0;&#x8BBA;&#x662F; FlexVolume&#xFF0C;&#x8FD8;&#x662F; Kubernetes &#x5185;&#x7F6E;&#x7684;&#x5176;&#x4ED6;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#xFF0C;&#x5B83;&#x4EEC;&#x5B9E;&#x9645;&#x4E0A;&#x62C5;&#x4EFB;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F; Volume &#x7BA1;&#x7406;&#x4E2D;&#x7684;&#x201C;Attach &#x9636;&#x6BB5;&#x201D;&#x548C;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x7684;&#x5177;&#x4F53;&#x6267;&#x884C;&#x8005;&#x3002;&#x800C;&#x50CF; Dynamic Provisioning &#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C31;&#x4E0D;&#x662F;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#x7684;&#x8D23;&#x4EFB;&#xFF0C;&#x800C;&#x662F; Kubernetes &#x672C;&#x8EAB;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x529F;&#x80FD;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;<strong>CSI &#x63D2;&#x4EF6;&#x4F53;&#x7CFB;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#xFF0C;&#x5C31;&#x662F;&#x628A;&#x8FD9;&#x4E2A; Provision &#x9636;&#x6BB5;&#xFF0C;&#x4EE5;&#x53CA; Kubernetes &#x91CC;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x529F;&#x80FD;&#xFF0C;&#x4ECE;&#x4E3B;&#x5E72;&#x4EE3;&#x7801;&#x91CC;&#x5265;&#x79BB;&#x51FA;&#x6765;&#xFF0C;&#x505A;&#x6210;&#x4E86;&#x51E0;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x4F1A;&#x901A;&#x8FC7; Watch API &#x76D1;&#x542C; Kubernetes &#x91CC;&#x4E0E;&#x5B58;&#x50A8;&#x76F8;&#x5173;&#x7684;&#x4E8B;&#x4EF6;&#x53D8;&#x5316;&#xFF0C;&#x6BD4;&#x5982; PVC &#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x6765;&#x6267;&#x884C;&#x5177;&#x4F53;&#x7684;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x52A8;&#x4F5C;</strong>&#x3002;</p>
+<p>&#x800C;&#x8FD9;&#x4E9B;&#x7BA1;&#x7406;&#x52A8;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x201C;Attach &#x9636;&#x6BB5;&#x201D;&#x548C;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x7684;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528; CSI &#x63D2;&#x4EF6;&#x6765;&#x5B8C;&#x6210;&#x7684;&#x3002;&#x8FD9;&#x79CD;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4E00;&#x5E45;&#x793A;&#x610F;&#x56FE;&#x6765;&#x8868;&#x793A;&#xFF1A;</p>
+<p><img src="https://img-blog.csdnimg.cn/5f1bcdafdae444feac38dd9f7fa7f250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<ul>
+<li><p>&#x8FD9;&#x5957;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;&#x4F53;&#x7CFB;&#x591A;&#x4E86;&#x4E09;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5916;&#x90E8;&#x7EC4;&#x4EF6;&#xFF08;External Components&#xFF09;&#xFF0C;&#x5373;&#xFF1A;<code>Driver
+Registrar</code>&#x3001;<code>External Provisioner</code> &#x548C; <code>External Attacher</code>&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x662F;&#x4ECE;Kubernetes &#x9879;&#x76EE;&#x91CC;&#x9762;&#x5265;&#x79BB;&#x51FA;&#x6765;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x529F;&#x80FD;&#x3002;</p>
+</li>
+<li><p>&#x56FE;&#x4E2D;&#x6700;&#x53F3;&#x4FA7;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5C31;&#x662F;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x6765;&#x5B9E;&#x73B0;&#x7684; CSI &#x63D2;&#x4EF6;&#x3002;&#x4E00;&#x4E2A; CSI &#x63D2;&#x4EF6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x5B83;&#x4F1A;&#x4EE5; gRPC&#x7684;&#x65B9;&#x5F0F;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x4E09;&#x4E2A;&#x670D;&#x52A1;&#xFF08;gRPC Service&#xFF09;&#xFF0C;&#x5206;&#x522B;&#x53EB;&#x4F5C;&#xFF1A;<code>CSI Identity</code>&#x3001;<code>CSI Controller</code> &#x548C; <code>CSI Node</code>&#x3002;</p>
+</li>
+</ul>
+<h3 id="21-&#x4E09;&#x4E2A;-external-components"><a name="21-&#x4E09;&#x4E2A;-external-components" class="anchor-navigation-ex-anchor" href="#21-&#x4E09;&#x4E2A;-external-components"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 &#x4E09;&#x4E2A; External Components</h3>
+<ul>
+<li><strong>Driver Registrar &#x7EC4;&#x4EF6;</strong>&#xFF0C;&#x8D1F;&#x8D23;&#x5C06;&#x63D2;&#x4EF6;&#x6CE8;&#x518C;&#x5230; kubelet&#x91CC;&#x9762;&#xFF08;&#x8FD9;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;&#x4E3A;&#xFF0C;&#x5C06;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#xFF09;&#x3002;&#x800C;&#x5728;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;Driver Registrar &#x9700;&#x8981;&#x8BF7;&#x6C42; CSI &#x63D2;&#x4EF6;&#x7684;Identity &#x670D;&#x52A1;&#x6765;&#x83B7;&#x53D6;&#x63D2;&#x4EF6;&#x4FE1;&#x606F;&#x3002;</li>
+<li><strong>External Provisioner &#x7EC4;&#x4EF6;</strong>&#xFF0C;&#x8D1F;&#x8D23;&#x7684;&#x6B63;&#x662F; Provision &#x9636;&#x6BB5;&#x3002;&#x5728;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;<code>External Provisioner</code> &#x76D1;&#x542C;&#xFF08;Watch&#xFF09;&#x4E86; APIServer &#x91CC;&#x7684; PVC &#x5BF9;&#x8C61;&#x3002;&#x5F53;&#x4E00;&#x4E2A; PVC &#x88AB;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x5B83;&#x5C31;&#x4F1A;&#x8C03;&#x7528; CSI Controller &#x7684; CreateVolume &#x65B9;&#x6CD5;&#xFF0C;&#x4E3A;&#x4F60;&#x521B;&#x5EFA;&#x5BF9;&#x5E94; PV&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x662F;&#x516C;&#x6709;&#x4E91;&#x63D0;&#x4F9B;&#x7684;&#x78C1;&#x76D8;&#xFF08;&#x6216;&#x8005;&#x5757;&#x8BBE;&#x5907;&#xFF09;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x5C31;&#x9700;&#x8981;&#x8C03;&#x7528;&#x516C;&#x6709;&#x4E91;&#xFF08;&#x6216;&#x8005;&#x5757;&#x8BBE;&#x5907;&#x670D;&#x52A1;&#xFF09;&#x7684; API &#x6765;&#x521B;&#x5EFA;&#x8FD9;&#x4E2A; PV &#x6240;&#x63CF;&#x8FF0;&#x7684;&#x78C1;&#x76D8;&#xFF08;&#x6216;&#x8005;&#x5757;&#x8BBE;&#x5907;&#xFF09;&#x4E86;&#x3002;</li>
+</ul>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x7531;&#x4E8E; CSI &#x63D2;&#x4EF6;&#x662F;&#x72EC;&#x7ACB;&#x4E8E; Kubernetes &#x4E4B;&#x5916;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728; CSI &#x7684; API &#x91CC;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528; Kubernetes &#x5B9A;&#x4E49;&#x7684; PV &#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;<strong>&#x5355;&#x72EC;&#x7684; Volume &#x7C7B;&#x578B;</strong>&#x3002;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x53D9;&#x8FF0;&#xFF0C;<strong>&#x6211;&#x4F1A;&#x628A; Kubernetes &#x91CC;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5377;&#x7C7B;&#x578B;&#x53EB;&#x4F5C; PV&#xFF0C;&#x628A; CSI &#x91CC;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5377;&#x7C7B;&#x578B;&#x53EB;&#x4F5C; CSI Volume</strong>&#x3002;</p>
+<ul>
+<li><strong>External Attacher &#x7EC4;&#x4EF6;</strong>&#xFF0C;&#x8D1F;&#x8D23;&#x7684;&#x6B63;&#x662F;&#x201C;<code>Attach &#x9636;&#x6BB5;</code>&#x201D;&#x3002;&#x5728;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;&#x5B83;&#x76D1;&#x542C;&#x4E86; APIServer <code>VolumeAttachment</code> &#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x5316;&#x3002;<code>VolumeAttachment</code> &#x5BF9;&#x8C61;&#x662F; Kubernetes &#x786E;&#x8BA4;&#x4E00;&#x4E2A; Volume&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x201C;Attach &#x9636;&#x6BB5;&#x201D;&#x7684;&#x91CD;&#x8981;&#x6807;&#x5FD7;&#xFF0C;&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E86; VolumeAttachment &#x5BF9;&#x8C61;&#xFF0C;External Attacher &#x5C31;&#x4F1A;&#x8C03;&#x7528; CSI Controller &#x670D;&#x52A1;&#x7684; ControllerPublish &#x65B9;&#x6CD5;&#xFF0C;&#x5B8C;&#x6210;&#x5B83;&#x6240;&#x5BF9;&#x5E94;&#x7684; Volume &#x7684; Attach &#x9636;&#x6BB5;&#x3002;</li>
+</ul>
+<p>&#x800C; Volume &#x7684;&#x201C;<code>**Mount &#x9636;&#x6BB5;**</code>&#x201D;&#xFF0C;&#x5E76;&#x4E0D;&#x5C5E;&#x4E8E; External Components &#x7684;&#x804C;&#x8D23;&#x3002;&#x5F53; kubelet &#x7684; <code>VolumeManagerReconciler</code> &#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x5230;&#x5B83;&#x9700;&#x8981;&#x6267;&#x884C; Mount &#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7; <code>pkg/volume/csi</code> &#x5305;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528; CSI Node &#x670D;&#x52A1;&#x5B8C;&#x6210; Volume &#x7684;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x3002;</p>
+<p>&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528; CSI &#x63D2;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5C06;&#x8FD9;&#x4E09;&#x4E2A; External Components &#x4F5C;&#x4E3A; sidecar &#x5BB9;&#x5668;&#x548C; CSI &#x63D2;&#x4EF6;&#x653E;&#x7F6E;&#x5728;&#x540C;&#x4E00;&#x4E2A; Pod &#x4E2D;&#x3002;&#x7531;&#x4E8E; External Components &#x5BF9; CSI &#x63D2;&#x4EF6;&#x7684;&#x8C03;&#x7528;&#x975E;&#x5E38;&#x9891;&#x7E41;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x79CD; sidecar &#x7684;&#x90E8;&#x7F72;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x9AD8;&#x6548;&#x3002;</p>
+<h3 id="22-csi-&#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;"><a name="22-csi-&#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;" class="anchor-navigation-ex-anchor" href="#22-csi-&#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 CSI &#x63D2;&#x4EF6;&#x7684;&#x91CC;&#x4E09;&#x4E2A;&#x670D;&#x52A1;</h3>
+<p>CSI Identity&#x3001;CSI Controller &#x548C; CSI Node</p>
+<p><strong>CSI &#x63D2;&#x4EF6;&#x7684; <code>CSI Identity</code> &#x670D;&#x52A1;&#xFF0C;&#x8D1F;&#x8D23;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x672C;&#x8EAB;&#x7684;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">service</span> Identity <span class="token punctuation">{</span>
+  // <span class="token builtin class-name">return</span> the version and name of the plugin
+  rpc GetPluginInfo<span class="token punctuation">(</span>GetPluginInfoRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>GetPluginInfoResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  // reports whether the plugin has the ability of serving the Controller interface
+  rpc GetPluginCapabilities<span class="token punctuation">(</span>GetPluginCapabilitiesRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>GetPluginCapabilitiesResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  // called by the CO just to check whether the plugin is running or not
+  rpc Probe <span class="token punctuation">(</span>ProbeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>ProbeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x800C; <code>CSI Controller</code> &#x670D;&#x52A1;&#xFF0C;&#x5B9A;&#x4E49;&#x7684;&#x5219;&#x662F;&#x5BF9; CSI Volume&#xFF08;&#x5BF9;&#x5E94; Kubernetes &#x91CC;&#x7684; PV&#xFF09;&#x7684;&#x7BA1;&#x7406;&#x63A5;&#x53E3;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x521B;&#x5EFA;&#x548C;&#x5220;&#x9664; CSI Volume&#x3001;&#x5BF9; CSI Volume &#x8FDB;&#x884C; Attach/Dettach&#xFF08;&#x5728; CSI &#x91CC;&#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x88AB;&#x53EB;&#x4F5C; Publish/Unpublish&#xFF09;&#xFF0C;&#x4EE5;&#x53CA;&#x5BF9; CSI Volume &#x8FDB;&#x884C; Snapshot &#x7B49;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">service</span> Controller <span class="token punctuation">{</span>
+  // provisions a volume
+  rpc CreateVolume <span class="token punctuation">(</span>CreateVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>CreateVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // deletes a previously provisioned volume
+  rpc DeleteVolume <span class="token punctuation">(</span>DeleteVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>DeleteVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // <span class="token function">make</span> a volume available on some required <span class="token function">node</span>
+  rpc ControllerPublishVolume <span class="token punctuation">(</span>ControllerPublishVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>ControllerPublishVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // <span class="token function">make</span> a volume un-available on some required <span class="token function">node</span>
+  rpc ControllerUnpublishVolume <span class="token punctuation">(</span>ControllerUnpublishVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>ControllerUnpublishVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token punctuation">..</span>.
+
+  // <span class="token function">make</span> a snapshot
+  rpc CreateSnapshot <span class="token punctuation">(</span>CreateSnapshotRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>CreateSnapshotResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // Delete a given snapshot
+  rpc DeleteSnapshot <span class="token punctuation">(</span>DeleteSnapshotRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>DeleteSnapshotResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token punctuation">..</span>.
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0D;&#x96BE;&#x53D1;&#x73B0;&#xFF0C;CSI Controller &#x670D;&#x52A1;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6709;&#x4E2A;&#x5171;&#x540C;&#x7279;&#x70B9;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5B83;&#x4EEC;&#x90FD;&#x65E0;&#x9700;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x800C;&#x662F;&#x5C5E;&#x4E8E; Kubernetes &#x91CC; Volume Controller &#x7684;&#x903B;&#x8F91;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5C5E;&#x4E8E; Master &#x8282;&#x70B9;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6B63;&#x5982;&#x6211;&#x5728;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x6837;&#xFF0C;<strong>CSI Controller &#x670D;&#x52A1;&#x7684;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x5E76;&#x4E0D;&#x662F; Kubernetes&#xFF08;&#x5373;&#xFF1A;&#x901A;&#x8FC7; pkg/volume/csi &#x53D1;&#x8D77; CSI &#x8BF7;&#x6C42;&#xFF09;&#xFF0C;&#x800C;&#x662F; External Provisioner &#x548C; External Attacher&#x3002;&#x8FD9;&#x4E24;&#x4E2A; External Components&#xFF0C;&#x5206;&#x522B;&#x901A;&#x8FC7;&#x76D1;&#x542C; PVC &#x548C; VolumeAttachement &#x5BF9;&#x8C61;&#xFF0C;&#x6765;&#x8DDF; Kubernetes &#x8FDB;&#x884C;&#x534F;&#x4F5C;&#x3002;</strong></p>
+<p><strong>&#x800C; CSI Volume &#x9700;&#x8981;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x90FD;&#x5B9A;&#x4E49;&#x5728;&#x4E86; <code>CSI Node</code> &#x670D;&#x52A1;&#x91CC;&#x9762;</strong>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">service</span> Node <span class="token punctuation">{</span>
+  // temporarily <span class="token function">mount</span> the volume to a staging path
+  rpc NodeStageVolume <span class="token punctuation">(</span>NodeStageVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodeStageVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // unmount the volume from staging path
+  rpc NodeUnstageVolume <span class="token punctuation">(</span>NodeUnstageVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodeUnstageVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // <span class="token function">mount</span> the volume from staging to target path
+  rpc NodePublishVolume <span class="token punctuation">(</span>NodePublishVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodePublishVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // unmount the volume from staging path
+  rpc NodeUnpublishVolume <span class="token punctuation">(</span>NodeUnpublishVolumeRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodeUnpublishVolumeResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  // stats <span class="token keyword">for</span> the volume
+  rpc NodeGetVolumeStats <span class="token punctuation">(</span>NodeGetVolumeStatsRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodeGetVolumeStatsResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token punctuation">..</span>.
+
+  // Similar to NodeGetId
+  rpc NodeGetInfo <span class="token punctuation">(</span>NodeGetInfoRequest<span class="token punctuation">)</span>
+    returns <span class="token punctuation">(</span>NodeGetInfoResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x201C;Mount &#x9636;&#x6BB5;&#x201D;&#x5728; CSI Node &#x91CC;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x662F;&#x7531; <code>NodeStageVolume</code> &#x548C; <code>NodePublishVolume</code> &#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x5171;&#x540C;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h2 id="3-&#x603B;&#x7ED3;"><a name="3-&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#3-&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x603B;&#x7ED3;</h2>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x76F8;&#x6BD4;&#x4E8E; FlexVolume&#xFF0C;CSI &#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#xFF0C;&#x628A;&#x63D2;&#x4EF6;&#x7684;&#x804C;&#x8D23;&#x4ECE;&#x201C;&#x4E24;&#x9636;&#x6BB5;&#x5904;&#x7406;&#x201D;&#xFF0C;&#x6269;&#x5C55;&#x6210;&#x4E86; Provision&#x3001;Attach &#x548C; Mount &#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#x3002;&#x5176;&#x4E2D;&#xFF0C;Provision &#x7B49;&#x4EF7;&#x4E8E;&#x201C;&#x521B;&#x5EFA;&#x78C1;&#x76D8;&#x201D;&#xFF0C;Attach &#x7B49;&#x4EF7;&#x4E8E;&#x201C;&#x6302;&#x8F7D;&#x78C1;&#x76D8;&#x5230;&#x865A;&#x62DF;&#x673A;&#x201D;&#xFF0C;Mount &#x7B49;&#x4EF7;&#x4E8E;&#x201C;&#x5C06;&#x8BE5;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x5316;&#x540E;&#xFF0C;&#x6302;&#x8F7D;&#x5728; Volume &#x7684;&#x5BBF;&#x4E3B;&#x673A;&#x76EE;&#x5F55;&#x4E0A;&#x201D;&#x3002;</p>
+<p>&#x5728;&#x6709;&#x4E86; CSI &#x63D2;&#x4EF6;&#x4E4B;&#x540E;&#xFF0C;&#x4E0E;Kubernetes &#x672C;&#x8EAB;&#x7BA1;&#x7406;<code>storageclass</code>&#x533A;&#x522B;&#xFF1A;</p>
+<ul>
+<li><p>&#x5F53; <code>AttachDetachController</code> &#x9700;&#x8981;&#x8FDB;&#x884C;&#x201C;Attach&#x201D;&#x64CD;&#x4F5C;&#x65F6;&#xFF08;&#x201C;<strong>Attach &#x9636;&#x6BB5;</strong>&#x201D;&#xFF09;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x4F1A;&#x6267;&#x884C;&#x5230;
+<code>pkg/volume/csi</code> &#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>VolumeAttachment</code> &#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x800C;&#x89E6;&#x53D1; <code>External Attacher</code> &#x8C03;&#x7528;
+<code>CSI Controller</code> &#x670D;&#x52A1;&#x7684; <code>ControllerPublishVolume</code> &#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p>&#x5F53; <code>VolumeManagerReconciler</code> &#x9700;&#x8981;&#x8FDB;&#x884C;&#x201C;Mount&#x201D;&#x64CD;&#x4F5C;&#x65F6;&#xFF08;&#x201C;<strong>Mount &#x9636;&#x6BB5;</strong>&#x201D;&#xFF09;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x4F1A;&#x6267;&#x884C;&#x5230;
+<code>pkg/volume/csi</code> &#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x5411; <code>CSI Node</code> &#x670D;&#x52A1;&#x53D1;&#x8D77;&#x8C03;&#x7528; <code>NodePublishVolume</code> &#x65B9;&#x6CD5;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
+</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;
+  <a href="https://time.geekbang.org/column/intro/116" target="_blank">&#x5F20;&#x78CA; &#x6781;&#x5BA2;&#x65F6;&#x95F4; &#x6DF1;&#x5165;&#x6D45;&#x51FA; kubernetes</a></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-12 09:08:17
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 存储">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kubernetes-storage-write-CSI.html" class="navigation navigation-next " aria-label="Next page: 编写 CSI">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"FlexVolume CSI","level":"1.11.1","depth":2,"next":{"title":"编写 CSI","level":"1.11.2","depth":2,"path":"存储/kubernetes-storage-write-CSI.md","ref":"存储/kubernetes-storage-write-CSI.md","articles":[]},"previous":{"title":"存储","level":"1.11","depth":1,"path":"存储/README.md","ref":"存储/README.md","articles":[{"title":"FlexVolume CSI","level":"1.11.1","depth":2,"path":"存储/kubernetes-storage-introduce-ClexVolume-and-CSI.md","ref":"存储/kubernetes-storage-introduce-ClexVolume-and-CSI.md","articles":[]},{"title":"编写 CSI","level":"1.11.2","depth":2,"path":"存储/kubernetes-storage-write-CSI.md","ref":"存储/kubernetes-storage-write-CSI.md","articles":[]},{"title":"Volumes 原理","level":"1.11.3","depth":2,"path":"存储/kuberentes-storage-volumes-principle.md","ref":"存储/kuberentes-storage-volumes-principle.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"存储/kubernetes-storage-introduce-ClexVolume-and-CSI.md","mtime":"2022-08-12T09:08:17.484Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

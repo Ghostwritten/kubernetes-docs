@@ -1,0 +1,2034 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Deployment · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kubernetes-deployment-skill.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../Overview.html">
+            
+                <a href="../../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../工具/">
+            
+                <a href="../../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../概念/">
+            
+                <a href="../../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../升级/">
+            
+                <a href="../../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../日志/">
+            
+                <a href="../../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../网络/">
+            
+                <a href="../../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../资源/">
+            
+                <a href="../../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../资源/kubernetes-yum.html">
+            
+                <a href="../../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../部署/">
+            
+                <a href="../../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.10.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="kubernetes-deployment-skill.html">
+            
+                <a href="kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="kubernetes-client-go-deployment.html">
+            
+                <a href="kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="kubernetes-deployment-strategies.html">
+            
+                <a href="kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="kubernetes-deployment-principle.html">
+            
+                <a href="kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Kubernetes-DaemonSet.html">
+            
+                <a href="../Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../kubernetes-PersistentVolume.html">
+            
+                <a href="../kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Kubernetes-StatefulSet.html">
+            
+                <a href="../Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Kubernetes-Job.html">
+            
+                <a href="../Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../Runtimeclass/">
+            
+                <a href="../Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="../Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="../Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../Kubernetes-ConfigMaps.html">
+            
+                <a href="../Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../Pod/">
+            
+                <a href="../Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../kubernetes-Secrets.html">
+            
+                <a href="../kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../Kubernetes-Ingress.html">
+            
+                <a href="../Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../Kubernetes-Service.html">
+            
+                <a href="../Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../Kubernetes-NetworkPolicy.html">
+            
+                <a href="../Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../RBAC/">
+            
+                <a href="../RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="../RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="../RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../Auditing/">
+            
+                <a href="../Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../存储/">
+            
+                <a href="../../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../策略/">
+            
+                <a href="../../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../策略/OPA/">
+            
+                <a href="../../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../组件/">
+            
+                <a href="../../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../组件/Kubeadm/">
+            
+                <a href="../../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../../组件/Kubectl/">
+            
+                <a href="../../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../../组件/Kubelet/">
+            
+                <a href="../../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../安全/">
+            
+                <a href="../../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../安全/Falco/">
+            
+                <a href="../../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../../安全/Apparmor/">
+            
+                <a href="../../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../../安全/Trivy/">
+            
+                <a href="../../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../tags.html">
+            
+                <a href="../../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Deployment</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#kubernetes-deployment-overview"><b></b>Kubernetes Deployment Overview</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x7B80;&#x4ECB;"><b></b>1. &#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#2-&#x521B;&#x5EFA;-deployment"><b></b>2. &#x521B;&#x5EFA; Deployment</a></li><ul><li><span class="title-icon "></span><a href="#21-&#x7F16;&#x6392;yaml"><b></b>2.1 &#x7F16;&#x6392;yaml</a></li><li><span class="title-icon "></span><a href="#22-&#x5B9A;&#x4E49;&#x63CF;&#x8FF0;"><b></b>2.2 &#x5B9A;&#x4E49;&#x63CF;&#x8FF0;</a></li><li><span class="title-icon "></span><a href="#23-&#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;"><b></b>2.3 &#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;</a></li><li><span class="title-icon "></span><a href="#24-pod-template-hash-label"><b></b>2.4 Pod-template-hash label</a></li></ul><li><span class="title-icon "></span><a href="#3-&#x66F4;&#x65B0;-deployment"><b></b>3. &#x66F4;&#x65B0; Deployment</a></li><ul><li><span class="title-icon "></span><a href="#31-rollover&#xFF08;&#x591A;&#x4E2A;-rollout-&#x5E76;&#x884C;&#xFF09;"><b></b>3.1 Rollover&#xFF08;&#x591A;&#x4E2A; rollout &#x5E76;&#x884C;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#label-selector-&#x66F4;&#x65B0;"><b></b>Label selector &#x66F4;&#x65B0;</a></li></ul><li><span class="title-icon "></span><a href="#4-&#x56DE;&#x6EDA;-deployment"><b></b>4. &#x56DE;&#x6EDA; Deployment</a></li><ul><li><span class="title-icon "></span><a href="#41-&#x68C0;&#x67E5;-deployment-&#x4E0A;&#x7EBF;&#x5386;&#x53F2;"><b></b>4.1 &#x68C0;&#x67E5; Deployment &#x4E0A;&#x7EBF;&#x5386;&#x53F2;</a></li><li><span class="title-icon "></span><a href="#42-&#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;"><b></b>4.2 &#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;</a></li></ul><li><span class="title-icon "></span><a href="#5-&#x7F29;&#x653E;-deployment"><b></b>5. &#x7F29;&#x653E; Deployment</a></li><ul><li><span class="title-icon "></span><a href="#51-&#x6BD4;&#x4F8B;&#x7F29;&#x653E;"><b></b>5.1 &#x6BD4;&#x4F8B;&#x7F29;&#x653E;</a></li></ul><li><span class="title-icon "></span><a href="#6-&#x6682;&#x505C;&#x3001;&#x6062;&#x590D;-deployment"><b></b>6. &#x6682;&#x505C;&#x3001;&#x6062;&#x590D; Deployment</a></li><li><span class="title-icon "></span><a href="#7-deployment-&#x72B6;&#x6001;"><b></b>7. Deployment &#x72B6;&#x6001;</a></li><ul><li><span class="title-icon "></span><a href="#71-&#x8FDB;&#x884C;&#x4E2D;&#x7684;-deploymentprogressing"><b></b>7.1 &#x8FDB;&#x884C;&#x4E2D;&#x7684; Deployment(Progressing)</a></li><li><span class="title-icon "></span><a href="#72-&#x5B8C;&#x6210;&#x7684;-deploymentcomplete"><b></b>7.2 &#x5B8C;&#x6210;&#x7684; Deployment(Complete)</a></li><li><span class="title-icon "></span><a href="#73-&#x5931;&#x8D25;&#x7684;-deploymentfailed"><b></b>7.3 &#x5931;&#x8D25;&#x7684; Deployment(Failed)</a></li></ul><li><span class="title-icon "></span><a href="#8-&#x7F16;&#x6392;-deployment"><b></b>8. &#x7F16;&#x6392; Deployment</a></li><ul><li><span class="title-icon "></span><a href="#81-pod-template"><b></b>8.1 Pod template</a></li><li><span class="title-icon "></span><a href="#82-replicas"><b></b>8.2 Replicas</a></li><li><span class="title-icon "></span><a href="#83-specselector"><b></b>8.3 spec.selector</a></li><li><span class="title-icon "></span><a href="#84-&#x7B56;&#x7565;"><b></b>8.4 &#x7B56;&#x7565;</a></li><li><span class="title-icon "></span><a href="#85-&#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;"><b></b>8.5 &#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;</a></li><li><span class="title-icon "></span><a href="#86-&#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;"><b></b>8.6 &#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;</a></li><li><span class="title-icon "></span><a href="#87-rollback-to"><b></b>8.7 Rollback To</a></li><li><span class="title-icon "></span><a href="#88-revision"><b></b>8.8 Revision</a></li><li><span class="title-icon "></span><a href="#89-&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;"><b></b>8.9 &#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;</a></li><li><span class="title-icon "></span><a href="#810-paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;"><b></b>8.10 paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;</a></li></ul></ul></ul></div><a href="#kubernetes-deployment-overview" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="kubernetes-deployment-overview"><a name="kubernetes-deployment-overview" class="anchor-navigation-ex-anchor" href="#kubernetes-deployment-overview"><i class="fa fa-link" aria-hidden="true"></i></a>Kubernetes Deployment Overview</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../../tags.html#deployment">Deployment</a></p></div><!-- tagsstop --><p><a href="https://www.rottentomatoes.com/m/one_flew_over_the_cuckoos_nest" target="_blank"><img src="https://img-blog.csdnimg.cn/b02019d23d04457a989df5b758e1fccc.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></a></p>
+<p>Deployment &#x7ED3;&#x6784;&#x793A;&#x610F;&#x56FE;
+<img src="https://img-blog.csdnimg.cn/5da8ae04889d4330b89c03c04462e5c0.png?" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>deployment&#x6392;&#x67E5;&#x62D3;&#x6251;&#x56FE;
+<img src="https://img-blog.csdnimg.cn/43652c6a0da54d31afe3aa11ee5ca1aa.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<hr>
+<h2 id="1-&#x7B80;&#x4ECB;"><a name="1-&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#1-&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7B80;&#x4ECB;</h2>
+<p>&#x4E00;&#x4E2A; Deployment &#x4E3A; Pods &#x548C; ReplicaSets &#x63D0;&#x4F9B;&#x58F0;&#x660E;&#x5F0F;&#x7684;&#x66F4;&#x65B0;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x4F60;&#x8D1F;&#x8D23;&#x63CF;&#x8FF0; Deployment &#x4E2D;&#x7684; &#x76EE;&#x6807;&#x72B6;&#x6001;&#xFF0C;&#x800C; Deployment &#x63A7;&#x5236;&#x5668;&#xFF08;Controller&#xFF09; &#x4EE5;&#x53D7;&#x63A7;&#x901F;&#x7387;&#x66F4;&#x6539;&#x5B9E;&#x9645;&#x72B6;&#x6001;&#xFF0C; &#x4F7F;&#x5176;&#x53D8;&#x4E3A;&#x671F;&#x671B;&#x72B6;&#x6001;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49; Deployment &#x4EE5;&#x521B;&#x5EFA;&#x65B0;&#x7684; ReplicaSet&#xFF0C;&#x6216;&#x5220;&#x9664;&#x73B0;&#x6709; Deployment&#xFF0C; &#x5E76;&#x901A;&#x8FC7;&#x65B0;&#x7684; Deployment &#x6536;&#x517B;&#x5176;&#x8D44;&#x6E90;&#x3002;</p>
+<h2 id="2-&#x521B;&#x5EFA;-deployment"><a name="2-&#x521B;&#x5EFA;-deployment" class="anchor-navigation-ex-anchor" href="#2-&#x521B;&#x5EFA;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x521B;&#x5EFA; Deployment</h2>
+<p>&#x4E0B;&#x9762;&#x662F; Deployment &#x793A;&#x4F8B;&#x3002;&#x5176;&#x4E2D;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; ReplicaSet&#xFF0C;&#x8D1F;&#x8D23;&#x542F;&#x52A8;&#x4E09;&#x4E2A; nginx Pods&#xFF1A;</p>
+<h3 id="21-&#x7F16;&#x6392;yaml"><a name="21-&#x7F16;&#x6392;yaml" class="anchor-navigation-ex-anchor" href="#21-&#x7F16;&#x6392;yaml"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 &#x7F16;&#x6392;yaml</h3>
+<pre class="language-"><code class="lang-bash">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: <span class="token number">3</span>
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: <span class="token number">80</span>
+</code></pre>
+<h3 id="22-&#x5B9A;&#x4E49;&#x63CF;&#x8FF0;"><a name="22-&#x5B9A;&#x4E49;&#x63CF;&#x8FF0;" class="anchor-navigation-ex-anchor" href="#22-&#x5B9A;&#x4E49;&#x63CF;&#x8FF0;"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 &#x5B9A;&#x4E49;&#x63CF;&#x8FF0;</h3>
+<ul>
+<li>&#x521B;&#x5EFA;&#x540D;&#x4E3A; <code>nginx-deployment</code>&#xFF08;&#x7531; <code>.metadata.name</code> &#x5B57;&#x6BB5;&#x6807;&#x660E;&#xFF09;&#x7684; <code>Deployment</code>&#x3002;</li>
+<li>&#x8BE5; <code>Deployment</code> &#x521B;&#x5EFA;&#x4E09;&#x4E2A;&#xFF08;&#x7531; <code>replicas</code> &#x5B57;&#x6BB5;&#x6807;&#x660E;&#xFF09;<code>Pod</code> &#x526F;&#x672C;&#x3002;</li>
+<li><code>selector</code> &#x5B57;&#x6BB5;&#x5B9A;&#x4E49; Deployment &#x5982;&#x4F55;&#x67E5;&#x627E;&#x8981;&#x7BA1;&#x7406;&#x7684; Pods&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x4F60;&#x9009;&#x62E9;&#x5728; Pod &#x6A21;&#x677F;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6807;&#x7B7E;&#xFF08;app: nginx&#xFF09;&#x3002; &#x4E0D;&#x8FC7;&#xFF0C;&#x66F4;&#x590D;&#x6742;&#x7684;&#x9009;&#x62E9;&#x89C4;&#x5219;&#x662F;&#x4E5F;&#x53EF;&#x80FD;&#x7684;&#xFF0C;&#x53EA;&#x8981; Pod &#x6A21;&#x677F;&#x672C;&#x8EAB;&#x6EE1;&#x8DB3;&#x6240;&#x7ED9;&#x89C4;&#x5219;&#x5373;&#x53EF;&#x3002;</li>
+<li><code>spec.selector.matchLabels</code> &#x5B57;&#x6BB5;&#x662F; <code>{key,value}</code> &#x952E;&#x503C;&#x5BF9;&#x6620;&#x5C04;&#x3002; &#x5728; <code>matchLabels</code> &#x6620;&#x5C04;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A; <code>{key,value}</code> &#x6620;&#x5C04;&#x7B49;&#x6548;&#x4E8E; <code>matchExpressions</code> &#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C; &#x5373;&#x5176; <code>key</code> &#x5B57;&#x6BB5;&#x662F; <code>&#x201C;key&#x201D;</code>&#xFF0C;<code>operator</code> &#x4E3A; <code>&#x201C;In&#x201D;</code>&#xFF0C;<code>values</code> &#x6570;&#x7EC4;&#x4EC5;&#x5305;&#x542B; <code>&#x201C;value&#x201D;</code>&#x3002; &#x5728; <code>matchLabels</code> &#x548C; <code>matchExpressions</code> &#x4E2D;&#x7ED9;&#x51FA;&#x7684;&#x6240;&#x6709;&#x6761;&#x4EF6;&#x90FD;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x624D;&#x80FD;&#x5339;&#x914D;&#x3002;</li>
+<li><code>template</code> &#x5B57;&#x6BB5;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5B50;&#x5B57;&#x6BB5;&#xFF1A;<ul>
+<li><code>Pod</code> &#x88AB;&#x4F7F;&#x7528; <code>labels</code> &#x5B57;&#x6BB5;&#x6253;&#x4E0A; <code>app: nginx</code> &#x6807;&#x7B7E;&#x3002;</li>
+<li><code>Pod</code> &#x6A21;&#x677F;&#x89C4;&#x7EA6;&#xFF08;&#x5373; <code>.template.spec</code> &#x5B57;&#x6BB5;&#xFF09;&#x6307;&#x793A; <code>Pods</code> &#x8FD0;&#x884C;&#x4E00;&#x4E2A; <code>nginx</code> &#x5BB9;&#x5668;&#xFF0C; &#x8BE5;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x7248;&#x672C;&#x4E3A; <code>1.14.2</code> &#x7684; <code>nginx Docker Hub</code>&#x955C;&#x50CF;&#x3002;</li>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x5E76;&#x4F7F;&#x7528; <code>name</code> &#x5B57;&#x6BB5;&#x5C06;&#x5176;&#x547D;&#x540D;&#x4E3A; <code>nginx</code>&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-&#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;"><a name="23-&#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;" class="anchor-navigation-ex-anchor" href="#23-&#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;"><i class="fa fa-link" aria-hidden="true"></i></a>2.3 &#x8FD0;&#x884C;&#x4E0E;&#x67E5;&#x770B;</h3>
+<pre class="language-"><code class="lang-bash">$ kubectl apply -f nginx-deployment.yaml
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   <span class="token number">3</span>         <span class="token number">0</span>         <span class="token number">0</span>            <span class="token number">0</span>           1s
+</code></pre>
+<blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A; &#x4F60;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E; <code>--record</code> &#x6807;&#x5FD7;&#x5C06;&#x6240;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#x5199;&#x5165;&#x8D44;&#x6E90;&#x6CE8;&#x89E3; <code>kubernetes.io/change-cause</code> &#x4E2D;&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x4EE5;&#x540E;&#x7684;&#x68C0;&#x67E5;&#x662F;&#x6709;&#x7528;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x67E5;&#x770B;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; Deployment &#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x6240;&#x6267;&#x884C;&#x8FC7;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x68C0;&#x67E5;&#x96C6;&#x7FA4;&#x4E2D;&#x7684; <code>Deployment</code> &#x65F6;&#xFF0C;&#x6240;&#x663E;&#x793A;&#x7684;&#x5B57;&#x6BB5;&#x6709;&#xFF1A;</p>
+<ul>
+<li><code>NAME</code> &#x5217;&#x51FA;&#x4E86;&#x96C6;&#x7FA4;&#x4E2D; <code>Deployment</code> &#x7684;&#x540D;&#x79F0;&#x3002;</li>
+<li><code>READY</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x53EF;&#x7528;&#x7684; &#x526F;&#x672C; &#x6570;&#x3002;&#x663E;&#x793A;&#x7684;&#x6A21;&#x5F0F;&#x662F;&#x201C;&#x5C31;&#x7EEA;&#x4E2A;&#x6570;/&#x671F;&#x671B;&#x4E2A;&#x6570;&#x201D;&#x3002;</li>
+<li><code>UP-TO-DATE</code> &#x663E;&#x793A;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x671F;&#x671B;&#x72B6;&#x6001;&#x5DF2;&#x7ECF;&#x66F4;&#x65B0;&#x7684;&#x526F;&#x672C;&#x6570;&#x3002;</li>
+<li><code>AVAILABLE</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x53EF;&#x4F9B;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x7684;&#x526F;&#x672C;&#x6570;&#x3002;</li>
+<li><code>AGE</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+</ul>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#x671F;&#x671B;&#x526F;&#x672C;&#x6570;&#x662F;&#x6839;&#x636E; <code>.spec.replicas</code> &#x5B57;&#x6BB5;&#x8BBE;&#x7F6E; 3&#x3002;</p>
+<p>&#x67E5;&#x770B; Deployment &#x4E0A;&#x7EBF;&#x72B6;&#x6001;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout status deployment/nginx-deployment
+Waiting <span class="token keyword">for</span> rollout to finish: <span class="token number">2</span> out of <span class="token number">3</span> new replicas have been updated<span class="token punctuation">..</span>.
+deployment <span class="token string">&quot;nginx-deployment&quot;</span> successfully rolled out
+</code></pre>
+<p>&#x51E0;&#x79D2;&#x949F;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment">#&#x6CE8;&#x610F; Deployment &#x5DF2;&#x521B;&#x5EFA;&#x5168;&#x90E8;&#x4E09;&#x4E2A;&#x526F;&#x672C;&#xFF0C;&#x5E76;&#x4E14;&#x6240;&#x6709;&#x526F;&#x672C;&#x90FD;&#x662F;&#x6700;&#x65B0;&#x7684;&#xFF08;&#x5B83;&#x4EEC;&#x5305;&#x542B;&#x6700;&#x65B0;&#x7684; Pod &#x6A21;&#x677F;&#xFF09; &#x5E76;&#x4E14;&#x53EF;&#x7528;</span>
+$ kubectl get deployments
+AME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>            <span class="token number">3</span>           18s
+</code></pre>
+<p>&#x67E5;&#x770B; Deployment &#x521B;&#x5EFA;&#x7684; ReplicaSet&#xFF08;rs)</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-75675f5897   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>       18s
+</code></pre>
+<p><code>ReplicaSet</code> &#x8F93;&#x51FA;&#x4E2D;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5B57;&#x6BB5;&#xFF1A;</p>
+<ul>
+<li><code>NAME</code> &#x5217;&#x51FA;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D; ReplicaSet &#x7684;&#x540D;&#x79F0;&#xFF1B;</li>
+<li><code>DESIRED</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x7684;&#x671F;&#x671B;&#x526F;&#x672C;&#x4E2A;&#x6570;&#xFF0C;&#x5373;&#x5728;&#x521B;&#x5EFA; Deployment &#x65F6;&#x6240;&#x5B9A;&#x4E49;&#x7684;&#x503C;&#x3002; &#x6B64;&#x4E3A;&#x671F;&#x671B;&#x72B6;&#x6001;&#xFF1B;</li>
+<li><code>CURRENT</code> &#x663E;&#x793A;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x4E2D;&#x7684;&#x526F;&#x672C;&#x4E2A;&#x6570;&#xFF1B;</li>
+<li><code>READY</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x526F;&#x672C;&#x53EF;&#x4EE5;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF1B;</li>
+<li><code>AGE</code> &#x663E;&#x793A;&#x5E94;&#x7528;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#x3002;</li>
+</ul>
+<p>&#x6CE8;&#x610F; <code>ReplicaSet</code> &#x7684;&#x540D;&#x79F0;&#x59CB;&#x7EC8;&#x88AB;&#x683C;&#x5F0F;&#x5316;&#x4E3A;<code>[Deployment&#x540D;&#x79F0;]-[&#x968F;&#x673A;&#x5B57;&#x7B26;&#x4E32;]</code>&#x3002; &#x5176;&#x4E2D;&#x7684;&#x968F;&#x673A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4F7F;&#x7528; <code>pod-template-hash</code> &#x4F5C;&#x4E3A;&#x79CD;&#x5B50;&#x968F;&#x673A;&#x751F;&#x6210;&#x7684;&#x3002;</p>
+<p><code>Deployment</code> &#x63A7;&#x5236;&#x5668;&#x5C06; <code>pod-template-hash</code> &#x6807;&#x7B7E;&#x6DFB;&#x52A0;&#x5230; <code>Deployment</code> &#x6240;&#x521B;&#x5EFA;&#x6216;&#x6536;&#x7559;&#x7684; &#x6BCF;&#x4E2A; <code>ReplicaSet</code> &#x3002;&#x6B64;&#x6807;&#x7B7E;&#x53EF;&#x786E;&#x4FDD; <code>Deployment</code> &#x7684;&#x5B50; <code>ReplicaSets</code> &#x4E0D;&#x91CD;&#x53E0;&#x3002; &#x6807;&#x7B7E;&#x662F;&#x901A;&#x8FC7;&#x5BF9; <code>ReplicaSet</code> &#x7684; <code>PodTemplate</code> &#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#x5904;&#x7406;&#x3002; &#x6240;&#x751F;&#x6210;&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x88AB;&#x6DFB;&#x52A0;&#x5230; <code>ReplicaSet</code> &#x9009;&#x62E9;&#x7B97;&#x7B26;&#x3001;Pod &#x6A21;&#x677F;&#x6807;&#x7B7E;&#xFF0C;&#x5E76;&#x5B58;&#x5728;&#x4E8E;&#x5728; ReplicaSet &#x53EF;&#x80FD;&#x62E5;&#x6709;&#x7684;&#x4EFB;&#x4F55;&#x73B0;&#x6709; Pod &#x4E2D;&#x3002;</p>
+<p>&#x8981;&#x67E5;&#x770B;&#x6BCF;&#x4E2A; Pod &#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x6807;&#x7B7E;&#xFF0C;&#x8FD0;&#x884C;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get pods --show-labels
+NAME                                READY     STATUS    RESTARTS   AGE       LABELS
+nginx-deployment-75675f5897-7ci7o   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          18s       <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx,pod-template-hash<span class="token operator">=</span><span class="token number">3123191453</span>
+nginx-deployment-75675f5897-kzszj   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          18s       <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx,pod-template-hash<span class="token operator">=</span><span class="token number">3123191453</span>
+nginx-deployment-75675f5897-qqcnn   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          18s       <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx,pod-template-hash<span class="token operator">=</span><span class="token number">3123191453</span>
+
+$ k expose deployment nginx-deployment <span class="token number">80</span>
+$ k get svc
+NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>                      AGE
+kubernetes              ClusterIP      <span class="token number">10.96</span>.0.1        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">443</span>/TCP                      51d
+nginx-deployment        ClusterIP      <span class="token number">10.101</span>.106.248   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP                       8s
+$ <span class="token function">curl</span> <span class="token number">10.101</span>.106.248:80
+<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>html<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>Welcome to nginx<span class="token operator">!</span><span class="token operator">&lt;</span>/title<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+    body <span class="token punctuation">{</span>
+        width: 35em<span class="token punctuation">;</span>
+        margin: <span class="token number">0</span> auto<span class="token punctuation">;</span>
+        font-family: Tahoma, Verdana, Arial, sans-serif<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>/style<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>/head<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>h<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>Welcome to nginx<span class="token operator">!</span><span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>
+<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.<span class="token operator">&lt;</span>/p<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>For online documentation and support please refer to
+<span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;http://nginx.org/&quot;</span><span class="token operator">&gt;</span>nginx.org<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>br/<span class="token operator">&gt;</span>
+Commercial support is available at
+<span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;http://nginx.com/&quot;</span><span class="token operator">&gt;</span>nginx.com<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>/p<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token operator">&lt;</span>em<span class="token operator">&gt;</span>Thank you <span class="token keyword">for</span> using nginx.<span class="token operator">&lt;</span>/em<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>/body<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>/html<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="24-pod-template-hash-label"><a name="24-pod-template-hash-label" class="anchor-navigation-ex-anchor" href="#24-pod-template-hash-label"><i class="fa fa-link" aria-hidden="true"></i></a>2.4 Pod-template-hash label</h3>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x4E2A; label &#x4E0D;&#x662F;&#x7528;&#x6237;&#x6307;&#x5B9A;&#x7684;&#xFF01;</p>
+<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x8F93;&#x51FA;&#x4E2D;&#x7684; pod label &#x91CC;&#x7684; <code>pod-template-hash label</code>&#x3002;&#x5F53; Deployment &#x521B;&#x5EFA;&#x6216;&#x8005;&#x63A5;&#x7BA1; <code>ReplicaSet</code> &#x65F6;&#xFF0C;Deployment controller &#x4F1A;&#x81EA;&#x52A8;&#x4E3A; Pod &#x6DFB;&#x52A0; <code>pod-template-hash label</code>&#x3002;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x76EE;&#x7684;&#x662F;&#x9632;&#x6B62; Deployment &#x7684;&#x5B50; ReplicaSet &#x7684; pod &#x540D;&#x5B57;&#x91CD;&#x590D;&#x3002;&#x901A;&#x8FC7;&#x5C06; ReplicaSet &#x7684; PodTemplate &#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#x6563;&#x5217;&#xFF0C;&#x4F7F;&#x7528;&#x751F;&#x6210;&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x4F5C;&#x4E3A; label &#x7684;&#x503C;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x5230; <code>ReplicaSet selector</code> &#x91CC;&#x3001; <code>pod template label</code> &#x548C; <code>ReplicaSet</code> &#x7BA1;&#x7406;&#x4E2D;&#x7684; Pod &#x4E0A;&#x3002;</p>
+<h2 id="3-&#x66F4;&#x65B0;-deployment"><a name="3-&#x66F4;&#x65B0;-deployment" class="anchor-navigation-ex-anchor" href="#3-&#x66F4;&#x65B0;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x66F4;&#x65B0; Deployment</h2>
+<blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A; &#x4EC5;&#x5F53; Deployment Pod &#x6A21;&#x677F;&#xFF08;&#x5373; <code>.spec.template</code>&#xFF09;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F8B;&#x5982;&#x6A21;&#x677F;&#x7684;&#x6807;&#x7B7E;&#x6216;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x88AB;&#x66F4;&#x65B0;&#xFF0C; &#x624D;&#x4F1A;&#x89E6;&#x53D1;Deployment &#x4E0A;&#x7EBF;&#x3002; &#x5176;&#x4ED6;&#x66F4;&#x65B0;&#xFF08;&#x5982;&#x5BF9; Deployment &#x6267;&#x884C;&#x6269;&#x7F29;&#x5BB9;&#x7684;&#x64CD;&#x4F5C;&#xFF09;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x4E0A;&#x7EBF;&#x52A8;&#x4F5C;&#x3002;</p>
+</blockquote>
+<p>&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#x66F4;&#x65B0; <code>Deployment</code>&#xFF1A;
+&#x5148;&#x6765;&#x66F4;&#x65B0; <code>nginx Pod</code> &#x4EE5;&#x4F7F;&#x7528; <code>nginx:1.16.1</code> &#x955C;&#x50CF;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>nginx:1.14.2</code> &#x955C;&#x50CF;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl --record deployment.apps/nginx-deployment <span class="token builtin class-name">set</span> image <span class="token punctuation">\</span>
+   deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.16.1
+deployment.apps/nginx-deployment image updated
+
+&#x6216;&#x8005;
+
+$ kubectl <span class="token builtin class-name">set</span> image deployment/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.16.1 --record
+deployment.apps/nginx-deployment image updated
+</code></pre>
+<p>&#x6216;&#x8005;&#xFF0C;&#x53EF;&#x4EE5; <code>edit Deployment</code> &#x5E76;&#x5C06; <code>.spec.template.spec.containers[0].image</code> &#x4ECE; <code>nginx:1.14.2</code> &#x66F4;&#x6539;&#x81F3; <code>nginx:1.16.1</code>&#x3002;</p>
+<pre class="language-"><code class="lang-c">$ kubectl edit deployment<span class="token punctuation">.</span>v1<span class="token punctuation">.</span>apps<span class="token operator">/</span>nginx<span class="token operator">-</span>deployment
+deployment<span class="token punctuation">.</span>apps<span class="token operator">/</span>nginx<span class="token operator">-</span>deployment edited
+</code></pre>
+<p>&#x8981;&#x67E5;&#x770B;&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout status deployment/nginx-deployment
+Waiting <span class="token keyword">for</span> rollout to finish: <span class="token number">2</span> out of <span class="token number">3</span> new replicas have been updated<span class="token punctuation">..</span>.
+or
+deployment <span class="token string">&quot;nginx-deployment&quot;</span> successfully rolled out
+
+
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>            <span class="token number">3</span>           36s
+
+$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-1564180365   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>       6s
+nginx-deployment-2035384211   <span class="token number">0</span>         <span class="token number">0</span>         <span class="token number">0</span>       36s
+
+$ kubectl get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+nginx-deployment-1564180365-khku8   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          14s
+nginx-deployment-1564180365-nacti   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          14s
+nginx-deployment-1564180365-z9gth   <span class="token number">1</span>/1       Running   <span class="token number">0</span>          14s
+
+$ kubectl describe deployments
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Thu, <span class="token number">30</span> Nov <span class="token number">2017</span> <span class="token number">10</span>:56:25 +0000
+Labels:                 <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Annotations:            deployment.kubernetes.io/revision<span class="token operator">=</span><span class="token number">2</span>
+Selector:               <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Replicas:               <span class="token number">3</span> desired <span class="token operator">|</span> <span class="token number">3</span> updated <span class="token operator">|</span> <span class="token number">3</span> total <span class="token operator">|</span> <span class="token number">3</span> available <span class="token operator">|</span> <span class="token number">0</span> unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        <span class="token number">0</span>
+RollingUpdateStrategy:  <span class="token number">25</span>% max unavailable, <span class="token number">25</span>% max surge
+Pod Template:
+  Labels:  <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+   Containers:
+    nginx:
+      Image:        nginx:1.16.1
+      Port:         <span class="token number">80</span>/TCP
+      Environment:  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+      Mounts:       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+    Volumes:        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+  Conditions:
+    Type           Status  Reason
+    ----           ------  ------
+    Available      True    MinimumReplicasAvailable
+    Progressing    True    NewReplicaSetAvailable
+  OldReplicaSets:  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+  NewReplicaSet:   nginx-deployment-1564180365 <span class="token punctuation">(</span><span class="token number">3</span>/3 replicas created<span class="token punctuation">)</span>
+  Events:
+    Type    Reason             Age   From                   Message
+    ----    ------             ----  ----                   -------
+    Normal  ScalingReplicaSet  2m    deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">3</span>
+    Normal  ScalingReplicaSet  24s   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">1</span>
+    Normal  ScalingReplicaSet  22s   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">2</span>
+    Normal  ScalingReplicaSet  22s   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">2</span>
+    Normal  ScalingReplicaSet  19s   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">1</span>
+    Normal  ScalingReplicaSet  19s   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">3</span>
+    Normal  ScalingReplicaSet  14s   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">0</span>
+</code></pre>
+<p>&#x4E0B;&#x6B21;&#x8981;&#x66F4;&#x65B0;&#x8FD9;&#x4E9B; Pods &#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x518D;&#x6B21;&#x66F4;&#x65B0; Deployment Pod &#x6A21;&#x677F;&#x5373;&#x53EF;&#x3002;</p>
+<p><code>Deployment</code> &#x53EF;&#x786E;&#x4FDD;&#x5728;&#x66F4;&#x65B0;&#x65F6;&#x4EC5;&#x5173;&#x95ED;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684; Pod&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x786E;&#x4FDD;&#x81F3;&#x5C11;&#x6240;&#x9700; Pods 75% &#x5904;&#x4E8E;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF08;&#x6700;&#x5927;&#x4E0D;&#x53EF;&#x7528;&#x6BD4;&#x4F8B;&#x4E3A; 25%&#xFF09;&#x3002;</p>
+<p><code>Deployment</code> &#x8FD8;&#x786E;&#x4FDD;&#x4EC5;&#x6240;&#x521B;&#x5EFA; Pod &#x6570;&#x91CF;&#x53EA;&#x53EF;&#x80FD;&#x6BD4;&#x671F;&#x671B; Pods &#x6570;&#x9AD8;&#x4E00;&#x70B9;&#x70B9;&#x3002; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x53EF;&#x786E;&#x4FDD;&#x542F;&#x52A8;&#x7684; Pod &#x4E2A;&#x6570;&#x6BD4;&#x671F;&#x671B;&#x4E2A;&#x6570;&#x6700;&#x591A;&#x591A;&#x51FA; 25%&#xFF08;&#x6700;&#x5927;&#x5CF0;&#x503C; 25%&#xFF09;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4ED4;&#x7EC6;&#x67E5;&#x770B;&#x4E0A;&#x8FF0; Deployment &#xFF0C;&#x5C06;&#x770B;&#x5230;&#x5B83;&#x9996;&#x5148;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Pod&#xFF0C;&#x7136;&#x540E;&#x5220;&#x9664;&#x4E86;&#x4E00;&#x4E9B;&#x65E7;&#x7684; Pods&#xFF0C; &#x5E76;&#x521B;&#x5EFA;&#x4E86;&#x65B0;&#x7684; Pods&#x3002;&#x5B83;&#x4E0D;&#x4F1A;&#x6740;&#x6B7B;&#x8001; Pods&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x6570;&#x91CF;&#x65B0;&#x7684; Pods &#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x3002; &#x5728;&#x8DB3;&#x591F;&#x6570;&#x91CF;&#x7684;&#x65E7; Pods &#x88AB;&#x6740;&#x6B7B;&#x524D;&#x5E76;&#x6CA1;&#x6709;&#x521B;&#x5EFA;&#x65B0; Pods&#x3002;&#x5B83;&#x786E;&#x4FDD;&#x81F3;&#x5C11; 2 &#x4E2A; Pod &#x53EF;&#x7528;&#xFF0C;&#x540C;&#x65F6; &#x6700;&#x591A;&#x603B;&#x5171; 4 &#x4E2A; Pod &#x53EF;&#x7528;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5F53;&#x7B2C;&#x4E00;&#x6B21;&#x521B;&#x5EFA; <code>Deployment</code> &#x65F6;&#xFF0C;&#x5B83;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; <code>ReplicaSet</code>&#xFF08;<code>nginx-deployment-2035384211</code>&#xFF09; &#x5E76;&#x5C06;&#x5176;&#x76F4;&#x63A5;&#x6269;&#x5BB9;&#x81F3; 3 &#x4E2A;&#x526F;&#x672C;&#x3002;&#x66F4;&#x65B0; Deployment &#x65F6;&#xFF0C;&#x5B83;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684; ReplicaSet &#xFF08;nginx-deployment-1564180365&#xFF09;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x6269;&#x5BB9;&#x4E3A; 1&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x65E7; ReplicaSet &#x7F29;&#x5BB9;&#x5230; 2&#xFF0C; &#x4EE5;&#x4FBF;&#x81F3;&#x5C11;&#x6709; 2 &#x4E2A; Pod &#x53EF;&#x7528;&#x4E14;&#x6700;&#x591A;&#x521B;&#x5EFA; 4 &#x4E2A; Pod&#x3002; &#x7136;&#x540E;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x7B56;&#x7565;&#x7EE7;&#x7EED;&#x5BF9;&#x65B0;&#x7684; ReplicaSet &#x6269;&#x5BB9;&#x5E76;&#x5BF9;&#x65E7;&#x7684; ReplicaSet &#x7F29;&#x5BB9;&#x3002; &#x6700;&#x540E;&#xFF0C;&#x4F60;&#x5C06;&#x6709; 3 &#x4E2A;&#x53EF;&#x7528;&#x7684;&#x526F;&#x672C;&#x5728;&#x65B0;&#x7684; ReplicaSet &#x4E2D;&#xFF0C;&#x65E7; ReplicaSet &#x5C06;&#x7F29;&#x5BB9;&#x5230; 0&#x3002;</p>
+<h3 id="31-rollover&#xFF08;&#x591A;&#x4E2A;-rollout-&#x5E76;&#x884C;&#xFF09;"><a name="31-rollover&#xFF08;&#x591A;&#x4E2A;-rollout-&#x5E76;&#x884C;&#xFF09;" class="anchor-navigation-ex-anchor" href="#31-rollover&#xFF08;&#x591A;&#x4E2A;-rollout-&#x5E76;&#x884C;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 Rollover&#xFF08;&#x591A;&#x4E2A; rollout &#x5E76;&#x884C;&#xFF09;</h3>
+<p>&#x6BCF;&#x5F53; <code>Deployment controller</code> &#x89C2;&#x6D4B;&#x5230;&#x6709;&#x65B0;&#x7684; <code>deployment</code> &#x88AB;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5DF2;&#x5B58;&#x5728;&#x7684; <code>ReplicaSet</code> &#x6765;&#x521B;&#x5EFA;&#x671F;&#x671B;&#x4E2A;&#x6570;&#x7684; Pod &#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>ReplicaSet</code> &#x6765;&#x505A;&#x8FD9;&#x4EF6;&#x4E8B;&#x3002;&#x5DF2;&#x5B58;&#x5728;&#x7684; <code>ReplicaSet</code> &#x63A7;&#x5236; <code>label</code> &#x4E0E; <code>.spec.selector</code> &#x5339;&#x914D;&#x4F46;&#x662F; <code>template</code> &#x8DDF; <code>.spec.template</code> &#x4E0D;&#x5339;&#x914D;&#x7684; Pod &#x7F29;&#x5BB9;&#x3002;&#x6700;&#x7EC8;&#xFF0C;&#x65B0;&#x7684; ReplicaSet &#x5C06;&#x4F1A;&#x6269;&#x5BB9;&#x51FA; <code>.spec.replicas</code> &#x6307;&#x5B9A;&#x6570;&#x76EE;&#x7684; Pod&#xFF0C;&#x65E7;&#x7684; <code>ReplicaSet</code> &#x4F1A;&#x7F29;&#x5BB9;&#x5230; 0&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60A8;&#x66F4;&#x65B0;&#x4E86;&#x4E00;&#x4E2A;&#x7684;&#x5DF2;&#x5B58;&#x5728;&#x5E76;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x4E2D;&#x7684; Deployment&#xFF0C;&#x6BCF;&#x6B21;&#x66F4;&#x65B0; Deployment &#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; ReplicaSet &#x5E76;&#x6269;&#x5BB9;&#x5B83;&#xFF0C;&#x540C;&#x65F6;&#x56DE;&#x6EDA;&#x4E4B;&#x524D;&#x6269;&#x5BB9;&#x7684; ReplicaSet &#x2014;&#x2014; &#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x65E7;&#x7684; ReplicaSet &#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x5F00;&#x59CB;&#x7F29;&#x5BB9;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5047;&#x5982;&#x60A8;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x6709; 5 &#x4E2A; <code>niginx:1.7.9 replica</code> &#x7684; Deployment&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x8FD8;&#x53EA;&#x6709; 3 &#x4E2A; <code>nginx:1.7.9</code> &#x7684; <code>replica</code> &#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x65F6;&#x5019;&#x60A8;&#x5C31;&#x5F00;&#x59CB;&#x66F4;&#x65B0;&#x542B;&#x6709; 5 &#x4E2A; <code>nginx:1.9.1 replica</code> &#x7684; <code>Deployment</code>&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>Deployment</code> &#x4F1A;&#x7ACB;&#x5373;&#x6740;&#x6389;&#x5DF2;&#x521B;&#x5EFA;&#x7684; 3 &#x4E2A; <code>nginx:1.7.9</code> &#x7684; Pod&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x521B;&#x5EFA; <code>nginx:1.9.1</code> &#x7684; Pod&#x3002;&#x5B83;&#x4E0D;&#x4F1A;&#x7B49;&#x5230;&#x6240;&#x6709;&#x7684; 5 &#x4E2A; <code>nginx:1.7.9</code> &#x7684; Pod &#x90FD;&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x5F00;&#x59CB;&#x6539;&#x53D8;&#x822A;&#x9053;&#x3002;</p>
+<h3 id="label-selector-&#x66F4;&#x65B0;"><a name="label-selector-&#x66F4;&#x65B0;" class="anchor-navigation-ex-anchor" href="#label-selector-&#x66F4;&#x65B0;"><i class="fa fa-link" aria-hidden="true"></i></a>Label selector &#x66F4;&#x65B0;</h3>
+<p>&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4E0D;&#x9F13;&#x52B1;&#x66F4;&#x65B0; <code>label selector</code>&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x4E8B;&#x5148;&#x89C4;&#x5212;&#x597D;&#x60A8;&#x7684; selector&#x3002;</p>
+<p>&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x8981;&#x60A8;&#x60F3;&#x8981;&#x6267;&#x884C; <code>label selector</code> &#x7684;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x4E00;&#x5B9A;&#x8981;&#x8C28;&#x614E;&#x5E76;&#x786E;&#x8BA4;&#x60A8;&#x5DF2;&#x7ECF;&#x9884;&#x6599;&#x5230;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x56E0;&#x6B64;&#x5BFC;&#x81F4;&#x7684;&#x540E;&#x679C;&#x3002;</p>
+<p>&#x589E;&#x6DFB; <code>selector</code> &#x9700;&#x8981;&#x540C;&#x65F6;&#x5728; <code>Deployment</code> &#x7684; <code>spec</code> &#x4E2D;&#x66F4;&#x65B0;&#x65B0;&#x7684; <code>label</code>&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x8FD4;&#x56DE;&#x6821;&#x9A8C;&#x9519;&#x8BEF;&#x3002;&#x6B64;&#x66F4;&#x6539;&#x662F;&#x4E0D;&#x53EF;&#x8986;&#x76D6;&#x7684;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x65B0;&#x7684; <code>selector</code> &#x4E0D;&#x4F1A;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x65E7; selector &#x521B;&#x5EFA;&#x7684; <code>ReplicaSet</code> &#x548C; Pod&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x65E7;&#x7248;&#x672C;&#x7684; <code>ReplicaSet</code> &#x90FD;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x65B0;&#x7684; ReplicaSet&#x3002;
+&#x66F4;&#x65B0; selector&#xFF0C;&#x5373;&#x66F4;&#x6539; <code>selector key</code> &#x7684;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x5C06;&#x5BFC;&#x81F4;&#x8DDF;&#x589E;&#x6DFB; <code>selector</code> &#x540C;&#x6837;&#x7684;&#x540E;&#x679C;&#x3002;
+&#x5220;&#x9664; <code>selector</code>&#xFF0C;&#x5373;&#x5220;&#x9664; <code>Deployment selector</code> &#x4E2D;&#x7684;&#x5DF2;&#x6709;&#x7684; <code>key</code>&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5BF9; <code>Pod template label</code> &#x505A;&#x4EFB;&#x4F55;&#x66F4;&#x6539;&#xFF0C;&#x73B0;&#x6709;&#x7684; <code>ReplicaSet</code> &#x4E5F;&#x4E0D;&#x4F1A;&#x6210;&#x4E3A;&#x5B64;&#x513F;&#xFF0C;&#x4F46;&#x662F;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5220;&#x9664;&#x7684; label &#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4E8E;&#x73B0;&#x6709;&#x7684; Pod &#x548C; ReplicaSet &#x4E2D;&#x3002;</p>
+<h2 id="4-&#x56DE;&#x6EDA;-deployment"><a name="4-&#x56DE;&#x6EDA;-deployment" class="anchor-navigation-ex-anchor" href="#4-&#x56DE;&#x6EDA;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x56DE;&#x6EDA; Deployment</h2>
+<p>&#x6709;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x60F3;&#x8981;&#x56DE;&#x6EDA; Deployment&#xFF1B;&#x4F8B;&#x5982;&#xFF0C;&#x5F53; Deployment &#x4E0D;&#x7A33;&#x5B9A;&#x65F6;&#xFF08;&#x4F8B;&#x5982;&#x8FDB;&#x5165;&#x53CD;&#x590D;&#x5D29;&#x6E83;&#x72B6;&#x6001;&#xFF09;&#x3002; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Deployment &#x7684;&#x6240;&#x6709;&#x4E0A;&#x7EBF;&#x8BB0;&#x5F55;&#x90FD;&#x4FDD;&#x7559;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x56DE;&#x6EDA; &#xFF08;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x9650;&#x5236;&#x6765;&#x66F4;&#x6539;&#x8FD9;&#x4E00;&#x7EA6;&#x675F;&#xFF09;&#x3002;</p>
+<p>Deployment &#x88AB;&#x89E6;&#x53D1;&#x4E0A;&#x7EBF;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x521B;&#x5EFA; Deployment &#x7684;&#x65B0;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x3002; &#x8FD9;&#x610F;&#x5473;&#x7740;&#x4EC5;&#x5F53; Deployment &#x7684; Pod &#x6A21;&#x677F;&#xFF08;.spec.template&#xFF09;&#x53D1;&#x751F;&#x66F4;&#x6539;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x4FEE;&#x8BA2;&#x7248;&#x672C; -- &#x4F8B;&#x5982;&#xFF0C;&#x6A21;&#x677F;&#x7684;&#x6807;&#x7B7E;&#x6216;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002; &#x5176;&#x4ED6;&#x66F4;&#x65B0;&#xFF0C;&#x5982; Deployment &#x7684;&#x6269;&#x7F29;&#x5BB9;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA; Deployment &#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x3002; &#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x540C;&#x65F6;&#x6267;&#x884C;&#x624B;&#x52A8;&#x7F29;&#x653E;&#x6216;&#x81EA;&#x52A8;&#x7F29;&#x653E;&#x3002; &#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5F53;&#x4F60;&#x56DE;&#x6EDA;&#x5230;&#x8F83;&#x65E9;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x65F6;&#xFF0C;&#x53EA;&#x6709; Deployment &#x7684; Pod &#x6A21;&#x677F;&#x90E8;&#x5206;&#x4F1A;&#x88AB;&#x56DE;&#x6EDA;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x4F60;&#x5728;&#x66F4;&#x65B0; Deployment &#x65F6;&#x72AF;&#x4E86;&#x4E00;&#x4E2A;&#x62FC;&#x5199;&#x9519;&#x8BEF;&#xFF0C;&#x5C06;&#x955C;&#x50CF;&#x540D;&#x79F0;&#x547D;&#x540D;&#x8BBE;&#x7F6E;&#x4E3A; <code>nginx:1.161</code> &#x800C;&#x4E0D;&#x662F; <code>nginx:1.16.1</code>&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.161 --record<span class="token operator">=</span>true
+deployment.apps/nginx-deployment image updated
+</code></pre>
+<p>&#x6B64;&#x4E0A;&#x7EBF;&#x8FDB;&#x7A0B;&#x4F1A;&#x51FA;&#x73B0;&#x505C;&#x6EDE;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#x6765;&#x9A8C;&#x8BC1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout status deployment/nginx-deployment
+Waiting <span class="token keyword">for</span> rollout to finish: <span class="token number">1</span> out of <span class="token number">3</span> new replicas have been updated<span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65E7;&#x7684;&#x526F;&#x672C;&#x6709;&#x4E24;&#x4E2A;&#xFF08;<code>nginx-deployment-1564180365</code> &#x548C; <code>nginx-deployment-2035384211</code>&#xFF09;&#xFF0C; &#x65B0;&#x7684;&#x526F;&#x672C;&#x6709; 1 &#x4E2A;&#xFF08;<code>nginx-deployment-3066724191</code>&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-1564180365   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>       25s
+nginx-deployment-2035384211   <span class="token number">0</span>         <span class="token number">0</span>         <span class="token number">0</span>       36s
+nginx-deployment-3066724191   <span class="token number">1</span>         <span class="token number">1</span>         <span class="token number">0</span>       6s
+</code></pre>
+<p>&#x67E5;&#x770B;&#x6240;&#x521B;&#x5EFA;&#x7684; Pod&#xFF0C;&#x4F60;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#x65B0; ReplicaSet &#x6240;&#x521B;&#x5EFA;&#x7684; 1 &#x4E2A; Pod &#x5361;&#x987F;&#x5728;&#x955C;&#x50CF;&#x62C9;&#x53D6;&#x5FAA;&#x73AF;&#x4E2D;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get pods
+NAME                                READY     STATUS             RESTARTS   AGE
+nginx-deployment-1564180365-70iae   <span class="token number">1</span>/1       Running            <span class="token number">0</span>          25s
+nginx-deployment-1564180365-jbqqo   <span class="token number">1</span>/1       Running            <span class="token number">0</span>          25s
+nginx-deployment-1564180365-hysrc   <span class="token number">1</span>/1       Running            <span class="token number">0</span>          25s
+nginx-deployment-3066724191-08mng   <span class="token number">0</span>/1       ImagePullBackOff   <span class="token number">0</span>          6s
+
+
+$ kubectl describe deployment
+Name:           nginx-deployment
+Namespace:      default
+CreationTimestamp:  Tue, <span class="token number">15</span> Mar <span class="token number">2016</span> <span class="token number">14</span>:48:04 -0700
+Labels:         <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Selector:       <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Replicas:       <span class="token number">3</span> desired <span class="token operator">|</span> <span class="token number">1</span> updated <span class="token operator">|</span> <span class="token number">4</span> total <span class="token operator">|</span> <span class="token number">3</span> available <span class="token operator">|</span> <span class="token number">1</span> unavailable
+StrategyType:       RollingUpdate
+MinReadySeconds:    <span class="token number">0</span>
+RollingUpdateStrategy:  <span class="token number">25</span>% max unavailable, <span class="token number">25</span>% max surge
+Pod Template:
+  Labels:  <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+  Containers:
+   nginx:
+    Image:        nginx:1.91
+    Port:         <span class="token number">80</span>/TCP
+    Host Port:    <span class="token number">0</span>/TCP
+    Environment:  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+    Mounts:       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+  Volumes:        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:     nginx-deployment-1564180365 <span class="token punctuation">(</span><span class="token number">3</span>/3 replicas created<span class="token punctuation">)</span>
+NewReplicaSet:      nginx-deployment-3066724191 <span class="token punctuation">(</span><span class="token number">1</span>/1 replicas created<span class="token punctuation">)</span>
+Events:
+  FirstSeen LastSeen    Count   From                    SubobjectPath   Type        Reason              Message
+  --------- --------    -----   ----                    -------------   --------    ------              -------
+  1m        1m          <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">3</span>
+  22s       22s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">1</span>
+  22s       22s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">2</span>
+  22s       22s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">2</span>
+  21s       21s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">1</span>
+  21s       21s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-1564180365 to <span class="token number">3</span>
+  13s       13s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-2035384211 to <span class="token number">0</span>
+  13s       13s         <span class="token number">1</span>       <span class="token punctuation">{</span>deployment-controller <span class="token punctuation">}</span>                Normal      ScalingReplicaSet   Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-3066724191 to <span class="token number">1</span>
+</code></pre>
+<blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A; Deployment &#x63A7;&#x5236;&#x5668;&#x81EA;&#x52A8;&#x505C;&#x6B62;&#x6709;&#x95EE;&#x9898;&#x7684;&#x4E0A;&#x7EBF;&#x8FC7;&#x7A0B;&#xFF0C;&#x5E76;&#x505C;&#x6B62;&#x5BF9;&#x65B0;&#x7684; ReplicaSet &#x6269;&#x5BB9;&#x3002; &#x8FD9;&#x884C;&#x4E3A;&#x53D6;&#x51B3;&#x4E8E;&#x6240;&#x6307;&#x5B9A;&#x7684;<code>rollingUpdate</code> &#x53C2;&#x6570;&#xFF08;&#x5177;&#x4F53;&#x4E3A; <code>maxUnavailable</code>&#xFF09;&#x3002; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Kubernetes &#x5C06;&#x6B64;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; 25%&#x3002;</p>
+</blockquote>
+<h3 id="41-&#x68C0;&#x67E5;-deployment-&#x4E0A;&#x7EBF;&#x5386;&#x53F2;"><a name="41-&#x68C0;&#x67E5;-deployment-&#x4E0A;&#x7EBF;&#x5386;&#x53F2;" class="anchor-navigation-ex-anchor" href="#41-&#x68C0;&#x67E5;-deployment-&#x4E0A;&#x7EBF;&#x5386;&#x53F2;"><i class="fa fa-link" aria-hidden="true"></i></a>4.1 &#x68C0;&#x67E5; Deployment &#x4E0A;&#x7EBF;&#x5386;&#x53F2;</h3>
+<p>&#x9996;&#x5148;&#xFF0C;&#x68C0;&#x67E5; Deployment &#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl rollout <span class="token function">history</span> deployment.v1.apps/nginx-deployment
+deployments <span class="token string">&quot;nginx-deployment&quot;</span>
+REVISION    CHANGE-CAUSE
+<span class="token number">1</span>           kubectl apply --filename<span class="token operator">=</span>https://k8s.io/examples/controllers/nginx-deployment.yaml --record<span class="token operator">=</span>true
+<span class="token number">2</span>           kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.9.1 --record<span class="token operator">=</span>true
+<span class="token number">3</span>           kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.91 --record<span class="token operator">=</span>true
+</code></pre>
+<p><code>CHANGE-CAUSE</code> &#x7684;&#x5185;&#x5BB9;&#x662F;&#x4ECE; <code>Deployment</code> &#x7684; <code>kubernetes.io/change-cause</code> &#x6CE8;&#x89E3;&#x590D;&#x5236;&#x8FC7;&#x6765;&#x7684;&#x3002; &#x590D;&#x5236;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x5728;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x521B;&#x5EFA;&#x65F6;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x8BBE;&#x7F6E; <code>CHANGE-CAUSE</code> &#x6D88;&#x606F;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528; <code>kubectl annotate deployment.v1.apps/nginx-deployment kubernetes.io/change-cause=&quot;image updated to 1.9.1&quot;</code> &#x4E3A; <code>Deployment</code>&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#x3002;</li>
+<li>&#x8FFD;&#x52A0; <code>--record</code> &#x547D;&#x4EE4;&#x884C;&#x6807;&#x5FD7;&#x4EE5;&#x4FDD;&#x5B58;&#x6B63;&#x5728;&#x66F4;&#x6539;&#x8D44;&#x6E90;&#x7684; kubectl &#x547D;&#x4EE4;&#x3002;</li>
+<li>&#x624B;&#x52A8;&#x7F16;&#x8F91;&#x8D44;&#x6E90;&#x7684;&#x6E05;&#x5355;&#x3002;</li>
+</ul>
+<p>&#x8981;&#x67E5;&#x770B;&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout <span class="token function">history</span> deployment.v1.apps/nginx-deployment --revision<span class="token operator">=</span><span class="token number">2</span>
+deployments <span class="token string">&quot;nginx-deployment&quot;</span> revision <span class="token number">2</span>
+  Labels:       <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+          pod-template-hash<span class="token operator">=</span><span class="token number">1159050644</span>
+  Annotations:  kubernetes.io/change-cause<span class="token operator">=</span>kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.16.1 --record<span class="token operator">=</span>true
+  Containers:
+   nginx:
+    Image:      nginx:1.16.1
+    Port:       <span class="token number">80</span>/TCP
+     QoS Tier:
+        cpu:      BestEffort
+        memory:   BestEffort
+    Environment Variables:      <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+  No volumes.
+</code></pre>
+<h3 id="42-&#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;"><a name="42-&#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;" class="anchor-navigation-ex-anchor" href="#42-&#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 &#x56DE;&#x6EDA;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;</h3>
+<p>&#x6309;&#x7167;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x7684;&#x6B65;&#x9AA4;&#x5C06; Deployment &#x4ECE;&#x5F53;&#x524D;&#x7248;&#x672C;&#x56DE;&#x6EDA;&#x5230;&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#xFF08;&#x5373;&#x7248;&#x672C; 2&#xFF09;&#x3002;
+&#x5047;&#x5B9A;&#x73B0;&#x5728;&#x4F60;&#x5DF2;&#x51B3;&#x5B9A;&#x64A4;&#x6D88;&#x5F53;&#x524D;&#x4E0A;&#x7EBF;&#x5E76;&#x56DE;&#x6EDA;&#x5230;&#x4EE5;&#x524D;&#x7684;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout undo deployment.v1.apps/nginx-deployment
+deployment.apps/nginx-deployment
+</code></pre>
+<p>&#x6216;&#x8005;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>--to-revision</code> &#x6765;&#x56DE;&#x6EDA;&#x5230;&#x7279;&#x5B9A;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout undo deployment.v1.apps/nginx-deployment --to-revision<span class="token operator">=</span><span class="token number">2</span>
+deployment.apps/nginx-deployment
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;Deployment &#x6B63;&#x5728;&#x56DE;&#x6EDA;&#x5230;&#x4EE5;&#x524D;&#x7684;&#x7A33;&#x5B9A;&#x7248;&#x672C;&#x3002;&#x6B63;&#x5982;&#x4F60;&#x6240;&#x770B;&#x5230;&#x7684;&#xFF0C;Deployment &#x63A7;&#x5236;&#x5668;&#x751F;&#x6210;&#x4E86; &#x56DE;&#x6EDA;&#x5230;&#x4FEE;&#x8BA2;&#x7248;&#x672C; 2 &#x7684; <code>DeploymentRollback</code> &#x4E8B;&#x4EF6;&#x3002;
+&#x68C0;&#x67E5;&#x56DE;&#x6EDA;&#x662F;&#x5426;&#x6210;&#x529F;&#x4EE5;&#x53CA; Deployment &#x662F;&#x5426;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get deployment nginx-deployment
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>            <span class="token number">3</span>           30m
+
+
+$ kubectl describe deployment nginx-deployment
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Sun, 02 Sep <span class="token number">2018</span> <span class="token number">18</span>:17:55 -0500
+Labels:                 <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Annotations:            deployment.kubernetes.io/revision<span class="token operator">=</span><span class="token number">4</span>
+                        kubernetes.io/change-cause<span class="token operator">=</span>kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.16.1 --record<span class="token operator">=</span>true
+Selector:               <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+Replicas:               <span class="token number">3</span> desired <span class="token operator">|</span> <span class="token number">3</span> updated <span class="token operator">|</span> <span class="token number">3</span> total <span class="token operator">|</span> <span class="token number">3</span> available <span class="token operator">|</span> <span class="token number">0</span> unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        <span class="token number">0</span>
+RollingUpdateStrategy:  <span class="token number">25</span>% max unavailable, <span class="token number">25</span>% max surge
+Pod Template:
+  Labels:  <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx
+  Containers:
+   nginx:
+    Image:        nginx:1.16.1
+    Port:         <span class="token number">80</span>/TCP
+    Host Port:    <span class="token number">0</span>/TCP
+    Environment:  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+    Mounts:       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+  Volumes:        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+NewReplicaSet:   nginx-deployment-c4747d96c <span class="token punctuation">(</span><span class="token number">3</span>/3 replicas created<span class="token punctuation">)</span>
+Events:
+  Type    Reason              Age   From                   Message
+  ----    ------              ----  ----                   -------
+  Normal  ScalingReplicaSet   12m   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-75675f5897 to <span class="token number">3</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-c4747d96c to <span class="token number">1</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-75675f5897 to <span class="token number">2</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-c4747d96c to <span class="token number">2</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-75675f5897 to <span class="token number">1</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-c4747d96c to <span class="token number">3</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-75675f5897 to <span class="token number">0</span>
+  Normal  ScalingReplicaSet   11m   deployment-controller  Scaled up replica <span class="token builtin class-name">set</span> nginx-deployment-595696685f to <span class="token number">1</span>
+  Normal  DeploymentRollback  15s   deployment-controller  Rolled back deployment <span class="token string">&quot;nginx-deployment&quot;</span> to revision <span class="token number">2</span>
+  Normal  ScalingReplicaSet   15s   deployment-controller  Scaled down replica <span class="token builtin class-name">set</span> nginx-deployment-595696685f to <span class="token number">0</span>
+</code></pre>
+<h2 id="5-&#x7F29;&#x653E;-deployment"><a name="5-&#x7F29;&#x653E;-deployment" class="anchor-navigation-ex-anchor" href="#5-&#x7F29;&#x653E;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x7F29;&#x653E; Deployment</h2>
+<pre class="language-"><code class="lang-bash">$ kubectl scale deployment.v1.apps/nginx-deployment --replicas<span class="token operator">=</span><span class="token number">10</span>
+deployment.apps/nginx-deployment scaled
+</code></pre>
+<p>&#x5047;&#x8BBE;&#x96C6;&#x7FA4;&#x542F;&#x7528;&#x4E86;Pod &#x7684;<a href="https://ghostwritten.blog.csdn.net/article/details/120778634" target="_blank">&#x6C34;&#x5E73;&#x81EA;&#x52A8;&#x7F29;&#x653E;</a>&#xFF0C; &#x4F60;&#x53EF;&#x4EE5;&#x4E3A; Deployment &#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x7F29;&#x653E;&#x5668;&#xFF0C;&#x5E76;&#x57FA;&#x4E8E;&#x73B0;&#x6709; Pods &#x7684; CPU &#x5229;&#x7528;&#x7387;&#x9009;&#x62E9; &#x8981;&#x8FD0;&#x884C;&#x7684; Pods &#x4E2A;&#x6570;&#x4E0B;&#x9650;&#x548C;&#x4E0A;&#x9650;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl autoscale deployment.v1.apps/nginx-deployment --min<span class="token operator">=</span><span class="token number">10</span> --max<span class="token operator">=</span><span class="token number">15</span> --cpu-percent<span class="token operator">=</span><span class="token number">80</span>
+deployment.apps/nginx-deployment scaled
+</code></pre>
+<h3 id="51-&#x6BD4;&#x4F8B;&#x7F29;&#x653E;"><a name="51-&#x6BD4;&#x4F8B;&#x7F29;&#x653E;" class="anchor-navigation-ex-anchor" href="#51-&#x6BD4;&#x4F8B;&#x7F29;&#x653E;"><i class="fa fa-link" aria-hidden="true"></i></a>5.1 &#x6BD4;&#x4F8B;&#x7F29;&#x653E;</h3>
+<p><code>RollingUpdate</code> &#x7684; Deployment &#x652F;&#x6301;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x591A;&#x4E2A;&#x7248;&#x672C;&#x3002; &#x5F53;&#x81EA;&#x52A8;&#x7F29;&#x653E;&#x5668;&#x7F29;&#x653E;&#x5904;&#x4E8E;&#x4E0A;&#x7EBF;&#x8FDB;&#x7A0B;&#xFF08;&#x4ECD;&#x5728;&#x8FDB;&#x884C;&#x4E2D;&#x6216;&#x6682;&#x505C;&#xFF09;&#x4E2D;&#x7684; <code>RollingUpdate Deployment</code> &#x65F6;&#xFF0C; Deployment &#x63A7;&#x5236;&#x5668;&#x4F1A;&#x5E73;&#x8861;&#x73B0;&#x6709;&#x7684;&#x6D3B;&#x8DC3;&#x72B6;&#x6001;&#x7684; <code>ReplicaSets</code>&#xFF08;&#x542B; Pods &#x7684; ReplicaSets&#xFF09;&#x4E2D;&#x7684;&#x989D;&#x5916;&#x526F;&#x672C;&#xFF0C; &#x4EE5;&#x964D;&#x4F4E;&#x98CE;&#x9669;&#x3002;&#x8FD9;&#x79F0;&#x4E3A; &#x6BD4;&#x4F8B;&#x7F29;&#x653E;&#xFF08;Proportional Scaling&#xFF09;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x4E00;&#x4E2A; 10 &#x4E2A;&#x526F;&#x672C;&#x7684; Deployment&#xFF0C;&#x5176; <code>maxSurge=3</code>&#xFF0C;<code>maxUnavailable=2</code>&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get deploy
+NAME                 DESIRED   CURRENT   UP-TO-DATE  VAILABLE   AGE
+nginx-deployment     <span class="token number">10</span>        <span class="token number">10</span>        <span class="token number">10</span>           <span class="token number">10</span>          50s
+</code></pre>
+<p>&#x66F4;&#x65B0; Deployment &#x4F7F;&#x7528;&#x65B0;&#x955C;&#x50CF;&#xFF0C;&#x78B0;&#x5DE7;&#x8BE5;&#x955C;&#x50CF;&#x65E0;&#x6CD5;&#x4ECE;&#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x89E3;&#x6790;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:sometag
+deployment.apps/nginx-deployment image updated
+</code></pre>
+<p>&#x955C;&#x50CF;&#x66F4;&#x65B0;&#x4F7F;&#x7528; <code>ReplicaSet nginx-deployment-1989198191</code> &#x542F;&#x52A8;&#x65B0;&#x7684;&#x4E0A;&#x7EBF;&#x8FC7;&#x7A0B;&#xFF0C; &#x4F46;&#x7531;&#x4E8E;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684; <code>maxUnavailable</code> &#x8981;&#x6C42;&#xFF0C;&#x8BE5;&#x8FDB;&#x7A0B;&#x88AB;&#x963B;&#x585E;&#x4E86;&#x3002;&#x68C0;&#x67E5;&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY     AGE
+nginx-deployment-1989198191   <span class="token number">5</span>         <span class="token number">5</span>         <span class="token number">0</span>         9s
+nginx-deployment-618515232    <span class="token number">8</span>         <span class="token number">8</span>         <span class="token number">8</span>         1m
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x65B0;&#x7684; Deployment &#x6269;&#x7F29;&#x8BF7;&#x6C42;&#x3002;&#x81EA;&#x52A8;&#x7F29;&#x653E;&#x5668;&#x5C06; Deployment &#x526F;&#x672C;&#x589E;&#x52A0;&#x5230; 15&#x3002; Deployment &#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x51B3;&#x5B9A;&#x5728;&#x4F55;&#x5904;&#x6DFB;&#x52A0; 5 &#x4E2A;&#x65B0;&#x526F;&#x672C;&#x3002;&#x5982;&#x679C;&#x672A;&#x4F7F;&#x7528;&#x6BD4;&#x4F8B;&#x7F29;&#x653E;&#xFF0C;&#x6240;&#x6709; 5 &#x4E2A;&#x526F;&#x672C; &#x90FD;&#x5C06;&#x6DFB;&#x52A0;&#x5230;&#x65B0;&#x7684; ReplicaSet &#x4E2D;&#x3002;&#x4F7F;&#x7528;&#x6BD4;&#x4F8B;&#x7F29;&#x653E;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x989D;&#x5916;&#x7684;&#x526F;&#x672C;&#x5206;&#x5E03;&#x5230;&#x6240;&#x6709; ReplicaSet&#x3002; &#x8F83;&#x5927;&#x6BD4;&#x4F8B;&#x7684;&#x526F;&#x672C;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x62E5;&#x6709;&#x6700;&#x591A;&#x526F;&#x672C;&#x7684; ReplicaSet&#xFF0C;&#x800C;&#x8F83;&#x4F4E;&#x6BD4;&#x4F8B;&#x7684;&#x526F;&#x672C;&#x4F1A;&#x8FDB;&#x5165;&#x5230; &#x526F;&#x672C;&#x8F83;&#x5C11;&#x7684; ReplicaSet&#x3002;&#x6240;&#x6709;&#x5269;&#x4E0B;&#x7684;&#x526F;&#x672C;&#x90FD;&#x4F1A;&#x6DFB;&#x52A0;&#x5230;&#x526F;&#x672C;&#x6700;&#x591A;&#x7684; ReplicaSet&#x3002; &#x5177;&#x6709;&#x96F6;&#x526F;&#x672C;&#x7684; ReplicaSets &#x4E0D;&#x4F1A;&#x88AB;&#x6269;&#x5BB9;&#x3002;</p>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;3 &#x4E2A;&#x526F;&#x672C;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x65E7; <code>ReplicaSet</code> &#x4E2D;&#xFF0C;2 &#x4E2A;&#x526F;&#x672C;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x65B0; <code>ReplicaSet</code>&#x3002; &#x5047;&#x5B9A;&#x65B0;&#x7684;&#x526F;&#x672C;&#x90FD;&#x5F88;&#x5065;&#x5EB7;&#xFF0C;&#x4E0A;&#x7EBF;&#x8FC7;&#x7A0B;&#x6700;&#x7EC8;&#x5E94;&#x5C06;&#x6240;&#x6709;&#x526F;&#x672C;&#x8FC1;&#x79FB;&#x5230;&#x65B0;&#x7684; ReplicaSet &#x4E2D;&#x3002; &#x8981;&#x786E;&#x8BA4;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get deploy
+NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment     <span class="token number">15</span>        <span class="token number">18</span>        <span class="token number">7</span>            <span class="token number">8</span>           7m
+</code></pre>
+<p>&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#x786E;&#x8BA4;&#x4E86;&#x526F;&#x672C;&#x662F;&#x5982;&#x4F55;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x6BCF;&#x4E2A; ReplicaSet &#x7684;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY     AGE
+nginx-deployment-1989198191   <span class="token number">7</span>         <span class="token number">7</span>         <span class="token number">0</span>         7m
+nginx-deployment-618515232    <span class="token number">11</span>        <span class="token number">11</span>        <span class="token number">11</span>        7m
+</code></pre>
+<h2 id="6-&#x6682;&#x505C;&#x3001;&#x6062;&#x590D;-deployment"><a name="6-&#x6682;&#x505C;&#x3001;&#x6062;&#x590D;-deployment" class="anchor-navigation-ex-anchor" href="#6-&#x6682;&#x505C;&#x3001;&#x6062;&#x590D;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>6. &#x6682;&#x505C;&#x3001;&#x6062;&#x590D; Deployment</h2>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x66F4;&#x65B0;&#x4E4B;&#x524D;&#x6682;&#x505C; Deployment&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6062;&#x590D;&#x5176;&#x6267;&#x884C;&#x3002; &#x8FD9;&#x6837;&#x505A;&#x4F7F;&#x5F97;&#x4F60;&#x80FD;&#x591F;&#x5728;&#x6682;&#x505C;&#x548C;&#x6062;&#x590D;&#x6267;&#x884C;&#x4E4B;&#x95F4;&#x5E94;&#x7528;&#x591A;&#x4E2A;&#x4FEE;&#x8865;&#x7A0B;&#x5E8F;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x4E0A;&#x7EBF;&#x64CD;&#x4F5C;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684; Deployment&#xFF1A; &#x83B7;&#x53D6; Deployment &#x4FE1;&#x606F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get deploy
+NAME      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx     <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>            <span class="token number">3</span>           1m
+
+$ kubectl get rs
+NAME               DESIRED   CURRENT   READY     AGE
+nginx-2142116321   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>         1m
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x6307;&#x4EE4;&#x6682;&#x505C;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout pause deployment.v1.apps/nginx-deployment
+deployment.apps/nginx-deployment paused
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x66F4;&#x65B0; Deployment &#x955C;&#x50CF;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token builtin class-name">set</span> image deployment.v1.apps/nginx-deployment <span class="token assign-left variable">nginx</span><span class="token operator">=</span>nginx:1.16.1
+deployment.apps/nginx-deployment image updated
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x6CA1;&#x6709;&#x65B0;&#x7684;&#x4E0A;&#x7EBF;&#x88AB;&#x89E6;&#x53D1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout <span class="token function">history</span> deployment.v1.apps/nginx-deployment
+deployments <span class="token string">&quot;nginx&quot;</span>
+REVISION  CHANGE-CAUSE
+<span class="token number">1</span>   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+</code></pre>
+<p>&#x83B7;&#x53D6;&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#x786E;&#x4FDD; Deployment &#x66F4;&#x65B0;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get rs
+NAME               DESIRED   CURRENT   READY     AGE
+nginx-2142116321   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>         2m
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x6267;&#x884C;&#x5F88;&#x591A;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x53EF;&#x4EE5;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x8D44;&#x6E90;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token builtin class-name">set</span> resources deployment.v1.apps/nginx-deployment -c<span class="token operator">=</span>nginx --limits<span class="token operator">=</span>cpu<span class="token operator">=</span>200m,memory<span class="token operator">=</span>512Mi
+deployment.apps/nginx-deployment resource requirements updated
+</code></pre>
+<p>&#x6682;&#x505C; Deployment &#x4E4B;&#x524D;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x5C06;&#x7EE7;&#x7EED;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#xFF0C;&#x4F46;&#x65B0;&#x7684;&#x66F4;&#x65B0;&#x5728; Deployment &#x88AB; &#x6682;&#x505C;&#x671F;&#x95F4;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x6700;&#x7EC8;&#xFF0C;&#x6062;&#x590D; Deployment &#x6267;&#x884C;&#x5E76;&#x89C2;&#x5BDF;&#x65B0;&#x7684; <code>ReplicaSet</code> &#x7684;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x6240;&#x5E94;&#x7528;&#x7684;&#x6240;&#x6709;&#x66F4;&#x65B0;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout resume deployment.v1.apps/nginx-deployment
+deployment.apps/nginx-deployment resumed
+
+<span class="token comment">#&#x89C2;&#x5BDF;&#x4E0A;&#x7EBF;&#x7684;&#x72B6;&#x6001;</span>
+$ kubectl get rs -w
+NAME               DESIRED   CURRENT   READY     AGE
+nginx-2142116321   <span class="token number">2</span>         <span class="token number">2</span>         <span class="token number">2</span>         2m
+nginx-3926361531   <span class="token number">2</span>         <span class="token number">2</span>         <span class="token number">0</span>         6s
+nginx-3926361531   <span class="token number">2</span>         <span class="token number">2</span>         <span class="token number">1</span>         18s
+nginx-2142116321   <span class="token number">1</span>         <span class="token number">2</span>         <span class="token number">2</span>         2m
+nginx-2142116321   <span class="token number">1</span>         <span class="token number">2</span>         <span class="token number">2</span>         2m
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">2</span>         <span class="token number">1</span>         18s
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">2</span>         <span class="token number">1</span>         18s
+nginx-2142116321   <span class="token number">1</span>         <span class="token number">1</span>         <span class="token number">1</span>         2m
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">1</span>         18s
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">2</span>         19s
+nginx-2142116321   <span class="token number">0</span>         <span class="token number">1</span>         <span class="token number">1</span>         2m
+nginx-2142116321   <span class="token number">0</span>         <span class="token number">1</span>         <span class="token number">1</span>         2m
+nginx-2142116321   <span class="token number">0</span>         <span class="token number">0</span>         <span class="token number">0</span>         2m
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>         20s
+
+<span class="token comment">#&#x83B7;&#x53D6;&#x6700;&#x8FD1;&#x4E0A;&#x7EBF;&#x7684;&#x72B6;&#x6001;</span>
+$ kubectl get rs
+NAME               DESIRED   CURRENT   READY     AGE
+nginx-2142116321   <span class="token number">0</span>         <span class="token number">0</span>         <span class="token number">0</span>         2m
+nginx-3926361531   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>         28s
+</code></pre>
+<blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A; &#x4F60;&#x4E0D;&#x53EF;&#x4EE5;&#x56DE;&#x6EDA;&#x5904;&#x4E8E;&#x6682;&#x505C;&#x72B6;&#x6001;&#x7684; Deployment&#xFF0C;&#x9664;&#x975E;&#x5148;&#x6062;&#x590D;&#x5176;&#x6267;&#x884C;&#x72B6;&#x6001;&#x3002;</p>
+</blockquote>
+<h2 id="7-deployment-&#x72B6;&#x6001;"><a name="7-deployment-&#x72B6;&#x6001;" class="anchor-navigation-ex-anchor" href="#7-deployment-&#x72B6;&#x6001;"><i class="fa fa-link" aria-hidden="true"></i></a>7. Deployment &#x72B6;&#x6001;</h2>
+<p><code>Deployment</code> &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4F1A;&#x6709;&#x8BB8;&#x591A;&#x72B6;&#x6001;&#x3002;&#x4E0A;&#x7EBF;&#x65B0;&#x7684; <code>ReplicaSet</code> &#x671F;&#x95F4;&#x53EF;&#x80FD;&#x5904;&#x4E8E; <code>Progressing</code>&#xFF08;&#x8FDB;&#x884C;&#x4E2D;&#xFF09;&#xFF0C;&#x53EF;&#x80FD;&#x662F; <code>Complete</code>&#xFF08;&#x5DF2;&#x5B8C;&#x6210;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F; <code>Failed</code>&#xFF08;&#x5931;&#x8D25;&#xFF09;&#x4EE5;&#x81F3;&#x4E8E;&#x65E0;&#x6CD5;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x3002;</p>
+<h3 id="71-&#x8FDB;&#x884C;&#x4E2D;&#x7684;-deploymentprogressing"><a name="71-&#x8FDB;&#x884C;&#x4E2D;&#x7684;-deploymentprogressing" class="anchor-navigation-ex-anchor" href="#71-&#x8FDB;&#x884C;&#x4E2D;&#x7684;-deploymentprogressing"><i class="fa fa-link" aria-hidden="true"></i></a>7.1 &#x8FDB;&#x884C;&#x4E2D;&#x7684; Deployment(Progressing)</h3>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#x671F;&#x95F4;&#xFF0C;Kubernetes &#x6807;&#x8BB0; Deployment &#x4E3A; &#x8FDB;&#x884C;&#x4E2D;&#xFF08;<code>Progressing</code>&#xFF09;&#xFF1A;</p>
+<ul>
+<li>Deployment &#x521B;&#x5EFA;&#x65B0;&#x7684; ReplicaSet</li>
+<li>Deployment &#x6B63;&#x5728;&#x4E3A;&#x5176;&#x6700;&#x65B0;&#x7684; ReplicaSet &#x6269;&#x5BB9;</li>
+<li>Deployment &#x6B63;&#x5728;&#x4E3A;&#x5176;&#x65E7;&#x6709;&#x7684; ReplicaSet(s) &#x7F29;&#x5BB9;</li>
+<li>&#x65B0;&#x7684; Pods &#x5DF2;&#x7ECF;&#x5C31;&#x7EEA;&#x6216;&#x8005;&#x53EF;&#x7528;&#xFF08;&#x5C31;&#x7EEA;&#x81F3;&#x5C11;&#x6301;&#x7EED;&#x4E86; MinReadySeconds &#x79D2;&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>kubectl rollout status</code> &#x76D1;&#x89C6; <code>Deployment</code> &#x7684;&#x8FDB;&#x5EA6;&#x3002;</p>
+<h3 id="72-&#x5B8C;&#x6210;&#x7684;-deploymentcomplete"><a name="72-&#x5B8C;&#x6210;&#x7684;-deploymentcomplete" class="anchor-navigation-ex-anchor" href="#72-&#x5B8C;&#x6210;&#x7684;-deploymentcomplete"><i class="fa fa-link" aria-hidden="true"></i></a>7.2 &#x5B8C;&#x6210;&#x7684; Deployment(Complete)</h3>
+<p>&#x5F53; Deployment &#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x5F81;&#x65F6;&#xFF0C;Kubernetes &#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A; &#x5B8C;&#x6210;&#xFF08;<code>Complete</code>&#xFF09;&#xFF1A;</p>
+<ul>
+<li>&#x4E0E; Deployment &#x5173;&#x8054;&#x7684;&#x6240;&#x6709;&#x526F;&#x672C;&#x90FD;&#x5DF2;&#x66F4;&#x65B0;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4E4B;&#x524D;&#x8BF7;&#x6C42;&#x7684;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x90FD;&#x5DF2;&#x5B8C;&#x6210;&#x3002;</li>
+<li>&#x4E0E; Deployment &#x5173;&#x8054;&#x7684;&#x6240;&#x6709;&#x526F;&#x672C;&#x90FD;&#x53EF;&#x7528;&#x3002;</li>
+<li>&#x672A;&#x8FD0;&#x884C; Deployment &#x7684;&#x65E7;&#x526F;&#x672C;&#x3002;</li>
+</ul>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; kubectl rollout status &#x68C0;&#x67E5; Deployment &#x662F;&#x5426;&#x5DF2;&#x5B8C;&#x6210;&#x3002; &#x5982;&#x679C;&#x4E0A;&#x7EBF;&#x6210;&#x529F;&#x5B8C;&#x6210;&#xFF0C;kubectl rollout status &#x8FD4;&#x56DE;&#x9000;&#x51FA;&#x4EE3;&#x7801; 0&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout status deployment/nginx-deployment
+Waiting <span class="token keyword">for</span> rollout to finish: <span class="token number">2</span> of <span class="token number">3</span> updated replicas are available<span class="token punctuation">..</span>.
+deployment <span class="token string">&quot;nginx-deployment&quot;</span> successfully rolled out
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$?</span>
+<span class="token number">0</span>
+</code></pre>
+<h3 id="73-&#x5931;&#x8D25;&#x7684;-deploymentfailed"><a name="73-&#x5931;&#x8D25;&#x7684;-deploymentfailed" class="anchor-navigation-ex-anchor" href="#73-&#x5931;&#x8D25;&#x7684;-deploymentfailed"><i class="fa fa-link" aria-hidden="true"></i></a>7.3 &#x5931;&#x8D25;&#x7684; Deployment(Failed)</h3>
+<p>&#x4F60;&#x7684; Deployment &#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x5C1D;&#x8BD5;&#x90E8;&#x7F72;&#x5176;&#x6700;&#x65B0;&#x7684; ReplicaSet &#x53D7;&#x632B;(<code>Failed</code>)&#xFF0C;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x672A;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x3002; &#x9020;&#x6210;&#x6B64;&#x60C5;&#x51B5;&#x4E00;&#x4E9B;&#x53EF;&#x80FD;&#x56E0;&#x7D20;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x914D;&#x989D;&#xFF08;Quota&#xFF09;&#x4E0D;&#x8DB3;</li>
+<li>&#x5C31;&#x7EEA;&#x63A2;&#x6D4B;&#xFF08;Readiness Probe&#xFF09;&#x5931;&#x8D25;</li>
+<li>&#x955C;&#x50CF;&#x62C9;&#x53D6;&#x9519;&#x8BEF;</li>
+<li>&#x6743;&#x9650;&#x4E0D;&#x8DB3;</li>
+<li>&#x9650;&#x5236;&#x8303;&#x56F4;&#xFF08;Limit Ranges&#xFF09;&#x95EE;&#x9898;</li>
+<li>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x914D;&#x7F6E;&#x9519;&#x8BEF;</li>
+</ul>
+<p>&#x68C0;&#x6D4B;&#x6B64;&#x72B6;&#x51B5;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x5728; Deployment &#x89C4;&#x7EA6;&#x4E2D;&#x6307;&#x5B9A;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x53C2;&#x6570;&#xFF1A; &#xFF08;[<code>.spec.progressDeadlineSeconds</code>]&#xFF08;#progress-deadline-seconds&#xFF09;&#xFF09;&#x3002; <code>.spec.progressDeadlineSeconds</code> &#x7ED9;&#x51FA;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x79D2;&#x6570;&#x503C;&#xFF0C;Deployment &#x63A7;&#x5236;&#x5668;&#x5728;&#xFF08;&#x901A;&#x8FC7; Deployment &#x72B6;&#x6001;&#xFF09; &#x6807;&#x793A; Deployment &#x8FDB;&#x5C55;&#x505C;&#x6EDE;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x6240;&#x7ED9;&#x7684;&#x65F6;&#x957F;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B; kubectl &#x547D;&#x4EE4;&#x8BBE;&#x7F6E;&#x89C4;&#x7EA6;&#x4E2D;&#x7684; <code>progressDeadlineSeconds</code>&#xFF0C;&#x4ECE;&#x800C;&#x544A;&#x77E5;&#x63A7;&#x5236;&#x5668; &#x5728; 10 &#x5206;&#x949F;&#x540E;&#x62A5;&#x544A; Deployment &#x6CA1;&#x6709;&#x8FDB;&#x5C55;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl patch deployment.v1.apps/nginx-deployment -p <span class="token string">&apos;{&quot;spec&quot;:{&quot;progressDeadlineSeconds&quot;:600}}&apos;</span>
+deployment.apps/nginx-deployment patched
+</code></pre>
+<p>&#x8D85;&#x8FC7;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x540E;&#xFF0C;Deployment &#x63A7;&#x5236;&#x5668;&#x5C06;&#x6DFB;&#x52A0;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#x7684; <code>DeploymentCondition</code> &#x5230; Deployment &#x7684; <code>.status.conditions</code> &#x4E2D;&#xFF1A;</p>
+<ul>
+<li>Type=Progressing</li>
+<li>Status=False</li>
+<li>Reason=ProgressDeadlineExceeded</li>
+</ul>
+<p>&#x53C2;&#x8003; <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties" target="_blank">Kubernetes API</a> &#x7EA6;&#x5B9A; &#x83B7;&#x53D6;&#x66F4;&#x591A;&#x72B6;&#x6001;&#x72B6;&#x51B5;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x62A5;&#x544A; <code>Reason=ProgressDeadlineExceeded</code> &#x72B6;&#x6001;&#x4E4B;&#x5916;&#xFF0C;<code>Kubernetes</code> &#x5BF9;&#x5DF2;&#x505C;&#x6B62;&#x7684; <code>Deployment</code> &#x4E0D;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3002;&#x66F4;&#x9AD8;&#x7EA7;&#x522B;&#x7684;&#x7F16;&#x6392;&#x5668;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E00;&#x8BBE;&#x8BA1;&#x5E76;&#x76F8;&#x5E94;&#x5730;&#x91C7;&#x53D6;&#x884C;&#x52A8;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5C06; <code>Deployment</code> &#x56DE;&#x6EDA;&#x5230;&#x5176;&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x6682;&#x505C;&#x4E86;&#x67D0;&#x4E2A; <code>Deployment</code>&#xFF0C;<code>Kubernetes</code> &#x4E0D;&#x518D;&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x68C0;&#x67E5; <code>Deployment</code> &#x8FDB;&#x5C55;&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4E0A;&#x7EBF;&#x8FC7;&#x7A0B;&#x4E2D;&#x95F4;&#x5B89;&#x5168;&#x5730;&#x6682;&#x505C; <code>Deployment</code> &#x518D;&#x6062;&#x590D;&#x5176;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x8D85;&#x51FA;&#x6700;&#x540E;&#x65F6;&#x9650;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>Deployment &#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x77AC;&#x65F6;&#x6027;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x80FD;&#x56E0;&#x4E3A;&#x8BBE;&#x7F6E;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x8FC7;&#x77ED;&#xFF0C; &#x4E5F;&#x53EF;&#x80FD;&#x56E0;&#x4E3A;&#x5176;&#x4ED6;&#x53EF;&#x8BA4;&#x4E3A;&#x662F;&#x4E34;&#x65F6;&#x6027;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5047;&#x5B9A;&#x6240;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#x662F;&#x914D;&#x989D;&#x4E0D;&#x8DB3;&#x3002; &#x5982;&#x679C;&#x63CF;&#x8FF0; Deployment&#xFF0C;&#x4F60;&#x5C06;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#x4EE5;&#x4E0B;&#x90E8;&#x5206;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl describe deployment nginx-deployment
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">&gt;</span>
+Conditions:
+  Type            Status  Reason
+  ----            ------  ------
+  Available       True    MinimumReplicasAvailable
+  Progressing     True    ReplicaSetUpdated
+  ReplicaFailure  True    FailedCreate
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">&gt;</span>
+
+
+$ kubectl get deployment nginx-deployment -o yaml
+status:
+  availableReplicas: <span class="token number">2</span>
+  conditions:
+  - lastTransitionTime: <span class="token number">2016</span>-10-04T12:25:39Z
+    lastUpdateTime: <span class="token number">2016</span>-10-04T12:25:39Z
+    message: Replica <span class="token builtin class-name">set</span> <span class="token string">&quot;nginx-deployment-4262182780&quot;</span> is progressing.
+    reason: ReplicaSetUpdated
+    status: <span class="token string">&quot;True&quot;</span>
+    type: Progressing
+  - lastTransitionTime: <span class="token number">2016</span>-10-04T12:25:42Z
+    lastUpdateTime: <span class="token number">2016</span>-10-04T12:25:42Z
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: <span class="token string">&quot;True&quot;</span>
+    type: Available
+  - lastTransitionTime: <span class="token number">2016</span>-10-04T12:25:39Z
+    lastUpdateTime: <span class="token number">2016</span>-10-04T12:25:39Z
+    message: <span class="token string">&apos;Error creating: pods &quot;nginx-deployment-4262182780-&quot; is forbidden: exceeded quota:
+      object-counts, requested: pods=1, used: pods=3, limited: pods=2&apos;</span>
+    reason: FailedCreate
+    status: <span class="token string">&quot;True&quot;</span>
+    type: ReplicaFailure
+  observedGeneration: <span class="token number">3</span>
+  replicas: <span class="token number">2</span>
+  unavailableReplicas: <span class="token number">2</span>
+</code></pre>
+<p>&#x6700;&#x7EC8;&#xFF0C;&#x4E00;&#x65E6;&#x8D85;&#x8FC7; Deployment &#x8FDB;&#x5EA6;&#x9650;&#x671F;&#xFF0C;Kubernetes &#x5C06;&#x66F4;&#x65B0;&#x72B6;&#x6001;&#x548C;&#x8FDB;&#x5EA6;&#x72B6;&#x51B5;&#x7684;&#x539F;&#x56E0;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">Conditions:
+  Type            Status  Reason
+  ----            ------  ------
+  Available       True    MinimumReplicasAvailable
+  Progressing     False   ProgressDeadlineExceeded
+  ReplicaFailure  True    FailedCreate
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F29;&#x5BB9; <code>Deployment</code> &#x6216;&#x8005;&#x7F29;&#x5BB9;&#x5176;&#x4ED6;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x7684;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5728;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x589E;&#x52A0;&#x914D;&#x989D; &#x6765;&#x89E3;&#x51B3;&#x914D;&#x989D;&#x4E0D;&#x8DB3;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C;&#x914D;&#x989D;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#xFF0C;Deployment &#x63A7;&#x5236;&#x5668;&#x5B8C;&#x6210;&#x4E86; Deployment &#x4E0A;&#x7EBF;&#x64CD;&#x4F5C;&#xFF0C; Deployment &#x72B6;&#x6001;&#x4F1A;&#x66F4;&#x65B0;&#x4E3A;&#x6210;&#x529F;&#x72B6;&#x51B5;&#xFF08;<code>Status=True and Reason=NewReplicaSetAvailable</code>&#xFF09;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">Conditions:
+  Type          Status  Reason
+  ----          ------  ------
+  Available     True    MinimumReplicasAvailable
+  Progressing   True    NewReplicaSetAvailable
+</code></pre>
+<p><code>Type=Available</code> &#x52A0;&#x4E0A; <code>Status=True</code> &#x610F;&#x5473;&#x7740; Deployment &#x5177;&#x6709;&#x6700;&#x4F4E;&#x53EF;&#x7528;&#x6027;&#x3002; &#x6700;&#x4F4E;&#x53EF;&#x7528;&#x6027;&#x7531; Deployment &#x7B56;&#x7565;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x3002; <code>Type=Progressing</code> &#x52A0;&#x4E0A; <code>Status=True</code> &#x8868;&#x793A; Deployment &#x5904;&#x4E8E;&#x4E0A;&#x7EBF;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#xFF0C; &#x6216;&#x8005;&#x5DF2;&#x6210;&#x529F;&#x5B8C;&#x6210;&#x8FDB;&#x5EA6;&#xFF0C;&#x6700;&#x5C0F;&#x6240;&#x9700;&#x65B0;&#x526F;&#x672C;&#x5904;&#x4E8E;&#x53EF;&#x7528;&#x3002; &#x8BF7;&#x53C2;&#x9605;&#x5BF9;&#x5E94;&#x72B6;&#x51B5;&#x7684; Reason &#x4E86;&#x89E3;&#x76F8;&#x5173;&#x7EC6;&#x8282;&#x3002; &#x5728;&#x6211;&#x4EEC;&#x7684;&#x6848;&#x4F8B;&#x4E2D; <code>Reason=NewReplicaSetAvailable</code> &#x8868;&#x793A; Deployment &#x5DF2;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>kubectl rollout status</code> &#x68C0;&#x67E5; <code>Deployment</code> &#x662F;&#x5426;&#x672A;&#x80FD;&#x53D6;&#x5F97;&#x8FDB;&#x5C55;&#x3002; &#x5982;&#x679C; Deployment &#x5DF2;&#x8D85;&#x8FC7;&#x8FDB;&#x5EA6;&#x9650;&#x671F;&#xFF0C;kubectl rollout status &#x8FD4;&#x56DE;&#x975E;&#x96F6;&#x9000;&#x51FA;&#x4EE3;&#x7801;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl rollout status deployment/nginx-deployment
+Waiting <span class="token keyword">for</span> rollout to finish: <span class="token number">2</span> out of <span class="token number">3</span> new replicas have been updated<span class="token punctuation">..</span>.
+error: deployment <span class="token string">&quot;nginx&quot;</span> exceeded its progress deadline
+
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$?</span>
+<span class="token number">1</span>
+</code></pre>
+<h2 id="8-&#x7F16;&#x6392;-deployment"><a name="8-&#x7F16;&#x6392;-deployment" class="anchor-navigation-ex-anchor" href="#8-&#x7F16;&#x6392;-deployment"><i class="fa fa-link" aria-hidden="true"></i></a>8. &#x7F16;&#x6392; Deployment</h2>
+<h3 id="81-pod-template"><a name="81-pod-template" class="anchor-navigation-ex-anchor" href="#81-pod-template"><i class="fa fa-link" aria-hidden="true"></i></a>8.1 Pod template</h3>
+<ul>
+<li><code>.spec</code> &#x4E2D;&#x53EA;&#x6709; <code>.spec.template</code> &#x548C; <code>.spec.selector</code> &#x662F;&#x5FC5;&#x9700;&#x7684;&#x5B57;&#x6BB5;</li>
+<li><code>.spec.template</code> &#x662F;&#x4E00;&#x4E2A; <a href="https://kubernetes.io/zh/docs/concepts/workloads/pods/#pod-templates" target="_blank">Pod &#x6A21;&#x677F;</a>&#x3002;&#x5B83;&#x548C; Pod &#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x3002; &#x53EA;&#x662F;&#x8FD9;&#x91CC;&#x5B83;&#x662F;&#x5D4C;&#x5957;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x9700;&#x8981; <code>apiVersion</code> &#x6216; <code>kind</code>&#x3002;</li>
+<li>&#x9664;&#x4E86; Pod &#x7684;&#x5FC5;&#x586B;&#x5B57;&#x6BB5;&#x5916;&#xFF0C;Deployment &#x4E2D;&#x7684; Pod &#x6A21;&#x677F;&#x5FC5;&#x987B;&#x6307;&#x5B9A;&#x9002;&#x5F53;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x9002;&#x5F53;&#x7684;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x7B56;&#x7565;&#x3002;&#x5BF9;&#x4E8E;&#x6807;&#x7B7E;&#xFF0C;&#x8BF7;&#x786E;&#x4FDD;&#x4E0D;&#x8981;&#x4E0E;&#x5176;&#x4ED6;&#x63A7;&#x5236;&#x5668;&#x91CD;&#x53E0;&#x3002;&#x8BF7;<a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/labels/" target="_blank">&#x53C2;&#x8003;&#x9009;&#x62E9;&#x7B97;&#x7B26;</a>&#x3002;</li>
+</ul>
+<h3 id="82-replicas"><a name="82-replicas" class="anchor-navigation-ex-anchor" href="#82-replicas"><i class="fa fa-link" aria-hidden="true"></i></a>8.2 Replicas</h3>
+<ul>
+<li><code>.spec.replicas</code> &#x662F;&#x6307;&#x5B9A;&#x6240;&#x9700; Pod &#x7684;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#x3002;&#x5B83;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F;1</li>
+</ul>
+<h3 id="83-specselector"><a name="83-specselector" class="anchor-navigation-ex-anchor" href="#83-specselector"><i class="fa fa-link" aria-hidden="true"></i></a>8.3 spec.selector</h3>
+<ul>
+<li><code>.spec.selector</code> &#x662F;&#x6307;&#x5B9A;&#x672C; Deployment &#x7684; Pod&#x6807;&#x7B7E;<a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/labels/" target="_blank">&#x9009;&#x62E9;&#x7B97;&#x7B26;</a>&#x7684;&#x5FC5;&#x9700;&#x5B57;&#x6BB5;&#x3002;</li>
+<li><code>.spec.selector</code> &#x5FC5;&#x987B;&#x5339;&#x914D; <code>.spec.template.metadata.labels</code>&#xFF0C;&#x5426;&#x5219;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB; API &#x62D2;&#x7EDD;&#x3002;</li>
+<li>&#x5728; <code>API apps/v1</code>&#x7248;&#x672C;&#x4E2D;&#xFF0C;<code>.spec.selector</code> &#x548C; <code>.metadata.labels</code> &#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x8BDD;&#xFF0C;
+&#x4E0D;&#x4F1A;&#x88AB;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A; <code>.spec.template.metadata.labels</code>&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x660E;&#x786E;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002; &#x540C;&#x65F6;&#x5728;<code>apps/v1</code>&#x7248;&#x672C;&#x4E2D;&#xFF0C;Deployment &#x521B;&#x5EFA;&#x540E; <code>.spec.selector</code> &#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x7684;</li>
+</ul>
+<h3 id="84-&#x7B56;&#x7565;"><a name="84-&#x7B56;&#x7565;" class="anchor-navigation-ex-anchor" href="#84-&#x7B56;&#x7565;"><i class="fa fa-link" aria-hidden="true"></i></a>8.4 &#x7B56;&#x7565;</h3>
+<p><code>.spec.strategy</code> &#x7B56;&#x7565;&#x6307;&#x5B9A;&#x7528;&#x4E8E;&#x7528;&#x65B0; Pods &#x66FF;&#x6362;&#x65E7; Pods &#x7684;&#x7B56;&#x7565;&#x3002; <code>.spec.strategy.type</code> &#x53EF;&#x4EE5;&#x662F; &#x201C;<code>Recreate</code>&#x201D; &#x6216; &#x201C;<code>RollingUpdate</code>&#x201D;&#x3002;&#x201C;<code>RollingUpdate</code>&#x201D; &#x662F;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<p><strong>&#x91CD;&#x65B0;&#x521B;&#x5EFA; Deployment</strong> 
+&#x5982;&#x679C; <code>.spec.strategy.type==Recreate</code>&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x65B0; Pods &#x4E4B;&#x524D;&#xFF0C;&#x6240;&#x6709;&#x73B0;&#x6709;&#x7684; Pods &#x4F1A;&#x88AB;&#x6740;&#x6B7B;&#x3002;</p>
+<p><strong>&#x6EDA;&#x52A8;&#x66F4;&#x65B0; Deployment</strong> 
+Deployment &#x4F1A;&#x5728; <code>.spec.strategy.type==RollingUpdate</code>&#x65F6;&#xFF0C;&#x91C7;&#x53D6; &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x7684;&#x65B9;&#x5F0F;&#x66F4;&#x65B0; Pods&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x6307;&#x5B9A; <code>maxUnavailable</code> &#x548C; <code>maxSurge</code> &#x6765;&#x63A7;&#x5236;&#x6EDA;&#x52A8;&#x66F4;&#x65B0; &#x8FC7;&#x7A0B;&#x3002;</p>
+<p><strong>&#x6700;&#x5927;&#x5CF0;&#x503C;</strong> 
+<code>.spec.strategy.rollingUpdate.maxSurge</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#xFF0C;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x7684;&#x8D85;&#x51FA; &#x671F;&#x671B; Pod &#x4E2A;&#x6570;&#x7684; Pod &#x6570;&#x91CF;&#x3002;&#x6B64;&#x503C;&#x53EF;&#x4EE5;&#x662F;&#x7EDD;&#x5BF9;&#x6570;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;5&#xFF09;&#x6216;&#x6240;&#x9700; Pods &#x7684;&#x767E;&#x5206;&#x6BD4;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;10%&#xFF09;&#x3002; &#x5982;&#x679C; <code>MaxUnavailable</code> &#x4E3A; 0&#xFF0C;&#x5219;&#x6B64;&#x503C;&#x4E0D;&#x80FD;&#x4E3A; 0&#x3002;&#x767E;&#x5206;&#x6BD4;&#x503C;&#x4F1A;&#x901A;&#x8FC7;&#x5411;&#x4E0A;&#x53D6;&#x6574;&#x8F6C;&#x6362;&#x4E3A;&#x7EDD;&#x5BF9;&#x6570;&#x3002; &#x6B64;&#x5B57;&#x6BB5;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 25%&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x6B64;&#x503C;&#x4E3A; 30% &#x65F6;&#xFF0C;&#x542F;&#x52A8;&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x540E;&#xFF0C;&#x4F1A;&#x7ACB;&#x5373;&#x5BF9;&#x65B0;&#x7684; <code>ReplicaSet</code> &#x6269;&#x5BB9;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x8BC1;&#x65B0;&#x65E7; Pod &#x7684;&#x603B;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;&#x6240;&#x9700; Pod &#x603B;&#x6570;&#x7684; 130%&#x3002;&#x4E00;&#x65E6;&#x65E7; Pods &#x88AB;&#x6740;&#x6B7B;&#xFF0C;&#x65B0;&#x7684; ReplicaSet &#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x6269;&#x5BB9;&#xFF0C; &#x540C;&#x65F6;&#x786E;&#x4FDD;&#x66F4;&#x65B0;&#x671F;&#x95F4;&#x7684;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x8FD0;&#x884C;&#x4E2D;&#x7684; Pods &#x603B;&#x6570;&#x6700;&#x591A;&#x4E3A;&#x6240;&#x9700; Pods &#x603B;&#x6570;&#x7684; 130%&#x3002;</p>
+<h3 id="85-&#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;"><a name="85-&#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;" class="anchor-navigation-ex-anchor" href="#85-&#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>8.5 &#x8FDB;&#x5EA6;&#x671F;&#x9650;&#x79D2;&#x6570;</h3>
+<p><code>.spec.progressDeadlineSeconds</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#xFF0C;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x7CFB;&#x7EDF;&#x5728;&#x62A5;&#x544A; Deployment &#x8FDB;&#x5C55;&#x5931;&#x8D25; &#x4E4B;&#x524D;&#x7B49;&#x5F85; <code>Deployment</code> &#x53D6;&#x5F97;&#x8FDB;&#x5C55;&#x7684;&#x79D2;&#x6570;&#x3002; &#x8FD9;&#x7C7B;&#x62A5;&#x544A;&#x4F1A;&#x5728;&#x8D44;&#x6E90;&#x72B6;&#x6001;&#x4E2D;&#x4F53;&#x73B0;&#x4E3A; <code>Type=Progressing</code>&#x3001;<code>Status=False</code>&#x3001; <code>Reason=ProgressDeadlineExceeded</code>&#x3002;Deployment &#x63A7;&#x5236;&#x5668;&#x5C06;&#x6301;&#x7EED;&#x91CD;&#x8BD5; Deployment&#x3002; &#x5C06;&#x6765;&#xFF0C;&#x4E00;&#x65E6;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x52A8;&#x56DE;&#x6EDA;&#xFF0C;Deployment &#x63A7;&#x5236;&#x5668;&#x5C06;&#x5728;&#x63A2;&#x6D4B;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x6761;&#x4EF6;&#x65F6;&#x7ACB;&#x5373;&#x56DE;&#x6EDA; Deployment&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6307;&#x5B9A;&#xFF0C;&#x5219;&#x6B64;&#x5B57;&#x6BB5;&#x503C;&#x9700;&#x8981;&#x5927;&#x4E8E; <code>.spec.minReadySeconds</code> &#x53D6;&#x503C;</p>
+<h3 id="86-&#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;"><a name="86-&#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;" class="anchor-navigation-ex-anchor" href="#86-&#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;"><i class="fa fa-link" aria-hidden="true"></i></a>8.6 &#x6700;&#x77ED;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;</h3>
+<p><code>.spec.minReadySeconds</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#xFF0C;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x65B0;&#x521B;&#x5EFA;&#x7684; Pod &#x5728;&#x6CA1;&#x6709;&#x4EFB;&#x610F;&#x5BB9;&#x5668;&#x5D29;&#x6E83;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x6700;&#x5C0F;&#x5C31;&#x7EEA;&#x65F6;&#x95F4;&#xFF0C; &#x53EA;&#x6709;&#x8D85;&#x51FA;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4; Pod &#x624D;&#x88AB;&#x89C6;&#x4E3A;&#x53EF;&#x7528;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 0&#xFF08;Pod &#x5728;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#x7ACB;&#x5373;&#x5C06;&#x88AB;&#x89C6;&#x4E3A;&#x53EF;&#x7528;&#xFF09;&#x3002; &#x8981;&#x4E86;&#x89E3;&#x4F55;&#x65F6; Pod &#x88AB;&#x89C6;&#x4E3A;&#x5C31;&#x7EEA;&#xFF0C;&#x53EF;<a href="https://kubernetes.io/zh/docs/concepts/workloads/pods/pod-lifecycle/#container-probes" target="_blank">&#x53C2;&#x8003;&#x5BB9;&#x5668;&#x63A2;&#x9488;</a></p>
+<h3 id="87-rollback-to"><a name="87-rollback-to" class="anchor-navigation-ex-anchor" href="#87-rollback-to"><i class="fa fa-link" aria-hidden="true"></i></a>8.7 Rollback To</h3>
+<p><code>.spec.rollbackTo</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x9009;&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x7528;&#x6765;&#x914D;&#x7F6E; Deployment &#x56DE;&#x9000;&#x7684;&#x914D;&#x7F6E;&#x3002;&#x8BBE;&#x7F6E;&#x8BE5;&#x53C2;&#x6570;&#x5C06;&#x89E6;&#x53D1;&#x56DE;&#x9000;&#x64CD;&#x4F5C;&#xFF0C;&#x6BCF;&#x6B21;&#x56DE;&#x9000;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8BE5;&#x503C;&#x5C31;&#x4F1A;&#x88AB;&#x6E05;&#x9664;&#x3002;</p>
+<h3 id="88-revision"><a name="88-revision" class="anchor-navigation-ex-anchor" href="#88-revision"><i class="fa fa-link" aria-hidden="true"></i></a>8.8 Revision</h3>
+<p><code>.spec.rollbackTo.revision</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x56DE;&#x9000;&#x5230;&#x7684; <code>revision</code>&#x3002;&#x9ED8;&#x8BA4;&#x662F; 0&#xFF0C;&#x610F;&#x5473;&#x7740;&#x56DE;&#x9000;&#x5230;&#x4E0A;&#x4E00;&#x4E2A; revision&#x3002;</p>
+<h3 id="89-&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;"><a name="89-&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;" class="anchor-navigation-ex-anchor" href="#89-&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>8.9 &#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x9650;&#x5236;</h3>
+<p>Deployment &#x7684;&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x5B58;&#x50A8;&#x5728;&#x5B83;&#x6240;&#x63A7;&#x5236;&#x7684; ReplicaSets &#x4E2D;&#x3002;</p>
+<p><code>.spec.revisionHistoryLimit</code> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#xFF0C;&#x7528;&#x6765;&#x8BBE;&#x5B9A;&#x51FA;&#x4E8E;&#x4F1A;&#x6EDA;&#x76EE;&#x7684;&#x6240;&#x8981;&#x4FDD;&#x7559;&#x7684;&#x65E7; <code>ReplicaSet</code> &#x6570;&#x91CF;&#x3002; &#x8FD9;&#x4E9B;&#x65E7; ReplicaSet &#x4F1A;&#x6D88;&#x8017; etcd &#x4E2D;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5E76;&#x5360;&#x7528; <code>kubectl get rs</code> &#x7684;&#x8F93;&#x51FA;&#x3002; &#x6BCF;&#x4E2A; Deployment &#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x7684;&#x914D;&#x7F6E;&#x90FD;&#x5B58;&#x50A8;&#x5728;&#x5176; <code>ReplicaSets</code> &#x4E2D;&#xFF1B;&#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x65E6;&#x5220;&#x9664;&#x4E86;&#x65E7;&#x7684; ReplicaSet&#xFF0C; &#x5C06;&#x5931;&#x53BB;&#x56DE;&#x6EDA;&#x5230; Deployment &#x7684;&#x5BF9;&#x5E94;&#x4FEE;&#x8BA2;&#x7248;&#x672C;&#x7684;&#x80FD;&#x529B;&#x3002; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7CFB;&#x7EDF;&#x4FDD;&#x7559; 10 &#x4E2A;&#x65E7; ReplicaSet&#xFF0C;&#x4F46;&#x5176;&#x7406;&#x60F3;&#x503C;&#x53D6;&#x51B3;&#x4E8E;&#x65B0; Deployment &#x7684;&#x9891;&#x7387;&#x548C;&#x7A33;&#x5B9A;&#x6027;&#x3002;</p>
+<p>&#x66F4;&#x5177;&#x4F53;&#x5730;&#x8BF4;&#xFF0C;&#x5C06;&#x6B64;&#x5B57;&#x6BB5;&#x8BBE;&#x7F6E;&#x4E3A; 0 &#x610F;&#x5473;&#x7740;&#x5C06;&#x6E05;&#x7406;&#x6240;&#x6709;&#x5177;&#x6709; 0 &#x4E2A;&#x526F;&#x672C;&#x7684;&#x65E7; ReplicaSet&#x3002; &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x65E0;&#x6CD5;&#x64A4;&#x6D88;&#x65B0;&#x7684; Deployment &#x4E0A;&#x7EBF;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;&#x4FEE;&#x8BA2;&#x5386;&#x53F2;&#x88AB;&#x6E05;&#x9664;&#x4E86;&#x3002;</p>
+<h3 id="810-paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;"><a name="810-paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;" class="anchor-navigation-ex-anchor" href="#810-paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>8.10 paused&#xFF08;&#x6682;&#x505C;&#x7684;&#xFF09;</h3>
+<p><code>.spec.paused</code> &#x662F;&#x7528;&#x4E8E;&#x6682;&#x505C;&#x548C;&#x6062;&#x590D; Deployment &#x7684;&#x53EF;&#x9009;&#x5E03;&#x5C14;&#x5B57;&#x6BB5;&#x3002; &#x6682;&#x505C;&#x7684; Deployment &#x548C;&#x672A;&#x6682;&#x505C;&#x7684; Deployment &#x7684;&#x552F;&#x4E00;&#x533A;&#x522B;&#x662F;&#xFF0C;Deployment &#x5904;&#x4E8E;&#x6682;&#x505C;&#x72B6;&#x6001;&#x65F6;&#xFF0C; <code>PodTemplateSpec</code> &#x7684;&#x4EFB;&#x4F55;&#x4FEE;&#x6539;&#x90FD;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x65B0;&#x7684;&#x4E0A;&#x7EBF;&#x3002; Deployment &#x5728;&#x521B;&#x5EFA;&#x65F6;&#x662F;&#x9ED8;&#x8BA4;&#x4E0D;&#x4F1A;&#x5904;&#x4E8E;&#x6682;&#x505C;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/" target="_blank">Kuberenetes Deployments</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-04 04:54:31
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 对象">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kubernetes-deployment-skill.html" class="navigation navigation-next " aria-label="Next page: 技巧">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"1.10.1","depth":2,"next":{"title":"技巧","level":"1.10.1.1","depth":3,"path":"对象/Deployment/kubernetes-deployment-skill.md","ref":"对象/Deployment/kubernetes-deployment-skill.md","articles":[]},"previous":{"title":"对象","level":"1.10","depth":1,"path":"对象/README.md","ref":"对象/README.md","articles":[{"title":"Deployment","level":"1.10.1","depth":2,"path":"对象/Deployment/README.md","ref":"对象/Deployment/README.md","articles":[{"title":"技巧","level":"1.10.1.1","depth":3,"path":"对象/Deployment/kubernetes-deployment-skill.md","ref":"对象/Deployment/kubernetes-deployment-skill.md","articles":[]},{"title":"开发","level":"1.10.1.2","depth":3,"path":"对象/Deployment/kubernetes-client-go-deployment.md","ref":"对象/Deployment/kubernetes-client-go-deployment.md","articles":[]},{"title":"策略","level":"1.10.1.3","depth":3,"path":"对象/Deployment/kubernetes-deployment-strategies.md","ref":"对象/Deployment/kubernetes-deployment-strategies.md","articles":[]},{"title":"原理","level":"1.10.1.4","depth":3,"path":"对象/Deployment/kubernetes-deployment-principle.md","ref":"对象/Deployment/kubernetes-deployment-principle.md","articles":[]}]},{"title":"DaemonSet","level":"1.10.2","depth":2,"path":"对象/Kubernetes-DaemonSet.md","ref":"对象/Kubernetes-DaemonSet.md","articles":[]},{"title":"Volumes","level":"1.10.3","depth":2,"path":"对象/kubernetes-PersistentVolume.md","ref":"对象/kubernetes-PersistentVolume.md","articles":[]},{"title":"StatefulSet","level":"1.10.4","depth":2,"path":"对象/Kubernetes-StatefulSet.md","ref":"对象/Kubernetes-StatefulSet.md","articles":[]},{"title":"Job","level":"1.10.5","depth":2,"path":"对象/Kubernetes-Job.md","ref":"对象/Kubernetes-Job.md","articles":[]},{"title":"Runtimeclass","level":"1.10.6","depth":2,"path":"对象/Runtimeclass/README.md","ref":"对象/Runtimeclass/README.md","articles":[{"title":"原理","level":"1.10.6.1","depth":3,"path":"对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md","ref":"对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md","articles":[]}]},{"title":"PodSecurityPolicy","level":"1.10.7","depth":2,"path":"对象/Kubernetes-PodSecurityPolicy.md","ref":"对象/Kubernetes-PodSecurityPolicy.md","articles":[]},{"title":"ConfigMap","level":"1.10.8","depth":2,"path":"对象/Kubernetes-ConfigMaps.md","ref":"对象/Kubernetes-ConfigMaps.md","articles":[]},{"title":"Pod","level":"1.10.9","depth":2,"path":"对象/Pod/README.md","ref":"对象/Pod/README.md","articles":[{"title":"Probes","level":"1.10.9.1","depth":3,"path":"对象/Pod/Kubernetes-Pod-Probes.md","ref":"对象/Pod/Kubernetes-Pod-Probes.md","articles":[]},{"title":"SecurityContext","level":"1.10.9.2","depth":3,"path":"对象/Pod/Kubernetes-Pod-SecurityContext.md","ref":"对象/Pod/Kubernetes-Pod-SecurityContext.md","articles":[]}]},{"title":"secret","level":"1.10.10","depth":2,"path":"对象/kubernetes-Secrets.md","ref":"对象/kubernetes-Secrets.md","articles":[]},{"title":"Ingress","level":"1.10.11","depth":2,"path":"对象/Kubernetes-Ingress.md","ref":"对象/Kubernetes-Ingress.md","articles":[]},{"title":"Service","level":"1.10.12","depth":2,"path":"对象/Kubernetes-Service.md","ref":"对象/Kubernetes-Service.md","articles":[]},{"title":"NetworkPolicy","level":"1.10.13","depth":2,"path":"对象/Kubernetes-NetworkPolicy.md","ref":"对象/Kubernetes-NetworkPolicy.md","articles":[]},{"title":"RBAC","level":"1.10.14","depth":2,"path":"对象/RBAC/README.md","ref":"对象/RBAC/README.md","articles":[{"title":"原理","level":"1.10.14.1","depth":3,"path":"对象/RBAC/kubernetes-RBAC-principle.md","ref":"对象/RBAC/kubernetes-RBAC-principle.md","articles":[]}]},{"title":"Auditing","level":"1.10.15","depth":2,"path":"对象/Auditing/README.md","ref":"对象/Auditing/README.md","articles":[{"title":"实战","level":"1.10.15.1","depth":3,"path":"对象/Auditing/kubernetes-Auditing-practice.md","ref":"对象/Auditing/kubernetes-Auditing-practice.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"对象/Deployment/README.md","mtime":"2022-08-04T04:54:31.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

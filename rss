@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Kubernetes Docs]]></title>
+        <description><![CDATA[This is the best book ever.]]></description>
+        <link>https://smoothies.com.cn/kubernetes-docs/</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 16 Aug 2022 11:19:37 GMT</lastBuildDate>
+        <atom:link href="http://smoothies.com.cn/rss" rel="self" type="application/rss+xml"/>
+        <author><![CDATA[宗勋]]></author>
+        <managingEditor><![CDATA[writer@smoothies.com.cn (Zong Xun)]]></managingEditor>
+        <webMaster><![CDATA[webmaster@smoothies.com.cn (Zong Xun)]]></webMaster>
+        <category><![CDATA[kubernetes]]></category>
+        <item>
+            <title><![CDATA[目录]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/Overview.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/Overview.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[序言]]></title>
+            <description><![CDATA[这是一本关于集合 kubernetes 的书。]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/工具/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/工具/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/概念/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/概念/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/升级/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/升级/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes日志介绍]]></title>
+            <description><![CDATA[tags: log]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/日志/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/日志/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/网络/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/网络/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes 资源Overview]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/资源/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/资源/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kuberentes Yum]]></title>
+            <description><![CDATA[tags: 资源]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/资源/kubernetes-yum.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/资源/kubernetes-yum.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/部署/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/部署/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Ubuntu Minikube deploy Kubernetes]]></title>
+            <description><![CDATA[tags: kubernetes,部署,minikube]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/部署/kubernetes-minikube-deploy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/部署/kubernetes-minikube-deploy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes 手动部署]]></title>
+            <description><![CDATA[tags: 部署]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/部署/kubernetes-manually-deploy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/部署/kubernetes-manually-deploy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes Deployment Overview]]></title>
+            <description><![CDATA[tags: Deployment]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Deployment/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Deployment/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Deployment 技巧]]></title>
+            <description><![CDATA[tags: Deployment]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-skill.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-skill.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes client-go 管理 deployment]]></title>
+            <description><![CDATA[tags: client-go,Deployment]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-client-go-deployment.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-client-go-deployment.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Deployment 策略]]></title>
+            <description><![CDATA[tags: Deployment]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-strategies.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-strategies.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Deployment 原理]]></title>
+            <description><![CDATA[tags: 原理,Deployment]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-principle.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Deployment/kubernetes-deployment-principle.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes DaemonSet]]></title>
+            <description><![CDATA[tags: DaemonSet,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-DaemonSet.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-DaemonSet.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes Volumes 理解| Persistent Volume, Persistent Volume Claim & Storage Class]]></title>
+            <description><![CDATA[tags: 存储,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/kubernetes-PersistentVolume.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/kubernetes-PersistentVolume.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes StatefulSet]]></title>
+            <description><![CDATA[tags: StatefulSet,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-StatefulSet.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-StatefulSet.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes job]]></title>
+            <description><![CDATA[tags: job,cronjob,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Job.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Job.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Runtimeclass/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Runtimeclass/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes RuntimeClass 原理]]></title>
+            <description><![CDATA[tags: 对象,RuntimeClass]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes pod PodSecurityPolicy]]></title>
+            <description><![CDATA[tags: 对象,pod,PodSecurityPolicy]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-PodSecurityPolicy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-PodSecurityPolicy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes ConfigMap]]></title>
+            <description><![CDATA[tags: ConfigMap,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-ConfigMaps.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-ConfigMaps.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Pod/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Pod/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kuberenetes pod Liveness, Readiness and Startup Probes]]></title>
+            <description><![CDATA[tags: Pod,探针,健康检测]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Pod/Kubernetes-Pod-Probes.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Pod/Kubernetes-Pod-Probes.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kuberenetes pod SecurityContext]]></title>
+            <description><![CDATA[tags: Pod,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Pod/Kubernetes-Pod-SecurityContext.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Pod/Kubernetes-Pod-SecurityContext.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes secret]]></title>
+            <description><![CDATA[tags:对象,secret]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/kubernetes-Secrets.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/kubernetes-Secrets.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes ingress 如何通过域名访问您的应用]]></title>
+            <description><![CDATA[tags: 对象, Ingress]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Ingress.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Ingress.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes Service]]></title>
+            <description><![CDATA[tags: Service,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Service.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-Service.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes NetworkPolicy]]></title>
+            <description><![CDATA[tags: NetworkPolicy,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-NetworkPolicy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Kubernetes-NetworkPolicy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes RBAC 入门]]></title>
+            <description><![CDATA[tags: 对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/RBAC/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/RBAC/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes RBAC 原理]]></title>
+            <description><![CDATA[tags: 对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/RBAC/kubernetes-RBAC-principle.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/RBAC/kubernetes-RBAC-principle.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kuberentes Auditing 入门]]></title>
+            <description><![CDATA[tags: Auditing,对象]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Auditing/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Auditing/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes  Auditing 实战]]></title>
+            <description><![CDATA[tags: Auditing]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/对象/Auditing/kubernetes-Auditing-practice.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/对象/Auditing/kubernetes-Auditing-practice.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/存储/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/存储/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[如何理解 kubernetes 存储插件：FlexVolume、CSI]]></title>
+            <description><![CDATA[tags: 存储]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes 编写CSI插件]]></title>
+            <description><![CDATA[tags: 存储]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/存储/kubernetes-storage-write-CSI.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/存储/kubernetes-storage-write-CSI.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes Persistent Volume 原理]]></title>
+            <description><![CDATA[tags: 存储]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/存储/kuberentes-storage-volumes-principle.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/存储/kuberentes-storage-volumes-principle.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/策略/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/策略/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Open Policy Agent(OPA)]]></title>
+            <description><![CDATA[tags: OPA,策略]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/策略/OPA/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/策略/OPA/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Kubernetes 资源管理策略 ResourceQuota]]></title>
+            <description><![CDATA[tags: ResourceQuota,策略]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-ResourceQuota.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-ResourceQuota.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes 资源管理策略  QoS]]></title>
+            <description><![CDATA[tags: pod,策略]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-QoS.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-QoS.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes 策略 LimitRange]]></title>
+            <description><![CDATA[tags: LimitRange]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-LimitRange.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/策略/kubernetes-policy-LimitRange.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubeadm/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubeadm/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubeadm 命令]]></title>
+            <description><![CDATA[tags: kubeadm,命令]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubeadm/kubeadm-command.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubeadm/kubeadm-command.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes kube-proxy]]></title>
+            <description><![CDATA[tags: kube-proxy]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubernetes-Kube-Proxy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubernetes-Kube-Proxy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubectl/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubectl/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubectl 命令]]></title>
+            <description><![CDATA[tags: kubectl,命令]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubectl/kubectl-command.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubectl/kubectl-command.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes kubelet Overiview]]></title>
+            <description><![CDATA[tags: kubelet]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes kubelet 配置]]></title>
+            <description><![CDATA[tags: kubelet]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/kubernetes-kubelet-configuration.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/kubernetes-kubelet-configuration.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubelet 垃圾回收机制]]></title>
+            <description><![CDATA[tags: kubelet]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/kubernetes-kubelet-trash-recycling.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/Kubelet/kubernetes-kubelet-trash-recycling.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes api-server Overview]]></title>
+            <description><![CDATA[tags: api-server]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/组件/kubernetes-kube-apiserver.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/组件/kubernetes-kube-apiserver.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[kubernetes Security Overview]]></title>
+            <description><![CDATA[tags: 安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[falco 入门]]></title>
+            <description><![CDATA[tags： 安全,falco]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Falco/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Falco/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[falco default macros]]></title>
+            <description><![CDATA[tags: falco,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Falco/kubernetes-Security-falco-default-macros.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Falco/kubernetes-Security-falco-default-macros.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[falco 规则]]></title>
+            <description><![CDATA[tags: falco,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Falco/kubernetes-Security-falco-rules.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Falco/kubernetes-Security-falco-rules.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Apparmor Overview]]></title>
+            <description><![CDATA[tags: apparmor,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Apparmor/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Apparmor/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[kubernetes apparmor 语法
+tags: apparmor,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Apparmor/kubernetes-Apparmor-rules.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Apparmor/kubernetes-Apparmor-rules.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[trivy 漏洞扫描工具安装]]></title>
+            <description><![CDATA[tags: 安全,trivy]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Trivy/README.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Trivy/README.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[trivy 工具漏洞扫描应用]]></title>
+            <description><![CDATA[tags: trivy,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Trivy/Kubernetes-Security-trivy-scan.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Trivy/Kubernetes-Security-trivy-scan.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[trivy 自定义扫描策略]]></title>
+            <description><![CDATA[tags: trivy,安全]]></description>
+            <link>https://smoothies.com.cn/kubernetes-docs/安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[标签]]></title>
+            <link>https://smoothies.com.cn/kubernetes-docs/tags.html</link>
+            <guid isPermaLink="true">https://smoothies.com.cn/kubernetes-docs/tags.html</guid>
+            <dc:creator><![CDATA[宗勋]]></dc:creator>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,1497 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>原理 · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Kubernetes-PodSecurityPolicy.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../Overview.html">
+            
+                <a href="../../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../工具/">
+            
+                <a href="../../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../概念/">
+            
+                <a href="../../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../升级/">
+            
+                <a href="../../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../日志/">
+            
+                <a href="../../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../网络/">
+            
+                <a href="../../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../资源/">
+            
+                <a href="../../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../资源/kubernetes-yum.html">
+            
+                <a href="../../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../部署/">
+            
+                <a href="../../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Deployment/">
+            
+                <a href="../Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="../Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="../Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="../Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="../Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Kubernetes-DaemonSet.html">
+            
+                <a href="../Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../kubernetes-PersistentVolume.html">
+            
+                <a href="../kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Kubernetes-StatefulSet.html">
+            
+                <a href="../Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Kubernetes-Job.html">
+            
+                <a href="../Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.10.6.1" data-path="kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../Kubernetes-ConfigMaps.html">
+            
+                <a href="../Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../Pod/">
+            
+                <a href="../Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../kubernetes-Secrets.html">
+            
+                <a href="../kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../Kubernetes-Ingress.html">
+            
+                <a href="../Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../Kubernetes-Service.html">
+            
+                <a href="../Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../Kubernetes-NetworkPolicy.html">
+            
+                <a href="../Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../RBAC/">
+            
+                <a href="../RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="../RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="../RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../Auditing/">
+            
+                <a href="../Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../存储/">
+            
+                <a href="../../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../策略/">
+            
+                <a href="../../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../策略/OPA/">
+            
+                <a href="../../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../组件/">
+            
+                <a href="../../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../组件/Kubeadm/">
+            
+                <a href="../../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../../组件/Kubectl/">
+            
+                <a href="../../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../../组件/Kubelet/">
+            
+                <a href="../../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../安全/">
+            
+                <a href="../../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../安全/Falco/">
+            
+                <a href="../../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../../安全/Apparmor/">
+            
+                <a href="../../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../../安全/Trivy/">
+            
+                <a href="../../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../tags.html">
+            
+                <a href="../../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#kubernetes-runtimeclass-&#x539F;&#x7406;"><b></b>kubernetes RuntimeClass &#x539F;&#x7406;</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x7B80;&#x4ECB;"><b></b>1. &#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#2-runtimeclass-&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"><b></b>2. RuntimeClass &#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</a></li><li><span class="title-icon "></span><a href="#3-runtimeclass-&#x529F;&#x80FD;&#x4ECB;&#x7ECD;"><b></b>3. RuntimeClass &#x529F;&#x80FD;&#x4ECB;&#x7ECD;</a></li><ul><li><span class="title-icon "></span><a href="#31-runtimeclass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;"><b></b>3.1 RuntimeClass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;</a></li><li><span class="title-icon "></span><a href="#32-scheduling-&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;"><b></b>3.2 Scheduling &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;</a></li><li><span class="title-icon "></span><a href="#33-&#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165;-pod-overhead&#xFF1F;"><b></b>3.3 &#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165; Pod Overhead&#xFF1F;</a></li><li><span class="title-icon "></span><a href="#34-pod-overhead-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;"><b></b>3.4 Pod Overhead &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;</a></li></ul><li><span class="title-icon "></span><a href="#4-&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;"><b></b>4. &#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;</a></li><li><span class="title-icon "></span><a href="#5-&#x603B;&#x7ED3;"><b></b>5. &#x603B;&#x7ED3;</a></li></ul></ul></div><a href="#kubernetes-runtimeclass-&#x539F;&#x7406;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="kubernetes-runtimeclass-&#x539F;&#x7406;"><a name="kubernetes-runtimeclass-&#x539F;&#x7406;" class="anchor-navigation-ex-anchor" href="#kubernetes-runtimeclass-&#x539F;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>kubernetes RuntimeClass &#x539F;&#x7406;</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../../tags.html#&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</a> <a href="../../tags.html#runtimeclass">RuntimeClass</a></p></div><!-- tagsstop --><!-- catalog: ~原理~ -->
+<p><a href="https://movie.douban.com/subject/1291560/" target="_blank">
+<img src="https://img-blog.csdnimg.cn/69d0c9376d7c42499e70ab86f82205c8.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></a></p>
+<p><em>&#x300A;&#x9F99;&#x732B;&#x300B;</em></p>
+<h2 id="1-&#x7B80;&#x4ECB;"><a name="1-&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#1-&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7B80;&#x4ECB;</h2>
+<p><code>RuntimeClass</code>&#x662F;&#x7528;&#x4E8E;&#x9009;&#x62E9;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x914D;&#x7F6E;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x914D;&#x7F6E;&#x7528;&#x4E8E;&#x8FD0;&#x884C;Pod&#x7684;&#x5BB9;&#x5668;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x7684;Pod&#x4E4B;&#x95F4;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;<code>RuntimeClass</code>&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x6027;&#x80FD;&#x4E0E;&#x5B89;&#x5168;&#x6027;&#x4E4B;&#x95F4;&#x7684;&#x5E73;&#x8861;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x7684;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;&#x8D1F;&#x8377;&#x5E94;&#x5F97;&#x5230;&#x8F83;&#x9AD8;&#x7EA7;&#x522B;&#x7684;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x4FDD;&#x8BC1;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5B89;&#x6392;&#x8FD9;&#x4E9B;Pod&#xFF0C;&#x4EE5;&#x4FBF;&#x5B83;&#x4EEC;&#x5728;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x865A;&#x62DF;&#x5316;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x4E2D;&#x8FD0;&#x884C;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x53D7;&#x76CA;&#x4E8E;&#x5907;&#x7528;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x989D;&#x5916;&#x9694;&#x79BB;&#xFF0C;&#x4F46;&#x8981;&#x4ED8;&#x51FA;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x5F00;&#x9500;&#x3002;</p>
+<p>&#x60A8;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>RuntimeClass</code>&#x5728;&#x76F8;&#x540C;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x4F46;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x8BBE;&#x7F6E;&#x6765;&#x8FD0;&#x884C;&#x4E0D;&#x540C;&#x7684;Pod&#x3002;</p>
+<p><img src="https://img-blog.csdnimg.cn/2eee8c8d6bc549f994bbe4aeb16371eb.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x4E5F;&#x60F3;&#x63A5;&#x5165;&#x5230; Kubernetes &#x4E2D;&#x3002;&#x5982;&#x679C;&#x8FD8;&#x662F;&#x6309; rkt &#x548C; Docker &#x4E00;&#x6837;&#x5185;&#x7F6E;&#x652F;&#x6301;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x7ED9; Kubernetes &#x7684;&#x4EE3;&#x7801;&#x7EF4;&#x62A4;&#x548C;&#x8D28;&#x91CF;&#x4FDD;&#x969C;&#x5E26;&#x6765;&#x4E25;&#x91CD;&#x6311;&#x6218;&#x3002;</p>
+<p>&#x793E;&#x533A;&#x4E5F;&#x610F;&#x8BC6;&#x5230;&#x4E86;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x5728; <code>1.5</code> &#x7248;&#x672C;&#x65F6;&#x63A8;&#x51FA;&#x4E86; <code>CRI</code>&#xFF0C;&#x5B83;&#x7684;&#x5168;&#x79F0;&#x662F; <code>Container Runtime Interface</code>&#x3002;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF1A;&#x5B9E;&#x73B0;&#x4E86;&#x8FD0;&#x884C;&#x65F6;&#x548C; <code>Kubernetes</code> &#x7684;&#x89E3;&#x8026;&#xFF0C;&#x793E;&#x533A;&#x4E0D;&#x5FC5;&#x518D;&#x4E3A;&#x5404;&#x79CD;&#x8FD0;&#x884C;&#x65F6;&#x505A;&#x9002;&#x914D;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x8FD0;&#x884C;&#x65F6;&#x548C; Kubernetes &#x8FED;&#x4EE3;&#x5468;&#x671F;&#x4E0D;&#x4E00;&#x81F4;&#x6240;&#x5E26;&#x6765;&#x7684;&#x7248;&#x672C;&#x7EF4;&#x62A4;&#x95EE;&#x9898;&#x3002;&#x6BD4;&#x8F83;&#x5178;&#x578B;&#x7684;&#xFF0C;&#x6BD4;&#x5982; containerd &#x4E2D;&#x7684; <code>cri-plugin</code> &#x5C31;&#x5B9E;&#x73B0;&#x4E86; <code>CRI</code>&#x3001;<code>kata-containers</code>&#x3001;<code>gVisor</code> &#x8FD9;&#x6837;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x5BF9;&#x63A5; containerd &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p>&#x968F;&#x7740;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x51FA;&#x73B0;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x4E5F;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x6C42;&#x573A;&#x666F;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x9700;&#x6C42;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x4F55;&#x6765;&#x8FD0;&#x884C;&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x8FD8;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>&#x96C6;&#x7FA4;&#x91CC;&#x6709;&#x54EA;&#x4E9B;&#x53EF;&#x7528;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF1F;</li>
+<li>&#x5982;&#x4F55;&#x4E3A; Pod &#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF1F;</li>
+<li>&#x5982;&#x4F55;&#x8BA9; Pod &#x8C03;&#x5EA6;&#x5230;&#x88C5;&#x6709;&#x6307;&#x5B9A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#xFF1F;</li>
+<li>&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x5728;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x65F6;&#x4F1A;&#x4EA7;&#x751F;&#x6709;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x8FD0;&#x884C;&#x4EE5;&#x5916;&#x7684;&#x989D;&#x5916;&#x5F00;&#x9500;&#xFF0C;&#x8FD9;&#x79CD;&#x300C;&#x989D;&#x5916;&#x5F00;&#x9500;&#x300D;&#x9700;&#x8981;&#x600E;&#x4E48;&#x7EDF;&#x8BA1;&#xFF1F;</li>
+</ul>
+<h2 id="2-runtimeclass-&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"><a name="2-runtimeclass-&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#2-runtimeclass-&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>2. RuntimeClass &#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</h2>
+<p>&#x4E86;&#x89E3;&#x51B3;&#x4E0A;&#x8FF0;&#x63D0;&#x5230;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x793E;&#x533A;&#x63A8;&#x51FA;&#x4E86; <code>RuntimeClass</code>&#x3002;&#x5B83;&#x5176;&#x5B9E;&#x5728; <code>Kubernetes v1.12</code> &#x4E2D;&#x5C31;&#x5DF2;&#x88AB;&#x5F15;&#x5165;&#xFF0C;&#x4E0D;&#x8FC7;&#x6700;&#x521D;&#x662F;&#x4EE5; CRD &#x7684;&#x5F62;&#x5F0F;&#x5F15;&#x5165;&#x7684;&#x3002;<code>v1.14</code> &#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x53C8;&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x5185;&#x7F6E;&#x96C6;&#x7FA4;&#x8D44;&#x6E90;&#x5BF9;&#x8C61; <code>RuntimeClass</code> &#x88AB;&#x5F15;&#x5165;&#x8FDB;&#x6765;&#x3002;<code>v1.16</code> &#x53C8;&#x5728; <code>v1.14</code> &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6269;&#x5145;&#x4E86; <code>Scheduling</code> &#x548C; <code>Overhead</code> &#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p><img src="https://img-blog.csdnimg.cn/f3d5f8a3e733483f95f3b53fa2d40228.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x4E0B;&#x9762;&#x4EE5; <code>v1.16</code> &#x7248;&#x672C;&#x4E3A;&#x4F8B;&#xFF0C;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B; <code>RuntimeClass</code> &#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5DE6;&#x4FA7;&#x662F;&#x5B83;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x56FE;&#xFF0C;&#x53F3;&#x4FA7;&#x662F;&#x4E00;&#x4E2A; YAML &#x6587;&#x4EF6;&#x3002;</p>
+<p>YAML &#x6587;&#x4EF6;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;&#x4E0A;&#x90E8;&#x5206;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x53EB; runv &#x7684; <code>RuntimeClass</code> &#x5BF9;&#x8C61;&#xFF0C;&#x4E0B;&#x90E8;&#x5206;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Pod&#xFF0C;&#x8BE5; Pod &#x901A;&#x8FC7; <code>spec.runtimeClassName</code> &#x5F15;&#x7528;&#x4E86; runv &#x8FD9;&#x4E2A; <code>RuntimeClass</code>&#x3002;</p>
+<p><code>RuntimeClass</code> &#x5BF9;&#x8C61;&#x4E2D;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x662F; handler&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x521B;&#x5EFA;&#x5BB9;&#x5668;&#x8BF7;&#x6C42;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x6BD4;&#x5982;&#x793A;&#x4F8B;&#x4E2D;&#x7684; Pod &#x6700;&#x7EC8;&#x4F1A;&#x88AB; runv &#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x521B;&#x5EFA;&#x5BB9;&#x5668;&#xFF1B;<code>scheduling</code> &#x51B3;&#x5B9A; Pod &#x6700;&#x7EC8;&#x4F1A;&#x88AB;&#x8C03;&#x5EA6;&#x5230;&#x54EA;&#x4E9B;&#x8282;&#x70B9;&#x4E0A;&#x3002;</p>
+<p>&#x7ED3;&#x5408;&#x5DE6;&#x56FE;&#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B; RuntimeClass &#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>K8s-master &#x63A5;&#x6536;&#x5230;&#x521B;&#x5EFA; Pod &#x7684;&#x8BF7;&#x6C42;&#xFF1B;</li>
+<li>&#x65B9;&#x683C;&#x90E8;&#x5206;&#x8868;&#x793A;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8282;&#x70B9;&#x3002;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x90FD;&#x6709; <code>Label</code> &#x6807;&#x8BC6;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x652F;&#x6301;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x8282;&#x70B9;&#x5185;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; <code>handler</code>&#xFF0C;&#x6BCF;<code>handler</code> &#x5BF9;&#x5E94;&#x4E00;&#x79CD;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x6BD4;&#x5982;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x683C;&#x8868;&#x793A;&#x8282;&#x70B9;&#x5185;&#x6709;&#x652F;&#x6301; <code>runc</code> &#x548C; runv &#x4E24;&#x79CD;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684;<code>handler</code>&#xFF1B;&#x7B2C;&#x4E09;&#x4E2A;&#x65B9;&#x683C;&#x8868;&#x793A;&#x8282;&#x70B9;&#x5185;&#x6709;&#x652F;&#x6301; <code>runhcs</code> &#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684; <code>handler</code>&#xFF1B;</li>
+<li>&#x6839;&#x636E; <code>scheduling.nodeSelector</code>, Pod &#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x5EA6;&#x5230;&#x4E2D;&#x95F4;&#x65B9;&#x683C;&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x5E76;&#x6700;&#x7EC8;&#x7531; <code>runv handler</code>
+&#x6765;&#x521B;&#x5EFA; Pod&#x3002;</li>
+</ul>
+<h2 id="3-runtimeclass-&#x529F;&#x80FD;&#x4ECB;&#x7ECD;"><a name="3-runtimeclass-&#x529F;&#x80FD;&#x4ECB;&#x7ECD;" class="anchor-navigation-ex-anchor" href="#3-runtimeclass-&#x529F;&#x80FD;&#x4ECB;&#x7ECD;"><i class="fa fa-link" aria-hidden="true"></i></a>3. RuntimeClass &#x529F;&#x80FD;&#x4ECB;&#x7ECD;</h2>
+<h3 id="31-runtimeclass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;"><a name="31-runtimeclass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;" class="anchor-navigation-ex-anchor" href="#31-runtimeclass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 RuntimeClass&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;</h3>
+<p><img src="https://img-blog.csdnimg.cn/b13bb23d0a0747e3a1c417a1446bdde8.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x4EE5; <code>Kubernetes v1.16</code> &#x7248;&#x672C;&#x4E2D;&#x7684; <code>RuntimeClass</code> &#x4E3A;&#x4F8B;&#x3002;&#x9996;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B; <code>RuntimeClass</code> &#x7684;&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>&#x4E00;&#x4E2A; <code>RuntimeClass</code> &#x5BF9;&#x8C61;&#x4EE3;&#x8868;&#x4E86;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5B83;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x4E3B;&#x8981;&#x5305;&#x542B; <code>Handler</code>&#x3001;<code>Overhead</code>&#x3001;<code>Scheduling</code> &#x4E09;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+<ul>
+<li><p>&#x5728;&#x4E4B;&#x524D;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x6211;&#x4EEC;&#x4E5F;&#x63D0;&#x5230;&#x8FC7; Handler&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x521B;&#x5EFA;&#x5BB9;&#x5668;&#x8BF7;&#x6C42;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF1B;</p>
+</li>
+<li><p>Overhead &#x662F; v1.16 &#x4E2D;&#x624D;&#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x5B83;&#x8868;&#x793A; Pod &#x4E2D;&#x7684;&#x4E1A;&#x52A1;&#x8FD0;&#x884C;&#x6240;&#x9700;&#x8D44;&#x6E90;&#x4EE5;&#x5916;&#x7684;&#x989D;&#x5916;&#x5F00;&#x9500;&#xFF1B;</p>
+</li>
+<li><p>&#x7B2C;&#x4E09;&#x4E2A;&#x5B57;&#x6BB5;Scheduling &#x4E5F;&#x662F;&#x5728; v1.16 &#x4E2D;&#x88AB;&#x5F15;&#x5165;&#x7684;&#xFF0C;&#x8BE5; Scheduling &#x914D;&#x7F6E;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x6CE8;&#x5165;&#x5230; Pod &#x7684;
+nodeSelector &#x4E2D;&#x3002;</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/8c46fdddba6a40f886cb51a0d54a2a2c.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p><img src="https://img-blog.csdnimg.cn/45f8cfb9bf7040f08005d5a340595863.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x5728; Pod &#x4E2D;&#x5F15;&#x7528; <code>RuntimeClass</code> &#x7684;&#x7528;&#x6CD5;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x8981;&#x5728; <code>runtimeClassName</code> &#x5B57;&#x6BB5;&#x4E2D;&#x914D;&#x7F6E;&#x597D; RuntimeClass &#x7684;&#x540D;&#x5B57;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A; <code>RuntimeClass</code> &#x5F15;&#x5165;&#x8FDB;&#x6765;&#x3002;</p>
+<h3 id="32-scheduling-&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;"><a name="32-scheduling-&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;" class="anchor-navigation-ex-anchor" href="#32-scheduling-&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;"><i class="fa fa-link" aria-hidden="true"></i></a>3.2 Scheduling &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;</h3>
+<p>Scheduling &#x8868;&#x793A;&#x8C03;&#x5EA6;&#xFF0C;&#x4F46;&#x8FD9;&#x91CC;&#x7684;&#x8C03;&#x5EA6;&#x4E0D;&#x662F;&#x8BF4; RuntimeClass &#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x5F15;&#x7528;&#x4E86; RuntimeClass &#x7684; Pod &#x7684;&#x8C03;&#x5EA6;&#x3002;
+<img src="https://img-blog.csdnimg.cn/c1044aca8f75426a97df1ad41cb11769.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p><code>Scheduling</code> &#x4E2D;&#x5305;&#x542B;&#x4E86;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;<code>NodeSelector</code> &#x548C; <code>Tolerations</code>&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x548C; Pod &#x672C;&#x8EAB;&#x6240;&#x5305;&#x542B;&#x7684; NodeSelector &#x548C; Tolerations &#x662F;&#x6781;&#x4E3A;&#x76F8;&#x4F3C;&#x7684;&#x3002;</p>
+<p>NodeSelector &#x4EE3;&#x8868;&#x7684;&#x662F;&#x652F;&#x6301;&#x8BE5; RuntimeClass &#x7684;&#x8282;&#x70B9;&#x4E0A;&#x5E94;&#x8BE5;&#x6709;&#x7684; label &#x5217;&#x8868;&#x3002;&#x4E00;&#x4E2A; Pod &#x5F15;&#x7528;&#x4E86;&#x8BE5; RuntimeClass &#x540E;&#xFF0C;RuntimeClass admission &#x4F1A;&#x628A;&#x8BE5; label &#x5217;&#x8868;&#x4E0E; Pod &#x4E2D;&#x7684; label &#x5217;&#x8868;&#x505A;&#x4E00;&#x6B21;&#x5408;&#x5E76;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E24;&#x4E2A; label &#x4E2D;&#x6709;&#x51B2;&#x7A81;&#x7684;&#xFF0C;&#x4F1A;&#x88AB; admission &#x62D2;&#x7EDD;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x51B2;&#x7A81;&#x662F;&#x6307;&#x5B83;&#x4EEC;&#x7684; key &#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F; value &#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x88AB; admission &#x62D2;&#x7EDD;&#x3002;&#x53E6;&#x5916;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;RuntimeClass &#x5E76;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x4E3A; Node &#x8BBE;&#x7F6E; label&#xFF0C;&#x9700;&#x8981;&#x7528;&#x6237;&#x5728;&#x4F7F;&#x7528;&#x524D;&#x63D0;&#x524D;&#x8BBE;&#x7F6E;&#x597D;&#x3002;</p>
+<p>Tolerations &#x8868;&#x793A; RuntimeClass &#x7684;&#x5BB9;&#x5FCD;&#x5217;&#x8868;&#x3002;&#x4E00;&#x4E2A; Pod &#x5F15;&#x7528;&#x8BE5; RuntimeClass &#x4E4B;&#x540E;&#xFF0C;admission &#x4E5F;&#x4F1A;&#x628A; toleration &#x5217;&#x8868;&#x4E0E; Pod &#x4E2D;&#x7684; toleration &#x5217;&#x8868;&#x505A;&#x4E00;&#x4E2A;&#x5408;&#x5E76;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E24;&#x5904;&#x7684; Toleration &#x6709;&#x76F8;&#x540C;&#x7684;&#x5BB9;&#x5FCD;&#x914D;&#x7F6E;&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x5176;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x3002;</p>
+<h3 id="33-&#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165;-pod-overhead&#xFF1F;"><a name="33-&#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165;-pod-overhead&#xFF1F;" class="anchor-navigation-ex-anchor" href="#33-&#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165;-pod-overhead&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>3.3 &#x4E3A;&#x4EC0;&#x4E48;&#x5F15;&#x5165; Pod Overhead&#xFF1F;</h3>
+<p><img src="https://img-blog.csdnimg.cn/ef97cab895d4471d81833d75549b6cf1.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x4E0A;&#x56FE;&#x5DE6;&#x8FB9;&#x662F;&#x4E00;&#x4E2A; <code>Docker Pod</code>&#xFF0C;&#x53F3;&#x8FB9;&#x662F;&#x4E00;&#x4E2A; <code>Kata Pod</code>&#x3002;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;Docker Pod &#x9664;&#x4E86;&#x4F20;&#x7EDF;&#x7684; container &#x5BB9;&#x5668;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A; pause &#x5BB9;&#x5668;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x5728;&#x8BA1;&#x7B97;&#x5B83;&#x7684;&#x5BB9;&#x5668;&#x5F00;&#x9500;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5FFD;&#x7565; pause &#x5BB9;&#x5668;&#x3002;&#x5BF9;&#x4E8E; Kata Pod&#xFF0C;&#x9664;&#x4E86; container &#x5BB9;&#x5668;&#x4E4B;&#x5916;&#xFF0C;<code>kata-agent</code>, <code>pause</code>, <code>guest-kernel</code> &#x8FD9;&#x4E9B;&#x5F00;&#x9500;&#x90FD;&#x662F;&#x6CA1;&#x6709;&#x88AB;&#x7EDF;&#x8BA1;&#x8FDB;&#x6765;&#x7684;&#x3002;&#x50CF;&#x8FD9;&#x4E9B;&#x5F00;&#x9500;&#xFF0C;&#x591A;&#x7684;&#x65F6;&#x5019;&#x751A;&#x81F3;&#x80FD;&#x8D85;&#x8FC7; 100MB&#xFF0C;&#x8FD9;&#x4E9B;&#x5F00;&#x9500;&#x6211;&#x4EEC;&#x662F;&#x6CA1;&#x6CD5;&#x5FFD;&#x7565;&#x7684;&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5F15;&#x5165; <code>Pod Overhead</code> &#x7684;&#x521D;&#x8877;&#x3002;&#x5B83;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;
+<img src="https://img-blog.csdnimg.cn/ed5809230c514b83b03c053a8b6a45be.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5; <code>PodFixed</code>&#x3002;&#x5B83;&#x8FD9;&#x91CC;&#x9762;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#xFF0C;&#x5B83;&#x7684; key &#x662F;&#x4E00;&#x4E2A; <code>ResourceName</code>&#xFF0C;value &#x662F;&#x4E00;&#x4E2A; Quantity&#x3002;&#x6BCF;&#x4E00;&#x4E2A; Quantity &#x4EE3;&#x8868;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684;&#x4F7F;&#x7528;&#x91CF;&#x3002;&#x56E0;&#x6B64; PodFixed &#x5C31;&#x4EE3;&#x8868;&#x4E86;&#x5404;&#x79CD;&#x8D44;&#x6E90;&#x7684;&#x5360;&#x7528;&#x91CF;&#xFF0C;&#x6BD4;&#x5982; CPU&#x3001;&#x5185;&#x5B58;&#x7684;&#x5360;&#x7528;&#x91CF;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; PodFixed &#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;</p>
+<h3 id="34-pod-overhead-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;"><a name="34-pod-overhead-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;" class="anchor-navigation-ex-anchor" href="#34-pod-overhead-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>3.4 Pod Overhead &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0E;&#x9650;&#x5236;</h3>
+<p>Pod Overhead &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x5904;&#xFF1A;</p>
+<ol>
+<li>Pod &#x8C03;&#x5EA6;</li>
+</ol>
+<p>&#x5728;&#x6CA1;&#x6709;&#x5F15;&#x5165; <code>Overhead</code> &#x4E4B;&#x524D;&#xFF0C;&#x53EA;&#x8981;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x7528;&#x91CF;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; Pod &#x7684; <code>requests</code> &#x65F6;&#xFF0C;&#x8FD9;&#x4E2A; Pod &#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x8C03;&#x5EA6;&#x5230;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x3002;&#x5F15;&#x5165; Overhead &#x4E4B;&#x540E;&#xFF0C;&#x53EA;&#x6709;&#x8282;&#x70B9;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x7528;&#x91CF;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; <code>Overhead</code> &#x52A0;&#x4E0A; <code>requests</code> &#x7684;&#x503C;&#x65F6;&#x624D;&#x80FD;&#x88AB;&#x8C03;&#x5EA6;&#x4E0A;&#x6765;&#x3002;</p>
+<ol>
+<li>ResourceQuota</li>
+</ol>
+<p>&#x5B83;&#x662F;&#x4E00;&#x4E2A; <code>namespace</code> &#x7EA7;&#x522B;&#x7684;&#x8D44;&#x6E90;&#x914D;&#x989D;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A; namespace&#xFF0C;&#x5B83;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x91CF;&#x662F; 1G&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A; requests &#x7B49;&#x4E8E; 500 &#x7684; Pod&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; namespace &#x4E4B;&#x4E0B;&#xFF0C;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x8C03;&#x5EA6;&#x4E24;&#x4E2A;&#x8FD9;&#x6837;&#x7684; Pod&#x3002;&#x800C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E3A;&#x8FD9;&#x4E24;&#x4E2A; Pod &#x589E;&#x6DFB;&#x4E86; 200MB &#x7684; Overhead &#x4E4B;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A; namespace &#x4E0B;&#x5C31;&#x6700;&#x591A;&#x53EA;&#x53EF;&#x8C03;&#x5EA6;&#x4E00;&#x4E2A;&#x8FD9;&#x6837;&#x7684; Pod&#x3002;</p>
+<ol>
+<li>Kubelet Pod &#x9A71;&#x9010;</li>
+</ol>
+<p>&#x5F15;&#x5165; Overhead &#x4E4B;&#x540E;&#xFF0C;Overhead &#x5C31;&#x4F1A;&#x88AB;&#x7EDF;&#x8BA1;&#x5230;&#x8282;&#x70B9;&#x7684;&#x5DF2;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x4E2D;&#xFF0C;&#x4ECE;&#x800C;&#x589E;&#x52A0;&#x5DF2;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x7684;&#x5360;&#x6BD4;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x5F71;&#x54CD;&#x5230; Kubelet Pod &#x7684;&#x9A71;&#x9010;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x662F; Pod Overhead &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;Pod Overhead &#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x4F7F;&#x7528;&#x9650;&#x5236;&#x548C;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</p>
+<ul>
+<li><code>Pod Overhead</code> &#x6700;&#x7EC8;&#x4F1A;&#x6C38;&#x4E45;&#x6CE8;&#x5165;&#x5230; Pod &#x5185;&#x5E76;&#x4E14;&#x4E0D;&#x53EF;&#x624B;&#x52A8;&#x66F4;&#x6539;&#x3002;&#x5373;&#x4FBF;&#x662F;&#x5C06; RuntimeClass &#x5220;&#x9664;&#x6216;&#x8005;&#x66F4;&#x65B0;&#xFF0C;Pod Overhead &#x4F9D;&#x7136;&#x5B58;&#x5728;&#x5E76;&#x4E14;&#x6709;&#x6548;&#xFF1B;</li>
+<li>Pod Overhead &#x53EA;&#x80FD;&#x7531; <code>RuntimeClass admission</code> &#x81EA;&#x52A8;&#x6CE8;&#x5165;&#xFF08;&#x81F3;&#x5C11;&#x76EE;&#x524D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF09;&#xFF0C;&#x4E0D;&#x53EF;&#x624B;&#x52A8;&#x6DFB;&#x52A0;&#x6216;&#x66F4;&#x6539;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#xFF1B;</li>
+<li>HPA &#x548C; VPA &#x662F;&#x57FA;&#x4E8E;&#x5BB9;&#x5668;&#x7EA7;&#x522B;&#x6307;&#x6807;&#x6570;&#x636E;&#x505A;&#x805A;&#x5408;&#xFF0C;Pod Overhead &#x4E0D;&#x4F1A;&#x5BF9;&#x5B83;&#x4EEC;&#x9020;&#x6210;&#x5F71;&#x54CD;&#x3002;</li>
+</ul>
+<h2 id="4-&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;"><a name="4-&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#4-&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x793A;&#x4F8B;</h2>
+<p><img src="https://img-blog.csdnimg.cn/e940a1225d114fecac09c2776321b544.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x76EE;&#x524D;&#x963F;&#x91CC;&#x4E91; <code>ACK</code> &#x5B89;&#x5168;&#x6C99;&#x7BB1;&#x5BB9;&#x5668;&#x5DF2;&#x7ECF;&#x652F;&#x6301;&#x4E86;&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#x73AF;&#x5883;&#x4E3A;&#x4F8B;&#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x662F;&#x600E;&#x4E48;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#x6709;&#x4E24;&#x4E2A; Pod&#xFF0C;&#x5DE6;&#x4FA7;&#x662F;&#x4E00;&#x4E2A; <code>runc</code> &#x7684; Pod&#xFF0C;&#x5BF9;&#x5E94;&#x7684; RuntimeClass &#x662F; runc&#xFF0C;&#x53F3;&#x4FA7;&#x662F;&#x4E00;&#x4E2A; <code>runv</code> &#x7684;Pod&#xFF0C;&#x5F15;&#x7528;&#x7684; RuntimeClass &#x662F; runv&#x3002;&#x5BF9;&#x5E94;&#x7684;&#x8BF7;&#x6C42;&#x5DF2;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x989C;&#x8272;&#x6807;&#x8BC6;&#x4E86;&#x51FA;&#x6765;&#xFF0C;&#x84DD;&#x8272;&#x7684;&#x4EE3;&#x8868;&#x662F; runc &#x7684;&#xFF0C;&#x7EA2;&#x8272;&#x7684;&#x4EE3;&#x8868;&#x662F; runv &#x7684;&#x3002;&#x56FE;&#x4E2D;&#x4E0B;&#x534A;&#x90E8;&#x5206;&#xFF0C;&#x5176;&#x4E2D;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x90E8;&#x5206;&#x662F; containerd&#xFF0C;&#x5728; containerd &#x4E2D;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6700;&#x7EC8;&#x4E0A;&#x9762;&#x7684;&#x8BF7;&#x6C42;&#x4E5F;&#x4F1A;&#x5230;&#x8FBE;&#x8FD9;&#x91CC;&#x8FDB;&#x884C;&#x8BF7;&#x6C42;&#x7684;&#x8F6C;&#x53D1;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B; runc &#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5B83;&#x5148;&#x5230;&#x8FBE; <code>kube-apiserver</code>&#xFF0C;&#x7136;&#x540E; kube-apiserver &#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x7ED9; <code>kubelet</code>&#xFF0C;&#x6700;&#x7EC8; kubelet &#x5C06;&#x8BF7;&#x6C42;&#x53D1;&#x81F3; <code>cri-plugin</code>&#xFF08;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86; CRI &#x7684;&#x63D2;&#x4EF6;&#xFF09;&#xFF0C;cri-plugin &#x5728; containerd &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x67E5;&#x8BE2; runc &#x5BF9;&#x5E94;&#x7684; <code>Handler</code>&#xFF0C;&#x6700;&#x7EC8;&#x67E5;&#x5230;&#x662F;&#x901A;&#x8FC7; <code>Shim API runtime v1</code> &#x8BF7;&#x6C42; <code>containerd-shim</code>&#xFF0C;&#x7136;&#x540E;&#x7531;&#x5B83;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;&#x3002;&#x8FD9;&#x662F; runc &#x7684;&#x6D41;&#x7A0B;&#x3002;</p>
+<p>runv &#x7684;&#x6D41;&#x7A0B;&#x4E0E; runc &#x7684;&#x6D41;&#x7A0B;&#x7C7B;&#x4F3C;&#x3002;&#x4E5F;&#x662F;&#x5148;&#x5C06;&#x8BF7;&#x6C42;&#x5230;&#x8FBE; kube-apiserver&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5230;&#x8FBE; kubelet&#xFF0C;&#x518D;&#x628A;&#x8BF7;&#x6C42;&#x5230;&#x8FBE; cri-plugin&#xFF0C;cri-plugin &#x6700;&#x7EC8;&#x8FD8;&#x56DE;&#x53BB;&#x5339;&#x914D; containerd &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x627E;&#x5230;&#x901A;&#x8FC7; Shim API runtime v2 &#x53BB;&#x521B;&#x5EFA; containerd-shim-kata-v2&#xFF0C;&#x7136;&#x540E;&#x7531;&#x5B83;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Kata Pod&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x518D;&#x770B;&#x4E00;&#x4E0B; <code>containerd</code> &#x7684;&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x3002;
+<img src="https://img-blog.csdnimg.cn/c6e9508d19dc473285454d21f620e146.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p><code>containerd</code> &#x9ED8;&#x8BA4;&#x653E;&#x5728; <code>[file:///etc/containerd/config.toml]()</code> &#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x4E0B;&#x3002;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x914D;&#x7F6E;&#x662F;&#x5728; <code>plugins.cri.containerd</code> &#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x5176;&#x4E2D; runtimes &#x7684;&#x914D;&#x7F6E;&#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x524D;&#x7F00; <code>plugins.cri.containerd.runtimes</code>&#xFF0C;&#x540E;&#x9762;&#x6709; runc, runv &#x4E24;&#x79CD; RuntimeClass&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684; runc &#x548C; runv &#x548C;&#x524D;&#x9762; RuntimeClass &#x5BF9;&#x8C61;&#x4E2D; Handler &#x7684;&#x540D;&#x5B57;&#x662F;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x914D;&#x7F6E; <code>plugins.cri.containerd.runtimes.default_runtime</code>&#xFF0C;&#x5B83;&#x7684;&#x610F;&#x601D;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A; Pod &#x6CA1;&#x6709;&#x6307;&#x5B9A; RuntimeClass&#xFF0C;&#x4F46;&#x662F;&#x88AB;&#x8C03;&#x5EA6;&#x5230;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; runc &#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x521B;&#x5EFA; runc &#x548C; runv &#x8FD9;&#x4E24;&#x4E2A; RuntimeClass &#x5BF9;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; kubectl get runtimeclass &#x770B;&#x5230;&#x5F53;&#x524D;&#x6240;&#x6709;&#x53EF;&#x7528;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;
+<img src="https://img-blog.csdnimg.cn/b1b9398b1b284bcba1b90e81126e79fa.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x4E0B;&#x56FE;&#x4ECE;&#x5DE6;&#x81F3;&#x53F3;&#x5206;&#x522B;&#x662F;&#x4E00;&#x4E2A; runc &#x548C; runv &#x7684; Pod&#xFF0C;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#x5728; <code>runtimeClassName</code> &#x5B57;&#x6BB5;&#x4E2D;&#x5206;&#x522B;&#x5F15;&#x7528;&#x4E86; runc &#x548C; runv &#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;</p>
+<p><img src="https://img-blog.csdnimg.cn/ca6927f3780d4acca6e2a5c5a51b120c.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x6700;&#x7EC8;&#x5C06; Pod &#x521B;&#x5EFA;&#x8D77;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; kubectl &#x547D;&#x4EE4;&#x6765;&#x67E5;&#x770B;&#x5404;&#x4E2A; Pod &#x5BB9;&#x5668;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x4EE5;&#x53CA; Pod &#x6240;&#x4F7F;&#x7528;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x73B0;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x6709;&#x4E24;&#x4E2A; Pod&#xFF1A;&#x4E00;&#x4E2A;&#x662F; runc-pod&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F; runv-pod&#xFF0C;&#x5206;&#x522B;&#x5F15;&#x7528;&#x7684;&#x662F; runc &#x548C; runv &#x7684; RuntimeClass&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x4EEC;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x662F; Running&#x3002;
+<img src="https://img-blog.csdnimg.cn/20210510110759473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<h2 id="5-&#x603B;&#x7ED3;"><a name="5-&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#5-&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x603B;&#x7ED3;</h2>
+<p>&#x672C;&#x6587;&#x7684;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x5C31;&#x5230;&#x6B64;&#x4E3A;&#x6B62;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3A;&#x5927;&#x5BB6;&#x7B80;&#x5355;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>RuntimeClass &#x662F; Kubernetes &#x4E00;&#x79CD;&#x5185;&#x7F6E;&#x7684;&#x96C6;&#x7FA4;&#x8D44;&#x6E90;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x89E3;&#x51B3;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x6DF7;&#x7528;&#x7684;&#x95EE;&#x9898;&#xFF1B;</li>
+<li>RuntimeClass &#x4E2D;&#x914D;&#x7F6E; Scheduling &#x53EF;&#x4EE5;&#x8BA9; Pod &#x81EA;&#x52A8;&#x8C03;&#x5EA6;&#x5230;&#x8FD0;&#x884C;&#x4E86;&#x6307;&#x5B9A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x3002;&#x4F46;&#x524D;&#x63D0;&#x662F;&#x9700;&#x8981;&#x7528;&#x6237;&#x63D0;&#x524D;&#x4E3A;&#x8FD9;&#x4E9B;Node &#x8BBE;&#x7F6E;&#x597D; label&#xFF1B;</li>
+<li>RuntimeClass &#x4E2D;&#x914D;&#x7F6E; <code>Overhead</code>&#xFF0C;&#x53EF;&#x4EE5;&#x628A; Pod&#x4E2D;&#x4E1A;&#x52A1;&#x8FD0;&#x884C;&#x6240;&#x9700;&#x4EE5;&#x5916;&#x7684;&#x5F00;&#x9500;&#x7EDF;&#x8BA1;&#x8FDB;&#x6765;&#xFF0C;&#x8BA9;&#x8C03;&#x5EA6;&#x3001;ResourceQuota&#x3001;Kubelet Pod &#x9A71;&#x9010;&#x7B49;&#x884C;&#x4E3A;&#x66F4;&#x51C6;&#x786E;</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/zh-cn/docs/concepts/containers/runtime-class/" target="_blank">&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x7C7B;&#xFF08;Runtime Class</a>&#xFF09;</li>
+<li><a href="https://cloud.tencent.com/developer/news/609235" target="_blank">&#x7406;&#x89E3; RuntimeClass &#x4E0E;&#x4F7F;&#x7528;&#x591A;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;</a></li>
+<li><a href="https://www.alibabacloud.com/blog/getting-started-with-kubernetes-%7C-understanding-kubernetes-runtimeclass-and-using-multiple-container-runtimes_596341" target="_blank">Getting Started with Kubernetes | Understanding Kubernetes RuntimeClass and Using Multiple Container Runtimes</a></li>
+<li><a href="https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md" target="_blank">KEP-585: Runtime Class</a></li>
+<li><a href="https://docs.oracle.com/en/operating-systems/olcne/1.1/runtimes/runtime-class.html" target="_blank">Oracle create a runtime class</a></li>
+<li><a href="https://docs.openshift.com/container-platform/4.7/rest_api/node_apis/runtimeclass-node-k8s-io-v1.html" target="_blank">Openshift RuntimeClass</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-12 09:59:11
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Runtimeclass">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Kubernetes-PodSecurityPolicy.html" class="navigation navigation-next " aria-label="Next page: PodSecurityPolicy">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"原理","level":"1.10.6.1","depth":3,"next":{"title":"PodSecurityPolicy","level":"1.10.7","depth":2,"path":"对象/Kubernetes-PodSecurityPolicy.md","ref":"对象/Kubernetes-PodSecurityPolicy.md","articles":[]},"previous":{"title":"Runtimeclass","level":"1.10.6","depth":2,"path":"对象/Runtimeclass/README.md","ref":"对象/Runtimeclass/README.md","articles":[{"title":"原理","level":"1.10.6.1","depth":3,"path":"对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md","ref":"对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.md","mtime":"2022-08-12T09:59:11.524Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

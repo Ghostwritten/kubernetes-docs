@@ -1,0 +1,1704 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>NetworkPolicy · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="RBAC/" />
+    
+    
+    <link rel="prev" href="Kubernetes-Service.html" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../Overview.html">
+            
+                <a href="../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../工具/">
+            
+                <a href="../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../概念/">
+            
+                <a href="../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../升级/">
+            
+                <a href="../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../日志/">
+            
+                <a href="../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../网络/">
+            
+                <a href="../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../资源/">
+            
+                <a href="../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../资源/kubernetes-yum.html">
+            
+                <a href="../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../部署/">
+            
+                <a href="../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Deployment/">
+            
+                <a href="Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Kubernetes-DaemonSet.html">
+            
+                <a href="Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="kubernetes-PersistentVolume.html">
+            
+                <a href="kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Kubernetes-StatefulSet.html">
+            
+                <a href="Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Kubernetes-Job.html">
+            
+                <a href="Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Runtimeclass/">
+            
+                <a href="Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Kubernetes-ConfigMaps.html">
+            
+                <a href="Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Pod/">
+            
+                <a href="Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="kubernetes-Secrets.html">
+            
+                <a href="kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Kubernetes-Ingress.html">
+            
+                <a href="Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="Kubernetes-Service.html">
+            
+                <a href="Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.13" data-path="Kubernetes-NetworkPolicy.html">
+            
+                <a href="Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="RBAC/">
+            
+                <a href="RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="Auditing/">
+            
+                <a href="Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../存储/">
+            
+                <a href="../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../策略/">
+            
+                <a href="../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../策略/OPA/">
+            
+                <a href="../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../组件/">
+            
+                <a href="../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../组件/Kubeadm/">
+            
+                <a href="../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../组件/Kubectl/">
+            
+                <a href="../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../组件/Kubelet/">
+            
+                <a href="../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../安全/">
+            
+                <a href="../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../安全/Falco/">
+            
+                <a href="../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../安全/Apparmor/">
+            
+                <a href="../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../安全/Trivy/">
+            
+                <a href="../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../tags.html">
+            
+                <a href="../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >NetworkPolicy</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#kubernetes-networkpolicy"><b></b>kubernetes NetworkPolicy</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x7B80;&#x4ECB;"><b></b>1. &#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#2-&#x8BED;&#x6CD5;"><b></b>2. &#x8BED;&#x6CD5;</a></li><li><span class="title-icon "></span><a href="#3-&#x9009;&#x62E9;&#x5668;-to-&#x548C;-from-&#x7684;&#x884C;&#x4E3A;"><b></b>3. &#x9009;&#x62E9;&#x5668; to &#x548C; from &#x7684;&#x884C;&#x4E3A;</a></li><li><span class="title-icon "></span><a href="#4-&#x9ED8;&#x8BA4;&#x7B56;&#x7565;"><b></b>4. &#x9ED8;&#x8BA4;&#x7B56;&#x7565;</a></li><ul><li><span class="title-icon "></span><a href="#41-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><b></b>4.1 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;</a></li><li><span class="title-icon "></span><a href="#42-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><b></b>4.2 &#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;</a></li><li><span class="title-icon "></span><a href="#43-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><b></b>4.3 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</a></li><li><span class="title-icon "></span><a href="#44-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><b></b>4.4 &#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</a></li><li><span class="title-icon "></span><a href="#45-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><b></b>4.5 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</a></li></ul><li><span class="title-icon "></span><a href="#5-&#x5B9E;&#x6218;&#x793A;&#x4F8B;"><b></b>5. &#x5B9E;&#x6218;&#x793A;&#x4F8B;</a></li><ul><li><span class="title-icon "></span><a href="#51-&#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx-deployment-&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;"><b></b>5.1 &#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx Deployment &#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;</a></li><li><span class="title-icon "></span><a href="#52-&#x9650;&#x5236;-nginx-&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;"><b></b>5.2 &#x9650;&#x5236; nginx &#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;</a></li></ul><li><span class="title-icon "></span><a href="#6-networkpolicy&#x539F;&#x7406;"><b></b>6. networkpolicy&#x539F;&#x7406;</a></li><li><span class="title-icon "></span><a href="#7-&#x603B;&#x7ED3;"><b></b>7. &#x603B;&#x7ED3;</a></li></ul></ul></div><a href="#kubernetes-networkpolicy" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="kubernetes-networkpolicy"><a name="kubernetes-networkpolicy" class="anchor-navigation-ex-anchor" href="#kubernetes-networkpolicy"><i class="fa fa-link" aria-hidden="true"></i></a>kubernetes NetworkPolicy</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../tags.html#networkpolicy">NetworkPolicy</a> <a href="../tags.html#&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</a></p></div><!-- tagsstop --><!-- catalog: ~NetworkPolicy~ -->
+<p><a href="https://www.rottentomatoes.com/m/beautiful_mind" target="_blank">
+<img src="https://img-blog.csdnimg.cn/3f7f29fb855943a2b9702efed119b286.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></a></p>
+<p><em>&#x300A;&#x7F8E;&#x4E3D;&#x5FC3;&#x7075;&#x300B;&#x662F;&#x5173;&#x4E8E;20&#x4E16;&#x7EAA;&#x4F1F;&#x5927;&#x6570;&#x5B66;&#x5BB6;&#x5C0F;&#x7EA6;&#x7FF0;&#x2022;&#x798F;&#x5E03;&#x65AF;-&#x7EB3;&#x4EC0;&#x7684;&#x4EBA;&#x7269;&#x4F20;&#x8BB0;&#x7247;&#x3002;</em></p>
+<h2 id="1-&#x7B80;&#x4ECB;"><a name="1-&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#1-&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7B80;&#x4ECB;</h2>
+<p><strong>&#x7F51;&#x7EDC;&#x7B56;&#x7565;</strong>&#xFF08;NetworkPolicy&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x5173;&#x4E8E; Pod &#x95F4;&#x53CA;&#x4E0E;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x7AEF;&#x70B9;&#x95F4;&#x6240;&#x5141;&#x8BB8;&#x7684;&#x901A;&#x4FE1;&#x89C4;&#x5219;&#x7684;&#x89C4;&#x8303;&#x3002;</p>
+<p>NetworkPolicy &#x8D44;&#x6E90;&#x4F7F;&#x7528; &#x6807;&#x7B7E; &#x9009;&#x62E9; Pod&#xFF0C;&#x5E76;&#x5B9A;&#x4E49;&#x9009;&#x5B9A; Pod &#x6240;&#x5141;&#x8BB8;&#x7684;&#x901A;&#x4FE1;&#x89C4;&#x5219;&#x3002;</p>
+<h2 id="2-&#x8BED;&#x6CD5;"><a name="2-&#x8BED;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#2-&#x8BED;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x8BED;&#x6CD5;</h2>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+ - Ingress
+ - Egress
+  ingress:
+ - from:
+    - ipBlock:
+        cidr: <span class="token number">172.17</span>.0.0/16
+        except:
+        - <span class="token number">172.17</span>.1.0/24
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: frontend
+    ports:
+    - protocol: TCP
+      port: <span class="token number">6379</span>
+  egress:
+ - to:
+    - ipBlock:
+        cidr: <span class="token number">10.0</span>.0.0/24
+    ports:
+    - protocol: TCP
+      port: <span class="token number">5978</span>
+</code></pre>
+<p>&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li><code>spec</code>: NetworkPolicy &#x89C4;&#x7EA6; &#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5728;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x5B9A;&#x4E49;&#x7279;&#x5B9A;&#x7F51;&#x7EDC;&#x7B56;&#x7565;&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#x3002;</li>
+<li><code>podSelector</code>: &#x6BCF;&#x4E2A; NetworkPolicy &#x90FD;&#x5305;&#x62EC;&#x4E00;&#x4E2A; podSelector &#xFF0C;&#x5B83;&#x5BF9;&#x8BE5;&#x7B56;&#x7565;&#x6240;&#x5E94;&#x7528;&#x7684;&#x4E00;&#x7EC4; Pod&#x8FDB;&#x884C;&#x9009;&#x62E9;&#x3002;&#x793A;&#x4F8B;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#x9009;&#x62E9;&#x5E26;&#x6709; <code>&quot;role=db&quot; &#x6807;&#x7B7E;&#x7684; Pod</code>&#x3002;<code>&#x7A7A;&#x7684; podSelector &#x9009;&#x62E9;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B;&#x7684;&#x6240;&#x6709; Pod</code>&#x3002;</li>
+<li><code>policyTypes</code>: &#x6BCF;&#x4E2A; NetworkPolicy &#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A; policyTypes &#x5217;&#x8868;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B; Ingress &#x6216; Egress &#x6216;&#x4E24;&#x8005;&#x517C;&#x5177;&#x3002;policyTypes &#x5B57;&#x6BB5;&#x8868;&#x793A;&#x7ED9;&#x5B9A;&#x7684;&#x7B56;&#x7565;&#x662F;&#x5426;&#x5E94;&#x7528;&#x4E8E;&#x8FDB;&#x5165;&#x6240;&#x9009; Pod &#x7684;&#x5165;&#x53E3;&#x6D41;&#x91CF;&#x6216;&#x8005;&#x6765;&#x81EA;&#x6240;&#x9009; Pod&#x7684;&#x51FA;&#x53E3;&#x6D41;&#x91CF;&#xFF0C;&#x6216;&#x4E24;&#x8005;&#x517C;&#x6709;&#x3002;&#x5982;&#x679C; NetworkPolicy &#x672A;&#x6307;&#x5B9A; policyTypes &#x5219;<code>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x59CB;&#x7EC8;&#x8BBE;&#x7F6E; Ingress</code>&#xFF0C;&#x5982;&#x679C;NetworkPolicy &#x6709;&#x4EFB;&#x4F55;&#x51FA;&#x53E3;&#x89C4;&#x5219;&#x7684;&#x8BDD;&#x5219;&#x8BBE;&#x7F6E; Egress&#x3002;</li>
+<li><code>ingress</code>: &#x6BCF;&#x4E2A; NetworkPolicy &#x53EF;&#x5305;&#x542B;&#x4E00;&#x4E2A; ingress &#x89C4;&#x5219;&#x7684;&#x767D;&#x540D;&#x5355;&#x5217;&#x8868;&#x3002;&#x6BCF;&#x4E2A;&#x89C4;&#x5219;&#x90FD;&#x5141;&#x8BB8;&#x540C;&#x65F6;&#x5339;&#x914D; <code>from &#x548C;ports</code> &#x90E8;&#x5206;&#x7684;&#x6D41;&#x91CF;&#x3002;&#x793A;&#x4F8B;&#x7B56;&#x7565;&#x4E2D;&#x5305;&#x542B;&#x4E00;&#x6761;&#x7B80;&#x5355;&#x7684;&#x89C4;&#x5219;&#xFF1A; <strong>&#x5B83;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x6765;&#x81EA;&#x4E09;&#x4E2A;&#x6765;&#x6E90;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF0C; &#x7B2C;&#x4E00;&#x4E2A;&#x901A;&#x8FC7; ipBlock&#x6307;&#x5B9A;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x901A;&#x8FC7;namespaceSelector &#x6307;&#x5B9A;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x901A;&#x8FC7; podSelector &#x6307;&#x5B9A;&#x3002;</strong></li>
+<li><code>egress</code>: &#x6BCF;&#x4E2A; NetworkPolicy &#x53EF;&#x5305;&#x542B;&#x4E00;&#x4E2A; egress &#x89C4;&#x5219;&#x7684;&#x767D;&#x540D;&#x5355;&#x5217;&#x8868;&#x3002;&#x6BCF;&#x4E2A;&#x89C4;&#x5219;&#x90FD;&#x5141;&#x8BB8;&#x5339;&#x914D; <code>to &#x548C; port&#x90E8;&#x5206;&#x7684;&#x6D41;&#x91CF;</code>&#x3002;&#x8BE5;&#x793A;&#x4F8B;&#x7B56;&#x7565;&#x5305;&#x542B;&#x4E00;&#x6761;&#x89C4;&#x5219;&#xFF0C;&#x8BE5;&#x89C4;&#x5219;&#x5C06;&#x5355;&#x4E2A;&#x7AEF;&#x53E3;&#x4E0A;&#x7684;&#x6D41;&#x91CF;&#x5339;&#x914D;&#x5230; 10.0.0.0/24 &#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x76EE;&#x7684;&#x5730;&#x3002;</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x8BE5;&#x7F51;&#x7EDC;&#x7B56;&#x7565;&#x793A;&#x4F8B;:</p>
+<ol>
+<li>&#x9694;&#x79BB; &quot;default&quot; &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B; &quot;role=db&quot; &#x7684; Pod (&#x5982;&#x679C;&#x5B83;&#x4EEC;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x88AB;&#x9694;&#x79BB;&#x7684;&#x8BDD;)&#x3002;</li>
+<li>&#xFF08;Ingress &#x89C4;&#x5219;&#xFF09;&#x5141;&#x8BB8;&#x4EE5;&#x4E0B; Pod &#x8FDE;&#x63A5;&#x5230; &quot;default&quot; &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B;&#x7684;&#x5E26;&#x6709; &#x201C;role=db&#x201D; &#x6807;&#x7B7E;&#x7684;&#x6240;&#x6709; Pod &#x7684;<code>6379 TCP</code> &#x7AEF;&#x53E3;&#xFF1A;</li>
+<li><ul>
+<li>&quot;default&quot; &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B;&#x4EFB;&#x610F;&#x5E26;&#x6709; &quot;role=frontend&quot; &#x6807;&#x7B7E;&#x7684; Pod</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x5E26;&#x6709; &quot;project=myproject&quot; &#x6807;&#x7B7E;&#x7684;&#x4EFB;&#x610F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; Pod</li>
+</ul>
+</li>
+<li><ul>
+<li>IP &#x5730;&#x5740;&#x8303;&#x56F4;&#x4E3A; 172.17.0.0&#x2013;172.17.0.255 &#x548C; 172.17.2.0&#x2013;172.17.255.255&#xFF08;&#x5373;&#xFF0C;&#x9664;&#x4E86;
+172.17.1.0/24 &#x4E4B;&#x5916;&#x7684;&#x6240;&#x6709; 172.17.0.0/16&#xFF09;</li>
+</ul>
+</li>
+<li><p>&#xFF08;Egress &#x89C4;&#x5219;&#xFF09;&#x5141;&#x8BB8;&#x4ECE;&#x5E26;&#x6709; &quot;role=db&quot; &#x6807;&#x7B7E;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B;&#x7684;&#x4EFB;&#x4F55; Pod &#x5230; CIDR 10.0.0.0/24 &#x4E0B; 5978TCP &#x7AEF;&#x53E3;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+</li>
+</ol>
+<h2 id="3-&#x9009;&#x62E9;&#x5668;-to-&#x548C;-from-&#x7684;&#x884C;&#x4E3A;"><a name="3-&#x9009;&#x62E9;&#x5668;-to-&#x548C;-from-&#x7684;&#x884C;&#x4E3A;" class="anchor-navigation-ex-anchor" href="#3-&#x9009;&#x62E9;&#x5668;-to-&#x548C;-from-&#x7684;&#x884C;&#x4E3A;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x9009;&#x62E9;&#x5668; to &#x548C; from &#x7684;&#x884C;&#x4E3A;</h2>
+<p>&#x53EF;&#x4EE5;&#x5728; ingress from &#x90E8;&#x5206;&#x6216; egress to &#x90E8;&#x5206;&#x4E2D;&#x6307;&#x5B9A;&#x56DB;&#x79CD;&#x9009;&#x62E9;&#x5668;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x79CD;
+  <code>podSelector</code>: &#x8FD9;&#x5C06;&#x5728;&#x4E0E; NetworkPolicy &#x76F8;&#x540C;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x9009;&#x62E9;&#x7279;&#x5B9A;&#x7684; Pod&#xFF0C;&#x5E94;&#x5C06;&#x5176;&#x5141;&#x8BB8;&#x4F5C;&#x4E3A;&#x5165;&#x53E3;&#x6E90;&#x6216;&#x51FA;&#x53E3;&#x76EE;&#x7684;&#x5730;&#x3002;</p>
+<p>  &#x7B2C;&#x4E8C;&#x79CD;
+ <code>namespaceSelector</code>: &#x8FD9;&#x5C06;&#x9009;&#x62E9;&#x7279;&#x5B9A;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5E94;&#x5C06;&#x6240;&#x6709; Pod &#x7528;&#x4F5C;&#x5176;&#x8F93;&#x5165;&#x6E90;&#x6216;&#x8F93;&#x51FA;&#x76EE;&#x7684;&#x5730;&#x3002;</p>
+<p>&#x7B2C;&#x4E09;&#x79CD;
+ namespaceSelector &#x548C; podSelector: <strong>&#x4E00;&#x4E2A;&#x6307;&#x5B9A; namespaceSelector &#x548C; podSelector
+   &#x7684; to/from &#x6761;&#x76EE;&#x9009;&#x62E9;&#x7279;&#x5B9A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x7279;&#x5B9A; Pod</strong>&#x3002;&#x6CE8;&#x610F;&#x4F7F;&#x7528;&#x6B63;&#x786E;&#x7684; YAML &#x8BED;&#x6CD5;&#xFF1B;&#x8FD9;&#x9879;&#x7B56;&#x7565;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"> <span class="token punctuation">..</span>.
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          user: alice
+      podSelector:
+        matchLabels:
+          role: client
+  <span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x5728; from &#x6570;&#x7EC4;&#x4E2D;&#x4EC5;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x6807;&#x6709; <code>role=client</code> &#x7684; Pod <strong>&#x4E14;</strong>&#x8BE5; Pod &#x6240;&#x5728;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x6807;&#x6709; <code>user=alice</code> &#x7684;&#x8FDE;&#x63A5;&#x3002;&#x4F46;&#x662F; &#x8FD9;&#x9879; &#x7B56;&#x7565;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"> <span class="token punctuation">..</span>.
+  ingress:
+ - from:
+    - namespaceSelector:
+        matchLabels:
+          user: alice
+    - podSelector:
+        matchLabels:
+          role: client
+  <span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x5728; from &#x6570;&#x7EC4;&#x4E2D;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x672C;&#x5730;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x6807;&#x6709; <code>role=client</code> &#x7684; Pod &#x7684;&#x8FDE;&#x63A5;&#xFF0C;<strong>&#x6216;</strong> &#x6765;&#x81EA;&#x4EFB;&#x4F55;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x6807;&#x6709; <code>user = alice</code> &#x7684;&#x4EFB;&#x4F55; Pod &#x7684;&#x8FDE;&#x63A5;&#x3002;
+<strong>&#x8FD9;&#x4E24;&#x79CD;&#x5B9A;&#x4E49;&#x65B9;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x8BF7;&#x4F60;&#x4E00;&#x5B9A;&#x8981;&#x5206;&#x6E05;&#x695A;&#x3002;</strong></p>
+<p> &#x7B2C;&#x56DB;&#x79CD;&#xFF1A;
+ <code>ipBlock</code>: &#x8FD9;&#x5C06;&#x9009;&#x62E9;&#x7279;&#x5B9A;&#x7684; <code>IP CIDR</code> &#x8303;&#x56F4;&#x4EE5;&#x7528;&#x4F5C;&#x5165;&#x53E3;&#x6E90;&#x6216;&#x51FA;&#x53E3;&#x76EE;&#x7684;&#x5730;&#x3002; &#x8FD9;&#x4E9B;&#x5E94;&#x8BE5;&#x662F;&#x7FA4;&#x96C6;&#x5916;&#x90E8; IP&#xFF0C;&#x56E0;&#x4E3A; Pod IP &#x5B58;&#x5728;&#x65F6;&#x95F4;&#x77ED;&#x6682;&#x7684;&#x4E14;&#x968F;&#x673A;&#x4EA7;&#x751F;&#x3002;
+&#x7FA4;&#x96C6;&#x7684;&#x5165;&#x53E3;&#x548C;&#x51FA;&#x53E3;&#x673A;&#x5236;&#x901A;&#x5E38;&#x9700;&#x8981;&#x91CD;&#x5199;&#x6570;&#x636E;&#x5305;&#x7684;&#x6E90; IP &#x6216;&#x76EE;&#x6807; IP&#x3002;&#x5728;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x786E;&#x5B9A;&#x5728; NetworkPolicy &#x5904;&#x7406;&#x4E4B;&#x524D;&#x8FD8;&#x662F;&#x4E4B;&#x540E;&#x53D1;&#x751F;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x4E8E;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#xFF0C;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#xFF0C;Service &#x5B9E;&#x73B0;&#x7B49;&#x7684;&#x4E0D;&#x540C;&#x7EC4;&#x5408;&#xFF0C;&#x5176;&#x884C;&#x4E3A;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;</p>
+<p>&#x5728;&#x8FDB;&#x5165;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x7684;&#x539F;&#x59CB;&#x6E90; IP &#x8FC7;&#x6EE4;&#x4F20;&#x5165;&#x7684;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x800C;&#x5728;&#x5176;&#x4ED6;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;NetworkPolicy &#x6240;&#x4F5C;&#x7528;&#x7684; &#x6E90;IP &#x5219;&#x53EF;&#x80FD;&#x662F; LoadBalancer &#x6216; Pod &#x7684;&#x8282;&#x70B9;&#x7B49;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x51FA;&#x53E3;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4ECE; Pod &#x5230;&#x88AB;&#x91CD;&#x5199;&#x4E3A;&#x96C6;&#x7FA4;&#x5916;&#x90E8; IP &#x7684; Service IP &#x7684;&#x8FDE;&#x63A5;&#x53EF;&#x80FD;&#x4F1A;&#x6216;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x53D7;&#x5230;&#x57FA;&#x4E8E; ipBlock &#x7684;&#x7B56;&#x7565;&#x7684;&#x7EA6;&#x675F;</p>
+<h2 id="4-&#x9ED8;&#x8BA4;&#x7B56;&#x7565;"><a name="4-&#x9ED8;&#x8BA4;&#x7B56;&#x7565;" class="anchor-navigation-ex-anchor" href="#4-&#x9ED8;&#x8BA4;&#x7B56;&#x7565;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x9ED8;&#x8BA4;&#x7B56;&#x7565;</h2>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x4EFB;&#x4F55;&#x7B56;&#x7565;&#xFF0C;&#x5219;&#x6240;&#x6709;&#x8FDB;&#x51FA;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; Pod &#x7684;&#x6D41;&#x91CF;&#x90FD;&#x88AB;&#x5141;&#x8BB8;&#x3002;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x4F7F;&#x60A8;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x3002;</p>
+<h3 id="41-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><a name="41-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;" class="anchor-navigation-ex-anchor" href="#41-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>4.1 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;</h3>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x9009;&#x62E9;&#x6240;&#x6709;&#x5BB9;&#x5668;&#x4F46;&#x4E0D;&#x5141;&#x8BB8;&#x4EFB;&#x4F55;&#x8FDB;&#x5165;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x7684;&#x5165;&#x53E3;&#x6D41;&#x91CF;&#x7684; NetworkPolicy &#x6765;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x521B;&#x5EFA; &quot;default&quot; &#x9694;&#x79BB;&#x7B56;&#x7565;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+spec:
+  podSelector: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  policyTypes:
+  - Ingress
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x5373;&#x4F7F;&#x5BB9;&#x5668;&#x6CA1;&#x6709;&#x9009;&#x62E9;&#x5176;&#x4ED6;&#x4EFB;&#x4F55; <code>NetworkPolicy</code>&#xFF0C;&#x4E5F;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x88AB;&#x9694;&#x79BB;&#x3002;&#x6B64;&#x7B56;&#x7565;&#x4E0D;&#x4F1A;&#x66F4;&#x6539;&#x9ED8;&#x8BA4;&#x7684;&#x51FA;&#x53E3;&#x9694;&#x79BB;&#x884C;&#x4E3A;&#x3002;</p>
+<h3 id="42-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><a name="42-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;" class="anchor-navigation-ex-anchor" href="#42-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 &#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5165;&#x53E3;&#x6D41;&#x91CF;</h3>
+<p>&#x5982;&#x679C;&#x8981;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x6D41;&#x91CF;&#x8FDB;&#x5165;&#x67D0;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709; Pod&#xFF08;&#x5373;&#x4F7F;&#x6DFB;&#x52A0;&#x4E86;&#x5BFC;&#x81F4;&#x67D0;&#x4E9B; Pod &#x88AB;&#x89C6;&#x4E3A;&#x201C;&#x9694;&#x79BB;&#x201D;&#x7684;&#x7B56;&#x7565;&#xFF09;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#x6765;&#x660E;&#x786E;&#x5141;&#x8BB8;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6D41;&#x91CF;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-ingress
+spec:
+  podSelector: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  ingress:
+  - <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  policyTypes:
+  - Ingress
+</code></pre>
+<h3 id="43-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><a name="43-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;" class="anchor-navigation-ex-anchor" href="#43-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>4.3 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</h3>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x9009;&#x62E9;&#x6240;&#x6709;&#x5BB9;&#x5668;&#x4F46;&#x4E0D;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x7684;&#x4EFB;&#x4F55;&#x51FA;&#x53E3;&#x6D41;&#x91CF;&#x7684; NetworkPolicy &#x6765;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x521B;&#x5EFA; &quot;default&quot; egress &#x9694;&#x79BB;&#x7B56;&#x7565;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-egress
+spec:
+  podSelector: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  policyTypes:
+  - Egress
+</code></pre>
+<h3 id="44-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><a name="44-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;" class="anchor-navigation-ex-anchor" href="#44-&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>4.4 &#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</h3>
+<p>&#x5982;&#x679C;&#x8981;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x6240;&#x6709; Pod &#x7684;&#x6240;&#x6709;&#x6D41;&#x91CF;&#xFF08;&#x5373;&#x4F7F;&#x6DFB;&#x52A0;&#x4E86;&#x5BFC;&#x81F4;&#x67D0;&#x4E9B; Pod &#x88AB;&#x89C6;&#x4E3A;&#x201C;&#x9694;&#x79BB;&#x201D;&#x7684;&#x7B56;&#x7565;&#xFF09;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#xFF0C;&#x8BE5;&#x7B56;&#x7565;&#x660E;&#x786E;&#x5141;&#x8BB8;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-egress
+spec:
+  podSelector: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  egress:
+  - <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  policyTypes:
+  - Egress
+</code></pre>
+<h3 id="45-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><a name="45-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;" class="anchor-navigation-ex-anchor" href="#45-&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>4.5 &#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x6240;&#x6709;&#x5165;&#x53E3;&#x548C;&#x6240;&#x6709;&#x51FA;&#x53E3;&#x6D41;&#x91CF;</h3>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x521B;&#x5EFA; &quot;default&quot; &#x7B56;&#x7565;&#xFF0C;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x521B;&#x5EFA;&#x4EE5;&#x4E0B; NetworkPolicy &#x6765;&#x963B;&#x6B62;&#x6240;&#x6709;&#x5165;&#x7AD9;&#x548C;&#x51FA;&#x7AD9;&#x6D41;&#x91CF;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  policyTypes:
+  - Ingress
+  - Egress
+</code></pre>
+<h2 id="5-&#x5B9E;&#x6218;&#x793A;&#x4F8B;"><a name="5-&#x5B9E;&#x6218;&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#5-&#x5B9E;&#x6218;&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x5B9E;&#x6218;&#x793A;&#x4F8B;</h2>
+<h3 id="51-&#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx-deployment-&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;"><a name="51-&#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx-deployment-&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;" class="anchor-navigation-ex-anchor" href="#51-&#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx-deployment-&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;"><i class="fa fa-link" aria-hidden="true"></i></a>5.1 &#x521B;&#x5EFA;&#x4E00;&#x4E2A;nginx Deployment &#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5C06;&#x5176;&#x66B4;&#x9732;</h3>
+<pre class="language-"><code class="lang-bash">$ kubectl create deployment nginx --image<span class="token operator">=</span>nginx
+$ kubectl expose deployment nginx --port<span class="token operator">=</span><span class="token number">80</span>   <span class="token comment">#&#x6B64; Deployment &#x4EE5;&#x540D;&#x4E3A; nginx &#x7684; Service &#x66B4;&#x9732;&#x51FA;&#x6765;</span>
+$ kubectl get svc,pod
+
+$ kubectl run busybox --rm -ti --image<span class="token operator">=</span>busybox /bin/sh  <span class="token comment"># &#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x7684;pod</span>
+$ <span class="token function">wget</span> --spider --timeout<span class="token operator">=</span><span class="token number">1</span> nginx
+Connecting to nginx <span class="token punctuation">(</span><span class="token number">10.100</span>.0.16:80<span class="token punctuation">)</span>
+remote <span class="token function">file</span> exists
+</code></pre>
+<h3 id="52-&#x9650;&#x5236;-nginx-&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;"><a name="52-&#x9650;&#x5236;-nginx-&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;" class="anchor-navigation-ex-anchor" href="#52-&#x9650;&#x5236;-nginx-&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2 &#x9650;&#x5236; nginx &#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;</h3>
+<p>&#x5982;&#x679C;&#x60F3;&#x9650;&#x5236;&#x5BF9; nginx &#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x53EA;&#x8BA9;&#x90A3;&#x4E9B;&#x62E5;&#x6709;&#x6807;&#x7B7E; <code>access: true</code> &#x7684; Pod &#x8BBF;&#x95EE;&#x5B83;&#xFF0C; &#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684; NetworkPolicy &#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: access-nginx
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          access: <span class="token string">&quot;true&quot;</span>
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A; NetworkPolicy &#x4E2D;&#x5305;&#x542B;&#x9009;&#x62E9;&#x7B56;&#x7565;&#x6240;&#x9002;&#x7528;&#x7684; Pods &#x96C6;&#x5408;&#x7684; <code>podSelector</code>&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x7684;&#x7B56;&#x7565;&#x9009;&#x62E9;&#x7684;&#x662F;&#x5E26;&#x6709;&#x6807;&#x7B7E; app=nginx &#x7684; Pods&#x3002; &#x6B64;&#x6807;&#x7B7E;&#x662F;&#x88AB;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x5230; nginx Deployment &#x4E2D;&#x7684; Pod &#x4E0A;&#x7684;&#x3002; &#x5982;&#x679C; podSelector &#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x610F;&#x5473;&#x7740;&#x9009;&#x62E9;&#x7684;&#x662F;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709; Pods&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl apply -f https://k8s.io/examples/service/networking/nginx-policy.yaml
+
+$ kubectl run busybox --rm -ti --image<span class="token operator">=</span>busybox -- /bin/sh  <span class="token comment">#&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x7684;pod</span>
+
+$ <span class="token function">wget</span> --spider --timeout<span class="token operator">=</span><span class="token number">1</span> nginx
+Connecting to nginx <span class="token punctuation">(</span><span class="token number">10.100</span>.0.16:80<span class="token punctuation">)</span>
+wget: download timed out
+
+&#x5B9A;&#x4E49;&#x8BBF;&#x95EE;&#x6807;&#x7B7E;&#x540E;&#x518D;&#x6B21;&#x6D4B;&#x8BD5;
+&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x62E5;&#x6709;&#x6B63;&#x786E;&#x6807;&#x7B7E;&#x7684; Pod&#xFF0C;&#x4F60;&#x5C06;&#x770B;&#x5230;&#x8BF7;&#x6C42;&#x662F;&#x88AB;&#x5141;&#x8BB8;&#x7684;&#xFF1A;
+
+$ kubectl run busybox --rm -ti --labels<span class="token operator">=</span><span class="token string">&quot;access=true&quot;</span> --image<span class="token operator">=</span>busybox -- /bin/sh
+&#x5728; Shell &#x4E2D;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#xFF1A;
+
+$ <span class="token function">wget</span> --spider --timeout<span class="token operator">=</span><span class="token number">1</span> nginx
+Connecting to nginx <span class="token punctuation">(</span><span class="token number">10.100</span>.0.16:80<span class="token punctuation">)</span>
+remote <span class="token function">file</span> exists
+</code></pre>
+<h2 id="6-networkpolicy&#x539F;&#x7406;"><a name="6-networkpolicy&#x539F;&#x7406;" class="anchor-navigation-ex-anchor" href="#6-networkpolicy&#x539F;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>6. networkpolicy&#x539F;&#x7406;</h2>
+<p>&#x5728;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;&#x51E1;&#x662F;&#x652F;&#x6301; NetworkPolicy &#x7684; CNI &#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#xFF0C;&#x90FD;&#x7EF4;&#x62A4;&#x7740;&#x4E00;&#x4E2A; NetworkPolicy Controller&#xFF0C;&#x901A;&#x8FC7;&#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x7684;&#x65B9;&#x5F0F;&#x5BF9; NetworkPolicy &#x5BF9;&#x8C61;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x505A;&#x51FA;&#x54CD;&#x5E94;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x5B8C;&#x6210; iptables &#x89C4;&#x5219;&#x7684;&#x914D;&#x7F6E;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x5728; Kubernetes &#x751F;&#x6001;&#x91CC;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86; NetworkPolicy &#x7684;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x5305;&#x62EC; <code>Calico</code>&#x3001;<code>Weave</code> &#x548C; <code>kube-router</code> &#x7B49;&#x591A;&#x4E2A;&#x9879;&#x76EE;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x5305;&#x62EC; <code>Flannel</code> &#x9879;&#x76EE;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5728;&#x4F7F;&#x7528; Flannel &#x7684;&#x540C;&#x65F6;&#x8FD8;&#x4F7F;&#x7528; NetworkPolicy &#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x5C31;&#x9700;&#x8981;&#x518D;&#x989D;&#x5916;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982; Calico &#x9879;&#x76EE;&#xFF0C;&#x6765;&#x8D1F;&#x8D23;&#x6267;&#x884C; NetworkPolicy&#x3002;</p>
+<p>&#x5B89;&#x88C5; Flannel + Calico &#x7684;&#x6D41;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F60;&#x76F4;&#x63A5;&#x53C2;&#x8003;<a href="https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel" target="_blank">&#x8FD9;&#x4E2A;&#x6587;&#x6863;</a>&#x4E00;&#x952E;&#x5B89;&#x88C5;&#x5373;&#x53EF;&#x3002;</p>
+<p><strong>&#x90A3;&#x4E48;&#xFF0C;&#x8FD9;&#x4E9B;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#xFF0C;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x6839;&#x636E; NetworkPolicy &#x5BF9; Pod &#x8FDB;&#x884C;&#x9694;&#x79BB;&#x7684;&#x5462;&#xFF1F;</strong></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x5C31;&#x4EE5;&#x4E09;&#x5C42;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x4E3A;&#x4F8B;&#xFF08;&#x6BD4;&#x5982; Calico &#x548C; kube-router&#xFF09;&#xFF0C;&#x6765;&#x4E3A;&#x4F60;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x539F;&#x7406;&#x3002;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8BB2;&#x89E3;&#xFF0C;&#x8FD9;&#x4E00;&#x6B21;&#x6211;&#x7F16;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684; NetworkPolicy &#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  ingress:
+   - from:
+     - namespaceSelector:
+         matchLabels:
+           project: myproject
+     - podSelector:
+         matchLabels:
+           role: frontend
+     ports:
+       - protocol: tcp
+         port: <span class="token number">6379</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x7684; ingress&#x201C;&#x767D;&#x540D;&#x5355;&#x201D;&#xFF0C;&#x662F;&#x4EFB;&#x4F55; Namespace &#x91CC;&#xFF0C;&#x643A;&#x5E26; project=myproject &#x6807;&#x7B7E;&#x7684; Namespace &#x91CC;&#x7684; Pod&#xFF1B;&#x4EE5;&#x53CA; default Namespace &#x91CC;&#xFF0C;&#x643A;&#x5E26;&#x4E86; role=frontend &#x6807;&#x7B7E;&#x7684; Pod&#x3002;&#x5141;&#x8BB8;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x7AEF;&#x53E3;&#x662F;&#xFF1A;6379&#x3002;</p>
+<p>&#x800C;&#x88AB;&#x9694;&#x79BB;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x662F;&#x6240;&#x6709;&#x643A;&#x5E26;&#x4E86; role=db &#x6807;&#x7B7E;&#x7684; Pod&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;Kubernetes &#x7684;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x5C31;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; NetworkPolicy &#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x751F;&#x6210; iptables &#x89C4;&#x5219;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4E00;&#x6BB5; Go &#x8BED;&#x8A00;&#x98CE;&#x683C;&#x7684;&#x4F2A;&#x4EE3;&#x7801;&#x6765;&#x4E3A;&#x4F60;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token keyword">for</span> dstIP :<span class="token operator">=</span> range &#x6240;&#x6709;&#x88AB;networkpolicy.spec.podSelector&#x9009;&#x4E2D;&#x7684;Pod&#x7684;IP&#x5730;&#x5740;
+  <span class="token keyword">for</span> srcIP :<span class="token operator">=</span> range &#x6240;&#x6709;&#x88AB;ingress.from.podSelector&#x9009;&#x4E2D;&#x7684;Pod&#x7684;IP&#x5730;&#x5740;
+    <span class="token keyword">for</span> port, protocol :<span class="token operator">=</span> range ingress.ports <span class="token punctuation">{</span>
+      iptables -A KUBE-NWPLCY-CHAIN -s <span class="token variable">$srcIP</span> -d <span class="token variable">$dstIP</span> -p <span class="token variable">$protocol</span> -m <span class="token variable">$protocol</span> --dport <span class="token variable">$port</span> -j ACCEPT 
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x6761;&#x6700;&#x57FA;&#x672C;&#x7684;&#x3001;&#x901A;&#x8FC7;&#x5339;&#x914D;&#x6761;&#x4EF6;&#x51B3;&#x5B9A;&#x4E0B;&#x4E00;&#x6B65;&#x52A8;&#x4F5C;&#x7684; iptables &#x89C4;&#x5219;&#x3002;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#x7684;&#x540D;&#x5B57;&#x662F; <code>KUBE-NWPLCY-CHAIN</code>&#xFF0C;&#x542B;&#x4E49;&#x662F;&#xFF1A;<strong>&#x5F53; IP &#x5305;&#x7684;&#x6E90;&#x5730;&#x5740;&#x662F; <code>srcIP</code>&#x3001;&#x76EE;&#x7684;&#x5730;&#x5740;&#x662F; <code>dstIP</code>&#x3001;&#x534F;&#x8BAE;&#x662F; <code>protocol</code>&#x3001;&#x76EE;&#x7684;&#x7AEF;&#x53E3;&#x662F; <code>port</code> &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x5141;&#x8BB8;&#x5B83;&#x901A;&#x8FC7;&#xFF08;ACCEPT&#xFF09;</strong>&#x3002;</p>
+<p>&#x800C;&#x6B63;&#x5982;&#x8FD9;&#x6BB5;&#x4F2A;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF0C;&#x5339;&#x914D;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#x6240;&#x9700;&#x7684;&#x8FD9;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x90FD;&#x662F;&#x4ECE; NetworkPolicy &#x5BF9;&#x8C61;&#x91CC;&#x8BFB;&#x53D6;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<p><strong>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;Kubernetes &#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x5BF9; Pod &#x8FDB;&#x884C;&#x9694;&#x79BB;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x9760;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x751F;&#x6210; NetworkPolicy &#x5BF9;&#x5E94;&#x7684; iptable &#x89C4;&#x5219;&#x6765;&#x5B9E;&#x73B0;&#x7684;</strong>&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x597D;&#x4E0A;&#x8FF0;&#x201C;&#x9694;&#x79BB;&#x201D;&#x89C4;&#x5219;&#x4E4B;&#x540E;&#xFF0C;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x8FD8;&#x9700;&#x8981;&#x60F3;&#x529E;&#x6CD5;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x5BF9;&#x88AB;&#x9694;&#x79BB; Pod &#x7684;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#xFF0C;&#x90FD;&#x8F6C;&#x53D1;&#x5230;&#x4E0A;&#x8FF0; <code>KUBE-NWPLCY-CHAIN</code> &#x89C4;&#x5219;&#x4E0A;&#x53BB;&#x8FDB;&#x884C;&#x5339;&#x914D;&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x5982;&#x679C;&#x5339;&#x914D;&#x4E0D;&#x901A;&#x8FC7;&#xFF0C;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x5E94;&#x8BE5;&#x88AB;&#x201C;&#x62D2;&#x7EDD;&#x201D;&#x3002;</p>
+<p><strong>&#x5728; CNI &#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x4E2D;&#xFF0C;&#x4E0A;&#x8FF0;&#x9700;&#x6C42;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4E24;&#x7EC4; iptables &#x89C4;&#x5219;&#x6765;&#x5B9E;&#x73B0;&#x3002;</strong></p>
+<p>&#x7B2C;&#x4E00;&#x7EC4;&#x89C4;&#x5219;&#xFF0C;&#x8D1F;&#x8D23;&#x201C;&#x62E6;&#x622A;&#x201D;&#x5BF9;&#x88AB;&#x9694;&#x79BB; Pod &#x7684;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#x3002;&#x751F;&#x6210;&#x8FD9;&#x4E00;&#x7EC4;&#x89C4;&#x5219;&#x7684;&#x4F2A;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token keyword">for</span> pod :<span class="token operator">=</span> range &#x8BE5;Node&#x4E0A;&#x7684;&#x6240;&#x6709;Pod <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> pod&#x662F;networkpolicy.spec.podSelector&#x9009;&#x4E2D;&#x7684; <span class="token punctuation">{</span>
+        iptables -A FORWARD -d <span class="token variable">$podIP</span> -m physdev --physdev-is-bridged -j KUBE-POD-SPECIFIC-FW-CHAIN
+        iptables -A FORWARD -d <span class="token variable">$podIP</span> -j KUBE-POD-SPECIFIC-FW-CHAIN
+        <span class="token punctuation">..</span>.
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x7684; iptables &#x89C4;&#x5219;&#x4F7F;&#x7528;&#x5230;&#x4E86;&#x5185;&#x7F6E;&#x94FE;&#xFF1A;<code>FORWARD</code>&#x3002;&#x5B83;&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#x5462;&#xFF1F;&#x8BF4;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x5C31;&#x5F97;&#x4E3A;&#x4F60;&#x7A0D;&#x5FAE;&#x666E;&#x53CA;&#x4E00;&#x4E0B; iptables &#x7684;&#x77E5;&#x8BC6;&#x4E86;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;iptables &#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C; Linux &#x5185;&#x6838; <code>Netfilter</code> &#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x201C;&#x754C;&#x9762;&#x201D;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;Netfilter &#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5C31;&#x662F; Linux &#x5185;&#x6838;&#x91CC;&#x6321;&#x5728;&#x201C;&#x7F51;&#x5361;&#x201D;&#x548C;&#x201C;&#x7528;&#x6237;&#x6001;&#x8FDB;&#x7A0B;&#x201D;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x9053;&#x201C;&#x9632;&#x706B;&#x5899;&#x201D;&#x3002;&#x5B83;&#x4EEC;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x793A;&#x610F;&#x56FE;&#x6765;&#x8868;&#x793A;&#xFF1A;</p>
+<p><img src="https://img-blog.csdnimg.cn/643a2fa74b4849b7b1bed659eb74b653.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;">
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x5E45;&#x793A;&#x610F;&#x56FE;&#x4E2D;&#xFF0C;IP &#x5305;&#x201C;&#x4E00;&#x8FDB;&#x4E00;&#x51FA;&#x201D;&#x7684;&#x4E24;&#x6761;&#x8DEF;&#x5F84;&#x4E0A;&#xFF0C;&#x6709;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#xFF0C;&#x5B83;&#x4EEC;&#x6B63;&#x662F; Netfilter &#x8BBE;&#x7F6E;&#x201C;&#x9632;&#x706B;&#x5899;&#x201D;&#x7684;&#x5730;&#x65B9;&#x3002;<strong>&#x5728; iptables &#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x88AB;&#x79F0;&#x4E3A;&#xFF1A;&#x94FE;&#xFF08;Chain&#xFF09;</strong>&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x5BF9;&#x5E94;&#x7684; iptables &#x89C4;&#x5219;&#xFF0C;&#x662F;&#x6309;&#x7167;&#x5B9A;&#x4E49;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x8FDB;&#x884C;&#x5339;&#x914D;&#x7684;&#x3002;&#x8FD9;&#x4E9B;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x7684;&#x5177;&#x4F53;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x793A;&#x610F;&#x56FE;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF1A;
+<img src="https://img-blog.csdnimg.cn/f932bd4af1024cd08acd2e0e0ee9c4d7.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;">
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A; IP &#x5305;&#x901A;&#x8FC7;&#x7F51;&#x5361;&#x8FDB;&#x5165;&#x4E3B;&#x673A;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x5C31;&#x8FDB;&#x5165;&#x4E86; <code>Netfilter</code> &#x5B9A;&#x4E49;&#x7684;&#x6D41;&#x5165;&#x8DEF;&#x5F84;&#xFF08;<code>Input Path</code>&#xFF09;&#x91CC;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;&#x4E2D;&#xFF0C;IP &#x5305;&#x8981;&#x7ECF;&#x8FC7;&#x8DEF;&#x7531;&#x8868;&#x8DEF;&#x7531;&#x6765;&#x51B3;&#x5B9A;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x53BB;&#x5411;&#x3002;&#x800C;&#x5728;&#x8FD9;&#x6B21;&#x8DEF;&#x7531;&#x4E4B;&#x524D;&#xFF0C;Netfilter &#x8BBE;&#x7F6E;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x53EB; <code>PREROUTING</code> &#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;&#x5728; <strong>Linux &#x5185;&#x6838;&#x7684;&#x5B9E;&#x73B0;&#x91CC;&#xFF0C;&#x6240;&#x8C13;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5185;&#x6838;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x6808;&#x4EE3;&#x7801;&#x91CC;&#x7684; Hook</strong>&#xFF08;&#x6BD4;&#x5982;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x8DEF;&#x7531;&#x5224;&#x65AD;&#x7684;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x5148;&#x8C03;&#x7528; PREROUTING &#x7684; Hook&#xFF09;&#x3002;
+&#x800C;&#x5728;&#x7ECF;&#x8FC7;&#x8DEF;&#x7531;&#x4E4B;&#x540E;&#xFF0C;IP &#x5305;&#x7684;&#x53BB;&#x5411;&#x5C31;&#x5206;&#x4E3A;&#x4E86;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x7EE7;&#x7EED;&#x5728;&#x672C;&#x673A;&#x5904;&#x7406;&#xFF1B;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;&#xFF0C;&#x88AB;&#x8F6C;&#x53D1;&#x5230;&#x5176;&#x4ED6;&#x76EE;&#x7684;&#x5730;&#x3002;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5148;&#x8BF4;&#x4E00;&#x4E0B; IP &#x5305;&#x7684;&#x7B2C;&#x4E00;&#x79CD;&#x53BB;&#x5411;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;IP &#x5305;&#x5C06;&#x7EE7;&#x7EED;&#x5411;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;&#x6808;&#x6D41;&#x52A8;&#x3002;&#x5728;&#x5B83;&#x8FDB;&#x5165;&#x4F20;&#x8F93;&#x5C42;&#x4E4B;&#x524D;&#xFF0C;Netfilter &#x4F1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x540D;&#x53EB; INPUT &#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;IP &#x5305;&#x6D41;&#x5165;&#x8DEF;&#x5F84;&#xFF08;Input Path&#xFF09;&#x7ED3;&#x675F;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8FD9;&#x4E2A; IP &#x5305;&#x901A;&#x8FC7;&#x4F20;&#x8F93;&#x5C42;&#x8FDB;&#x5165;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF0C;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#x5904;&#x7406;&#x3002;&#x800C;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#x4F1A;&#x901A;&#x8FC7;&#x672C;&#x673A;&#x53D1;&#x51FA;&#x8FD4;&#x56DE;&#x7684; IP &#x5305;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A; IP &#x5305;&#x5C31;&#x8FDB;&#x5165;&#x4E86;&#x6D41;&#x51FA;&#x8DEF;&#x5F84;&#xFF08;Output Path&#xFF09;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#xFF0C;IP &#x5305;&#x9996;&#x5148;&#x8FD8;&#x662F;&#x4F1A;&#x7ECF;&#x8FC7;&#x4E3B;&#x673A;&#x7684;&#x8DEF;&#x7531;&#x8868;&#x8FDB;&#x884C;&#x8DEF;&#x7531;&#x3002;&#x8DEF;&#x7531;&#x7ED3;&#x675F;&#x540E;&#xFF0C;Netfilter &#x5C31;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x540D;&#x53EB; OUTPUT &#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5728; OUTPUT &#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x540D;&#x53EB; POSTROUTING&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x89C9;&#x5F97;&#x5947;&#x602A;&#xFF0C;<strong>&#x4E3A;&#x4EC0;&#x4E48;&#x5728;&#x6D41;&#x51FA;&#x8DEF;&#x5F84;&#x7ED3;&#x675F;&#x540E;&#xFF0C;Netfilter &#x4F1A;&#x8FDE;&#x7740;&#x8BBE;&#x7F6E;&#x4E24;&#x4E2A;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x5462;&#xFF1F;</strong></p>
+<p>&#x8FD9;&#x5C31;&#x8981;&#x8BF4;&#x5230;&#x5728;&#x6D41;&#x5165;&#x8DEF;&#x5F84;&#x91CC;&#xFF0C;&#x8DEF;&#x7531;&#x5224;&#x65AD;&#x540E;&#x7684;&#x7B2C;&#x4E8C;&#x79CD;&#x53BB;&#x5411;&#x4E86;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A; IP &#x5305;&#x4E0D;&#x4F1A;&#x8FDB;&#x5165;&#x4F20;&#x8F93;&#x5C42;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x7EE7;&#x7EED;&#x5728;&#x7F51;&#x7EDC;&#x5C42;&#x6D41;&#x52A8;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x5165;&#x5230;&#x8F6C;&#x53D1;&#x8DEF;&#x5F84;&#xFF08;Forward Path&#xFF09;&#x3002;&#x5728;&#x8F6C;&#x53D1;&#x8DEF;&#x5F84;&#x4E2D;&#xFF0C;Netfilter &#x4F1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x540D;&#x53EB; FORWARD &#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;&#x800C;&#x5728; FORWARD&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;IP &#x5305;&#x5C31;&#x4F1A;&#x6765;&#x5230;&#x6D41;&#x51FA;&#x8DEF;&#x5F84;&#x3002;&#x800C;&#x8F6C;&#x53D1;&#x7684; IP &#x5305;&#x7531;&#x4E8E;&#x76EE;&#x7684;&#x5730;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#xFF0C;&#x5B83;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x7ECF;&#x8FC7;&#x8DEF;&#x7531;&#xFF0C;&#x4E5F;&#x81EA;&#x7136;&#x4E0D;&#x4F1A;&#x7ECF;&#x8FC7; OUTPUT&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x76F4;&#x63A5;&#x6765;&#x5230; POSTROUTING&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;<strong>&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;POSTROUTING &#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E0A;&#x8FF0;&#x4E24;&#x6761;&#x8DEF;&#x5F84;&#xFF0C;&#x6700;&#x7EC8;&#x6C47;&#x805A;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x201C;&#x6700;&#x7EC8;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x3002;</strong></p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x6709;&#x7F51;&#x6865;&#x53C2;&#x4E0E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0A;&#x8FF0; Netfilter &#x8BBE;&#x7F6E;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x94FE;&#x8DEF;&#x5C42;&#xFF08;&#x4E8C;&#x5C42;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x8DDF;&#x6211;&#x5728;&#x4E0A;&#x9762;&#x8BB2;&#x8FF0;&#x7684;&#x7F51;&#x7EDC;&#x5C42;&#xFF08;&#x4E09;&#x5C42;&#xFF09;&#x7684;&#x6D41;&#x7A0B;&#x6709;&#x4EA4;&#x4E92;&#x3002;&#x8FD9;&#x4E9B;&#x94FE;&#x8DEF;&#x5C42;&#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x5BF9;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#x754C;&#x9762;&#x53EB;&#x4F5C; <code>ebtables</code>&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x51C6;&#x786E;&#x5730;&#x8BF4;&#xFF0C;&#x6570;&#x636E;&#x5305;&#x5728; Linux Netfilter &#x5B50;&#x7CFB;&#x7EDF;&#x91CC;&#x5B8C;&#x6574;&#x7684;&#x6D41;&#x52A8;&#x8FC7;&#x7A0B;&#xFF0C;&#x5176;&#x5B9E;&#x5E94;&#x8BE5;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<p><img src="https://img-blog.csdnimg.cn/93823ac95e1c4fcf9d48da2c19523a06.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;">
+&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x524D;&#x9762;&#x4E3A;&#x4F60;&#x8BB2;&#x8FF0;&#x7684;&#xFF0C;&#x6B63;&#x662F;&#x4E0A;&#x56FE;&#x4E2D;&#x7EFF;&#x8272;&#x90E8;&#x5206;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7F51;&#x7EDC;&#x5C42;&#x7684; iptables &#x94FE;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x8FD8;&#x80FD;&#x770B;&#x5230;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x767D;&#x8272;&#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#x4E0A;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7EFF;&#x8272;&#x7684;&#x201C;&#x6807;&#x7B7E;&#x201D;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;raw&#x3001;nat&#x3001;filter &#x7B49;&#x7B49;&#x3002;&#x5728; iptables &#x91CC;&#xFF0C;&#x8FD9;&#x4E9B;&#x6807;&#x7B7E;&#x53EB;&#x4F5C;&#xFF1A;&#x8868;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x540C;&#x6837;&#x662F; OUTPUT &#x8FD9;&#x4E2A;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#xFF0C;filter Output &#x548C; nat Output &#x5728; iptables &#x91CC;&#x7684;&#x8BED;&#x6CD5;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x5B8C;&#x5168;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B9E;&#x73B0;&#x7684;&#x529F;&#x80FD;&#x4E5F;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;iptables &#x8868;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x5728;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;&#xFF08;&#x6BD4;&#x5982; Output&#xFF09;&#x4E0A;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x68C0;&#x67E5;&#x52A8;&#x4F5C;&#xFF08;&#x6BD4;&#x5982;&#xFF0C;&#x5148;&#x6267;&#x884C; nat&#xFF0C;&#x518D;&#x6267;&#x884C; filter&#xFF09;.</p>
+<p>&#x5728;&#x7406;&#x89E3;&#x4E86; iptables &#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x56DE;&#x5230; NetworkPolicy &#x4E0A;&#x6765;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x524D;&#x9762;&#x7531;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x7684;&#x3001;&#x8D1F;&#x8D23;&#x201C;&#x62E6;&#x622A;&#x201D;&#x8FDB;&#x5165; Pod &#x7684;&#x8BF7;&#x6C42;&#x7684;&#x4E09;&#x6761; iptables &#x89C4;&#x5219;&#xFF0C;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x8BFB;&#x61C2;&#x4E86;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">iptables -A FORWARD -d <span class="token variable">$podIP</span> -m physdev --physdev-is-bridged -j KUBE-POD-SPECIFIC-FW-CHAIN
+iptables -A FORWARD -d <span class="token variable">$podIP</span> -j KUBE-POD-SPECIFIC-FW-CHAIN
+<span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x5176;&#x4E2D;&#xFF0C;<strong>&#x7B2C;&#x4E00;&#x6761; FORWARD &#x94FE;&#x201C;&#x62E6;&#x622A;&#x201D;&#x7684;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;</strong>&#xFF1A;<strong>&#x5B83;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x540C;&#x4E00;&#x53F0;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x7ECF;&#x8FC7; CNI &#x7F51;&#x6865;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;&#x6D41;&#x5165;&#x6570;&#x636E;&#x5305;&#x3002;&#x5176;&#x4E2D;&#xFF0C;<code>--physdev-is-bridged</code> &#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A; <code>FORWARD &#x94FE;</code>&#x5339;&#x914D;&#x7684;&#x662F;&#xFF0C;&#x901A;&#x8FC7;&#x672C;&#x673A;&#x4E0A;&#x7684;&#x7F51;&#x6865;&#x8BBE;&#x5907;&#xFF0C;&#x53D1;&#x5F80;&#x76EE;&#x7684;&#x5730;&#x5740;&#x662F; podIP &#x7684; IP &#x5305;</strong>&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x50CF; Calico &#x8FD9;&#x6837;&#x7684;&#x975E;&#x7F51;&#x6865;&#x6A21;&#x5F0F;&#x7684; CNI &#x63D2;&#x4EF6;&#xFF0C;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#x4E86;&#x3002;<code>kube-router</code> &#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5316;&#x7248;&#x7684; Calico&#xFF0C;<strong>&#x5B83;&#x4E5F;&#x4F7F;&#x7528; BGP &#x6765;&#x7EF4;&#x62A4;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528; CNI bridge &#x63D2;&#x4EF6;&#x8D1F;&#x8D23;&#x8DDF; Kubernetes &#x8FDB;&#x884C;&#x4EA4;&#x4E92;</strong>&#x3002;</p>
+<p><strong>&#x800C;&#x7B2C;&#x4E8C;&#x6761; FORWARD &#x94FE;&#x201C;&#x62E6;&#x622A;&#x201D;&#x7684;&#x5219;&#x662F;&#x6700;&#x666E;&#x904D;&#x7684;&#x60C5;&#x51B5;</strong>&#xFF0C;&#x5373;&#xFF1A;<strong>&#x5BB9;&#x5668;&#x8DE8;&#x4E3B;&#x901A;&#x4FE1;</strong>&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x6D41;&#x5165;&#x5BB9;&#x5668;&#x7684;&#x6570;&#x636E;&#x5305;&#x90FD;&#x662F;&#x7ECF;&#x8FC7;&#x8DEF;&#x7531;&#x8F6C;&#x53D1;&#xFF08;FORWARD &#x68C0;&#x67E5;&#x70B9;&#xFF09;&#x6765;&#x7684;&#x3002;</p>
+<p>&#x4E0D;&#x96BE;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#x6700;&#x540E;&#x90FD;&#x8DF3;&#x8F6C;&#xFF08;&#x5373;&#xFF1A;-j&#xFF09;&#x5230;&#x4E86;&#x540D;&#x53EB; <code>KUBE-POD-SPECIFIC-FW-CHAIN</code> &#x7684;&#x89C4;&#x5219;&#x4E0A;&#x3002;&#x5B83;&#x6B63;&#x662F;&#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x4E3A; NetworkPolicy &#x8BBE;&#x7F6E;&#x7684;&#x7B2C;&#x4E8C;&#x7EC4;&#x89C4;&#x5219;&#x3002;</p>
+<p>&#x800C;&#x8FD9;&#x4E2A; <code>KUBE-POD-SPECIFIC-FW-CHAIN</code> &#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x505A;&#x51FA;&#x201C;&#x5141;&#x8BB8;&#x201D;&#x6216;&#x8005;&#x201C;&#x62D2;&#x7EDD;&#x201D;&#x7684;&#x5224;&#x65AD;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x63CF;&#x8FF0;&#x4E3A;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684; iptables &#x89C4;&#x5219;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">iptables -A KUBE-POD-SPECIFIC-FW-CHAIN -j KUBE-NWPLCY-CHAIN
+iptables -A KUBE-POD-SPECIFIC-FW-CHAIN -j REJECT --reject-with icmp-port-unreachable
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x9996;&#x5148;&#x5728;&#x7B2C;&#x4E00;&#x6761;&#x89C4;&#x5219;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x628A; IP &#x5305;&#x8F6C;&#x4EA4;&#x7ED9;&#x524D;&#x9762;&#x5B9A;&#x4E49;&#x7684; KUBE-NWPLCY-CHAIN &#x89C4;&#x5219;&#x53BB;&#x8FDB;&#x884C;&#x5339;&#x914D;&#x3002;&#x6309;&#x7167;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x7684;&#x8BB2;&#x8FF0;&#xFF0C;&#x5982;&#x679C;&#x5339;&#x914D;&#x6210;&#x529F;&#xFF0C;&#x90A3;&#x4E48; IP &#x5305;&#x5C31;&#x4F1A;&#x88AB;&#x201C;&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x201D;&#x3002;&#x800C;&#x5982;&#x679C;&#x5339;&#x914D;&#x5931;&#x8D25;&#xFF0C;IP &#x5305;&#x5C31;&#x4F1A;&#x6765;&#x5230;&#x7B2C;&#x4E8C;&#x6761;&#x89C4;&#x5219;&#x4E0A;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x6761; REJECT &#x89C4;&#x5219;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#xFF0C;<strong>&#x4E0D;&#x6EE1;&#x8DB3; NetworkPolicy &#x5B9A;&#x4E49;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x6389;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x4E86;&#x5BF9;&#x8BE5;&#x5BB9;&#x5668;&#x7684;&#x201C;&#x9694;&#x79BB;&#x201D;&#x3002;</strong></p>
+<p>&#x4EE5;&#x4E0A;&#xFF0C;&#x5C31;&#x662F; CNI &#x7F51;&#x7EDC;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0; NetworkPolicy &#x7684;&#x57FA;&#x672C;&#x65B9;&#x6CD5;&#x4E86;&#x3002;</p>
+<h2 id="7-&#x603B;&#x7ED3;"><a name="7-&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#7-&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>7. &#x603B;&#x7ED3;</h2>
+<ul>
+<li>Kubernetes &#x5BF9; Pod &#x8FDB;&#x884C;&#x201C;&#x9694;&#x79BB;&#x201D;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x5373;&#xFF1A;NetworkPolicy&#x3002;</li>
+</ul>
+<p>&#x800C;&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x8BB2;&#x8FF0;&#xFF0C;&#x4F60;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x4E8B;&#x5B9E;&#xFF1A;</p>
+<p>Kubernetes &#x7684;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x4EE5;&#x53CA;&#x5927;&#x591A;&#x6570;&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x5B9E;&#x73B0;&#xFF0C;&#x5176;&#x5B9E;&#x65E2;&#x4E0D;&#x4F1A;&#x4FDD;&#x8BC1;&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x4E8C;&#x5C42;&#x7F51;&#x7EDC;&#x7684;&#x4E92;&#x901A;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5B9E;&#x73B0;&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x4E8C;&#x5C42;&#x7F51;&#x7EDC;&#x9694;&#x79BB;&#x3002;&#x8FD9;&#x8DDF; IaaS &#x9879;&#x76EE;&#x7BA1;&#x7406;&#x865A;&#x62DF;&#x673A;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x662F;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;Kubernetes &#x4ECE;&#x5E95;&#x5C42;&#x7684;&#x8BBE;&#x8BA1;&#x548C;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x4E00;&#x5957;&#x5B8C;&#x6574;&#x7684;&#x7269;&#x7406;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x3002;&#x7136;&#x540E;&#xFF0C;Kubernetes &#x8D1F;&#x8D23;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x201C;<code>&#x5F31;&#x591A;&#x79DF;&#x6237;</code>&#x201D;&#xFF08;soft multi-tenancy&#xFF09;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x5E76;&#x4E14;&#xFF0C;&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x601D;&#x8DEF;&#xFF0C;Kubernetes &#x5C06;&#x6765;&#x4E5F;&#x4E0D;&#x5927;&#x53EF;&#x80FD;&#x628A; Namespace &#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x5B9E;&#x8D28;&#x610F;&#x4E49;&#x7684;&#x9694;&#x79BB;&#x673A;&#x5236;&#xFF0C;&#x6216;&#x8005;&#x628A;&#x5B83;&#x6620;&#x5C04;&#x6210;&#x4E3A;&#x201C;&#x5B50;&#x7F51;&#x201D;&#x6216;&#x8005;&#x201C;&#x79DF;&#x6237;&#x201D;&#x3002;&#x6BD5;&#x7ADF;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;NetworkPolicy &#x5BF9;&#x8C61;&#x7684;&#x63CF;&#x8FF0;&#x80FD;&#x529B;&#xFF0C;&#x8981;&#x6BD4;&#x57FA;&#x4E8E; Namespace &#x7684;&#x5212;&#x5206;&#x4E30;&#x5BCC;&#x5F97;&#x591A;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF0C;&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;Kubernetes &#x9879;&#x76EE;&#x5728;&#x4E91;&#x8BA1;&#x7B97;&#x751F;&#x6001;&#x91CC;&#x7684;&#x5B9A;&#x4F4D;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x4E0E; PaaS &#x4E4B;&#x95F4;&#x7684;&#x4E2D;&#x95F4;&#x5C42;&#x3002;&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x7B26;&#x5408;&#x201C;&#x5BB9;&#x5668;&#x201D;&#x8FD9;&#x4E2A;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x62BD;&#x8C61;&#x7C92;&#x5EA6;&#x7684;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x968F;&#x7740; Kubernetes &#x793E;&#x533A;&#x4EE5;&#x53CA; CNCF &#x751F;&#x6001;&#x7684;&#x4E0D;&#x65AD;&#x53D1;&#x5C55;&#xFF0C;Kubernetes &#x9879;&#x76EE;&#x4E5F;&#x5DF2;&#x7ECF;&#x5F00;&#x59CB;&#x9010;&#x6B65;&#x4E0B;&#x63A2;&#xFF0C;&#x201C;&#x5403;&#x201D;&#x6389;&#x4E86;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x9886;&#x57DF;&#x7684;&#x5F88;&#x591A;&#x201C;&#x86CB;&#x7CD5;&#x201D;&#x3002;&#x8FD9;&#x4E5F;&#x6B63;&#x662F;&#x5BB9;&#x5668;&#x751F;&#x6001;&#x7EE7;&#x7EED;&#x53D1;&#x5C55;&#x7684;&#x4E00;&#x4E2A;&#x5FC5;&#x7136;&#x65B9;&#x5411;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/zh/docs/concepts/services-networking/network-policies/" target="_blank">Kubernetes  NetworkPolicy</a></li>
+<li><a href="https://projectcalico.docs.tigera.io/security/kubernetes-network-policy" target="_blank">Get started with Kubernetes network policy</a></li>
+<li><a href="https://feisky.gitbooks.io/kubernetes/content/concepts/network-policy.html" target="_blank">Network Policy</a></li>
+<li><a href="https://networkpolicy.io/" target="_blank">Deep Dive into Network Policy</a></li>
+<li><a href="https://loft.sh/blog/kubernetes-network-policies-a-practitioners-guide" target="_blank">Kubernetes Network Policies: A Practitioner&apos;s Guide</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-15 11:17:00
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Kubernetes-Service.html" class="navigation navigation-prev " aria-label="Previous page: Service">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="RBAC/" class="navigation navigation-next " aria-label="Next page: RBAC">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"NetworkPolicy","level":"1.10.13","depth":2,"next":{"title":"RBAC","level":"1.10.14","depth":2,"path":"对象/RBAC/README.md","ref":"对象/RBAC/README.md","articles":[{"title":"原理","level":"1.10.14.1","depth":3,"path":"对象/RBAC/kubernetes-RBAC-principle.md","ref":"对象/RBAC/kubernetes-RBAC-principle.md","articles":[]}]},"previous":{"title":"Service","level":"1.10.12","depth":2,"path":"对象/Kubernetes-Service.md","ref":"对象/Kubernetes-Service.md","articles":[]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"对象/Kubernetes-NetworkPolicy.md","mtime":"2022-08-15T11:17:00.735Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

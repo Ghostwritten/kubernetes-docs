@@ -1,0 +1,1964 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>规则 · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Apparmor/" />
+    
+    
+    <link rel="prev" href="kubernetes-Security-falco-default-macros.html" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../Overview.html">
+            
+                <a href="../../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../工具/">
+            
+                <a href="../../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../概念/">
+            
+                <a href="../../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../升级/">
+            
+                <a href="../../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../日志/">
+            
+                <a href="../../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../网络/">
+            
+                <a href="../../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../资源/">
+            
+                <a href="../../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../资源/kubernetes-yum.html">
+            
+                <a href="../../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../部署/">
+            
+                <a href="../../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../对象/">
+            
+                <a href="../../对象/">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../对象/Deployment/">
+            
+                <a href="../../对象/Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="../../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../对象/Kubernetes-DaemonSet.html">
+            
+                <a href="../../对象/Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../对象/kubernetes-PersistentVolume.html">
+            
+                <a href="../../对象/kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../对象/Kubernetes-StatefulSet.html">
+            
+                <a href="../../对象/Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../对象/Kubernetes-Job.html">
+            
+                <a href="../../对象/Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../对象/Runtimeclass/">
+            
+                <a href="../../对象/Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="../../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="../../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../对象/Kubernetes-ConfigMaps.html">
+            
+                <a href="../../对象/Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../../对象/Pod/">
+            
+                <a href="../../对象/Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../../对象/kubernetes-Secrets.html">
+            
+                <a href="../../对象/kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../../对象/Kubernetes-Ingress.html">
+            
+                <a href="../../对象/Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../../对象/Kubernetes-Service.html">
+            
+                <a href="../../对象/Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../../对象/Kubernetes-NetworkPolicy.html">
+            
+                <a href="../../对象/Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../../对象/RBAC/">
+            
+                <a href="../../对象/RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="../../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="../../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../../对象/Auditing/">
+            
+                <a href="../../对象/Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../存储/">
+            
+                <a href="../../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../策略/">
+            
+                <a href="../../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../策略/OPA/">
+            
+                <a href="../../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../组件/">
+            
+                <a href="../../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../组件/Kubeadm/">
+            
+                <a href="../../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../../组件/Kubectl/">
+            
+                <a href="../../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../../组件/Kubelet/">
+            
+                <a href="../../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="kubernetes-Security-falco-default-macros.html">
+            
+                <a href="kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.14.1.2" data-path="kubernetes-Security-falco-rules.html">
+            
+                <a href="kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../Apparmor/">
+            
+                <a href="../Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../Trivy/">
+            
+                <a href="../Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../tags.html">
+            
+                <a href="../../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >规则</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#falco-&#x89C4;&#x5219;"><b></b>falco &#x89C4;&#x5219;</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x7B80;&#x4ECB;"><b></b>1. &#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#2-&#x7248;&#x672C;&#x63A7;&#x5236;"><b></b>2. &#x7248;&#x672C;&#x63A7;&#x5236;</a></li><ul><li><span class="title-icon "></span><a href="#21-falco-&#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;"><b></b>2.1 Falco &#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;</a></li><li><span class="title-icon "></span><a href="#22-falco-rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;"><b></b>2.2 Falco rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;</a></li></ul><li><span class="title-icon "></span><a href="#3-&#x5173;&#x952E;&#x8BCD;"><b></b>3. &#x5173;&#x952E;&#x8BCD;</a></li><li><span class="title-icon "></span><a href="#4-&#x8BED;&#x6CD5;"><b></b>4. &#x8BED;&#x6CD5;</a></li><ul><li><span class="title-icon "></span><a href="#41-condition"><b></b>4.1 condition</a></li><li><span class="title-icon "></span><a href="#42-rule-operators"><b></b>4.2 rule operators</a></li><li><span class="title-icon "></span><a href="#43-rule-macro"><b></b>4.3 rule macro</a></li><li><span class="title-icon "></span><a href="#44-rule-list"><b></b>4.4 rule list</a></li><li><span class="title-icon "></span><a href="#45-rule-output"><b></b>4.5 rule output</a></li><li><span class="title-icon "></span><a href="#46-rule-priorities"><b></b>4.6 rule priorities</a></li><li><span class="title-icon "></span><a href="#47-rule-tags"><b></b>4.7 rule tags</a></li><li><span class="title-icon "></span><a href="#48-fdsipname"><b></b>4.8 fd.sip.name</a></li><li><span class="title-icon "></span><a href="#49-rule-exceptions"><b></b>4.9 rule exceptions</a></li></ul><li><span class="title-icon "></span><a href="#5-&#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;"><b></b>5. &#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;</a></li><li><span class="title-icon "></span><a href="#6-rule-&#x6587;&#x4EF6;"><b></b>6. rule &#x6587;&#x4EF6;</a></li><ul><li><span class="title-icon "></span><a href="#61-&#x9ED8;&#x8BA4;-rule-&#x6587;&#x4EF6;"><b></b>6.1 &#x9ED8;&#x8BA4; rule &#x6587;&#x4EF6;</a></li><li><span class="title-icon "></span><a href="#62-&#x672C;&#x5730;-rule-&#x6587;&#x4EF6;"><b></b>6.2 &#x672C;&#x5730; rule &#x6587;&#x4EF6;</a></li></ul><li><span class="title-icon "></span><a href="#7-rule-&#x7981;&#x7528;&#x9ED8;&#x8BA4;"><b></b>7. rule &#x7981;&#x7528;&#x9ED8;&#x8BA4;</a></li><ul><li><span class="title-icon "></span><a href="#71-&#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;"><b></b>7.1 &#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;</a></li><li><span class="title-icon "></span><a href="#72-&#x901A;&#x8FC7;-falco-&#x53C2;&#x6570;"><b></b>7.2 &#x901A;&#x8FC7; Falco &#x53C2;&#x6570;</a></li><li><span class="title-icon "></span><a href="#73-&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;"><b></b>7.3 &#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;</a></li></ul><li><span class="title-icon "></span><a href="#8-rule-&#x9677;&#x9631;"><b></b>8. rule &#x9677;&#x9631;</a></li></ul></ul></div><a href="#falco-&#x89C4;&#x5219;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="falco-&#x89C4;&#x5219;"><a name="falco-&#x89C4;&#x5219;" class="anchor-navigation-ex-anchor" href="#falco-&#x89C4;&#x5219;"><i class="fa fa-link" aria-hidden="true"></i></a>falco &#x89C4;&#x5219;</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../../tags.html#falco">falco</a> <a href="../../tags.html#&#x5B89;&#x5168;">&#x5B89;&#x5168;</a></p></div><!-- tagsstop --><!-- catalog:~规则~:-->
+<p><div style="position: relative;padding-bottom: 56.25%;padding-top: 25px;height: 0;"><iframe frameborder="0" allowfullscreen style="border: none;position: absolute;top: 0;left: 0;width: 100%;height: 100%;" src="//www.youtube.com/embed/M3f6-ioY9rs"></iframe></div></p>
+<p>&#x4E0A;&#x7BC7;&#x6587;&#x7AE0;&#x6211;&#x4EEC;&#x5BF9;<a href="https://ghostwritten.blog.csdn.net/article/details/126095764" target="_blank">falco &#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x5165;&#x95E8;</a>&#xFF0C;&#x5176;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x3001;&#x67B6;&#x6784;&#x3001;&#x7279;&#x70B9;&#x3001;&#x5B89;&#x88C5;&#x3001;&#x90E8;&#x7F72;&#x3001;&#x8FD0;&#x884C;&#x7B49;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x4E86;&#x89E3; falco &#x7684; rules&#x3002;</p>
+<h2 id="1-&#x7B80;&#x4ECB;"><a name="1-&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#1-&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7B80;&#x4ECB;</h2>
+<p>Falcorule&#x6587;&#x4EF6;&#x662F;&#x5305;&#x542B;&#x4E09;&#x79CD;&#x5143;&#x7D20;&#x7684;YAML&#x6587;&#x4EF6;&#xFF1A;
+| &#x5143;&#x7D20; | &#x63CF;&#x8FF0;                                             |
+|----|------------------------------------------------|
+| Rules| &#x5E94;&#x751F;&#x6210;&#x8B66;&#x62A5;&#x7684;&#x6761;&#x4EF6;&#x3002;rule&#x4F34;&#x968F;&#x7740;&#x4E0E;&#x8B66;&#x62A5;&#x4E00;&#x8D77;&#x53D1;&#x9001;&#x7684;&#x63CF;&#x8FF0;&#x6027;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x3002;                |
+| Macros  | &#x53EF;&#x4EE5;&#x5728;rule&#x751A;&#x81F3;&#x5176;&#x4ED6;&#x5B8F;&#x4E2D;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x7684;rule&#x6761;&#x4EF6;&#x7247;&#x6BB5;&#x3002;&#x5B8F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x547D;&#x540D;&#x5E38;&#x89C1;&#x6A21;&#x5F0F;&#x548C;&#x6392;&#x9664;rule&#x5197;&#x4F59;&#x7684;&#x65B9;&#x6CD5;&#x3002; |
+| Lists | &#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5728;rule&#x3001;&#x5B8F;&#x6216;&#x5176;&#x4ED6;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x9879;&#x76EE;&#x96C6;&#x5408;&#x3002;&#x4E0E;rule&#x548C;&#x5B8F;&#x4E0D;&#x540C;&#xFF0C;&#x5217;&#x8868;&#x4E0D;&#x80FD;&#x88AB;&#x89E3;&#x6790;&#x4E3A;&#x8FC7;&#x6EE4;&#x8868;&#x8FBE;&#x5F0F;     |</p>
+<p>&#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x4E0E;&#x7248;&#x672C;&#x63A7;&#x5236;&#x76F8;&#x5173;&#x7684;&#x53EF;&#x9009;&#x5143;&#x7D20;&#xFF1A;
+| &#x5143;&#x7D20;                       | &#x63CF;&#x8FF0;                         |
+|--------------------------|----------------------------|
+| required_engine_version  | &#x7528;&#x4E8E;&#x8DDF;&#x8E2A;rule&#x5185;&#x5BB9;&#x548C; falco&#x5F15;&#x64CE;&#x7248;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x3002; |
+| required_plugin_versions | &#x7528;&#x4E8E;&#x8DDF;&#x8E2A;rule&#x5185;&#x5BB9;&#x548C;&#x63D2;&#x4EF6;&#x7248;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x3002;       |</p>
+<h2 id="2-&#x7248;&#x672C;&#x63A7;&#x5236;"><a name="2-&#x7248;&#x672C;&#x63A7;&#x5236;" class="anchor-navigation-ex-anchor" href="#2-&#x7248;&#x672C;&#x63A7;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x7248;&#x672C;&#x63A7;&#x5236;</h2>
+<p>&#x6709;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x66F4;&#x6539;&#x4E0D;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x65E7;&#x7248;&#x672C; Falco &#x7684;rule&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x3002;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;libsinsp &#x548C; libscap &#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x65B0;&#x7684; filtercheck &#x5B57;&#x6BB5;&#x3001;&#x64CD;&#x4F5C;&#x7B26;&#x7B49;&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x8868;&#x793A;&#x4E00;&#x7EC4;&#x7ED9;&#x5B9A;&#x7684;rule&#x4F9D;&#x8D56;&#x4E8E;&#x8FD9;&#x4E9B;&#x5E93;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;/&#x64CD;&#x4F5C;&#x7B26;&#x3002;&#x4ECE; Falco &#x7248;&#x672C;<code>0.14.0</code> &#x5F00;&#x59CB;&#xFF0C;Falco rule&#x652F;&#x6301; Falco &#x5F15;&#x64CE;&#x548C; Falco rule&#x6587;&#x4EF6;&#x7684;&#x663E;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x3002;</p>
+<h3 id="21-falco-&#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;"><a name="21-falco-&#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;" class="anchor-navigation-ex-anchor" href="#21-falco-&#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 Falco &#x5F15;&#x64CE;&#x7248;&#x672C;&#x63A7;&#x5236;</h3>
+<p>falco&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x548C;falco_engineC++ &#x5BF9;&#x8C61;&#x73B0;&#x5728;&#x652F;&#x6301;&#x8FD4;&#x56DE;&#x7248;&#x672C;&#x53F7;&#x3002;&#x521D;&#x59CB;&#x7248;&#x672C;&#x662F; 2&#xFF08;&#x6697;&#x793A;&#x4E4B;&#x524D;&#x7684;&#x7248;&#x672C;&#x662F; 1&#xFF09;&#x3002;&#x6BCF;&#x5F53;&#x6211;&#x4EEC;&#x5BF9;rule&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x66F4;&#x6539;&#x6216;&#x5411; Falco &#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8FC7;&#x6EE4;&#x68C0;&#x67E5;&#x5B57;&#x6BB5;/&#x8FD0;&#x7B97;&#x7B26;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x4F1A;&#x589E;&#x52A0;&#x6B64;&#x7248;&#x672C;&#x3002;</p>
+<h3 id="22-falco-rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;"><a name="22-falco-rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;" class="anchor-navigation-ex-anchor" href="#22-falco-rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 Falco rule&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;</h3>
+<p>Falco &#x5305;&#x542B;&#x7684; Falco rule&#x6587;&#x4EF6;&#x5305;&#x62EC;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9876;&#x7EA7;&#x5BF9;&#x8C61; &#xFF0C;required_engine_version: N&#x5B83;&#x6307;&#x5B9A;&#x8BFB;&#x53D6;&#x6B64;rule&#x6587;&#x4EF6;&#x6240;&#x9700;&#x7684;&#x6700;&#x4F4E;&#x5F15;&#x64CE;&#x7248;&#x672C;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5305;&#x62EC;&#x5728;&#x5185;&#xFF0C;&#x5219;&#x5728;&#x8BFB;&#x53D6;rule&#x6587;&#x4EF6;&#x65F6;&#x4E0D;&#x6267;&#x884C;&#x7248;&#x672C;&#x68C0;&#x67E5;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># This rules file requires a falco with falco engine version 7.</span>
+- required_engine_version: <span class="token number">7</span>
+</code></pre>
+<p>&#x5982;&#x679C;rule&#x6587;&#x4EF6;&#x7684;engine_version&#x7248;&#x672C;&#x9AD8;&#x4E8E; Falco &#x5F15;&#x64CE;&#x7248;&#x672C;&#xFF0C;&#x5219;&#x4F1A;&#x52A0;&#x8F7D;rule&#x6587;&#x4EF6;&#x5E76;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</p>
+<h2 id="3-&#x5173;&#x952E;&#x8BCD;"><a name="3-&#x5173;&#x952E;&#x8BCD;" class="anchor-navigation-ex-anchor" href="#3-&#x5173;&#x952E;&#x8BCD;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x5173;&#x952E;&#x8BCD;</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Required</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rule</td>
+<td>yes</td>
+<td>rule&#x7684;&#x7B80;&#x77ED;&#x3001;&#x552F;&#x4E00;&#x540D;&#x79F0;&#x3002;</td>
+<td></td>
+</tr>
+<tr>
+<td>condition</td>
+<td>yes</td>
+<td>&#x5E94;&#x7528;&#x4E8E;&#x4E8B;&#x4EF6;&#x4EE5;&#x68C0;&#x67E5;&#x5B83;&#x4EEC;&#x662F;&#x5426;&#x4E0E;rule&#x5339;&#x914D;&#x7684;&#x8FC7;&#x6EE4;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</td>
+<td></td>
+</tr>
+<tr>
+<td>desc</td>
+<td>yes</td>
+<td>&#x5BF9;rule&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x5185;&#x5BB9;&#x7684;&#x66F4;&#x957F;&#x63CF;&#x8FF0;&#x3002;</td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>yes</td>
+<td>&#x6307;&#x5B9A;&#x53D1;&#x751F;&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x65F6;&#x5E94;&#x8F93;&#x51FA;&#x7684;&#x6D88;&#x606F;</td>
+<td></td>
+</tr>
+<tr>
+<td>priority</td>
+<td>yes</td>
+<td>&#x4E8B;&#x4EF6;&#x4E25;&#x91CD;&#x6027;&#x7684;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x8868;&#x793A;&#x3002;&#x5E94;&#x8BE5;&#x662F;&#x4EE5;&#x4E0B;&#x4E4B;&#x4E00;&#xFF1A;emergency, alert, critical, error, warning, notice, informational, debug..</td>
+<td></td>
+</tr>
+<tr>
+<td>exceptions</td>
+<td>no</td>
+<td>&#x4E00;&#x7EC4;&#x5BFC;&#x81F4;rule&#x4E0D;&#x751F;&#x6210;&#x8B66;&#x62A5;&#x7684;&#x5F02;&#x5E38;&#x3002;</td>
+<td></td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>no</td>
+<td>&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;false&#xFF0C;&#x5219;&#x65E2;&#x4E0D;&#x52A0;&#x8F7D;rule&#xFF0C;&#x4E5F;&#x4E0D;&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x4E8B;&#x4EF6;&#x3002;.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>no</td>
+<td>&#x5E94;&#x7528;&#x4E8E;rule&#x7684;&#x6807;&#x7B7E;&#x5217;&#x8868;</td>
+<td></td>
+</tr>
+<tr>
+<td>warn_evttypes</td>
+<td>no</td>
+<td>&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;false&#xFF0C;Falco &#x4F1A;&#x6291;&#x5236;&#x4E0E;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;&#x7684;rule&#x76F8;&#x5173;&#x7684;&#x8B66;&#x544A;</td>
+<td>true</td>
+</tr>
+<tr>
+<td>skip-if-unknown-filter</td>
+<td>no</td>
+<td>&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x5982;&#x679C;rule&#x6761;&#x4EF6;&#x5305;&#x542B;&#x8FC7;&#x6EE4;&#x68C0;&#x67E5;&#xFF0C;&#x4F8B;&#x5982;fd.some_new_field&#xFF0C;&#x6B64;&#x7248;&#x672C;&#x7684; Falco &#x4E0D;&#x77E5;&#x9053;&#xFF0C;Falco &#x4F1A;&#x9759;&#x9ED8;&#x63A5;&#x53D7;&#x8BE5;rule&#x4F46;&#x4E0D;&#x6267;&#x884C;&#x5B83;&#xFF1B;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;false&#xFF0C;Falco &#x62A5;&#x544A;&#x9519;&#x8BEF;&#x5E76;&#x5728;&#x53D1;&#x73B0;&#x672A;&#x77E5;&#x8FC7;&#x6EE4;&#x68C0;&#x67E5;&#x65F6;&#x5B58;&#x5728;&#x3002;</td>
+<td>false</td>
+</tr>
+<tr>
+<td>source</td>
+<td>no</td>
+<td>&#x8BC4;&#x4F30;&#x6B64;rule&#x7684;&#x4E8B;&#x4EF6;&#x6E90;&#x3002;&#x5178;&#x578B;&#x503C;&#x4E3A;syscall,k8s_audit&#x6216;&#x6E90;&#x63D2;&#x4EF6;&#x516C;&#x5E03;&#x7684;&#x6E90;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-&#x8BED;&#x6CD5;"><a name="4-&#x8BED;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#4-&#x8BED;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x8BED;&#x6CD5;</h2>
+<h3 id="41-condition"><a name="41-condition" class="anchor-navigation-ex-anchor" href="#41-condition"><i class="fa fa-link" aria-hidden="true"></i></a>4.1 condition</h3>
+<p>rule&#x7684;&#x5173;&#x952E;&#x90E8;&#x5206;&#x662F;&#x6761;&#x4EF6;&#x5B57;&#x6BB5;&#x3002;&#x6761;&#x4EF6;&#x662F;&#x4F7F;&#x7528;<a href="https://falco.org/docs/rules/conditions/" target="_blank">&#x6761;&#x4EF6;&#x8BED;&#x6CD5;</a>&#x8868;&#x793A;&#x7684;&#x5E03;&#x5C14;&#x8C13;&#x8BCD;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x5404;&#x81EA;<a href="https://falco.org/docs/rules/supported-fields/" target="_blank">&#x652F;&#x6301;&#x7684;&#x5B57;&#x6BB5;</a>&#x6765;&#x8868;&#x8FBE;&#x6240;&#x6709;<a href="https://falco.org/docs/rules/supported-events/" target="_blank">&#x652F;&#x6301;&#x4E8B;&#x4EF6;</a>&#x7684;&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5728;&#x5BB9;&#x5668;&#x5185;&#x8FD0;&#x884C; bash shell &#x65F6;&#x53D1;&#x51FA;&#x8B66;&#x62A5;&#x7684;&#x6761;&#x4EF6;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">container.id <span class="token operator">!=</span> <span class="token function">host</span> and proc.name <span class="token operator">=</span> <span class="token function">bash</span>
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x53E5;&#x68C0;&#x67E5;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#xFF08;&#x5176;&#x4E2D;<code>container.id</code>&#x7B49;&#x4E8E;&quot;<code>host</code>&quot;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5728;&#x5E38;&#x89C4;&#x4E3B;&#x673A;&#x4E0A;&#xFF09;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B50;&#x53E5;&#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x540D;&#x79F0;&#x662F;&#x5426;&#x4E3A;<code>bash</code>. &#x7531;&#x4E8E;&#x6B64;&#x6761;&#x4EF6;&#x4E0D;&#x5305;&#x62EC;&#x5E26;&#x6709;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x5B50;&#x53E5;&#xFF0C;&#x5B83;&#x53EA;&#x4F1A;&#x68C0;&#x67E5;&#x4E8B;&#x4EF6;&#x5143;&#x6570;&#x636E;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C; bash shell &#x786E;&#x5B9E;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x542F;&#x52A8;&#xFF0C;Falco &#x4F1A;&#x4E3A;&#x8BE5; shell &#x6267;&#x884C;&#x7684;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60A8;&#x53EA;&#x60F3;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x6BCF;&#x6B21;&#x6210;&#x529F;&#x751F;&#x6210; shell &#x65F6;&#x6536;&#x5230;&#x8B66;&#x62A5;&#xFF0C;&#x8BF7;&#x5728;&#x6761;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x9002;&#x5F53;&#x7684;&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;&#x548C;&#x65B9;&#x5411;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">evt.type <span class="token operator">=</span> execve and evt.dir<span class="token operator">=</span><span class="token operator">&lt;</span> and container.id <span class="token operator">!=</span> <span class="token function">host</span> and proc.name <span class="token operator">=</span> <span class="token function">bash</span>
+</code></pre>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x6761;&#x4EF6;&#x7684;&#x5B8C;&#x6574;rule&#x53EF;&#x80FD;&#x662F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: shell_in_container
+  desc: notice shell activity within a container
+  condition: evt.type <span class="token operator">=</span> execve and evt.dir<span class="token operator">=</span><span class="token operator">&lt;</span> and container.id <span class="token operator">!=</span> <span class="token function">host</span> and proc.name <span class="token operator">=</span> <span class="token function">bash</span>
+  output: shell <span class="token keyword">in</span> a container <span class="token punctuation">(</span>user<span class="token operator">=</span>%user.name <span class="token assign-left variable">container_id</span><span class="token operator">=</span>%container.id <span class="token assign-left variable">container_name</span><span class="token operator">=</span>%container.name <span class="token assign-left variable">shell</span><span class="token operator">=</span>%proc.name <span class="token assign-left variable">parent</span><span class="token operator">=</span>%proc.pname <span class="token assign-left variable">cmdline</span><span class="token operator">=</span>%proc.cmdline<span class="token punctuation">)</span>
+  priority: WARNING
+</code></pre>
+<p>&#x901A;&#x5E38;&#x90FD;&#x4EE5;<code>evt.type</code>&#x8868;&#x8FBE;&#x5F0F;&#x6216;&#x5B8F;&#x5F00;&#x5934;&#xFF0C;&#x5B89;&#x5168;rule&#x901A;&#x5E38;&#x4E00;&#x6B21;&#x53EA;&#x8003;&#x8651;&#x4E00;&#x79CD;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7C7B;&#x578B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x5728;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x65F6;&#x8003;&#x8651;open&#x6216;openat&#x6355;&#x83B7;&#x53EF;&#x7591;&#x6D3B;&#x52A8;&#x3001;execve&#x68C0;&#x67E5;&#x751F;&#x6210;&#x7684;&#x8FDB;&#x7A0B;&#x7B49;&#x7B49;&#x3002;&#x60A8;&#x4E0D;&#x5FC5;&#x731C;&#x6D4B;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x540D;&#x79F0;&#xFF0C;&#x56E0;&#x4E3A;&#x60A8;&#x53EF;&#x4EE5;<a href="https://falco.org/docs/rules/supported-events/" target="_blank">&#x67E5;&#x770B;&#x652F;&#x6301;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E8B;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x5217;&#x8868;</a>&#x5E76;&#x4E86;&#x89E3;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x54EA;&#x4E9B;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x8FDB;&#x5165;&#x4E8B;&#x4EF6;&#x548C;&#x4E00;&#x4E2A;&#x9000;&#x51FA;&#x4E8B;&#x4EF6;&#xFF0C;&#x5B83;&#x4EEC;&#x663E;&#x793A;&#x5728;<code>evt.dir</code>&#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x201C;&#x65B9;&#x5411;&#x201D;&#x3002;&#x503C;<code>&gt;</code>&#x8868;&#x793A;&#x5165;&#x53E3;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65F6;&#x89E6;&#x53D1;&#xFF0C;&#x800C;<code>&lt;</code>&#x6807;&#x8BB0;&#x9000;&#x51FA;&#xFF0C;&#x8868;&#x793A;&#x8C03;&#x7528;&#x5DF2;&#x8FD4;&#x56DE;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x652F;&#x6301;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5217;&#x8868;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x4E8B;&#x4EF6;&#x6709;&#x4E24;&#x4E2A;&#x6761;&#x76EE;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token operator">&gt;</span> setuid<span class="token punctuation">(</span><span class="token environment constant">UID</span> uid<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> setuid<span class="token punctuation">(</span>ERRNO res<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F15;&#x64CE;&#x4F1A;&#x901A;&#x77E5;&#x60A8;&#x9000;&#x51FA;&#x4E8B;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x60A8;&#x60F3;&#x4E86;&#x89E3;&#x4E8B;&#x4EF6;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x53D1;&#x751F;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E0E;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x5173;&#x8054;&#x7684;&#x4E8B;&#x4EF6;&#x6765;&#x67E5;&#x770B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token operator">&gt;</span> open<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> open<span class="token punctuation">(</span>FD fd, FSPATH name, FLAGS32 flags, UINT32 mode, UINT32 dev<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> openat<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> openat<span class="token punctuation">(</span>FD fd, FD dirfd, FSRELPATH name, FLAGS32 flags, UINT32 mode, UINT32 dev<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x4E0E;&#x4E4B;&#x5173;&#x8054;&#x7684;&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>evt.arg.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argname</span><span class="token punctuation">&gt;</span></span></code>. &#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x8BC6;&#x522B;&#x8FDB;&#x7A0B;&#x4F55;&#x65F6;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x4EE5;&#x8986;&#x76D6;&#x5B83;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x6807;&#x5FD7;&#x5217;&#x8868;&#x662F;&#x5426;&#x5305;&#x542B;<code>O_TRUNC</code>. &#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x663E;&#x793A;&#x7684;&#x548C;&#x9000;&#x51FA;&#x4E8B;&#x4EF6;&#x7684;<code>evt.arg.flags</code>&#x5B57;&#x6BB5;&#xFF0C;&#x7136;&#x540E;rule&#x5C06;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<code>open</code>&#x3001;<code>openat</code></p>
+<pre class="language-"><code class="lang-bash">evt.type <span class="token keyword">in</span> <span class="token punctuation">(</span>open, openat<span class="token punctuation">)</span> and evt.dir <span class="token operator">=</span> <span class="token operator">&lt;</span> and evt.arg.flags contains O_TRUNC
+</code></pre>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x53C2;&#x6570;&#x4E0D;&#x4E00;&#x5B9A;&#x4E0E; Linux &#x5185;&#x6838;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x539F;&#x59CB;&#x53C2;&#x6570;&#x5339;&#x914D;&#xFF0C;&#x800C;&#x662F;&#x7531; Falco &#x89E3;&#x6790;&#x4EE5;&#x66F4;&#x5BB9;&#x6613;&#x7F16;&#x5199;rule&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;<a href="https://falco.org/docs/rules/supported-fields/#field-class-evt" target="_blank">evt&#x5B57;&#x6BB5;</a>&#x3002;</p>
+<p>&#x867D;&#x7136;<code>evt</code>&#x5B57;&#x6BB5;&#x5141;&#x8BB8;&#x60A8;&#x7F16;&#x5199;&#x975E;&#x5E38;&#x6709;&#x8868;&#x73B0;&#x529B;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x4F46;&#x53C2;&#x6570;&#x548C;&#x516C;&#x5171;&#x5B57;&#x6BB5;&#x901A;&#x5E38;&#x4E0D;&#x8DB3;&#x4EE5;&#x7F16;&#x5199;&#x5B8C;&#x6574;&#x7684;&#x5B89;&#x5168;rule&#x3002;&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x60A8;&#x5E0C;&#x671B;&#x6839;&#x636E;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x6D41;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x6DFB;&#x52A0;&#x6761;&#x4EF6;&#xFF0C;&#x6216;&#x8005;&#x5BB9;&#x5668;&#x5185;&#x662F;&#x5426;&#x6B63;&#x5728;&#x53D1;&#x751F;&#x67D0;&#x4E9B;&#x4E8B;&#x60C5;&#xFF0C;&#x751A;&#x81F3;&#x5C06;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E0E;&#x96C6;&#x7FA4;&#x200B;&#x200B;&#x3001;pod &#x7B49;&#x7684;&#x76F8;&#x5173; Kubernetes &#x5143;&#x6570;&#x636E;&#x76F8;&#x5173;&#x8054;&#x3002;&#x51FA;&#x4E8E;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;Falco &#x7528;<a href="https://falco.org/docs/rules/supported-fields/" target="_blank">&#x5176;&#x4ED6;&#x5B57;&#x6BB5;&#x7C7B;</a>&#x4E30;&#x5BCC;&#x4E86;&#x8BB8;&#x591A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="42-rule-operators"><a name="42-rule-operators" class="anchor-navigation-ex-anchor" href="#42-rule-operators"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 rule operators</h3>
+<table>
+<thead>
+<tr>
+<th>=,!=</th>
+<th>&#x7B49;&#x5F0F;&#x548C;&#x4E0D;&#x7B49;&#x5F0F;&#x8FD0;&#x7B97;&#x7B26;&#x3002;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;=, &lt;, &gt;=,&gt;</td>
+<td>&#x6570;&#x503C;&#x7684;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#x3002;</td>
+</tr>
+<tr>
+<td>contains,icontains</td>
+<td>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5305;&#x542B;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5219;&#x5BF9;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x5C06;&#x8BC4;&#x4F30;&#x4E3A;&#x771F;&#xFF0C;&#x5E76;&#x4E14;icontains&#x662F;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x7248;&#x672C;&#x3002;&#x5BF9;&#x4E8E;&#x6807;&#x5FD7;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;&#x6807;&#x5FD7;&#xFF0C;&#x5B83;&#x5C06;&#x8BC4;&#x4F30;&#x4E3A;&#x771F;&#x3002;&#x4F8B;&#x5B50;&#xFF1A;proc.cmdline contains &quot;-jar&quot;, evt.arg.flags contains O_TRUNC.</td>
+</tr>
+<tr>
+<td>startswith,endswith</td>
+<td>&#x68C0;&#x67E5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x524D;&#x7F00;&#x6216;&#x540E;&#x7F00;&#x3002;</td>
+</tr>
+<tr>
+<td>glob</td>
+<td>&#x8BC4;&#x4F30;&#x6807;&#x51C6; glob &#x6A21;&#x5F0F;&#x3002;&#x793A;&#x4F8B;&#xFF1A;fd.name glob &quot;/home/<em>/.ssh/</em>&quot;&#x3002;</td>
+</tr>
+<tr>
+<td>in,intersects</td>
+<td>&#x8BBE;&#x7F6E;&#x64CD;&#x4F5C;&#x3002;</td>
+</tr>
+<tr>
+<td>pmatch</td>
+<td>&#x5C06;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E0E;&#x4E00;&#x7EC4;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x524D;&#x7F00;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x793A;&#x4F8B;&#xFF1A;fd.name pmatch (/tmp/hello)&#x5C06;&#x9488;&#x5BF9; &#x8BC4;&#x4F30;&#x4E3A;&#x771F;/tmp/hello&#xFF0C;/tmp/hello/world&#x4F46;&#x4E0D;&#x662F;/tmp/hello_world&#x3002;</td>
+</tr>
+<tr>
+<td>exists</td>
+<td>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x4E86;&#x5B57;&#x6BB5;&#x3002;&#x793A;&#x4F8B;&#xFF1A;k8s.pod.name exists&#x3002;</td>
+</tr>
+<tr>
+<td>bcontains,bstartswith</td>
+<td>&#x8FD9;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x4E0E;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x4F3C;&#xFF0C;contains&#x5E76;&#x4E14;startswith&#x5141;&#x8BB8;&#x5BF9;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x5B57;&#x7B26;&#x4E32;&#x6267;&#x884C;&#x5B57;&#x8282;&#x5339;&#x914D;&#xFF0C;&#x63A5;&#x53D7;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x3002;&#x4F8B;&#x5B50;&#xFF1A;evt.buffer bcontains CAFEBABE, evt.buffer bstartswith 012AB3CC.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-rule-macro"><a name="43-rule-macro" class="anchor-navigation-ex-anchor" href="#43-rule-macro"><i class="fa fa-link" aria-hidden="true"></i></a>4.3 rule macro</h3>
+<p>&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x5B8F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4EE5;&#x53EF;&#x91CD;&#x7528;&#x65B9;&#x5F0F;&#x5B9A;&#x4E49;rule&#x7684;&#x516C;&#x5171;&#x5B50;&#x90E8;&#x5206;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x4E0A;&#x9762;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x5B83;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x4E24;&#x8005;<code>evt.type = execve and evt.dir=&lt;</code>&#xFF0C;&#x5E76;&#x4E14;<code>container.id != host</code>&#x4F1A;&#x88AB;&#x5176;&#x4ED6;rule&#x4F7F;&#x7528;&#x5F88;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x4F7F;&#x6211;&#x4EEC;&#x7684;&#x5DE5;&#x4F5C;&#x66F4;&#x5BB9;&#x6613;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x4E3A;&#x4E24;&#x8005;&#x5B9A;&#x4E49;&#x5B8F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- macro: container
+  condition: container.id <span class="token operator">!=</span> <span class="token function">host</span>
+
+
+- macro: spawned_process
+  condition: evt.type <span class="token operator">=</span> execve and evt.dir<span class="token operator">=</span><span class="token operator">&lt;</span>
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x4E86;&#x8FD9;&#x4E2A;&#x5B8F;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x4E0A;&#x8FF0;rule&#x7684;&#x6761;&#x4EF6;&#x91CD;&#x5199;&#x4E3A;<code>spawned_process and container and proc.name = bash</code></p>
+<p><a href="https://blog.csdn.net/xixihahalelehehe/article/details/126183489" target="_blank">falco &#x9ED8;&#x8BA4;&#x7684; macro&#x96C6;&#x5408;&#x5728;&#x8FD9;&#x91CC;&#xFF01;</a></p>
+<h3 id="44-rule-list"><a name="44-rule-list" class="anchor-navigation-ex-anchor" href="#44-rule-list"><i class="fa fa-link" aria-hidden="true"></i></a>4.4 rule list</h3>
+<p>&#x5217;&#x8868;&#x662F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5728;rule&#x3001;&#x5B8F;&#x751A;&#x81F3;&#x5176;&#x4ED6;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x9879;&#x76EE;&#x7684;&#x547D;&#x540D;&#x96C6;&#x5408;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5217;&#x8868;&#x4E0D;&#x80FD;&#x88AB;&#x89E3;&#x6790;&#x4E3A;&#x8FC7;&#x6EE4;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x6BCF;&#x4E2A;&#x5217;&#x8868;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x4EE5;&#x4E0B;&#x952E;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x94A5;&#x5319;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list</td>
+<td>&#x5217;&#x8868;&#x7684;&#x552F;&#x4E00;&#x540D;&#x79F0;&#xFF08;&#x4F5C;&#x4E3A; slug&#xFF09;</td>
+</tr>
+<tr>
+<td>items</td>
+<td>&#x503C;&#x5217;&#x8868;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B;&#x793A;&#x4F8B;&#x5217;&#x8868;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x7684;&#x5B8F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- list: shell_binaries
+  items: <span class="token punctuation">[</span>bash, csh, ksh, sh, tcsh, zsh, dash<span class="token punctuation">]</span>
+
+- list: userexec_binaries
+  items: <span class="token punctuation">[</span>sudo, su<span class="token punctuation">]</span>
+
+- list: known_binaries
+  items: <span class="token punctuation">[</span>shell_binaries, userexec_binaries<span class="token punctuation">]</span>
+
+- macro: safe_procs
+  condition: proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>known_binaries<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x60A8;&#x4F7F;&#x7528;&#x591A;&#x4E2A; Falco rule&#x6587;&#x4EF6;&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x5C06;&#x65B0;&#x9879;&#x76EE;&#x9644;&#x52A0;&#x5230;&#x73B0;&#x6709;&#x5217;&#x8868;&#x3001;rule&#x6216;&#x5B8F;&#x4E2D;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x8BF7;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E0E;&#x73B0;&#x6709;&#x9879;&#x76EE;&#x540C;&#x540D;&#x7684;&#x9879;&#x76EE;&#x5E76;&#x5C06;&#x4E00;&#x4E2A;<code>append: true</code>&#x5C5E;&#x6027;&#x6DFB;&#x52A0;&#x5230;&#x5217;&#x8868;&#x4E2D;&#x3002;&#x8FFD;&#x52A0;&#x5217;&#x8868;&#x65F6;&#xFF0C;&#x9879;&#x76EE;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x5217;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x3002;&#x9644;&#x52A0;rule/&#x5B8F;&#x65F6;&#xFF0C;&#x9644;&#x52A0;&#x6587;&#x672C;&#x9644;&#x52A0;&#x5230;&#x6761;&#x4EF6;&#xFF1A;rule/&#x5B8F;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<p><strong>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x9644;&#x52A0;&#x5230;&#x5217;&#x8868;&#x3001;rule&#x6216;&#x5B8F;&#x65F6;&#xFF0C;rule&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x987A;&#x5E8F;&#x5F88;&#x91CD;&#x8981;</strong>&#xFF01;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x9644;&#x52A0;&#x5230;&#x73B0;&#x6709;&#x7684;&#x9ED8;&#x8BA4;rule&#xFF08;&#x4F8B;&#x5982;Terminal shell in container&#xFF09;&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x60A8;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;<code>/etc/falco/rules.d/custom-rules.yaml</code>&#xFF09;&#x5728;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;<code>/etc/falco/falco_rules.yaml</code> &#xFF09;&#x4E4B;&#x540E;&#x52A0;&#x8F7D;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x4EE5;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#x914D;&#x7F6E;&#xFF0C;&#x76F4;&#x63A5;&#x5728; falco &#x914D;&#x7F6E;&#x6587;&#x4EF6; (<code>falco.yaml</code> ) &#x4E2D;&#x901A;&#x8FC7;&#xFF0C;&#x6216;&#x8005;&#x60A8;&#x4F7F;&#x7528;&#x5B98;&#x65B9; Helm charts&#x3002;</p>
+<h4 id="441-&#x9644;&#x52A0;&#x5230;&#x5217;&#x8868;"><a name="441-&#x9644;&#x52A0;&#x5230;&#x5217;&#x8868;" class="anchor-navigation-ex-anchor" href="#441-&#x9644;&#x52A0;&#x5230;&#x5217;&#x8868;"><i class="fa fa-link" aria-hidden="true"></i></a>4.4.1 &#x9644;&#x52A0;&#x5230;&#x5217;&#x8868;</h4>
+<p>/etc/falco/falco_rules.yaml</p>
+<pre class="language-"><code class="lang-bash">- list: my_programs
+  items: <span class="token punctuation">[</span>ls, cat, pwd<span class="token punctuation">]</span>
+
+- rule: my_programs_opened_file
+  desc: track whenever a <span class="token builtin class-name">set</span> of programs opens a <span class="token function">file</span>
+  condition: proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>my_programs<span class="token punctuation">)</span> and <span class="token punctuation">(</span>evt.type<span class="token operator">=</span>open or evt.type<span class="token operator">=</span>openat<span class="token punctuation">)</span>
+  output: a tracked program opened a <span class="token function">file</span> <span class="token punctuation">(</span>user<span class="token operator">=</span>%user.name <span class="token assign-left variable">command</span><span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">file</span><span class="token operator">=</span>%fd.name<span class="token punctuation">)</span>
+  priority: INFO
+</code></pre>
+<p>/etc/falco/falco_rules.local.yaml</p>
+<pre class="language-"><code class="lang-bash">- list: my_programs
+  append: <span class="token boolean">true</span>
+  items: <span class="token punctuation">[</span>cp<span class="token punctuation">]</span>
+</code></pre>
+<p>&#x6BCF;&#x5F53;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x8BE5;rule<code>my_programs_opened_file</code>&#x90FD;&#x4F1A;&#x89E6;&#x53D1;&#x3002;<code>ls</code>&#x3001;<code>cat</code>&#x3001;<code>pwd</code>&#x3001;<code>cp</code></p>
+<h4 id="442-&#x9644;&#x52A0;&#x5230;&#x5B8F;"><a name="442-&#x9644;&#x52A0;&#x5230;&#x5B8F;" class="anchor-navigation-ex-anchor" href="#442-&#x9644;&#x52A0;&#x5230;&#x5B8F;"><i class="fa fa-link" aria-hidden="true"></i></a>4.4.2 &#x9644;&#x52A0;&#x5230;&#x5B8F;</h4>
+<p>/etc/falco/falco_rules.yaml</p>
+<pre class="language-"><code class="lang-bash">- macro: access_file
+  condition: evt.type<span class="token operator">=</span>open
+
+- rule: program_accesses_file
+  desc: track whenever a <span class="token builtin class-name">set</span> of programs opens a <span class="token function">file</span>
+  condition: proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>cat, <span class="token function">ls</span><span class="token punctuation">)</span> and <span class="token punctuation">(</span>access_file<span class="token punctuation">)</span>
+  output: a tracked program opened a <span class="token function">file</span> <span class="token punctuation">(</span>user<span class="token operator">=</span>%user.name <span class="token assign-left variable">command</span><span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">file</span><span class="token operator">=</span>%fd.name<span class="token punctuation">)</span>
+  priority: INFO
+</code></pre>
+<p>/etc/falco/falco_rules.local.yaml</p>
+<pre class="language-"><code class="lang-bash">- macro: access_file
+  append: <span class="token boolean">true</span>
+  condition: or evt.type<span class="token operator">=</span>openat
+</code></pre>
+<p>&#x8BE5;rule&#x5C06;&#x5728;/&#x4F7F;&#x7528;/&#x6587;&#x4EF6;program_accesses_file&#x65F6;&#x89E6;&#x53D1;<code>ls</code>&#x3001;<code>cat</code>&#x3001;<code>open</code>&#x6216;&#x8005;<code>openat</code></p>
+<h4 id="443-&#x9644;&#x52A0;&#x5230;rule"><a name="443-&#x9644;&#x52A0;&#x5230;rule" class="anchor-navigation-ex-anchor" href="#443-&#x9644;&#x52A0;&#x5230;rule"><i class="fa fa-link" aria-hidden="true"></i></a>4.4.3 &#x9644;&#x52A0;&#x5230;rule</h4>
+<p>/etc/falco/falco_rules.yaml</p>
+<pre class="language-"><code class="lang-bash">- rule: program_accesses_file
+  desc: track whenever a <span class="token builtin class-name">set</span> of programs opens a <span class="token function">file</span>
+  condition: proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>cat, <span class="token function">ls</span><span class="token punctuation">)</span> and evt.type<span class="token operator">=</span>open
+  output: a tracked program opened a <span class="token function">file</span> <span class="token punctuation">(</span>user<span class="token operator">=</span>%user.name <span class="token assign-left variable">command</span><span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">file</span><span class="token operator">=</span>%fd.name<span class="token punctuation">)</span>
+  priority: INFO
+</code></pre>
+<p>/etc/falco/falco_rules.local.yaml</p>
+<pre class="language-"><code class="lang-bash">- rule: program_accesses_file
+  append: <span class="token boolean">true</span>
+  condition: and not user.name<span class="token operator">=</span>root
+</code></pre>
+<p>&#x8BE5;rule&#x5C06;&#x5728;/&#x7528;&#x4E8E;&#x6587;&#x4EF6;<code>program_accesses_file</code>&#x65F6;&#x89E6;&#x53D1;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x7528;&#x6237;&#x662F; root &#x5219;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;<code>ls</code>&#x3001;<code>cat</code>&#x3001;<code>open</code></p>
+<h3 id="45-rule-output"><a name="45-rule-output" class="anchor-navigation-ex-anchor" href="#45-rule-output"><i class="fa fa-link" aria-hidden="true"></i></a>4.5 rule output</h3>
+<p>rule&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x76F8;&#x540C;&#x5B57;&#x6BB5;<code>%</code>&#x6765;&#x6267;&#x884C;&#x63D2;&#x503C;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;<code>printf</code>. &#x4F8B;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">Disallowed SSH Connection <span class="token punctuation">(</span>command<span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">connection</span><span class="token operator">=</span>%fd.name <span class="token assign-left variable">user</span><span class="token operator">=</span>%user.name <span class="token assign-left variable">user_loginuid</span><span class="token operator">=</span>%user.loginuid <span class="token assign-left variable">container_id</span><span class="token operator">=</span>%container.id <span class="token assign-left variable">image</span><span class="token operator">=</span>%container.image.repository<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">Disallowed SSH Connection <span class="token punctuation">(</span>command<span class="token operator">=</span>sshd <span class="token assign-left variable">connection</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1:34705-<span class="token operator">&gt;</span><span class="token number">10.0</span>.0.120:22 <span class="token assign-left variable">user</span><span class="token operator">=</span>root <span class="token assign-left variable">user_loginuid</span><span class="token operator">=</span>-1 <span class="token assign-left variable">container_id</span><span class="token operator">=</span>host <span class="token assign-left variable">image</span><span class="token operator">=</span><span class="token operator">&lt;</span>NA<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x5FC5;&#x5728;&#x7279;&#x5B9A;&#x4E8B;&#x4EF6;&#x4E2D;&#x8BBE;&#x7F6E;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x3002;&#x6B63;&#x5982;&#x60A8;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x8FDE;&#x63A5;&#x53D1;&#x751F;&#x5728;&#x5BB9;&#x5668;&#x5916;&#x90E8;&#xFF0C;&#x5219;<code>%container.image.repository</code>&#x4E0D;&#x4F1A;&#x8BBE;&#x7F6E;&#x8BE5;&#x5B57;&#x6BB5;&#xFF0C;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>NA</span><span class="token punctuation">&gt;</span></span></code>&#x800C;&#x662F;&#x663E;&#x793A;&#x8BE5;&#x5B57;&#x6BB5;&#x3002;</p>
+<h3 id="46-rule-priorities"><a name="46-rule-priorities" class="anchor-navigation-ex-anchor" href="#46-rule-priorities"><i class="fa fa-link" aria-hidden="true"></i></a>4.6 rule priorities</h3>
+<p>&#x6BCF;&#x6761; Falco rule&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x8868;&#x660E;&#x8FDD;&#x53CD;rule&#x7684;&#x4E25;&#x91CD;&#x7A0B;&#x5EA6;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x5305;&#x542B;&#x5728;&#x6D88;&#x606F;/JSON &#x8F93;&#x51FA;/&#x7B49;&#x4E2D;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x53EF;&#x7528;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF1A;</p>
+<ul>
+<li>EMERGENCY</li>
+<li>ALERT</li>
+<li>CRITICAL</li>
+<li>ERROR</li>
+<li>WARNING</li>
+<li>NOTICE</li>
+<li>INFORMATIONAL</li>
+<li>DEBUG</li>
+</ul>
+<p>&#x7528;&#x4E8E;&#x4E3A;rule&#x5206;&#x914D;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x4E00;&#x822C;&#x51C6;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;rule&#x4E0E;&#x5199;&#x5165;&#x72B6;&#x6001;&#xFF08;&#x5373;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7B49;&#xFF09;&#x6709;&#x5173;&#xFF0C;&#x5219;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;ERROR.</li>
+<li>&#x5982;&#x679C;&#x4E00;&#x6761;rule&#x4E0E;&#x672A;&#x7ECF;&#x6388;&#x6743;&#x7684;&#x72B6;&#x6001;&#x8BFB;&#x53D6;&#x6709;&#x5173;&#xFF08;&#x5373;&#x8BFB;&#x53D6;&#x654F;&#x611F;&#x6587;&#x4EF6;&#x7B49;&#xFF09;&#xFF0C;&#x5219;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;WARNING.</li>
+<li>&#x5982;&#x679C;rule&#x4E0E;&#x610F;&#x5916;&#x884C;&#x4E3A;&#xFF08;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x751F;&#x6210;&#x610F;&#x5916; shell&#x3001;&#x6253;&#x5F00;&#x610F;&#x5916;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x7B49;&#xFF09;&#x76F8;&#x5173;&#xFF0C;&#x5219;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;NOTICE.</li>
+<li>&#x5982;&#x679C;rule&#x4E0E;&#x8FDD;&#x53CD;&#x826F;&#x597D;&#x5B9E;&#x8DF5;&#x7684;&#x884C;&#x4E3A;&#xFF08;&#x610F;&#x5916;&#x7684;&#x7279;&#x6743;&#x5BB9;&#x5668;&#x3001;&#x5177;&#x6709;&#x654F;&#x611F;&#x6302;&#x8F7D;&#x7684;&#x5BB9;&#x5668;&#x3001;&#x4EE5; root &#x8EAB;&#x4EFD;&#x8FD0;&#x884C;&#x4EA4;&#x4E92;&#x5F0F;&#x547D;&#x4EE4;&#xFF09;&#x6709;&#x5173;&#xFF0C;</li>
+</ul>
+<p>&#x5219;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;INFO.</p>
+<h3 id="47-rule-tags"><a name="47-rule-tags" class="anchor-navigation-ex-anchor" href="#47-rule-tags"><i class="fa fa-link" aria-hidden="true"></i></a>4.7 rule tags</h3>
+<p>&#x4ECE; 0.6.0 &#x5F00;&#x59CB;&#xFF0C;rule&#x5177;&#x6709;&#x4E00;&#x7EC4;&#x53EF;&#x9009;&#x6807;&#x7B7E;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;rule&#x96C6;&#x5206;&#x7C7B;&#x4E3A;&#x76F8;&#x5173;rule&#x7EC4;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"> - rule: File Open by Privileged Container
+  desc: Any <span class="token function">open</span> by a privileged container. Exceptions are made <span class="token keyword">for</span> known trusted images.
+  condition: <span class="token punctuation">(</span>open_read or open_write<span class="token punctuation">)</span> and container and container.privileged<span class="token operator">=</span>true and not trusted_containers
+  output: File opened <span class="token keyword">for</span> read/write by privileged container <span class="token punctuation">(</span>user<span class="token operator">=</span>%user.name <span class="token assign-left variable">command</span><span class="token operator">=</span>%proc.cmdline %container.info <span class="token assign-left variable">file</span><span class="token operator">=</span>%fd.name<span class="token punctuation">)</span>
+  priority: WARNING
+  tags: <span class="token punctuation">[</span>container, cis<span class="token punctuation">]</span>
+</code></pre>
+<p>&#x6807;&#x7B7E;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;<code>-T <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span><span class="token punctuation">&gt;</span></span></code>&#x53C2;&#x6570;&#x7981;&#x7528;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x6807;&#x7B7E;&#x7684;rule&#x3002;<code>-T</code>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x591A;&#x6B21;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x8DF3;&#x8FC7;&#x6240;&#x6709;&#x5E26;&#x6709;&#x201C;<code>filesystem</code>&#x201D;&#x548C;&#x201C;<code>cis</code>&#x201D;&#x6807;&#x7B7E;&#x7684;rule&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>falco  -T filesystem -T cis ....</code>, -T&#x4E0D;&#x80FD;&#x7528; &#x6307;&#x5B9A;<code>-t</code>&#x3002;</li>
+<li>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;-t <tag>&#x53C2;&#x6570;&#x4EC5;&#x8FD0;&#x884C;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x6807;&#x8BB0;&#x7684;rule&#x3002;<code>-t</code>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x591A;&#x6B21;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x4EC5;&#x4F7F;&#x7528;&#x201C;<code>filesystem</code>&#x201D;&#x548C;&#x201C;<code>cis</code>&#x201D;&#x6807;&#x7B7E;&#x8FD0;&#x884C;&#x8FD9;&#x4E9B;rule&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>falco -t filesystem -t cis ....</code> ,-t&#x4E0D;&#x80FD;&#x7528;-Tor&#x6307;&#x5B9A;<code>-D <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span></code>&#xFF08;&#x901A;&#x8FC7;rule&#x540D;&#x79F0;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7981;&#x7528;rule&#xFF09;</tag></li>
+</ul>
+<p>&#x5F53;&#x524D; Falco rule&#x96C6;&#x7684;&#x6807;&#x7B7E;
+&#x6211;&#x4EEC;&#x8FD8;&#x68C0;&#x67E5;&#x4E86;&#x9ED8;&#x8BA4;rule&#x96C6;&#xFF0C;&#x5E76;&#x7528;&#x4E00;&#x7EC4;&#x521D;&#x59CB;&#x6807;&#x7B7E;&#x6807;&#x8BB0;&#x4E86;&#x6240;&#x6709;rule&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x6807;&#x7B7E;&#xFF1A;
+| &#x6807;&#x7B7E;            | &#x63CF;&#x8FF0;                            |
+|---------------|-------------------------------|
+| filesystem    | &#x8BE5;rule&#x4E0E;&#x8BFB;/&#x5199;&#x6587;&#x4EF6;&#x6709;&#x5173;                   |
+| software_mgmt | &#x8BE5;rule&#x6D89;&#x53CA;&#x4EFB;&#x4F55;&#x8F6F;&#x4EF6;/&#x5305;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x5982; rpm&#x3001;dpkg &#x7B49;&#x3002; |
+| process       | &#x8BE5;rule&#x4E0E;&#x542F;&#x52A8;&#x65B0;&#x8FDB;&#x7A0B;&#x6216;&#x66F4;&#x6539;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x6709;&#x5173;         |
+| database      | &#x8BE5;rule&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x6709;&#x5173;                     |
+| host          | &#x8BE5;rule&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x5BB9;&#x5668;&#x4E4B;&#x5916;                   |
+| shell         | &#x8BE5;rule&#x7279;&#x522B;&#x6D89;&#x53CA;&#x542F;&#x52A8; shell               |
+| container     | &#x8BE5;rule&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x5BB9;&#x5668;&#x5185;                    |
+| cis           | &#x8BE5;rule&#x4E0E; CIS Docker &#x57FA;&#x51C6;&#x76F8;&#x5173;          |
+| users         | &#x8BE5;rule&#x6D89;&#x53CA;&#x7528;&#x6237;&#x7BA1;&#x7406;&#x6216;&#x66F4;&#x6539;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#x7684;&#x8EAB;&#x4EFD;        |
+| network       | &#x8BE5;rule&#x4E0E;&#x7F51;&#x7EDC;&#x6D3B;&#x52A8;&#x6709;&#x5173;                    |</p>
+<h3 id="48-fdsipname"><a name="48-fdsipname" class="anchor-navigation-ex-anchor" href="#48-fdsipname"><i class="fa fa-link" aria-hidden="true"></i></a>4.8 fd.sip.name</h3>
+<p>&#x57DF;&#x7684;&#x5B9E;&#x9645;&#x67E5;&#x627E;&#x662F;&#x5728;&#x5355;&#x72EC;&#x7684;&#x7EBF;&#x7A0B;&#x4E0A;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x505C;&#x6B62;&#x4E3B;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x57DF;&#x7684; IP &#x96C6;&#x4F1A;&#x5B9A;&#x671F;&#x5237;&#x65B0;&#xFF0C;&#x7B56;&#x7565;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x57DF;&#x540D;&#x7684;&#x57FA;&#x672C;&#x5237;&#x65B0;&#x65F6;&#x95F4;&#x4E3A; 10 &#x79D2;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5728;&#x5237;&#x65B0;&#x5468;&#x671F;&#x540E; IP &#x5730;&#x5740;&#x672A;&#x66F4;&#x6539;&#xFF0C;&#x5219;&#x8BE5;&#x57DF;&#x540D;&#x7684;&#x5237;&#x65B0;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4F1A;&#x52A0;&#x500D;&#xFF0C;&#x76F4;&#x5230; 320 &#x79D2;&#xFF08;&#x7EA6; 5 &#x5206;&#x949F;&#xFF09;</li>
+</ul>
+<pre class="language-"><code class="lang-bash">- list: https_miner_domains
+  items: <span class="token punctuation">[</span>
+    <span class="token string">&quot;ca.minexmr.com&quot;</span>,
+    <span class="token string">&quot;cn.stratum.slushpool.com&quot;</span>,
+    <span class="token string">&quot;de.minexmr.com&quot;</span>,
+    <span class="token string">&quot;fr.minexmr.com&quot;</span>,
+    <span class="token string">&quot;mine.moneropool.com&quot;</span>,
+    <span class="token string">&quot;mine.xmrpool.net&quot;</span>,
+    <span class="token string">&quot;pool.minexmr.com&quot;</span>,
+    <span class="token string">&quot;sg.minexmr.com&quot;</span>,
+    <span class="token string">&quot;stratum-eth.antpool.com&quot;</span>,
+    <span class="token string">&quot;stratum-ltc.antpool.com&quot;</span>,
+    <span class="token string">&quot;stratum-zec.antpool.com&quot;</span>,
+    <span class="token string">&quot;stratum.antpool.com&quot;</span>,
+    <span class="token string">&quot;xmr.crypto-pool.fr&quot;</span>
+  <span class="token punctuation">]</span>
+
+<span class="token comment"># Add rule based on crypto mining IOCs</span>
+- macro: minerpool_https
+  condition: <span class="token punctuation">(</span>fd.sport<span class="token operator">=</span><span class="token string">&quot;443&quot;</span> and fd.sip.name <span class="token keyword">in</span> <span class="token punctuation">(</span>https_miner_domains<span class="token punctuation">))</span>
+</code></pre>
+<pre class="language-"><code class="lang-bash">- rule: Connect to Yahoo
+  desc: Detect Connects to yahoo.com IPs
+  condition: evt.type<span class="token operator">=</span>connect and fd.sip.name<span class="token operator">=</span>yahoo.com
+  output: Some connect to yahoo <span class="token punctuation">(</span>command<span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">connection</span><span class="token operator">=</span>%fd.name <span class="token assign-left variable">IP</span><span class="token operator">=</span>%fd.sip.name<span class="token punctuation">)</span>
+  priority: INFO
+</code></pre>
+<p>&#x76F8;&#x53CD;&#xFF0C;&#x6B64;rule&#x5C06;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x6709;&#x610F;&#x4E49;&#x7684;&#x8F93;&#x51FA;...IP=%fd.sip.name&#xFF0C;&#x56E0;&#x4E3A;&#x6BD4;&#x8F83;&#x4F7F;&#x7528;&#x5426;&#x5B9A;&#x5339;&#x914D;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: Connect to Anything but Yahoo
+  desc: Detect Connects to anything other than yahoo.com IPs
+  condition: evt.type<span class="token operator">=</span>connect and fd.sip.name<span class="token operator">!=</span>yahoo.com
+  output: Some connect to something other than yahoo <span class="token punctuation">(</span>command<span class="token operator">=</span>%proc.cmdline <span class="token assign-left variable">connection</span><span class="token operator">=</span>%fd.name <span class="token assign-left variable">IP</span><span class="token operator">=</span>%fd.sip.name<span class="token punctuation">)</span>
+  priority: INFO
+</code></pre>
+<h3 id="49-rule-exceptions"><a name="49-rule-exceptions" class="anchor-navigation-ex-anchor" href="#49-rule-exceptions"><i class="fa fa-link" aria-hidden="true"></i></a>4.9 rule exceptions</h3>
+<pre class="language-"><code class="lang-bash">- rule: Write below binary <span class="token function">dir</span>
+  desc: an attempt to <span class="token function">write</span> to any <span class="token function">file</span> below a <span class="token builtin class-name">set</span> of binary directories
+  condition: <span class="token operator">&gt;</span>
+    bin_dir and evt.dir <span class="token operator">=</span> <span class="token operator">&lt;</span> and open_write
+    and not package_mgmt_procs
+    and not exe_running_docker_save
+    and not python_running_get_pip
+    and not python_running_ms_oms
+    and not user_known_write_below_binary_dir_activities
+<span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x4EE5;&#x524D;&#xFF0C;&#x8FD9;&#x4E9B;&#x4F8B;&#x5916;&#x88AB;&#x8868;&#x793A;&#x4E3A;&#x539F;&#x59CB;rule&#x6761;&#x4EF6;&#x7684;&#x4E32;&#x8054;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x67E5;&#x770B;&#x5B8F; <code>package_mgmt_procs</code>&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- macro: package_mgmt_procs
+  condition: proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>package_mgmt_binaries<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x9644;&#x52A0;<code>and not proc.name in (package_mgmt_binaries)</code>&#x5230;rule&#x7684;&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x66F4;&#x6781;&#x7AEF;&#x7684;&#x60C5;&#x51B5;&#x662F; <code>Write_below_etc</code> &#x5B8F;&#x88AB; <code>Write below etc</code> rule&#x4F7F;&#x7528;&#x3002;&#x5B83;&#x6709;&#x51E0;&#x5341;&#x4E2A;&#x4F8B;&#x5916;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">..</span>.
+    and not sed_temporary_file
+    and not exe_running_docker_save
+    and not ansible_running_python
+    and not python_running_denyhosts
+    and not fluentd_writing_conf_files
+    and not user_known_write_etc_conditions
+    and not run_by_centrify
+    and not run_by_adclient
+    and not qualys_writing_conf_files
+    and not git_writing_nssdb
+<span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x4F8B;&#x5916;&#x901A;&#x5E38;&#x90FD;&#x9075;&#x5FAA;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x6784;&#x2014;&#x2014;&#x547D;&#x540D;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x548C; /etc &#x4E0B;&#x5141;&#x8BB8;&#x8BE5;&#x7A0B;&#x5E8F;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#x524D;&#x7F00;
+&#x4ECE; <code>0.28.0</code> &#x5F00;&#x59CB;&#xFF0C;<code>falco</code> &#x652F;&#x6301;<code>exceptions</code>rule&#x7684;&#x53EF;&#x9009;&#x5C5E;&#x6027;&#x3002;&#x4F8B;&#x5916;&#x952E;&#x662F;&#x6807;&#x8BC6;&#x7B26;&#x5217;&#x8868;&#x52A0;&#x4E0A;&#x8FC7;&#x6EE4;&#x68C0;&#x67E5;&#x5B57;&#x6BB5;&#x7684;&#x5143;&#x7EC4;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: Write below binary <span class="token function">dir</span>
+  desc: an attempt to <span class="token function">write</span> to any <span class="token function">file</span> below a <span class="token builtin class-name">set</span> of binary directories
+  condition: <span class="token operator">&gt;</span>
+    bin_dir and evt.dir <span class="token operator">=</span> <span class="token operator">&lt;</span> and open_write
+    and not package_mgmt_procs
+    and not exe_running_docker_save
+    and not python_running_get_pip
+    and not python_running_ms_oms
+    and not user_known_write_below_binary_dir_activities
+  exceptions:
+   - name: proc_writer
+     fields: <span class="token punctuation">[</span>proc.name, fd.directory<span class="token punctuation">]</span>
+     comps: <span class="token punctuation">[</span><span class="token operator">=</span>, <span class="token operator">=</span><span class="token punctuation">]</span>
+     values:
+       - <span class="token punctuation">[</span>my-custom-yum, /usr/bin<span class="token punctuation">]</span>
+       - <span class="token punctuation">[</span>my-custom-apt, /usr/local/bin<span class="token punctuation">]</span>
+   - name: cmdline_writer
+     fields: <span class="token punctuation">[</span>proc.cmdline, fd.directory<span class="token punctuation">]</span>
+     comps: <span class="token punctuation">[</span>startswith, <span class="token operator">=</span><span class="token punctuation">]</span>
+   - name: container_writer
+     fields: <span class="token punctuation">[</span>container.image.repository, fd.directory<span class="token punctuation">]</span>
+   - name: proc_filenames
+     fields: <span class="token punctuation">[</span>proc.name, fd.name<span class="token punctuation">]</span>
+     comps: <span class="token punctuation">[</span><span class="token operator">=</span>, in<span class="token punctuation">]</span>
+     values:
+       - <span class="token punctuation">[</span>my-custom-dpkg, <span class="token punctuation">[</span>/usr/bin, /bin<span class="token punctuation">]</span><span class="token punctuation">]</span>
+   - name: filenames
+     fields: fd.filename
+     comps: <span class="token keyword">in</span>
+</code></pre>
+<p>&#x8BE5;rule&#x5B9A;&#x4E49;&#x4E86;&#x56DB;&#x79CD;&#x4F8B;&#x5916;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li><code>proc_writer</code>&#xFF1A;&#x4F7F;&#x7528; <code>proc.name</code> &#x548C; <code>fd.directory</code> &#x7684;&#x7EC4;&#x5408;</li>
+<li><code>cmdline_writer</code>&#xFF1A;&#x4F7F;&#x7528; <code>proc.cmeline</code> &#x548C; <code>fd.directory</code> &#x7684;&#x7EC4;&#x5408;</li>
+<li><code>container_writer</code>&#xFF1A;&#x4F7F;&#x7528; <code>container.image.repository</code> &#x548C; <code>fd.directory</code> &#x7684;&#x7EC4;&#x5408;</li>
+<li><code>proc_filenames</code>&#xFF1A;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;&#x548C;&#x6587;&#x4EF6;&#x540D;&#x5217;&#x8868;&#x7684;&#x7EC4;&#x5408;&#x3002;</li>
+<li>&#x6587;&#x4EF6;&#x540D;&#xFF1A;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x540D;&#x5217;&#x8868;</li>
+</ul>
+<p>&#x8BE5;<code>fields</code>&#x5C5E;&#x6027;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5C06;&#x4ECE;&#x4E8B;&#x4EF6;&#x4E2D;&#x63D0;&#x53D6;&#x503C;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x8BE5;<code>comps</code>&#x5C5E;&#x6027;&#x5305;&#x542B;&#x5C06; 1-1 &#x4E0E; fields &#x5C5E;&#x6027;&#x4E2D;&#x7684;&#x9879;&#x76EE;&#x5BF9;&#x9F50;&#x7684;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#x3002;&#x8BE5;<code>values</code>&#x5C5E;&#x6027;&#x5305;&#x542B;&#x503C;&#x7684;&#x5143;&#x7EC4;&#x3002;&#x5143;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x9879;&#x76EE;&#x90FD;&#x5E94;&#x4E0E;&#x76F8;&#x5E94;&#x7684;&#x5B57;&#x6BB5;&#x548C;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26; 1-1 &#x5BF9;&#x9F50;&#x3002;&#x6BCF;&#x4E2A;&#x503C;&#x5143;&#x7EC4;&#x90FD;&#x4E0E;&#x5B57;&#x6BB5;/&#x7EC4;&#x5408;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x4EE5;&#x4FEE;&#x6539;&#x6761;&#x4EF6;&#x4EE5;&#x5C06;&#x6392;&#x9664;&#x9879;&#x6DFB;&#x52A0;&#x5230;rule&#x7684;&#x6761;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x5F02;&#x5E38;&#x201C;proc_writer&#x201D;&#xFF0C;&#x5B57;&#x6BB5;/comps/values &#x76F8;&#x5F53;&#x4E8E;&#x5C06;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x6DFB;&#x52A0;&#x5230;rule&#x7684;&#x6761;&#x4EF6;&#x4E2D;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">..</span>. and not <span class="token variable"><span class="token punctuation">((</span>proc.name<span class="token operator">=</span>my<span class="token operator">-</span>custom<span class="token operator">-</span>yum and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token punctuation">)</span> or <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>my<span class="token operator">-</span>custom<span class="token operator">-</span>apt and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin<span class="token punctuation">))</span></span>
+</code></pre>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5F53;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#x4E3A;&#x201C;in&#x201D;&#x65F6;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x5143;&#x7EC4;&#x9879;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x3002;&#x4E0A;&#x9762;&#x7684;<code>&#x201C;proc_filenames&#x201D;</code>&#x4F7F;&#x7528;&#x8BE5;&#x8BED;&#x6CD5;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">..</span>. and not <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>my-custom-dpkg and fd.name <span class="token keyword">in</span> <span class="token punctuation">(</span>/usr/bin, /bin<span class="token punctuation">))</span>
+</code></pre>
+<h4 id="491-appending-exception-values"><a name="491-appending-exception-values" class="anchor-navigation-ex-anchor" href="#491-appending-exception-values"><i class="fa fa-link" aria-hidden="true"></i></a>4.9.1 Appending Exception Values</h4>
+<p>&#x5F02;&#x5E38;&#x503C;&#x901A;&#x5E38;&#x5728;rule&#x4E2D;&#x4F7F;&#x7528; append: true &#x5B9A;&#x4E49;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- list: apt_files
+  items: <span class="token punctuation">[</span>/bin/ls, /bin/rm<span class="token punctuation">]</span>
+
+- rule: Write below binary <span class="token function">dir</span>
+  exceptions:
+  - name: proc_writer
+    values:
+    - <span class="token punctuation">[</span>apk, /usr/lib/alpine<span class="token punctuation">]</span>
+    - <span class="token punctuation">[</span>npm, /usr/node/bin<span class="token punctuation">]</span>
+  - name: container_writer
+    values:
+    - <span class="token punctuation">[</span>docker.io/alpine, /usr/libexec/alpine<span class="token punctuation">]</span>
+  - name: proc_filenames
+    values:
+    - <span class="token punctuation">[</span>apt, <span class="token punctuation">[</span>apt_files<span class="token punctuation">]</span><span class="token punctuation">]</span>
+    - <span class="token punctuation">[</span>rpm, <span class="token punctuation">[</span>/bin/cp, /bin/pwd<span class="token punctuation">]</span><span class="token punctuation">]</span>
+  - name: filenames
+    values: <span class="token punctuation">[</span>python, go<span class="token punctuation">]</span>
+  append: <span class="token boolean">true</span>
+</code></pre>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x503C;&#x5C06;&#x9644;&#x52A0;&#x5230;&#x57FA;&#x672C;rule&#x7684;&#x4EFB;&#x4F55;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5B57;&#x6BB5;/comps/values &#x6DFB;&#x52A0;&#x5230;rule&#x7684;&#x6761;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x7EFC;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x8BE5;rule&#x7684;&#x6709;&#x6548;rule&#x6761;&#x4EF6;&#x4E3A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">..</span>. and not <span class="token variable"><span class="token punctuation">((</span>proc.name<span class="token operator">=</span>my<span class="token operator">-</span>custom<span class="token operator">-</span>yum and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token punctuation">)</span> or                             # proc_writer
+             <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>my<span class="token operator">-</span>custom<span class="token operator">-</span>apt and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin<span class="token punctuation">)</span> or
+         <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>apk and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>alpine<span class="token punctuation">)</span> or
+         <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>npm and fd.directory<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>node<span class="token operator">/</span>bin<span class="token punctuation">)</span> or
+         <span class="token punctuation">(</span>container.image.repository<span class="token operator">=</span>docker.io<span class="token operator">/</span>alpine and fd.name<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>libexec<span class="token operator">/</span>alpine<span class="token punctuation">)</span> or   # container_writer
+         <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>apt and fd.name in <span class="token punctuation">(</span>apt_files<span class="token punctuation">))</span></span> or                                      <span class="token comment"># proc_filenames</span>
+         <span class="token punctuation">(</span>proc.name<span class="token operator">=</span>rpm and fd.name <span class="token keyword">in</span> <span class="token punctuation">(</span>/bin/cp, /bin/pwd<span class="token punctuation">))</span> or
+         <span class="token punctuation">(</span>fd.filename <span class="token keyword">in</span> <span class="token punctuation">(</span>python, go<span class="token punctuation">))</span>                                                      <span class="token comment"># filenames</span>
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x8BF7;&#x5C1D;&#x8BD5;&#x8003;&#x8651;<code>actor</code>&#x3001;<code>action</code>&#x548C;<code>target</code>&#xFF0C;&#x5E76;&#x5C3D;&#x53EF;&#x80FD;&#x5C06;&#x6240;&#x6709;&#x4E09;&#x4E2A;&#x9879;&#x76EE;&#x7528;&#x4E8E;&#x5F02;&#x5E38;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x9664;&#x4E86;&#x7B80;&#x5355;&#x5730;&#x4F7F;&#x7528;<code>proc.name</code> or <code>container.image.repository</code>&#x7528;&#x4E8E;&#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x901A;&#x8FC7;<code>fd.name</code>&#x3001;<code>fd.directory</code>&#x7B49;&#x64CD;&#x4F5C;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;&#x5982;&#x679C;rule&#x662F;&#x7279;&#x5B9A;&#x4E8E;&#x5BB9;&#x5668;&#x7684;&#xFF0C;&#x5219;&#x4E0D;&#x4EC5;&#x5305;&#x62EC; image <code>container.image.repository</code>&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x8FDB;&#x7A0B;&#x540D;&#x79F0;<code>proc.name</code></p>
+<h4 id="492-exceptions-syntax-shortcuts"><a name="492-exceptions-syntax-shortcuts" class="anchor-navigation-ex-anchor" href="#492-exceptions-syntax-shortcuts"><i class="fa fa-link" aria-hidden="true"></i></a>4.9.2 Exceptions Syntax Shortcuts</h4>
+<p>rule&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#x548C;&#x7EC4;&#x5408;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x5B9A;&#x4E49;&#x503C;&#x3002;&#x8FD9;&#x5141;&#x8BB8;&#x7A0D;&#x540E;&#x4F7F;&#x7528;&#x201C;append&#xFF1A;true&#x201D;&#x7684;rule&#x5C06;&#x503C;&#x6DFB;&#x52A0;&#x5230;&#x5F02;&#x5E38;&#x4E2D;&#xFF08;&#x66F4;&#x591A;&#x5185;&#x5BB9;&#x89C1;&#x4E0B;&#x6587;&#xFF09;&#x3002;&#x4E0A; &#x9762;&#x7684;&#x5F02;&#x5E38;&#x201C;cmdline_writer&#x201D;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">   - name: cmdline_writer
+     fields: <span class="token punctuation">[</span>proc.cmdline, fd.directory<span class="token punctuation">]</span>
+     comps: <span class="token punctuation">[</span>startswith, <span class="token operator">=</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x5F02;&#x5E38;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x8BA9;&#x5B57;&#x6BB5;&#x5305;&#x542B;&#x5355;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x800C; <code>comps</code> &#x5305;&#x542B;&#x5355;&#x4E2A;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#xFF08;&#x5FC5;&#x987B;&#x662F;&#x201C;<code>in</code>&#x201D;&#x3001;&#x201C;<code>pmatch</code>&#x201D;&#x3001;&#x201C;<code>intersects</code>&#x201D;&#x4E4B;&#x4E00;&#xFF09;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x4E2D;&#xFF0C;<code>values</code> &#x662F;&#x4E00;&#x4E2A;&#x503C;&#x5217;&#x8868;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5143;&#x7EC4;&#x5217;&#x8868;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x5F02;&#x5E38;&#x201C;&#x6587;&#x4EF6;&#x540D;&#x201D;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">   - name: filenames
+     fields: fd.filename
+     comps: <span class="token keyword">in</span>
+</code></pre>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F02;&#x5E38;&#x76F8;&#x5F53;&#x4E8E;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">..</span>. and not <span class="token punctuation">(</span>fd.filename <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token punctuation">..</span>.<span class="token punctuation">))</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x672A;&#x63D0;&#x4F9B; comps&#xFF0C;&#x5219;&#x586B;&#x5199;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x5F53; fields &#x4E3A;&#x5217;&#x8868;&#x65F6;&#xFF0C;comps &#x5C06;&#x8BBE;&#x7F6E;&#x4E3A; = &#x7684;&#x7B49;&#x957F;&#x5217;&#x8868;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x5F02;&#x5E38;&#x201C;<code>container_writer</code>&#x201D;&#x5177;&#x6709;&#x8BE5;&#x683C;&#x5F0F;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">   - name: container_writer
+     fields: <span class="token punctuation">[</span>container.image.repository, fd.directory<span class="token punctuation">]</span>
+     comps: <span class="token punctuation">[</span><span class="token operator">=</span>, <span class="token operator">=</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5F53; fields &#x662F;&#x5355;&#x4E2A;&#x5B57;&#x6BB5;&#x65F6;&#xFF0C;comps &#x8BBE;&#x7F6E;&#x4E3A;&#x5355;&#x4E2A;&#x5B57;&#x6BB5;&#x201C;in&#x201D;&#x3002;</p>
+<h2 id="5-&#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;"><a name="5-&#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;" class="anchor-navigation-ex-anchor" href="#5-&#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x8F6C;&#x4E49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;</h2>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;rule&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5305;&#x542B;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#xFF0C;&#x5982;(&#x3001;&#x7A7A;&#x683C;&#x7B49;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x67E5;&#x627E; a <code>proc.name</code> of (systemd)&#xFF0C;&#x5305;&#x62EC;&#x5468;&#x56F4;&#x7684;&#x62EC;&#x53F7;&#x3002;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&quot;&#x8FD9;&#x4E9B;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x6765;&#x6355;&#x83B7;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: Any Open Activity by Systemd
+  desc: Detects all <span class="token function">open</span> events by systemd.
+  condition: evt.type<span class="token operator">=</span>open and proc.name<span class="token operator">=</span><span class="token string">&quot;(systemd)&quot;</span> or proc.name<span class="token operator">=</span>systemd
+  output: <span class="token string">&quot;File opened by systemd (user=%user.name command=%proc.cmdline file=%fd.name)&quot;</span>
+  priority: WARNING
+</code></pre>
+<p>&#x5728;&#x5217;&#x8868;&#x4E2D;&#x5305;&#x542B;&#x9879;&#x76EE;&#x65F6;&#xFF0C;&#x8BF7;&#x786E;&#x4FDD;&#x4E0D;&#x4F1A;&#x901A;&#x8FC7;&#x7528;&#x5355;&#x5F15;&#x53F7;&#x5C06;&#x5E26;&#x5F15;&#x53F7;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4ECE; YAML &#x6587;&#x4EF6;&#x4E2D;&#x89E3;&#x91CA;&#x53CC;&#x5F15;&#x53F7;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- list: systemd_procs
+  items: <span class="token punctuation">[</span>systemd, <span class="token string">&apos;&quot;(systemd)&quot;&apos;</span><span class="token punctuation">]</span>
+
+- rule: Any Open Activity by Systemd
+  desc: Detects all <span class="token function">open</span> events by systemd.
+  condition: evt.type<span class="token operator">=</span>open and proc.name <span class="token keyword">in</span> <span class="token punctuation">(</span>systemd_procs<span class="token punctuation">)</span>
+  output: <span class="token string">&quot;File opened by systemd (user=%user.name command=%proc.cmdline file=%fd.name)&quot;</span>
+  priority: WARNING
+</code></pre>
+<h2 id="6-rule-&#x6587;&#x4EF6;"><a name="6-rule-&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#6-rule-&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>6. rule &#x6587;&#x4EF6;</h2>
+<h3 id="61-&#x9ED8;&#x8BA4;-rule-&#x6587;&#x4EF6;"><a name="61-&#x9ED8;&#x8BA4;-rule-&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#61-&#x9ED8;&#x8BA4;-rule-&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>6.1 &#x9ED8;&#x8BA4; rule &#x6587;&#x4EF6;</h3>
+<p>&#x9ED8;&#x8BA4;&#x7684; falco rule&#x6587;&#x4EF6;&#x5B89;&#x88C5;&#x5728;<code>/etc/falco/falco_rules.yaml</code>. &#x5B83;&#x5305;&#x542B;&#x4E00;&#x7EC4;&#x9884;&#x5B9A;&#x4E49;&#x7684;rule&#xFF0C;&#x65E8;&#x5728;&#x5728;&#x5404;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x63D0;&#x4F9B;&#x826F;&#x597D;&#x7684;&#x8986;&#x76D6;&#x3002;&#x76EE;&#x7684;&#x662F;&#x4E0D;&#x4FEE;&#x6539;&#x6B64;rule&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x7528;&#x6BCF;&#x4E2A;&#x65B0;&#x7684;&#x8F6F;&#x4EF6;&#x7248;&#x672C;&#x66FF;&#x6362;&#x3002;</p>
+<h3 id="62-&#x672C;&#x5730;-rule-&#x6587;&#x4EF6;"><a name="62-&#x672C;&#x5730;-rule-&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#62-&#x672C;&#x5730;-rule-&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>6.2 &#x672C;&#x5730; rule &#x6587;&#x4EF6;</h3>
+<p>&#x672C;&#x5730; falco rule&#x6587;&#x4EF6;&#x5B89;&#x88C5;&#x5728;<code>/etc/falco/falco_rules.local.yaml</code>. &#x9664;&#x4E86;&#x4E00;&#x4E9B;&#x8BC4;&#x8BBA;&#x4E4B;&#x5916;&#xFF0C;&#x5B83;&#x662F;&#x7A7A;&#x7684;&#x3002;&#x76EE;&#x7684;&#x662F;&#x5C06;&#x4E3B;rule&#x6587;&#x4EF6;&#x7684;&#x6DFB;&#x52A0;/&#x8986;&#x76D6;/&#x4FEE;&#x6539;&#x6DFB;&#x52A0;&#x5230;&#x6B64;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x5B83;&#x4E0D;&#x4F1A;&#x88AB;&#x6BCF;&#x4E2A;&#x65B0;&#x7684;&#x8F6F;&#x4EF6;&#x7248;&#x672C;&#x6240;&#x53D6;&#x4EE3;&#x3002;</p>
+<h2 id="7-rule-&#x7981;&#x7528;&#x9ED8;&#x8BA4;"><a name="7-rule-&#x7981;&#x7528;&#x9ED8;&#x8BA4;" class="anchor-navigation-ex-anchor" href="#7-rule-&#x7981;&#x7528;&#x9ED8;&#x8BA4;"><i class="fa fa-link" aria-hidden="true"></i></a>7. rule &#x7981;&#x7528;&#x9ED8;&#x8BA4;</h2>
+<h3 id="71-&#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;"><a name="71-&#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;" class="anchor-navigation-ex-anchor" href="#71-&#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;"><i class="fa fa-link" aria-hidden="true"></i></a>7.1 &#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;&#x5B8F;</h3>
+<p>&#x5927;&#x591A;&#x6570;&#x9ED8;&#x8BA4;rule&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x67D0;&#x79CD;<code>consider_*</code>&#x5B8F;&#xFF0C;&#x8FD9;&#x4E9B;&#x5B8F;&#x5DF2;&#x7ECF;&#x662F;rule&#x6761;&#x4EF6;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x4E9B;<code>consider_*</code>&#x5B8F;&#x901A;&#x5E38;&#x8BBE;&#x7F6E;&#x4E3A;(<code>never_true</code>)&#x6216;(<code>always_true</code>)&#x57FA;&#x672C;&#x4E0A;&#x542F;&#x7528;&#x6216;&#x7981;&#x7528;&#x76F8;&#x5173;rule&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x60F3;&#x542F;&#x7528;&#x9ED8;&#x8BA4;&#x7981;&#x7528;&#x7684;rule&#xFF08;&#x4F8B;&#x5982;Unexpected outbound connection destination&#xFF09;&#xFF0C;&#x60A8;&#x53EA;&#x9700;&#x5728;&#x81EA;&#x5B9A;&#x4E49; Falco &#x914D;&#x7F6E;&#x4E2D;&#x8986;&#x76D6;rule&#x7684;<code>consider_*</code>&#x5B8F;&#xFF08;consider_all_outbound_conns&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF09;&#x3002;</p>
+<p>&#x60A8;&#x7684;&#x81EA;&#x5B9A;&#x4E49; Falco &#x914D;&#x7F6E;&#x793A;&#x4F8B;&#xFF08;&#x6CE8;&#x610F;(always_true)&#x6761;&#x4EF6;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- macro: consider_all_outbound_conns
+  condition: <span class="token punctuation">(</span>always_true<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>&#x8BF7;&#x518D;&#x6B21;&#x6CE8;&#x610F;&#xFF0C;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x987A;&#x5E8F;&#x5F88;&#x91CD;&#x8981;&#xFF01;&#x6700;&#x540E;&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x540D;&#x5B8F;&#x6709;&#x6548;&#x3002;</p>
+</blockquote>
+<h3 id="72-&#x901A;&#x8FC7;-falco-&#x53C2;&#x6570;"><a name="72-&#x901A;&#x8FC7;-falco-&#x53C2;&#x6570;" class="anchor-navigation-ex-anchor" href="#72-&#x901A;&#x8FC7;-falco-&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>7.2 &#x901A;&#x8FC7; Falco &#x53C2;&#x6570;</h3>
+<p>Falco &#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;&#x6765;&#x9650;&#x5236;&#x5E94;&#x8BE5;&#x542F;&#x7528;/&#x4F7F;&#x7528;&#x54EA;&#x4E9B;&#x9ED8;&#x8BA4;rule&#xFF0C;&#x54EA;&#x4E9B;&#x4E0D;&#x5E94;&#x8BE5;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">-D <span class="token operator">&lt;</span>substring<span class="token operator">&gt;</span>                Disable any rules with names having the substring <span class="token operator">&lt;</span>substring<span class="token operator">&gt;</span>. Can be specified multiple times.
+
+-T <span class="token operator">&lt;</span>tag<span class="token operator">&gt;</span>                      Disable any rules with a <span class="token assign-left variable">tag</span><span class="token operator">=</span><span class="token operator">&lt;</span>tag<span class="token operator">&gt;</span>. Can be specified multiple times.
+                               Can not be specified with -t.
+
+-t <span class="token operator">&lt;</span>tag<span class="token operator">&gt;</span>                      Only run those rules with a <span class="token assign-left variable">tag</span><span class="token operator">=</span><span class="token operator">&lt;</span>tag<span class="token operator">&gt;</span>. Can be specified multiple times.
+                               Can not be specified with -T/-D.
+</code></pre>
+<p><code>extraArgs</code>&#x5982;&#x679C;&#x60A8;&#x901A;&#x8FC7;&#x5B98;&#x65B9; <code>Helm charts</code> &#x90E8;&#x7F72; Falco&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A; Helm &#x56FE;&#x8868;&#x503C; ( ).</p>
+<h3 id="73-&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;"><a name="73-&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;" class="anchor-navigation-ex-anchor" href="#73-&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;"><i class="fa fa-link" aria-hidden="true"></i></a>7.3 &#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;rule&#x5B9A;&#x4E49;</h3>
+<p><code>enabled: false</code>&#x6700;&#x540E;&#x4F46;&#x5E76;&#x975E;&#x6700;&#x4E0D;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;rule &#x5C5E;&#x6027;&#x7981;&#x7528;&#x9ED8;&#x8BA4;&#x542F;&#x7528;&#x7684;rule&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x5728;&#x9ED8;&#x8BA4;&#x6761;&#x4EF6;&#x4E0B;&#x4E0D;&#x63D0;&#x4F9B;<code>consider_*</code>&#x5B8F;&#x7684;rule&#x7279;&#x522B;&#x6709;&#x7528;&#x3002;</p>
+<p>&#x786E;&#x4FDD;&#x5728;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x52A0;&#x8F7D;&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x4E2A;-r&#x53C2;&#x6570;&#x914D;&#x7F6E;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x76F4;&#x63A5;&#x5728; falco &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;<code>falco.yaml</code>&#x901A;&#x8FC7;<code>rules_file</code>. &#x5982;&#x679C;&#x60A8;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5B98;&#x65B9; Helm charts&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x8BE5;<code>falco.rules</code> File&#x503C;&#x914D;&#x7F6E;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x81EA;&#x5B9A;&#x4E49;rule&#x65F6;&#x7981;&#x7528;User mgmt binaries&#x9ED8;&#x8BA4;rule&#xFF1A;
+<code>/etc/falco/falco_rules.yaml</code>   <code>/etc/falco/rules.d/custom-rules.yaml</code></p>
+<pre class="language-"><code class="lang-bash">- rule: User mgmt binaries
+  enabled: <span class="token boolean">false</span>
+</code></pre>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>enabled: true</code> rule &#x5C5E;&#x6027;&#x91CD;&#x65B0;&#x542F;&#x7528;&#x7981;&#x7528;&#x7684;rule&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x7981;&#x7528;&#x7684;<code>Change thread namespace</code>rule<code>/etc/falco/falco_rules.yaml</code>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x624B;&#x52A8;&#x542F;&#x7528;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: Change thread namespace
+  enabled: <span class="token boolean">true</span>
+</code></pre>
+<h2 id="8-rule-&#x9677;&#x9631;"><a name="8-rule-&#x9677;&#x9631;" class="anchor-navigation-ex-anchor" href="#8-rule-&#x9677;&#x9631;"><i class="fa fa-link" aria-hidden="true"></i></a>8. rule &#x9677;&#x9631;</h2>
+<p>&#x5E26;&#x6709;rule/&#x5B8F;&#x9644;&#x52A0;&#x548C;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x9677;&#x9631; 
+&#x8BF7;&#x8BB0;&#x4F4F;&#xFF0C;&#x5728;&#x9644;&#x52A0;rule&#x548C;&#x5B8F;&#x65F6;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;rule/&#x5B8F;&#x7684;&#x6587;&#x672C;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x5730;&#x6DFB;&#x52A0;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;rule/&#x5B8F;&#x7684;&#x6761;&#x4EF6;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x539F;&#x59CB;rule/&#x5B8F;&#x5177;&#x6709;&#x6F5C;&#x5728;&#x7684;&#x6A21;&#x68F1;&#x4E24;&#x53EF;&#x7684;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x610F;&#x5916;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">- rule: my_rule
+  desc: <span class="token punctuation">..</span>.
+  condition: evt.type<span class="token operator">=</span>open and proc.name<span class="token operator">=</span>apache
+  output: <span class="token punctuation">..</span>.
+
+- rule: my_rule
+  append: <span class="token boolean">true</span>
+  condition: or proc.name<span class="token operator">=</span>nginx
+</code></pre>
+<p>&#x5E94;&#x8BE5;<code>proc.name=nginx</code>&#x89E3;&#x91CA;&#x4E3A;&#x76F8;&#x5BF9;&#x4E8E;<code>and proc.name=apache</code>&#xFF0C;&#x5373;&#x5141;&#x8BB8; apache/nginx &#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x6216;&#x8005;&#x76F8;&#x5BF9;&#x4E8E;<code>evt.type=open</code>&#xFF0C;&#x5373;&#x5141;&#x8BB8; apache &#x6253;&#x5F00;&#x6587;&#x4EF6;&#x6216;&#x5141;&#x8BB8; nginx &#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#xFF1F;</p>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BF7;&#x52A1;&#x5FC5;&#x5C3D;&#x53EF;&#x80FD;&#x7528;&#x62EC;&#x53F7;&#x9650;&#x5B9A;&#x539F;&#x59CB;&#x6761;&#x4EF6;&#x7684;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#x8303;&#x56F4;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x4E0D;&#x53EF;&#x80FD;&#x65F6;&#x907F;&#x514D;&#x9644;&#x52A0;&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://falco.org/docs/rules/" target="_blank">falco rules</a></li>
+<li><a href="https://sysdig.com/opensource/falco/" target="_blank">sysdig falco</a></li>
+<li><a href="https://www.cncf.io/projects/falco/" target="_blank">Falco case studies</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-10 09:14:29
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="kubernetes-Security-falco-default-macros.html" class="navigation navigation-prev " aria-label="Previous page: default macros">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Apparmor/" class="navigation navigation-next " aria-label="Next page: Apparmor">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"规则","level":"1.14.1.2","depth":3,"next":{"title":"Apparmor","level":"1.14.2","depth":2,"path":"安全/Apparmor/README.md","ref":"安全/Apparmor/README.md","articles":[{"title":"语法","level":"1.14.2.1","depth":3,"path":"安全/Apparmor/kubernetes-Apparmor-rules.md","ref":"安全/Apparmor/kubernetes-Apparmor-rules.md","articles":[]}]},"previous":{"title":"default macros","level":"1.14.1.1","depth":3,"path":"安全/Falco/kubernetes-Security-falco-default-macros.md","ref":"安全/Falco/kubernetes-Security-falco-default-macros.md","articles":[]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"安全/Falco/kubernetes-Security-falco-rules.md","mtime":"2022-08-10T09:14:29.438Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

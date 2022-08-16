@@ -1,0 +1,2291 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>RBAC · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kubernetes-RBAC-principle.html" />
+    
+    
+    <link rel="prev" href="../Kubernetes-NetworkPolicy.html" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../Overview.html">
+            
+                <a href="../../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../工具/">
+            
+                <a href="../../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../概念/">
+            
+                <a href="../../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../升级/">
+            
+                <a href="../../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../日志/">
+            
+                <a href="../../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../网络/">
+            
+                <a href="../../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../资源/">
+            
+                <a href="../../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../资源/kubernetes-yum.html">
+            
+                <a href="../../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../部署/">
+            
+                <a href="../../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Deployment/">
+            
+                <a href="../Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="../Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="../Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="../Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="../Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Kubernetes-DaemonSet.html">
+            
+                <a href="../Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../kubernetes-PersistentVolume.html">
+            
+                <a href="../kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Kubernetes-StatefulSet.html">
+            
+                <a href="../Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Kubernetes-Job.html">
+            
+                <a href="../Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../Runtimeclass/">
+            
+                <a href="../Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="../Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="../Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../Kubernetes-ConfigMaps.html">
+            
+                <a href="../Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../Pod/">
+            
+                <a href="../Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../kubernetes-Secrets.html">
+            
+                <a href="../kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../Kubernetes-Ingress.html">
+            
+                <a href="../Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../Kubernetes-Service.html">
+            
+                <a href="../Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../Kubernetes-NetworkPolicy.html">
+            
+                <a href="../Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.14" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="kubernetes-RBAC-principle.html">
+            
+                <a href="kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../Auditing/">
+            
+                <a href="../Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../存储/">
+            
+                <a href="../../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../策略/">
+            
+                <a href="../../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../策略/OPA/">
+            
+                <a href="../../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../组件/">
+            
+                <a href="../../组件/">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../组件/Kubeadm/">
+            
+                <a href="../../组件/Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../../组件/Kubeadm/kubeadm-command.html">
+            
+                <a href="../../组件/Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                <a href="../../组件/Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../../组件/Kubectl/">
+            
+                <a href="../../组件/Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../../组件/Kubectl/kubectl-command.html">
+            
+                <a href="../../组件/Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../../组件/Kubelet/">
+            
+                <a href="../../组件/Kubelet/">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4.2" data-path="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="../../组件/Kubelet/kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../../组件/kubernetes-kube-apiserver.html">
+            
+                <a href="../../组件/kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../安全/">
+            
+                <a href="../../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../安全/Falco/">
+            
+                <a href="../../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../../安全/Apparmor/">
+            
+                <a href="../../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../../安全/Trivy/">
+            
+                <a href="../../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../tags.html">
+            
+                <a href="../../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >RBAC</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#kubernetes-rbac-&#x5165;&#x95E8;"><b></b>kubernetes RBAC &#x5165;&#x95E8;</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x7B80;&#x4ECB;"><b></b>1. &#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#2-api-&#x5BF9;&#x8C61;"><b></b>2. API &#x5BF9;&#x8C61;</a></li><ul><li><span class="title-icon "></span><a href="#21-&#x89D2;&#x8272;&#xFF08;role&#xFF09;"><b></b>2.1 &#x89D2;&#x8272;&#xFF08;Role&#xFF09;</a></li><li><span class="title-icon "></span><a href="#22-&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;clusterrole&#xFF09;"><b></b>2.2 &#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;ClusterRole&#xFF09;</a></li><li><span class="title-icon "></span><a href="#23-&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;rolebinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;clusterrolebinding&#xFF09;"><b></b>2.3 &#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;RoleBinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;ClusterRoleBinding&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#3-&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;"><b></b>3. &#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;</a></li><li><span class="title-icon "></span><a href="#4-&#x805A;&#x5408;&#x7684;-clusterrole"><b></b>4. &#x805A;&#x5408;&#x7684; ClusterRole</a></li><li><span class="title-icon "></span><a href="#5-role-&#x793A;&#x4F8B;"><b></b>5. Role &#x793A;&#x4F8B;</a></li><li><span class="title-icon "></span><a href="#6-&#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;"><b></b>6. &#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;</a></li><li><span class="title-icon "></span><a href="#7-rolebinding-&#x793A;&#x4F8B;"><b></b>7. RoleBinding &#x793A;&#x4F8B;</a></li><li><span class="title-icon "></span><a href="#8-&#x9ED8;&#x8BA4;-roles-&#x548C;-role-bindings"><b></b>8. &#x9ED8;&#x8BA4; Roles &#x548C; Role Bindings</a></li><li><span class="title-icon "></span><a href="#9-&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;"><b></b>9. &#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;</a></li><li><span class="title-icon "></span><a href="#10-&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><b></b>10. &#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;</a></li><li><span class="title-icon "></span><a href="#11-&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><b></b>11. &#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;</a></li><li><span class="title-icon "></span><a href="#12-&#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;"><b></b>12. &#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;</a></li><li><span class="title-icon "></span><a href="#13-&#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;"><b></b>13. &#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;</a></li><li><span class="title-icon "></span><a href="#14-&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;"><b></b>14. &#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;</a></li><ul><li><span class="title-icon "></span><a href="#141-kubectl-create-role"><b></b>14.1 kubectl create role</a></li><li><span class="title-icon "></span><a href="#142-kubectl-create-clusterrole"><b></b>14.2 kubectl create clusterrole</a></li><li><span class="title-icon "></span><a href="#143-kubectl-create-rolebinding"><b></b>14.3 kubectl create rolebinding</a></li><li><span class="title-icon "></span><a href="#144-kubectl-create-clusterrolebinding"><b></b>14.4 kubectl create clusterrolebinding</a></li><li><span class="title-icon "></span><a href="#145-kubectl-auth-reconcile"><b></b>14.5 kubectl auth reconcile</a></li></ul><li><span class="title-icon "></span><a href="#15-&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;"><b></b>15. &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;</a></li><li><span class="title-icon "></span><a href="#16-&#x5BBD;&#x677E;&#x7684;-rbac-&#x6743;&#x9650;"><b></b>16. &#x5BBD;&#x677E;&#x7684; RBAC &#x6743;&#x9650;</a></li><li><span class="title-icon "></span><a href="#17-&#x793A;&#x4F8B;"><b></b>17. &#x793A;&#x4F8B;</a></li><ul><li><span class="title-icon "></span><a href="#&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;cni&#xFF09;weavework"><b></b>&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;CNI&#xFF09;weavework</a></li></ul></ul></ul></div><a href="#kubernetes-rbac-&#x5165;&#x95E8;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="kubernetes-rbac-&#x5165;&#x95E8;"><a name="kubernetes-rbac-&#x5165;&#x95E8;" class="anchor-navigation-ex-anchor" href="#kubernetes-rbac-&#x5165;&#x95E8;"><i class="fa fa-link" aria-hidden="true"></i></a>kubernetes RBAC &#x5165;&#x95E8;</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../../tags.html#&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</a></p></div><!-- tagsstop --><p><a href="https://movie.douban.com/subject/1291561/?i=0" target="_blank"><img src="https://img-blog.csdnimg.cn/29e0b9307ca74225b75cf9c0f283666b.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></a></p>
+<p><em>&#x4E0D;&#x53EF;&#x4EE5;&#x5403;&#x592A;&#x80D6;&#x54E6;&#xFF0C;&#x4F1A;&#x88AB;&#x6740;&#x6389;&#x7684;&#xFF01;    &#x2014;&#x2014;&#x300A;&#x5343;&#x4E0E;&#x5343;&#x5BFB;&#x300B;</em></p>
+<h2 id="1-&#x7B80;&#x4ECB;"><a name="1-&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#1-&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7B80;&#x4ECB;</h2>
+<p>RBAC&#xFF08;Role-Based Access Control&#xFF0C;&#x57FA;&#x4E8E;&#x89D2;&#x8272;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#xFF09;&#x5728;Kubernetes&#x7684;<code>1.5</code>&#x7248;&#x672C;&#x4E2D;&#x5F15;&#x5165;&#xFF0C;&#x5728;<code>1.6</code>&#x7248;&#x672C;&#x65F6;&#x5347;&#x7EA7;&#x4E3A;<code>Beta</code>&#x7248;&#x672C;&#xFF0C;&#x5728;1.8&#x7248;&#x672C;&#x65F6;&#x5347;&#x7EA7;&#x4E3A;<code>GA</code>&#x3002;&#x4F5C;&#x4E3A;kubeadm&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#x7684;&#x9ED8;&#x8BA4;&#x9009;&#x9879;&#xFF0C;&#x8DB3;&#x89C1;&#x5176;&#x91CD;&#x8981;&#x7A0B;&#x5EA6;&#x3002;&#x76F8;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x65B9;&#x5F0F;&#xFF0C;&#x65B0;&#x7684;RBAC&#x5177;&#x6709;&#x5982;&#x4E0B;&#x4F18;&#x52BF;&#x3002;</p>
+<ul>
+<li>&#x25CE; &#x5BF9;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x975E;&#x8D44;&#x6E90;&#x6743;&#x9650;&#x5747;&#x6709;&#x5B8C;&#x6574;&#x7684;&#x8986;&#x76D6;&#x3002;</li>
+<li>&#x25CE; &#x6574;&#x4E2A;RBAC&#x5B8C;&#x5168;&#x7531;&#x51E0;&#x4E2A;API&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#xFF0C;&#x540C;&#x5176;&#x4ED6;API&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;kubectl&#x6216;API&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x25CE; &#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x65E0;&#x987B;&#x91CD;&#x65B0;&#x542F;&#x52A8;API Server&#x3002;&#x8981;&#x4F7F;&#x7528;RBAC&#x6388;&#x6743;&#x6A21;&#x5F0F;&#xFF0C;&#x9700;&#x8981;&#x5728;API Server&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x4E2D;&#x52A0;&#x4E0A;<code>--authorization-mode=RBAC</code>&#x3002;</li>
+</ul>
+<pre class="language-"><code class="lang-bash"> kube-apiserver --authorization-mode<span class="token operator">=</span>Example,RBAC --<span class="token operator">&lt;</span>&#x5176;&#x4ED6;&#x9009;&#x9879;<span class="token operator">&gt;</span> --<span class="token operator">&lt;</span>&#x5176;&#x4ED6;&#x9009;&#x9879;<span class="token operator">&gt;</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x5BF9;RBAC&#x7684;&#x539F;&#x7406;&#x548C;&#x7528;&#x6CD5;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;</p>
+<h2 id="2-api-&#x5BF9;&#x8C61;"><a name="2-api-&#x5BF9;&#x8C61;" class="anchor-navigation-ex-anchor" href="#2-api-&#x5BF9;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a>2. API &#x5BF9;&#x8C61;</h2>
+<p>RBAC API &#x58F0;&#x660E;&#x4E86;&#x56DB;&#x79CD; Kubernetes &#x5BF9;&#x8C61;&#xFF1A;<code>Role</code>&#x3001;<code>ClusterRole</code>&#x3001;<code>RoleBinding</code> &#x548C; <code>ClusterRoleBinding</code>&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x50CF;&#x4F7F;&#x7528;&#x5176;&#x4ED6; Kubernetes &#x5BF9;&#x8C61;&#x4E00;&#x6837;&#xFF0C; &#x901A;&#x8FC7;&#x7C7B;&#x4F3C; kubectl &#x8FD9;&#x7C7B;&#x5DE5;&#x5177; &#x63CF;&#x8FF0;&#x5BF9;&#x8C61;, &#x6216;&#x4FEE;&#x8865;&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="21-&#x89D2;&#x8272;&#xFF08;role&#xFF09;"><a name="21-&#x89D2;&#x8272;&#xFF08;role&#xFF09;" class="anchor-navigation-ex-anchor" href="#21-&#x89D2;&#x8272;&#xFF08;role&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 &#x89D2;&#x8272;&#xFF08;Role&#xFF09;</h3>
+<p>&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x5C31;&#x662F;&#x4E00;&#x7EC4;&#x6743;&#x9650;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x6743;&#x9650;&#x90FD;&#x662F;&#x8BB8;&#x53EF;&#x5F62;&#x5F0F;&#x7684;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x62D2;&#x7EDD;&#x7684;&#x89C4;&#x5219;&#x3002;&#x5728;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x89D2;&#x8272;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x96C6;&#x7FA4;&#x7EA7;&#x522B;&#x7684;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;ClusterRole&#x4E86;&#x3002;&#x89D2;&#x8272;&#x53EA;&#x80FD;&#x5BF9;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5185;&#x7684;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x6388;&#x6743;&#xFF0C;&#x5728;&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x5177;&#x5907;&#x8BFB;&#x53D6;Pod&#x7684;&#x6743;&#x9650;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span> <span class="token comment"># &quot;&quot; &#x6807;&#x660E; core API &#x7EC4;</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;pods&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;watch&quot;</span>, <span class="token string">&quot;list&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>rules&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x8BF4;&#x660E;&#x5982;&#x4E0B;&#x3002;
+&#x25CE; <code>apiGroups</code>&#xFF1A;&#x652F;&#x6301;&#x7684;API&#x7EC4;&#x5217;&#x8868;&#xFF0C;&#x4F8B;&#x5982;&#x201C;<code>apiVersion:batch/v1</code>&#x201D;&#x201C;<code>apiVersion: extensions:v1beta1</code>&#x201D;&#x201C;<code>apiVersion: apps/v1beta1</code>&#x201D;&#x7B49;&#xFF0C;
+&#x8BE6;&#x7EC6;&#x7684;API&#x7EC4;&#x8BF4;&#x660E;&#x53C2;&#x89C1;&#x7B2C;9&#x7AE0;&#x7684;&#x8BF4;&#x660E;&#x3002;
+&#x25CE; <code>resources</code>&#xFF1A;&#x652F;&#x6301;&#x7684;&#x8D44;&#x6E90;&#x5BF9;&#x8C61;&#x5217;&#x8868;&#xFF0C;&#x4F8B;&#x5982;pods&#x3001;deployments&#x3001;
+jobs&#x7B49;&#x3002;
+&#x25CE; <code>verbs</code>&#xFF1A;&#x5BF9;&#x8D44;&#x6E90;&#x5BF9;&#x8C61;&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x4F8B;&#x5982;get&#x3001;watch&#x3001;list&#x3001;delete&#x3001;replace&#x3001;patch&#x7B49;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x8BF4;&#x660E;&#x53C2;&#x89C1;&#x7B2C;9&#x7AE0;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
+<h3 id="22-&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;clusterrole&#xFF09;"><a name="22-&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;clusterrole&#xFF09;" class="anchor-navigation-ex-anchor" href="#22-&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;clusterrole&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 &#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF08;ClusterRole&#xFF09;</h3>
+<p>&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x9664;&#x4E86;&#x5177;&#x6709;&#x548C;&#x89D2;&#x8272;&#x4E00;&#x81F4;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5185;&#x8D44;&#x6E90;&#x7684;&#x7BA1;&#x7406;&#x80FD;&#x529B;&#xFF0C;&#x56E0;&#x5176;&#x96C6;&#x7FA4;&#x7EA7;&#x522B;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4EE5;&#x4E0B;&#x7279;&#x6B8A;&#x5143;&#x7D20;&#x7684;&#x6388;&#x6743;&#x3002;
+&#x25CE; &#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;Node&#x3002;
+&#x25CE; &#x975E;&#x8D44;&#x6E90;&#x578B;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4F8B;&#x5982;&#x201C;/healthz&#x201D;&#x3002;
+&#x25CE; &#x5305;&#x542B;&#x5168;&#x90E8;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;pods&#xFF08;&#x7528;&#x4E8E;kubectl get pods --
+all-namespaces&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x6388;&#x6743;&#xFF09;&#x3002;
+&#x4E0B;&#x9762;&#x7684;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x8BA9;&#x7528;&#x6237;&#x6709;&#x6743;&#x8BBF;&#x95EE;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6216;&#x6240;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;secrets&#xFF08;&#x89C6;&#x5176;&#x7ED1;&#x5B9A;&#x65B9;&#x5F0F;&#x800C;&#x5B9A;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  <span class="token comment"># &quot;namespace&quot; &#x88AB;&#x5FFD;&#x7565;&#xFF0C;&#x56E0;&#x4E3A; ClusterRoles &#x4E0D;&#x53D7;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x9650;&#x5236;</span>
+  name: secret-reader
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  <span class="token comment"># &#x5728; HTTP &#x5C42;&#x9762;&#xFF0C;&#x7528;&#x6765;&#x8BBF;&#x95EE; Secret &#x5BF9;&#x8C61;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x540D;&#x79F0;&#x4E3A; &quot;secrets&quot;</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;secrets&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;watch&quot;</span>, <span class="token string">&quot;list&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<h3 id="23-&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;rolebinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;clusterrolebinding&#xFF09;"><a name="23-&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;rolebinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;clusterrolebinding&#xFF09;" class="anchor-navigation-ex-anchor" href="#23-&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;rolebinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;clusterrolebinding&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2.3 &#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;RoleBinding&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#xFF08;ClusterRoleBinding&#xFF09;</h3>
+<p>&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x6216;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x7528;&#x6765;&#x628A;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x5230;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x4E0A;&#xFF0C;&#x7ED1;&#x5B9A;&#x76EE;&#x6807;&#x53EF;&#x4EE5;&#x662F;<code>User</code>&#xFF08;&#x7528;&#x6237;&#xFF09;&#x3001;<code>Group</code>&#xFF08;&#x7EC4;&#xFF09;&#x6216;&#x8005;<code>Service Account</code>&#x3002;&#x4F7F;&#x7528;<code>RoleBinding</code>&#x4E3A;&#x67D0;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x6388;&#x6743;&#xFF0C;&#x4F7F;&#x7528;<code>ClusterRoleBinding</code>&#x4E3A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#x6388;&#x6743;&#x3002;
+RoleBinding&#x53EF;&#x4EE5;&#x5F15;&#x7528;Role&#x8FDB;&#x884C;&#x6388;&#x6743;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;RoleBinding&#x5C06;&#x5728;default&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x628A;pod-reader&#x89D2;&#x8272;&#x6388;&#x4E88;&#x7528;&#x6237;jane&#xFF0C;&#x8FD9;&#x4E00;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x8BA9;jane&#x8BFB;&#x53D6;default&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;Pod&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+<span class="token comment"># &#x6B64;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x5141;&#x8BB8; &quot;jane&quot; &#x8BFB;&#x53D6; &quot;default&quot; &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; Pods</span>
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+<span class="token comment"># &#x4F60;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x201C;subject&#xFF08;&#x4E3B;&#x4F53;&#xFF09;&#x201D;</span>
+- kind: User
+  name: jane <span class="token comment"># &quot;name&quot; &#x662F;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;</span>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  <span class="token comment"># &quot;roleRef&quot; &#x6307;&#x5B9A;&#x4E0E;&#x67D0; Role &#x6216; ClusterRole &#x7684;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB;</span>
+  kind: Role <span class="token comment"># &#x6B64;&#x5B57;&#x6BB5;&#x5FC5;&#x987B;&#x662F; Role &#x6216; ClusterRole</span>
+  name: pod-reader     <span class="token comment"># &#x6B64;&#x5B57;&#x6BB5;&#x5FC5;&#x987B;&#x4E0E;&#x4F60;&#x8981;&#x7ED1;&#x5B9A;&#x7684; Role &#x6216; ClusterRole &#x7684;&#x540D;&#x79F0;&#x5339;&#x914D;</span>
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p><code>RoleBinding</code>&#x4E5F;&#x53EF;&#x4EE5;&#x5F15;&#x7528;<code>ClusterRole</code>&#xFF0C;&#x5BF9;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5185;ClusterRole&#x5B9A;&#x4E49;&#x7684;&#x8D44;&#x6E90;&#x4E3B;&#x4F53;&#x8FDB;&#x884C;&#x6388;&#x6743;&#x3002;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5458;&#x4E3A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x9884;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#x4E00;&#x7EC4;ClusterRole&#xFF0C;&#x7136;&#x540E;&#x5728;&#x591A;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;ClusterRole&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x867D;&#x7136;<code>secret-reader</code>&#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;&#x4E86;RoleBinding&#xFF0C;&#x6240;&#x4EE5;dave&#x53EA;&#x80FD;&#x8BFB;&#x53D6;development&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;secret&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+<span class="token comment"># &#x6B64;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x4F7F;&#x5F97;&#x7528;&#x6237; &quot;dave&quot; &#x80FD;&#x591F;&#x8BFB;&#x53D6; &quot;default&quot; &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; Secrets</span>
+<span class="token comment"># &#x4F60;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; &quot;secret-reader&quot; &#x7684; ClusterRole</span>
+kind: RoleBinding
+metadata:
+  name: read-secrets
+  <span class="token comment"># RoleBinding &#x7684;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x51B3;&#x5B9A;&#x4E86;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x7684;&#x6388;&#x4E88;&#x8303;&#x56F4;&#x3002;</span>
+  <span class="token comment"># &#x8FD9;&#x91CC;&#x4EC5;&#x6388;&#x6743;&#x5728; &quot;development&quot; &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x5185;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</span>
+  namespace: development
+subjects:
+- kind: User
+  name: dave <span class="token comment"># &apos;name&apos; &#x662F;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;</span>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x4E2D;&#x7684;&#x89D2;&#x8272;&#x53EA;&#x80FD;&#x662F;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x7EA7;&#x522B;&#x6216;&#x8005;&#x5BF9;&#x6240;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x90FD;&#x751F;&#x6548;&#x7684;&#x6388;&#x6743;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5141;&#x8BB8;manager&#x7EC4;&#x7684;&#x7528;&#x6237;&#x8BFB;&#x53D6;&#x4EFB;&#x610F;Namespace&#x4E2D;&#x7684;secret&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+<span class="token comment"># &#x6B64;&#x96C6;&#x7FA4;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x5141;&#x8BB8; &#x201C;manager&#x201D; &#x7EC4;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4EBA;&#x8BBF;&#x95EE;&#x4EFB;&#x4F55;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; secrets</span>
+kind: ClusterRoleBinding
+metadata:
+  name: read-secrets-global
+subjects:
+- kind: Group
+  name: manager <span class="token comment"># &apos;name&apos; &#x662F;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;</span>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20201206225851402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>&#x521B;&#x5EFA;&#x4E86;&#x7ED1;&#x5B9A;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x4E0D;&#x80FD;&#x518D;&#x4FEE;&#x6539;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x6240;&#x5F15;&#x7528;&#x7684; Role &#x6216; ClusterRole&#x3002; &#x8BD5;&#x56FE;&#x6539;&#x53D8;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x7684; roleRef &#x5C06;&#x5BFC;&#x81F4;&#x5408;&#x6CD5;&#x6027;&#x68C0;&#x67E5;&#x9519;&#x8BEF;&#x3002; &#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x6539;&#x53D8;&#x73B0;&#x6709;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x4E2D; roleRef &#x5B57;&#x6BB5;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5FC5;&#x987B;&#x5220;&#x9664;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x9650;&#x5236;&#x6709;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x539F;&#x56E0;&#xFF1A;</p>
+<ol>
+<li>&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x89D2;&#x8272;&#x7684;&#x7ED1;&#x5B9A;&#x662F;&#x5B8C;&#x5168;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x7ED1;&#x5B9A;&#x3002;&#x8981;&#x6C42;&#x901A;&#x8FC7;&#x5220;&#x9664;/&#x91CD;&#x5EFA;&#x7ED1;&#x5B9A;&#x6765;&#x66F4;&#x6539; roleRef,
+&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x8981;&#x8D4B;&#x4E88;&#x7ED1;&#x5B9A;&#x7684;&#x6240;&#x6709;&#x4E3B;&#x4F53;&#x4F1A;&#x88AB;&#x6388;&#x4E88;&#x65B0;&#x7684;&#x89D2;&#x8272;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x5141;&#x8BB8;&#x4FEE;&#x6539; roleRef&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x73B0;&#x6709;&#x4E3B;&#x4F53;&#x80C3;&#x955C;&#x9A8C;&#x8BC1;&#x5373;&#x88AB;&#x6388;&#x4E88;&#x65B0;&#x89D2;&#x8272;&#x5BF9;&#x5E94;&#x7684;&#x6743;&#x9650;&#xFF09;&#x3002;</li>
+<li>&#x5C06; roleRef &#x8BBE;&#x7F6E;&#x4E3A;&#x4E0D;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x53EF;&#x4EE5;&#x4E3A;&#x7528;&#x6237;&#x6388;&#x4E88;&#x5BF9;&#x73B0;&#x6709;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x7684; update &#x6743;&#x9650;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8BA9;&#x4ED6;&#x4EEC;&#x7BA1;&#x7406;&#x4E3B;&#x4F53;&#x5217;&#x8868;&#xFF0C;&#x540C;&#x65F6;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x88AB;&#x6388;&#x4E88;&#x8FD9;&#x4E9B;&#x4E3B;&#x4F53;&#x7684;&#x89D2;&#x8272;&#x3002;</li>
+</ol>
+<p>&#x547D;&#x4EE4; <code>kubectl auth reconcile</code> &#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x6216;&#x8005;&#x66F4;&#x65B0;&#x5305;&#x542B; RBAC &#x5BF9;&#x8C61;&#x7684;&#x6E05;&#x5355;&#x6587;&#x4EF6;&#xFF0C; &#x5E76;&#x4E14;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5220;&#x9664;&#x548C;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x6539;&#x53D8;&#x6240;&#x5F15;&#x7528;&#x7684;&#x89D2;&#x8272;&#x3002; &#x66F4;&#x591A;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x8BF7;&#x53C2;&#x7167;&#x547D;&#x4EE4;&#x7528;&#x6CD5;&#x548C;&#x793A;&#x4F8B;</p>
+<h2 id="3-&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;"><a name="3-&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;" class="anchor-navigation-ex-anchor" href="#3-&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;</h2>
+<p>&#x591A;&#x6570;&#x8D44;&#x6E90;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x540D;&#x79F0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x8868;&#x8FBE;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;Endpoint&#x4E2D;&#x7684;URL&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x4F8B;&#x5982;pods&#x3002;&#x7136;&#x800C;&#xFF0C;&#x67D0;&#x4E9B;Kubernetes API&#x5305;&#x542B;&#x4E0B;&#x7EA7;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;Pod&#x7684;&#x65E5;&#x5FD7;&#xFF08;logs&#xFF09;&#x3002;Pod&#x65E5;&#x5FD7;&#x7684;Endpoint&#x662F;<code>GET/api/v1/namespaces/{namespace}/pods/{name}/log</code>&#x3002;
+&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;Pod&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5185;&#x7684;&#x8D44;&#x6E90;&#xFF0C;log&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4E0B;&#x7EA7;&#x8D44;&#x6E90;&#x3002;&#x8981;&#x5728;&#x4E00;&#x4E2A;RBAC&#x89D2;&#x8272;&#x4E2D;&#x4F53;&#x73B0;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x7528;&#x659C;&#x7EBF;&#x201C;/&#x201D;&#x6765;&#x5206;&#x9694;&#x8D44;&#x6E90;&#x548C;&#x4E0B;&#x7EA7;&#x8D44;&#x6E90;&#x3002;&#x82E5;&#x60F3;&#x6388;&#x6743;&#x8BA9;&#x67D0;&#x4E2A;&#x4E3B;&#x4F53;&#x540C;&#x65F6;&#x80FD;&#x591F;&#x8BFB;&#x53D6;Pod&#x548C;Pod log&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;resources&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-and-pod-logs-reader
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;pods&quot;</span>, <span class="token string">&quot;pods/log&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x8BF7;&#x6C42;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; resourceNames &#x5217;&#x8868;&#x6309;&#x540D;&#x79F0;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x3002; &#x5728;&#x6307;&#x5B9A;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x8BF7;&#x6C42;&#x9650;&#x5B9A;&#x4E3A;&#x8D44;&#x6E90;&#x7684;&#x5355;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x9650;&#x5236;&#x53EF;&#x4EE5; &quot;get&quot; &#x548C; &quot;update&quot; &#x4E00;&#x4E2A;&#x540D;&#x4E3A; my-configmap &#x7684; ConfigMap&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: configmap-updater
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  <span class="token comment"># &#x5728; HTTP &#x5C42;&#x9762;&#xFF0C;&#x7528;&#x6765;&#x8BBF;&#x95EE; ConfigMap &#x7684;&#x8D44;&#x6E90;&#x7684;&#x540D;&#x79F0;&#x4E3A; &quot;configmaps&quot;</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;configmaps&quot;</span><span class="token punctuation">]</span>
+  resourceNames: <span class="token punctuation">[</span><span class="token string">&quot;my-configmap&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;update&quot;</span>, <span class="token string">&quot;get&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x53EF;&#x60F3;&#x800C;&#x77E5;&#xFF0C;resourceName&#x8FD9;&#x79CD;&#x7528;&#x6CD5;&#x5BF9;list&#x3001;watch&#x3001;create&#x6216;deletecollection&#x64CD;&#x4F5C;&#x662F;&#x65E0;&#x6548;&#x7684;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5FC5;&#x987B;&#x8981;&#x901A;&#x8FC7;URL&#x8FDB;&#x884C;&#x9274;&#x6743;&#xFF0C;&#x800C;&#x8D44;&#x6E90;&#x540D;&#x79F0;&#x5728;list&#x3001;watch&#x3001;create deletecollection&#x8BF7;&#x6C42;&#x4E2D;&#x53EA;&#x662F;&#x8BF7;&#x6C42;Body&#x6570;&#x636E;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<h2 id="4-&#x805A;&#x5408;&#x7684;-clusterrole"><a name="4-&#x805A;&#x5408;&#x7684;-clusterrole" class="anchor-navigation-ex-anchor" href="#4-&#x805A;&#x5408;&#x7684;-clusterrole"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x805A;&#x5408;&#x7684; ClusterRole</h2>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x82E5;&#x5E72; ClusterRole &#x805A;&#x5408;&#xFF08;Aggregate&#xFF09; &#x8D77;&#x6765;&#xFF0C;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x590D;&#x5408;&#x7684; ClusterRole&#x3002; &#x67D0;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x4F5C;&#x4E3A;&#x96C6;&#x7FA4;&#x63A7;&#x5236;&#x9762;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x4F1A;&#x76D1;&#x89C6;&#x5E26;&#x6709; aggregationRule &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x96C6;&#x5408;&#x3002;<code>aggregationRule</code> &#x4E3A;&#x63A7;&#x5236;&#x5668;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6807;&#x7B7E; &#x9009;&#x62E9;&#x7B97;&#x7B26;&#x4F9B;&#x540E;&#x8005;&#x5339;&#x914D; &#x5E94;&#x8BE5;&#x7EC4;&#x5408;&#x5230;&#x5F53;&#x524D; ClusterRole &#x7684; roles &#x5B57;&#x6BB5;&#x4E2D;&#x7684; ClusterRole &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x805A;&#x5408; ClusterRole &#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: monitoring
+aggregationRule:
+  clusterRoleSelectors:
+  - matchLabels:
+      rbac.example.com/aggregate-to-monitoring: <span class="token string">&quot;true&quot;</span>
+rules: <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment"># &#x63A7;&#x5236;&#x9762;&#x81EA;&#x52A8;&#x586B;&#x5145;&#x8FD9;&#x91CC;&#x7684;&#x89C4;&#x5219;</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0E;&#x67D0;&#x73B0;&#x6709;&#x805A;&#x5408; ClusterRole &#x7684;&#x6807;&#x7B7E;&#x9009;&#x62E9;&#x7B97;&#x7B26;&#x5339;&#x914D;&#x7684; ClusterRole&#xFF0C; &#x8FD9;&#x4E00;&#x53D8;&#x5316;&#x4F1A;&#x89E6;&#x53D1;&#x65B0;&#x7684;&#x89C4;&#x5219;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x805A;&#x5408; ClusterRole &#x7684;&#x64CD;&#x4F5C;&#x3002; &#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x540C;&#x6837;&#x4E3A; <code>rbac.example.com/aggregate-to-monitoring: true</code> &#x7684; ClusterRole&#xFF0C;&#x65B0;&#x7684;&#x89C4;&#x5219;&#x53EF;&#x88AB;&#x6DFB;&#x52A0;&#x5230; &quot;monitoring&quot; ClusterRole &#x4E2D;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: monitoring-endpoints
+  labels:
+    rbac.example.com/aggregate-to-monitoring: <span class="token string">&quot;true&quot;</span>
+<span class="token comment"># &#x5F53;&#x4F60;&#x521B;&#x5EFA; &quot;monitoring-endpoints&quot; ClusterRole &#x65F6;&#xFF0C;</span>
+<span class="token comment"># &#x4E0B;&#x9762;&#x7684;&#x89C4;&#x5219;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230; &quot;monitoring&quot; ClusterRole &#x4E2D;</span>
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;services&quot;</span>, <span class="token string">&quot;endpoints&quot;</span>, <span class="token string">&quot;pods&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272; &#x4F7F;&#x7528; ClusterRole &#x805A;&#x5408;&#x3002; &#x8FD9;&#x4F7F;&#x5F97;&#x4F5C;&#x4E3A;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5458;&#x7684;&#x4F60;&#x53EF;&#x4EE5;&#x4E3A;&#x6269;&#x5C55;&#x9ED8;&#x8BA4;&#x89C4;&#x5219;&#xFF0C;&#x5305;&#x62EC;&#x4E3A;&#x5B9A;&#x5236;&#x8D44;&#x6E90;&#x8BBE;&#x7F6E;&#x89C4;&#x5219;&#xFF0C; &#x6BD4;&#x5982;&#x901A;&#x8FC7; <code>CustomResourceDefinitions</code> &#x6216;&#x805A;&#x5408; API &#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x5B9A;&#x5236;&#x8D44;&#x6E90;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x4E0B;&#x9762;&#x7684; ClusterRoles &#x8BA9;&#x9ED8;&#x8BA4;&#x89D2;&#x8272; &quot;admin&quot; &#x548C; &quot;edit&quot; &#x62E5;&#x6709;&#x7BA1;&#x7406;&#x81EA;&#x5B9A;&#x4E49;&#x8D44;&#x6E90; &quot;CronTabs&quot; &#x7684;&#x6743;&#x9650;&#xFF0C; &quot;view&quot; &#x89D2;&#x8272;&#x5BF9; CronTab &#x8D44;&#x6E90;&#x62E5;&#x6709;&#x8BFB;&#x64CD;&#x4F5C;&#x6743;&#x9650;&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x5047;&#x5B9A; CronTab &#x5BF9;&#x8C61;&#x5728; API &#x670D;&#x52A1;&#x5668;&#x6240;&#x770B;&#x5230;&#x7684; URL &#x4E2D;&#x88AB;&#x547D;&#x540D;&#x4E3A; &quot;crontabs&quot;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aggregate-cron-tabs-edit
+  labels:
+    <span class="token comment"># &#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x6743;&#x9650;&#x5230;&#x9ED8;&#x8BA4;&#x89D2;&#x8272; &quot;admin&quot; &#x548C; &quot;edit&quot; &#x4E2D;</span>
+    rbac.authorization.k8s.io/aggregate-to-admin: <span class="token string">&quot;true&quot;</span>
+    rbac.authorization.k8s.io/aggregate-to-edit: <span class="token string">&quot;true&quot;</span>
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;stable.example.com&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;crontabs&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span>, <span class="token string">&quot;create&quot;</span>, <span class="token string">&quot;update&quot;</span>, <span class="token string">&quot;patch&quot;</span>, <span class="token string">&quot;delete&quot;</span><span class="token punctuation">]</span>
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: aggregate-cron-tabs-view
+  labels:
+    <span class="token comment"># &#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x6743;&#x9650;&#x5230; &quot;view&quot; &#x9ED8;&#x8BA4;&#x89D2;&#x8272;&#x4E2D;</span>
+    rbac.authorization.k8s.io/aggregate-to-view: <span class="token string">&quot;true&quot;</span>
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;stable.example.com&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;crontabs&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<h2 id="5-role-&#x793A;&#x4F8B;"><a name="5-role-&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#5-role-&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>5. Role &#x793A;&#x4F8B;</h2>
+<p>&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x5747;&#x4E3A;&#x4ECE; Role &#x6216; CLusterRole &#x5BF9;&#x8C61;&#x4E2D;&#x622A;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x4EC5;&#x5C55;&#x793A;&#x5176; rules &#x90E8;&#x5206;&#x3002;</p>
+<p>&#x5141;&#x8BB8;&#x8BFB;&#x53D6;&#x5728;&#x6838;&#x5FC3; API &#x7EC4;&#x4E0B;&#x7684; &quot;Pods&quot;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  <span class="token comment"># &#x5728; HTTP &#x5C42;&#x9762;&#xFF0C;&#x7528;&#x6765;&#x8BBF;&#x95EE; Pod &#x7684;&#x8D44;&#x6E90;&#x7684;&#x540D;&#x79F0;&#x4E3A; &quot;pods&quot;</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;pods&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x8BFB;/&#x5199;&#x5728; &quot;extensions&quot; &#x548C; &quot;apps&quot; API &#x7EC4;&#x4E2D;&#x7684; Deployment&#xFF08;&#x5728; HTTP &#x5C42;&#x9762;&#xFF0C;&#x5BF9;&#x5E94; URL &#x4E2D;&#x8D44;&#x6E90;&#x90E8;&#x5206;&#x4E3A; &quot;deployments&quot;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;extensions&quot;</span>, <span class="token string">&quot;apps&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;deployments&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span>, <span class="token string">&quot;create&quot;</span>, <span class="token string">&quot;update&quot;</span>, <span class="token string">&quot;patch&quot;</span>, <span class="token string">&quot;delete&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x8BFB;&#x53D6;&#x6838;&#x5FC3; API &#x7EC4;&#x4E2D;&#x7684; &quot;pods&quot; &#x548C;&#x8BFB;/&#x5199; &quot;batch&quot; &#x6216; &quot;extensions&quot; API &#x7EC4;&#x4E2D;&#x7684; &quot;jobs&quot;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;pods&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span><span class="token punctuation">]</span>
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;batch&quot;</span>, <span class="token string">&quot;extensions&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;jobs&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span>, <span class="token string">&quot;create&quot;</span>, <span class="token string">&quot;update&quot;</span>, <span class="token string">&quot;patch&quot;</span>, <span class="token string">&quot;delete&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x8BFB;&#x53D6;&#x540D;&#x79F0;&#x4E3A; &quot;my-config&quot; &#x7684; ConfigMap&#xFF08;&#x9700;&#x8981;&#x901A;&#x8FC7; RoleBinding &#x7ED1;&#x5B9A;&#x4EE5; &#x9650;&#x5236;&#x4E3A;&#x67D0;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7279;&#x5B9A;&#x7684; ConfigMap&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;configmaps&quot;</span><span class="token punctuation">]</span>
+  resourceNames: <span class="token punctuation">[</span><span class="token string">&quot;my-config&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x8BFB;&#x53D6;&#x5728;&#x6838;&#x5FC3;&#x7EC4;&#x4E2D;&#x7684; &quot;nodes&quot; &#x8D44;&#x6E90;&#xFF08;&#x56E0;&#x4E3A; Node &#x662F;&#x96C6;&#x7FA4;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981; ClusterRole &#x7ED1;&#x5B9A;&#x5230; ClusterRoleBinding &#x624D;&#x751F;&#x6548;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;nodes&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;list&quot;</span>, <span class="token string">&quot;watch&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x9488;&#x5BF9;&#x975E;&#x8D44;&#x6E90;&#x7AEF;&#x70B9; <code>/healthz</code> &#x548C;&#x5176;&#x5B50;&#x8DEF;&#x5F84;&#x4E0A;&#x53D1;&#x8D77; GET &#x548C; POST &#x8BF7;&#x6C42; &#xFF08;&#x5FC5;&#x987B;&#x5728; ClusterRole &#x7ED1;&#x5B9A; ClusterRoleBinding &#x624D;&#x751F;&#x6548;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">rules:
+  - nonResourceURLs: <span class="token punctuation">[</span><span class="token string">&quot;/healthz&quot;</span>, <span class="token string">&quot;/healthz/*&quot;</span><span class="token punctuation">]</span> <span class="token comment"># nonResourceURL &#x4E2D;&#x7684; &apos;*&apos; &#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x901A;&#x914D;&#x7B26;</span>
+    verbs: <span class="token punctuation">[</span><span class="token string">&quot;get&quot;</span>, <span class="token string">&quot;post&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<h2 id="6-&#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;"><a name="6-&#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;" class="anchor-navigation-ex-anchor" href="#6-&#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>6. &#x5BF9;&#x4E3B;&#x4F53;&#x7684;&#x5F15;&#x7528;</h2>
+<p><code>RoleBinding</code> &#x6216;&#x8005; <code>ClusterRoleBinding</code> &#x53EF;&#x7ED1;&#x5B9A;&#x89D2;&#x8272;&#x5230;&#x67D0; <em>&#x4E3B;&#x4F53;&#xFF08;Subject&#xFF09;</em>&#x4E0A;&#x3002; &#x4E3B;&#x4F53;&#x53EF;&#x4EE5;&#x662F;&#x7EC4;&#xFF0C;&#x7528;&#x6237;&#x6216;&#x8005; &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x3002;</p>
+<p>Kubernetes &#x7528;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x8868;&#x793A;&#x7528;&#x6237;&#x540D;&#x3002; &#x7528;&#x6237;&#x540D;&#x53EF;&#x4EE5;&#x662F;&#x666E;&#x901A;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF0C;&#x50CF; &quot;alice&quot;&#xFF1B;&#x6216;&#x8005;&#x662F;&#x90AE;&#x4EF6;&#x98CE;&#x683C;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5982; &quot;bob@example.com&quot;&#xFF0C; &#x6216;&#x8005;&#x662F;&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x8868;&#x8FBE;&#x7684;&#x6570;&#x5B57; ID&#x3002; &#x4F60;&#x4F5C;&#x4E3A; Kubernetes &#x7BA1;&#x7406;&#x5458;&#x8D1F;&#x8D23;&#x914D;&#x7F6E; &#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x6A21;&#x5757; &#x4EE5;&#x4FBF;&#x540E;&#x8005;&#x80FD;&#x591F;&#x751F;&#x6210;&#x4F60;&#x6240;&#x671F;&#x671B;&#x7684;&#x683C;&#x5F0F;&#x7684;&#x7528;&#x6237;&#x540D;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A; &#x524D;&#x7F00; system: &#x662F; Kubernetes &#x7CFB;&#x7EDF;&#x4FDD;&#x7559;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x8981;&#x786E;&#x4FDD; &#x6240;&#x914D;&#x7F6E;&#x7684;&#x7528;&#x6237;&#x540D;&#x6216;&#x8005;&#x7EC4;&#x540D;&#x4E0D;&#x80FD;&#x51FA;&#x73B0;&#x4E0A;&#x8FF0; system: &#x524D;&#x7F00;&#x3002;
+&#x9664;&#x4E86;&#x5BF9;&#x524D;&#x7F00;&#x7684;&#x9650;&#x5236;&#x4E4B;&#x5916;&#xFF0C;RBAC &#x9274;&#x6743;&#x7CFB;&#x7EDF;&#x4E0D;&#x5BF9;&#x7528;&#x6237;&#x540D;&#x683C;&#x5F0F;&#x4F5C;&#x4EFB;&#x4F55;&#x8981;&#x6C42;&#x3002;</p>
+</blockquote>
+<h2 id="7-rolebinding-&#x793A;&#x4F8B;"><a name="7-rolebinding-&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#7-rolebinding-&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>7. RoleBinding &#x793A;&#x4F8B;</h2>
+<p>&#x4E0B;&#x9762;&#x793A;&#x4F8B;&#x662F; RoleBinding &#x4E2D;&#x7684;&#x7247;&#x6BB5;&#xFF0C;&#x4EC5;&#x5C55;&#x793A;&#x5176; subjects &#x7684;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x540D;&#x79F0;&#x4E3A; alice@example.com &#x7684;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: User
+  name: <span class="token string">&quot;alice@example.com&quot;</span>
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x540D;&#x79F0;&#x4E3A; frontend-admins &#x7684;&#x7528;&#x6237;&#x7EC4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: <span class="token string">&quot;frontend-admins&quot;</span>
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E; kube-system &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: kube-system
+</code></pre>
+<p>&#x5BF9;&#x4E8E; &quot;qa&quot; &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: system:serviceaccounts:qa
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x5728;&#x4EFB;&#x4F55;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: system:serviceaccounts
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x5DF2;&#x7ECF;&#x8FC7;&#x8BA4;&#x8BC1;&#x7684;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: system:authenticated
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x672A;&#x901A;&#x8FC7;&#x8BA4;&#x8BC1;&#x7684;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: system:unauthenticated
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">subjects:
+- kind: Group
+  name: system:authenticated
+  apiGroup: rbac.authorization.k8s.io
+- kind: Group
+  name: system:unauthenticated
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<h2 id="8-&#x9ED8;&#x8BA4;-roles-&#x548C;-role-bindings"><a name="8-&#x9ED8;&#x8BA4;-roles-&#x548C;-role-bindings" class="anchor-navigation-ex-anchor" href="#8-&#x9ED8;&#x8BA4;-roles-&#x548C;-role-bindings"><i class="fa fa-link" aria-hidden="true"></i></a>8. &#x9ED8;&#x8BA4; Roles &#x548C; Role Bindings</h2>
+<p>API &#x670D;&#x52A1;&#x5668;&#x521B;&#x5EFA;&#x4E00;&#x7EC4;&#x9ED8;&#x8BA4;&#x7684; ClusterRole &#x548C; ClusterRoleBinding &#x5BF9;&#x8C61;&#x3002; &#x8FD9;&#x5176;&#x4E2D;&#x8BB8;&#x591A;&#x662F;&#x4EE5; <code>system:</code> &#x4E3A;&#x524D;&#x7F00;&#x7684;&#xFF0C;&#x7528;&#x4EE5;&#x6807;&#x8BC6;&#x5BF9;&#x5E94;&#x8D44;&#x6E90;&#x662F;&#x76F4;&#x63A5;&#x7531;&#x96C6;&#x7FA4;&#x63A7;&#x5236;&#x9762;&#x7BA1;&#x7406;&#x7684;&#x3002; &#x6240;&#x6709;&#x7684;&#x9ED8;&#x8BA4; ClusterRole &#x548C; ClusterRoleBinding &#x90FD;&#x6709; <code>kubernetes.io/bootstrapping=rbac-defaults</code> &#x6807;&#x7B7E;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A; &#x5728;&#x4FEE;&#x6539;&#x540D;&#x79F0;&#x5305;&#x542B; system: &#x524D;&#x7F00;&#x7684; ClusterRole &#x548C; ClusterRoleBinding &#x65F6;&#x8981;&#x683C;&#x5916;&#x5C0F;&#x5FC3;&#x3002;
+&#x5BF9;&#x8FD9;&#x4E9B;&#x8D44;&#x6E90;&#x7684;&#x66F4;&#x6539;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x96C6;&#x7FA4;&#x65E0;&#x6CD5;&#x7EE7;&#x7EED;&#x5DE5;&#x4F5C;&#x3002;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>&#x9ED8;&#x8BA4; ClusterRole</th>
+<th>&#x9ED8;&#x8BA4; ClusterRoleBinding</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>system:basic-user</td>
+<td>system:authenticated &#x7EC4;</td>
+<td>&#x5141;&#x8BB8;&#x7528;&#x6237;&#x4EE5;&#x53EA;&#x8BFB;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x8BBF;&#x95EE;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x3002;&#x5728; 1.14 &#x7248;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x8FD9;&#x4E2A;&#x89D2;&#x8272;&#x5728; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x4E5F;&#x7ED1;&#x5B9A;&#x5728; system:unauthenticated &#x4E0A;&#x3002;</td>
+</tr>
+<tr>
+<td>system:discovery</td>
+<td>system:authenticated &#x7EC4;</td>
+<td>&#x5141;&#x8BB8;&#x4EE5;&#x53EA;&#x8BFB;&#x65B9;&#x5F0F;&#x8BBF;&#x95EE; API &#x53D1;&#x73B0;&#x7AEF;&#x70B9;&#xFF0C;&#x8FD9;&#x4E9B;&#x7AEF;&#x70B9;&#x7528;&#x6765;&#x53D1;&#x73B0;&#x548C;&#x534F;&#x5546; API &#x7EA7;&#x522B;&#x3002; &#x5728; 1.14 &#x7248;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x8FD9;&#x4E2A;&#x89D2;&#x8272;&#x5728;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x7ED1;&#x5B9A;&#x5728; system:unauthenticated &#x4E0A;&#x3002;</td>
+</tr>
+<tr>
+<td>system:public-info-viewer</td>
+<td>system:authenticated &#x548C; system:unauthenticated &#x7EC4;</td>
+<td>&#x5141;&#x8BB8;&#x5BF9;&#x96C6;&#x7FA4;&#x7684;&#x975E;&#x654F;&#x611F;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x53EA;&#x8BFB;&#x8BBF;&#x95EE;&#xFF0C;&#x5B83;&#x662F;&#x5728; 1.14 &#x7248;&#x672C;&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;"><a name="9-&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;" class="anchor-navigation-ex-anchor" href="#9-&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>9. &#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;</h2>
+<p>&#x4E00;&#x4E9B;&#x9ED8;&#x8BA4;&#x7684; ClusterRole &#x4E0D;&#x662F;&#x4EE5;&#x524D;&#x7F00; system: &#x5F00;&#x5934;&#x7684;&#x3002;&#x8FD9;&#x4E9B;&#x662F;&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;&#x3002; &#x5B83;&#x4EEC;&#x5305;&#x62EC;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#xFF08;<code>Super-User</code>&#xFF09;&#x89D2;&#x8272;&#xFF08;<code>cluster-admin</code>&#xFF09;&#x3001; &#x4F7F;&#x7528; ClusterRoleBinding &#x5728;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#x5B8C;&#x6210;&#x6388;&#x6743;&#x7684;&#x89D2;&#x8272;&#xFF08;<code>cluster-status</code>&#xFF09;&#x3001; &#x4EE5;&#x53CA;&#x4F7F;&#x7528; RoleBinding &#x5728;&#x7279;&#x5B9A;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x6388;&#x4E88;&#x7684;&#x89D2;&#x8272;&#xFF08;admin&#x3001;edit&#x3001;view&#xFF09;&#x3002;</p>
+<p>&#x9762;&#x5411;&#x7528;&#x6237;&#x7684; ClusterRole &#x4F7F;&#x7528; ClusterRole &#x805A;&#x5408;&#x4EE5;&#x5141;&#x8BB8;&#x7BA1;&#x7406;&#x5458;&#x5728; &#x8FD9;&#x4E9B; ClusterRole &#x4E0A;&#x6DFB;&#x52A0;&#x7528;&#x4E8E;&#x5B9A;&#x5236;&#x8D44;&#x6E90;&#x7684;&#x89C4;&#x5219;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x6DFB;&#x52A0;&#x89C4;&#x5219;&#x5230; admin&#x3001;edit &#x6216;&#x8005; view&#xFF0C; &#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x5E26;&#x6709;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6807;&#x7B7E;&#x7684; ClusterRole&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">metadata:
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-admin: <span class="token string">&quot;true&quot;</span>
+    rbac.authorization.k8s.io/aggregate-to-edit: <span class="token string">&quot;true&quot;</span>
+    rbac.authorization.k8s.io/aggregate-to-view: <span class="token string">&quot;true&quot;</span>
+</code></pre>
+<h2 id="10-&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><a name="10-&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;" class="anchor-navigation-ex-anchor" href="#10-&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>10. &#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x9ED8;&#x8BA4; ClusterRole</th>
+<th>&#x9ED8;&#x8BA4; ClusterRoleBinding</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster-admin</td>
+<td>system:masters &#x7EC4;</td>
+<td>&#x5141;&#x8BB8;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x5728;&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x4EFB;&#x4F55;&#x8D44;&#x6E90;&#x4E0A;&#x6267;&#x884C;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x3002; &#x5F53;&#x5728; ClusterRoleBinding &#x4E2D;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x6388;&#x6743;&#x5BF9;&#x96C6;&#x7FA4;&#x4E2D;&#x4EE5;&#x53CA;&#x6240;&#x6709;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x5168;&#x90E8;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x5B8C;&#x5168;&#x63A7;&#x5236;&#x3002; &#x5F53;&#x5728; RoleBinding &#x4E2D;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x6388;&#x6743;&#x63A7;&#x5236; RoleBinding &#x6240;&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8D44;&#x6E90;&#xFF0C;&#x5305;&#x62EC;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x672C;&#x8EAB;&#x3002;</td>
+</tr>
+<tr>
+<td>admin</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x7BA1;&#x7406;&#x5458;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#xFF0C;&#x65E8;&#x5728;&#x4F7F;&#x7528; RoleBinding &#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x5185;&#x6267;&#x884C;&#x6388;&#x6743;&#x3002; &#x5982;&#x679C;&#x5728; RoleBinding &#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5219;&#x53EF;&#x6388;&#x4E88;&#x5BF9;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x8D44;&#x6E90;&#x7684;&#x8BFB;/&#x5199;&#x6743;&#x9650;&#xFF0C; &#x5305;&#x62EC;&#x521B;&#x5EFA;&#x89D2;&#x8272;&#x548C;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x7684;&#x80FD;&#x529B;&#x3002; &#x4F46;&#x662F;&#x5B83;&#x4E0D;&#x5141;&#x8BB8;&#x5BF9;&#x8D44;&#x6E90;&#x914D;&#x989D;&#x6216;&#x8005;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x672C;&#x8EAB;&#x8FDB;&#x884C;&#x5199;&#x64CD;&#x4F5C;&#x3002;</td>
+</tr>
+<tr>
+<td>edit</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x5BF9;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x7684;&#x5927;&#x591A;&#x6570;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x8BFB;/&#x5199;&#x64CD;&#x4F5C;&#x3002; &#x5B83;&#x4E0D;&#x5141;&#x8BB8;&#x67E5;&#x770B;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x89D2;&#x8272;&#x6216;&#x8005;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x3002; &#x4E0D;&#x8FC7;&#xFF0C;&#x6B64;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE; Secret&#xFF0C;&#x4EE5;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x4EFB;&#x4F55; ServiceAccount &#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; Pods&#xFF0C; &#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4E86;&#x89E3;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x5185;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x7684; API &#x8BBF;&#x95EE;&#x7EA7;&#x522B;&#x3002;</td>
+</tr>
+<tr>
+<td>view</td>
+<td>&#x65E0;</td>
+</tr>
+<tr>
+<td>system:kube-scheduler</td>
+<td>system:kube-scheduler user</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE; scheduler &#x7EC4;&#x4EF6;&#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x3002;</td>
+</tr>
+<tr>
+<td>system:volume-scheduler</td>
+<td>system:kube-scheduler user</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE; kube-scheduler &#x7EC4;&#x4EF6;&#x6240;&#x9700;&#x8981;&#x7684;&#x5377;&#x8D44;&#x6E90;&#x3002;</td>
+</tr>
+<tr>
+<td>system:kube-controller-manager</td>
+<td>system:kube-controller-manager user</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5668;&#x7BA1;&#x7406;&#x5668; &#x7EC4;&#x4EF6;&#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x3002; &#x5404;&#x4E2A;&#x63A7;&#x5236;&#x56DE;&#x8DEF;&#x6240;&#x9700;&#x8981;&#x7684;&#x6743;&#x9650;&#x5728;&#x63A7;&#x5236;&#x5668;&#x89D2;&#x8272; &#x8BE6;&#x8FF0;&#x3002;</td>
+</tr>
+<tr>
+<td>system:node</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE; kubelet &#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5305;&#x62EC;&#x5BF9;&#x6240;&#x6709; Secret &#x7684;&#x8BFB;&#x64CD;&#x4F5C;&#x548C;&#x5BF9;&#x6240;&#x6709; Pod &#x72B6;&#x6001;&#x5BF9;&#x8C61;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x4F60;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; Node &#x9274;&#x6743;&#x7EC4;&#x4EF6; &#x548C; NodeRestriction &#x51C6;&#x5165;&#x63D2;&#x4EF6; &#x800C;&#x4E0D;&#x662F; system:node &#x89D2;&#x8272;&#x3002;&#x540C;&#x65F6;&#x57FA;&#x4E8E; kubelet &#x4E0A;&#x8C03;&#x5EA6;&#x6267;&#x884C;&#x7684; Pod &#x6765;&#x6388;&#x6743; kubelet &#x5BF9; API &#x7684;&#x8BBF;&#x95EE;&#x3002; system:node &#x89D2;&#x8272;&#x7684;&#x610F;&#x4E49;&#x4EC5;&#x662F;&#x4E3A;&#x4E86;&#x4E0E;&#x4ECE; v1.8 &#x4E4B;&#x524D;&#x7248;&#x672C;&#x5347;&#x7EA7;&#x800C;&#x6765;&#x7684;&#x96C6;&#x7FA4;&#x517C;&#x5BB9;&#x3002;</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>system:node-proxier</td>
+<td>system:kube-proxy user</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE; kube-proxy &#x7EC4;&#x4EF6;&#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><a name="11-&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;" class="anchor-navigation-ex-anchor" href="#11-&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>11. &#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x89D2;&#x8272;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x9ED8;&#x8BA4; ClusterRole</th>
+<th>&#x9ED8;&#x8BA4; ClusterRoleBinding</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>system:auth-delegator</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x5C06;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x9274;&#x6743;&#x68C0;&#x67E5;&#x64CD;&#x4F5C;&#x5916;&#x5305;&#x51FA;&#x53BB;&#x3002; &#x8FD9;&#x79CD;&#x89D2;&#x8272;&#x901A;&#x5E38;&#x7528;&#x5728;&#x63D2;&#x4EF6;&#x5F0F; API &#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x7EDF;&#x4E00;&#x7684;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x9274;&#x6743;&#x3002;</td>
+</tr>
+<tr>
+<td>system:heapster</td>
+<td>&#x65E0;</td>
+<td>&#x4E3A; Heapster &#x7EC4;&#x4EF6;&#xFF08;&#x5DF2;&#x5F03;&#x7528;&#xFF09;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
+</tr>
+<tr>
+<td>system:kube-aggregator</td>
+<td>&#x65E0;</td>
+<td>&#x4E3A; kube-aggregator &#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
+</tr>
+<tr>
+<td>system:kube-dns</td>
+<td>&#x5728; kube-system &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; kube-dns &#x670D;&#x52A1;&#x8D26;&#x53F7;</td>
+<td>&#x4E3A; kube-dns &#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
+</tr>
+<tr>
+<td>system:kubelet-api-admin</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8; kubelet API &#x7684;&#x5B8C;&#x5168;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</td>
+</tr>
+<tr>
+<td>system:node-bootstrapper</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x6267;&#x884C; kubelet TLS &#x542F;&#x52A8;&#x5F15;&#x5BFC; &#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x3002;</td>
+</tr>
+<tr>
+<td>system:node-problem-detector</td>
+<td>&#x65E0;</td>
+<td>&#x4E3A; node-problem-detector &#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
+</tr>
+<tr>
+<td>system:persistent-volume-provisioner</td>
+<td>&#x65E0;</td>
+<td>&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x5927;&#x90E8;&#x5206; &#x52A8;&#x6001;&#x5377;&#x9A71;&#x52A8; &#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-&#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;"><a name="12-&#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;" class="anchor-navigation-ex-anchor" href="#12-&#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>12. &#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89D2;&#x8272;</h2>
+<p>Kubernetes &#x63A7;&#x5236;&#x5668;&#x7BA1;&#x7406;&#x5668; &#x8FD0;&#x884C;&#x5185;&#x5EFA;&#x4E8E; Kubernetes &#x63A7;&#x5236;&#x9762;&#x7684;&#x63A7;&#x5236;&#x5668;&#x3002; &#x5F53;&#x4F7F;&#x7528; --use-service-account-credentials &#x53C2;&#x6570;&#x542F;&#x52A8;&#x65F6;, kube-controller-manager &#x4F7F;&#x7528;&#x5355;&#x72EC;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6765;&#x542F;&#x52A8;&#x6BCF;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x3002; &#x6BCF;&#x4E2A;&#x5185;&#x7F6E;&#x63A7;&#x5236;&#x5668;&#x90FD;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x3001;&#x524D;&#x7F00;&#x4E3A; system:controller: &#x7684;&#x89D2;&#x8272;&#x3002; &#x5982;&#x679C;&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x672A;&#x8BBE;&#x7F6E; --use-service-account-credentials&#xFF0C; &#x5B83;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x8EAB;&#x4EFD;&#x51ED;&#x636E;&#x6765;&#x8FD0;&#x884C;&#x6240;&#x6709;&#x7684;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8BE5;&#x8EAB;&#x4EFD;&#x5FC5;&#x987B;&#x88AB;&#x6388;&#x4E88;&#x6240;&#x6709;&#x76F8;&#x5173;&#x7684;&#x89D2;&#x8272;&#x3002; &#x8FD9;&#x4E9B;&#x89D2;&#x8272;&#x5305;&#x62EC;:</p>
+<pre class="language-"><code class="lang-bash">system:controller:attachdetach-controller
+system:controller:certificate-controller
+system:controller:clusterrole-aggregation-controller
+system:controller:cronjob-controller
+system:controller:daemon-set-controller
+system:controller:deployment-controller
+system:controller:disruption-controller
+system:controller:endpoint-controller
+system:controller:expand-controller
+system:controller:generic-garbage-collector
+system:controller:horizontal-pod-autoscaler
+system:controller:job-controller
+system:controller:namespace-controller
+system:controller:node-controller
+system:controller:persistent-volume-binder
+system:controller:pod-garbage-collector
+system:controller:pv-protection-controller
+system:controller:pvc-protection-controller
+system:controller:replicaset-controller
+system:controller:replication-controller
+system:controller:resourcequota-controller
+system:controller:root-ca-cert-publisher
+system:controller:route-controller
+system:controller:service-account-controller
+system:controller:service-controller
+system:controller:statefulset-controller
+system:controller:ttl-controller
+</code></pre>
+<h2 id="13-&#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;"><a name="13-&#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;" class="anchor-navigation-ex-anchor" href="#13-&#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>13. &#x5BF9;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;&#x7684;&#x9650;&#x5236;</h2>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4E0B;&#x9762;&#x7684; ClusterRole &#x548C; RoleBinding &#x5C06;&#x5141;&#x8BB8;&#x7528;&#x6237; user-1 &#x628A;&#x540D;&#x5B57;&#x7A7A;&#x95F4; user-1-namespace &#x4E2D;&#x7684; admin&#x3001;edit &#x548C; view &#x89D2;&#x8272;&#x8D4B;&#x4E88;&#x5176;&#x4ED6;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: role-grantor
+rules:
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;rbac.authorization.k8s.io&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;rolebindings&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;create&quot;</span><span class="token punctuation">]</span>
+- apiGroups: <span class="token punctuation">[</span><span class="token string">&quot;rbac.authorization.k8s.io&quot;</span><span class="token punctuation">]</span>
+  resources: <span class="token punctuation">[</span><span class="token string">&quot;clusterroles&quot;</span><span class="token punctuation">]</span>
+  verbs: <span class="token punctuation">[</span><span class="token string">&quot;bind&quot;</span><span class="token punctuation">]</span>
+  <span class="token comment"># &#x5FFD;&#x7565; resourceNames &#x610F;&#x5473;&#x7740;&#x5141;&#x8BB8;&#x7ED1;&#x5B9A;&#x4EFB;&#x4F55; ClusterRole</span>
+  resourceNames: <span class="token punctuation">[</span><span class="token string">&quot;admin&quot;</span>,<span class="token string">&quot;edit&quot;</span>,<span class="token string">&quot;view&quot;</span><span class="token punctuation">]</span>
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: role-grantor-binding
+  namespace: user-1-namespace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: role-grantor
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: user-1
+</code></pre>
+<p>&#x5F53;&#x542F;&#x52A8;&#x5F15;&#x5BFC;&#x7B2C;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x548C;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4E3A;&#x521D;&#x59CB;&#x7528;&#x6237;&#x6388;&#x4E88;&#x4ED6;&#x4EEC;&#x5C1A;&#x672A;&#x62E5;&#x6709;&#x7684;&#x6743;&#x9650;&#x3002; &#x5BF9;&#x521D;&#x59CB;&#x89D2;&#x8272;&#x548C;&#x89D2;&#x8272;&#x7ED1;&#x5B9A;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x9700;&#x8981;&#xFF1A;</p>
+<p>&#x4F7F;&#x7528;&#x7528;&#x6237;&#x7EC4;&#x4E3A; system:masters &#x7684;&#x51ED;&#x636E;&#xFF0C;&#x8BE5;&#x7528;&#x6237;&#x7EC4;&#x7531;&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;&#x5173;&#x8054;&#x5230; cluster-admin &#x8FD9;&#x4E2A;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x89D2;&#x8272;&#x3002;
+&#x5982;&#x679C;&#x4F60;&#x7684; API &#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x7528;&#x4E86;&#x4E0D;&#x5B89;&#x5168;&#x7AEF;&#x53E3;&#xFF08;&#x4F7F;&#x7528; --insecure-port&#xFF09;, &#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; &#x8BE5;&#x7AEF;&#x53E3;&#x8C03;&#x7528; API &#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x4F1A;&#x7ED5;&#x8FC7;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x6216;&#x9274;&#x6743;</p>
+<h2 id="14-&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;"><a name="14-&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;" class="anchor-navigation-ex-anchor" href="#14-&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;"><i class="fa fa-link" aria-hidden="true"></i></a>14. &#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;</h2>
+<h3 id="141-kubectl-create-role"><a name="141-kubectl-create-role" class="anchor-navigation-ex-anchor" href="#141-kubectl-create-role"><i class="fa fa-link" aria-hidden="true"></i></a>14.1 kubectl create role</h3>
+<p>&#x521B;&#x5EFA; Role &#x5BF9;&#x8C61;&#xFF0C;&#x5B9A;&#x4E49;&#x5728;&#x67D0;&#x4E00;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6743;&#x9650;&#x3002;&#x4F8B;&#x5982;:</p>
+<p>&#x521B;&#x5EFA;&#x540D;&#x79F0;&#x4E3A; &quot;pod-reader&quot; &#x7684; Role &#x5BF9;&#x8C61;&#xFF0C;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5BF9; Pods &#x6267;&#x884C; get&#x3001;watch &#x548C; list &#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create role pod-reader --verb<span class="token operator">=</span>get --verb<span class="token operator">=</span>list --verb<span class="token operator">=</span>watch --resource<span class="token operator">=</span>pods
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x79F0;&#x4E3A; &quot;pod-reader&quot; &#x7684; Role &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; resourceNames&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create role pod-reader --verb<span class="token operator">=</span>get --resource<span class="token operator">=</span>pods --resource-name<span class="token operator">=</span>readablepod --resource-name<span class="token operator">=</span>anotherpod
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;foo&quot; &#x7684; Role &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; apiGroups&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create role foo --verb<span class="token operator">=</span>get,list,watch --resource<span class="token operator">=</span>replicasets.apps
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;foo&quot; &#x7684; Role &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A;&#x5B50;&#x8D44;&#x6E90;&#x6743;&#x9650;:</p>
+<pre class="language-"><code class="lang-bash">kubectl create role foo --verb<span class="token operator">=</span>get,list,watch --resource<span class="token operator">=</span>pods,pods/status
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;my-component-lease-holder&quot; &#x7684; Role &#x5BF9;&#x8C61;&#xFF0C;&#x4F7F;&#x5176;&#x5177;&#x6709;&#x5BF9;&#x7279;&#x5B9A;&#x540D;&#x79F0;&#x7684; &#x8D44;&#x6E90;&#x6267;&#x884C; get/update &#x7684;&#x6743;&#x9650;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create role my-component-lease-holder --verb<span class="token operator">=</span>get,list,watch,update --resource<span class="token operator">=</span>lease --resource-name<span class="token operator">=</span>my-component
+</code></pre>
+<h3 id="142-kubectl-create-clusterrole"><a name="142-kubectl-create-clusterrole" class="anchor-navigation-ex-anchor" href="#142-kubectl-create-clusterrole"><i class="fa fa-link" aria-hidden="true"></i></a>14.2 kubectl create clusterrole</h3>
+<p>&#x521B;&#x5EFA; ClusterRole &#x5BF9;&#x8C61;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>&#x521B;&#x5EFA;&#x540D;&#x79F0;&#x4E3A; &quot;pod-reader&quot; &#x7684; ClusterRole&#x5BF9;&#x8C61;&#xFF0C;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5BF9; Pods &#x5BF9;&#x8C61;&#x6267;&#x884C; get&#x3001;watch&#x548C;list` &#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole pod-reader --verb<span class="token operator">=</span>get,list,watch --resource<span class="token operator">=</span>pods
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;pod-reader&quot; &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; resourceNames&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole pod-reader --verb<span class="token operator">=</span>get --resource<span class="token operator">=</span>pods --resource-name<span class="token operator">=</span>readablepod --resource-name<span class="token operator">=</span>anotherpod
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;foo&quot; &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; apiGroups&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole foo --verb<span class="token operator">=</span>get,list,watch --resource<span class="token operator">=</span>replicasets.apps
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;foo&quot; &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A;&#x5B50;&#x8D44;&#x6E90;:</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole foo --verb<span class="token operator">=</span>get,list,watch --resource<span class="token operator">=</span>pods,pods/status
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;foo&quot; &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; nonResourceURL&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole <span class="token string">&quot;foo&quot;</span> --verb<span class="token operator">=</span>get --non-resource-url<span class="token operator">=</span>/logs/*
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x540D;&#x4E3A; &quot;monitoring&quot; &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A; aggregationRule&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrole monitoring --aggregation-rule<span class="token operator">=</span><span class="token string">&quot;rbac.example.com/aggregate-to-monitoring=true&quot;</span>
+</code></pre>
+<h3 id="143-kubectl-create-rolebinding"><a name="143-kubectl-create-rolebinding" class="anchor-navigation-ex-anchor" href="#143-kubectl-create-rolebinding"><i class="fa fa-link" aria-hidden="true"></i></a>14.3 kubectl create rolebinding</h3>
+<p>&#x5728;&#x7279;&#x5B9A;&#x7684;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x5BF9; Role &#x6216; ClusterRole &#x6388;&#x6743;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;acme&quot; &#x4E2D;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; admin &#x7684; ClusterRole &#x4E2D;&#x7684;&#x6743;&#x9650;&#x6388;&#x4E88;&#x540D;&#x79F0; &quot;bob&quot; &#x7684;&#x7528;&#x6237;:</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding bob-admin-binding --clusterrole<span class="token operator">=</span>admin --user<span class="token operator">=</span>bob --namespace<span class="token operator">=</span>acme
+</code></pre>
+<p>&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;acme&quot; &#x4E2D;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; view &#x7684; ClusterRole &#x4E2D;&#x7684;&#x6743;&#x9650;&#x6388;&#x4E88;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;acme&quot; &#x4E2D;&#x540D;&#x4E3A; myapp &#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding myapp-view-binding --clusterrole<span class="token operator">=</span>view --serviceaccount<span class="token operator">=</span>acme:myapp --namespace<span class="token operator">=</span>acme
+</code></pre>
+<p>&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;acme&quot; &#x4E2D;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; view &#x7684; ClusterRole &#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6743;&#x9650;&#x6388;&#x4E88;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;myappnamespace&quot; &#x4E2D;&#x540D;&#x79F0;&#x4E3A; myapp &#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding myappnamespace-myapp-view-binding --clusterrole<span class="token operator">=</span>view --serviceaccount<span class="token operator">=</span>myappnamespace:myapp --namespace<span class="token operator">=</span>acme
+</code></pre>
+<h3 id="144-kubectl-create-clusterrolebinding"><a name="144-kubectl-create-clusterrolebinding" class="anchor-navigation-ex-anchor" href="#144-kubectl-create-clusterrolebinding"><i class="fa fa-link" aria-hidden="true"></i></a>14.4 kubectl create clusterrolebinding</h3>
+<p>&#x5728;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#xFF08;&#x6240;&#x6709;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#xFF09;&#x4E2D;&#x7528; ClusterRole &#x6388;&#x6743;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>&#x5728;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; cluster-admin &#x7684; ClusterRole &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6743;&#x9650;&#x6388;&#x4E88;&#x540D;&#x4E3A; &quot;root&quot; &#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding root-cluster-admin-binding --clusterrole<span class="token operator">=</span>cluster-admin --user<span class="token operator">=</span>root
+</code></pre>
+<p>&#x5728;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; system:node-proxier &#x7684; ClusterRole &#x7684;&#x6743;&#x9650;&#x6388;&#x4E88;&#x540D;&#x4E3A; &quot;system:kube-proxy&quot; &#x7684;&#x7528;&#x6237;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding kube-proxy-binding --clusterrole<span class="token operator">=</span>system:node-proxier --user<span class="token operator">=</span>system:kube-proxy
+</code></pre>
+<p>&#x5728;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5C06;&#x540D;&#x4E3A; view &#x7684; ClusterRole &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6743;&#x9650;&#x6388;&#x4E88; &quot;acme&quot; &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D; &#x540D;&#x4E3A; &quot;myapp&quot; &#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding myapp-view-binding --clusterrole<span class="token operator">=</span>view --serviceaccount<span class="token operator">=</span>acme:myapp
+</code></pre>
+<h3 id="145-kubectl-auth-reconcile"><a name="145-kubectl-auth-reconcile" class="anchor-navigation-ex-anchor" href="#145-kubectl-auth-reconcile"><i class="fa fa-link" aria-hidden="true"></i></a>14.5 kubectl auth reconcile</h3>
+<p>&#x4F7F;&#x7528;&#x6E05;&#x5355;&#x6587;&#x4EF6;&#x6765;&#x521B;&#x5EFA;&#x6216;&#x8005;&#x66F4;&#x65B0; rbac.authorization.k8s.io/v1 API &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5C1A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x5E94;&#x7684;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E5F;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5FC5;&#x8981;&#x7684;&#x8BDD;&#x4E5F;&#x4F1A;&#x88AB;&#x521B;&#x5EFA;&#x3002; &#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x89D2;&#x8272;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;&#xFF0C;&#x4F7F;&#x4E4B;&#x5305;&#x542B;&#x8F93;&#x5165;&#x5BF9;&#x8C61;&#x4E2D;&#x6240;&#x7ED9;&#x7684;&#x6743;&#x9650;&#x3002;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86; --remove-extra-permissions&#xFF0C;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x989D;&#x5916;&#x7684;&#x6743;&#x9650;&#x3002;</p>
+<p>&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x7ED1;&#x5B9A;&#x4E5F;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;&#xFF0C;&#x4F7F;&#x4E4B;&#x5305;&#x542B;&#x8F93;&#x5165;&#x5BF9;&#x8C61;&#x4E2D;&#x6240;&#x7ED9;&#x7684;&#x4E3B;&#x4F53;&#x3002;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86; --remove-extra-permissions&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x591A;&#x4F59;&#x7684;&#x4E3B;&#x4F53;&#x3002;</p>
+<p>&#x4F8B;&#x5982;:</p>
+<p>&#x6D4B;&#x8BD5;&#x5E94;&#x7528; RBAC &#x5BF9;&#x8C61;&#x7684;&#x6E05;&#x5355;&#x6587;&#x4EF6;&#xFF0C;&#x663E;&#x793A;&#x5C06;&#x8981;&#x8FDB;&#x884C;&#x7684;&#x66F4;&#x6539;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl auth reconcile -f my-rbac-rules.yaml --dry-run
+</code></pre>
+<p>&#x5E94;&#x7528; RBAC &#x5BF9;&#x8C61;&#x7684;&#x6E05;&#x5355;&#x6587;&#x4EF6;&#xFF0C;&#x4FDD;&#x7559;&#x89D2;&#x8272;&#x4E2D;&#x7684;&#x989D;&#x5916;&#x6743;&#x9650;&#x548C;&#x7ED1;&#x5B9A;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x4E3B;&#x4F53;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl auth reconcile -f my-rbac-rules.yaml
+</code></pre>
+<p>&#x5E94;&#x7528; RBAC &#x5BF9;&#x8C61;&#x7684;&#x6E05;&#x5355;&#x6587;&#x4EF6;, &#x5220;&#x9664;&#x89D2;&#x8272;&#x4E2D;&#x7684;&#x989D;&#x5916;&#x6743;&#x9650;&#x548C;&#x7ED1;&#x5B9A;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x4E3B;&#x4F53;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl auth reconcile -f my-rbac-rules.yaml --remove-extra-subjects --remove-extra-permissions
+</code></pre>
+<h2 id="15-&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;"><a name="15-&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#15-&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>15. &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6743;&#x9650;</h2>
+<p>&#x4E3A;&#x7279;&#x5B9A;&#x5E94;&#x7528;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x6237;&#x6388;&#x4E88;&#x89D2;&#x8272;&#xFF08;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF09;</p>
+<p>&#x8FD9;&#x8981;&#x6C42;&#x5E94;&#x7528;&#x5728;&#x5176; Pod &#x89C4;&#x7EA6;&#x4E2D;&#x6307;&#x5B9A; serviceAccountName&#xFF0C; &#x5E76;&#x989D;&#x5916;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF08;&#x5305;&#x62EC;&#x901A;&#x8FC7; API&#x3001;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6E05;&#x5355;&#x3001;kubectl create serviceaccount &#x7B49;&#xFF09;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;my-namespace&quot; &#x4E2D;&#x6388;&#x4E88;&#x670D;&#x52A1;&#x8D26;&#x53F7; &quot;my-sa&quot; &#x53EA;&#x8BFB;&#x6743;&#x9650;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding my-sa-view <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>view <span class="token punctuation">\</span>
+  --serviceaccount<span class="token operator">=</span>my-namespace:my-sa <span class="token punctuation">\</span>
+  --namespace<span class="token operator">=</span>my-namespace
+</code></pre>
+<p>&#x5C06;&#x89D2;&#x8272;&#x6388;&#x4E88;&#x67D0;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; &quot;default&quot; &#x670D;&#x52A1;&#x8D26;&#x53F7;</p>
+<p>&#x5982;&#x679C;&#x67D0;&#x5E94;&#x7528;&#x6CA1;&#x6709;&#x6307;&#x5B9A; serviceAccountName&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C06;&#x4F7F;&#x7528; &quot;default&quot; &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x3002;</p>
+<p>&#x8BF4;&#x660E;&#xFF1A; &quot;default&quot; &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6240;&#x5177;&#x6709;&#x7684;&#x6743;&#x9650;&#x4F1A;&#x88AB;&#x6388;&#x4E88;&#x7ED9;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x6240;&#x6709;&#x672A;&#x6307;&#x5B9A; serviceAccountName &#x7684; Pod&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;my-namespace&quot; &#x4E2D;&#x6388;&#x4E88;&#x670D;&#x52A1;&#x8D26;&#x53F7; &quot;default&quot; &#x53EA;&#x8BFB;&#x6743;&#x9650;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding default-view <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>view <span class="token punctuation">\</span>
+  --serviceaccount<span class="token operator">=</span>my-namespace:default <span class="token punctuation">\</span>
+  --namespace<span class="token operator">=</span>my-namespace
+</code></pre>
+<p>&#x8BB8;&#x591A;&#x63D2;&#x4EF6;&#x7EC4;&#x4EF6; &#x5728; kube-system &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4EE5; &quot;default&quot; &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x8FD0;&#x884C;&#x3002; &#x8981;&#x5141;&#x8BB8;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#x7EC4;&#x4EF6;&#x4EE5;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x6743;&#x9650;&#x8FD0;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x96C6;&#x7FA4;&#x7684; cluster-admin &#x6743;&#x9650;&#x6388;&#x4E88; kube-system &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684; &quot;default&quot; &#x670D;&#x52A1;&#x8D26;&#x53F7;&#x3002;</p>
+<p>&#x8BF4;&#x660E;&#xFF1A; &#x542F;&#x7528;&#x8FD9;&#x4E00;&#x914D;&#x7F6E;&#x610F;&#x5473;&#x7740;&#x5728; kube-system &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x5305;&#x542B;&#x4EE5;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x8D26;&#x53F7;&#x6765;&#x8BBF;&#x95EE; API &#x7684; Secrets&#x3002;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding add-on-cluster-admin <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>cluster-admin <span class="token punctuation">\</span>
+  --serviceaccount<span class="token operator">=</span>kube-system:default
+</code></pre>
+<p>&#x5C06;&#x89D2;&#x8272;&#x6388;&#x4E88;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x53F7;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x6240;&#x6709;&#x5E94;&#x7528;&#x90FD;&#x5177;&#x6709;&#x67D0;&#x89D2;&#x8272;&#xFF0C;&#x65E0;&#x8BBA;&#x5B83;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x4EC0;&#x4E48;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF0C; &#x53EF;&#x4EE5;&#x5C06;&#x89D2;&#x8272;&#x6388;&#x4E88;&#x8BE5;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x7EC4;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x540D;&#x5B57;&#x7A7A;&#x95F4; &quot;my-namespace&quot; &#x4E2D;&#x7684;&#x53EA;&#x8BFB;&#x6743;&#x9650;&#x6388;&#x4E88;&#x8BE5;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create rolebinding serviceaccounts-view <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>view <span class="token punctuation">\</span>
+  --group<span class="token operator">=</span>system:serviceaccounts:my-namespace <span class="token punctuation">\</span>
+  --namespace<span class="token operator">=</span>my-namespace
+</code></pre>
+<p>&#x5728;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#x4E3A;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x6237;&#x6388;&#x4E88;&#x4E00;&#x4E2A;&#x53D7;&#x9650;&#x89D2;&#x8272;&#xFF08;&#x4E0D;&#x9F13;&#x52B1;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x7BA1;&#x7406;&#x6BCF;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5411;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6388;&#x4E88;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4E3A;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x6388;&#x4E88;&#x8DE8;&#x6240;&#x6709;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x7684;&#x53EA;&#x8BFB;&#x6743;&#x9650;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding serviceaccounts-view <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>view <span class="token punctuation">\</span>
+  --group<span class="token operator">=</span>system:serviceaccounts
+</code></pre>
+<p>&#x6388;&#x4E88;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x7ED9;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;&#x5E10;&#x6237;&#xFF08;&#x5F3A;&#x70C8;&#x4E0D;&#x9F13;&#x52B1;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x5173;&#x5FC3;&#x5982;&#x4F55;&#x533A;&#x5206;&#x6743;&#x9650;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x6388;&#x4E88;&#x6240;&#x6709;&#x670D;&#x52A1;&#x8D26;&#x53F7;&#x3002;</p>
+<p>&#x8B66;&#x544A;&#xFF1A; &#x8FD9;&#x6837;&#x505A;&#x4F1A;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x5E94;&#x7528;&#x90FD;&#x5BF9;&#x4F60;&#x7684;&#x96C6;&#x7FA4;&#x62E5;&#x6709;&#x5B8C;&#x5168;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#xFF0C;&#x5E76;&#x5C06;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x80FD;&#x591F;&#x8BFB;&#x53D6; Secret&#xFF08;&#x6216;&#x521B;&#x5EFA; Pod&#xFF09;&#x7684;&#x7528;&#x6237;&#x5BF9;&#x4F60;&#x7684;&#x96C6;&#x7FA4;&#x6709;&#x5B8C;&#x5168;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding serviceaccounts-cluster-admin <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>cluster-admin <span class="token punctuation">\</span>
+  --group<span class="token operator">=</span>system:serviceaccounts
+</code></pre>
+<h2 id="16-&#x5BBD;&#x677E;&#x7684;-rbac-&#x6743;&#x9650;"><a name="16-&#x5BBD;&#x677E;&#x7684;-rbac-&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#16-&#x5BBD;&#x677E;&#x7684;-rbac-&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>16. &#x5BBD;&#x677E;&#x7684; RBAC &#x6743;&#x9650;</h2>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7B56;&#x7565;&#x5141;&#x8BB8; &#x6240;&#x6709; &#x670D;&#x52A1;&#x5E10;&#x6237;&#x5145;&#x5F53;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5458;&#x3002; &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x6240;&#x6709;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x6536;&#x5230;&#x670D;&#x52A1;&#x5E10;&#x6237;&#x7684;&#x51ED;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9; API &#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#xFF0C; &#x5305;&#x62EC;&#x67E5;&#x770B; Secrets &#x548C;&#x4FEE;&#x6539;&#x6743;&#x9650;&#x3002;&#x8FD9;&#x4E00;&#x7B56;&#x7565;&#x662F;&#x4E0D;&#x88AB;&#x63A8;&#x8350;&#x7684;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">kubectl create clusterrolebinding permissive-binding <span class="token punctuation">\</span>
+  --clusterrole<span class="token operator">=</span>cluster-admin <span class="token punctuation">\</span>
+  --user<span class="token operator">=</span>admin <span class="token punctuation">\</span>
+  --user<span class="token operator">=</span>kubelet <span class="token punctuation">\</span>
+  --group<span class="token operator">=</span>system:serviceaccounts
+</code></pre>
+<h2 id="17-&#x793A;&#x4F8B;"><a name="17-&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#17-&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>17. &#x793A;&#x4F8B;</h2>
+<h3 id="&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;cni&#xFF09;weavework"><a name="&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;cni&#xFF09;weavework" class="anchor-navigation-ex-anchor" href="#&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;cni&#xFF09;weavework"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF08;CNI&#xFF09;weavework</h3>
+<pre class="language-"><code class="lang-bash">controlplane $ <span class="token function">cat</span> /opt/weave-kube.yaml
+apiVersion: v1
+kind: List
+items:
+ - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+      namespace: kube-system
+ - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+    rules:
+      - apiGroups:
+          - <span class="token string">&apos;&apos;</span>
+        resources:
+          - pods
+          - namespaces
+          - nodes
+        verbs:
+          - get
+          - list
+          - <span class="token function">watch</span>
+      - apiGroups:
+          - networking.k8s.io
+        resources:
+          - networkpolicies
+        verbs:
+          - get
+          - list
+          - <span class="token function">watch</span>
+      - apiGroups:
+          - <span class="token string">&apos;&apos;</span>
+        resources:
+          - nodes/status
+        verbs:
+          - patch
+          - update
+ - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+    roleRef:
+      kind: ClusterRole
+      name: weave-net
+      apiGroup: rbac.authorization.k8s.io
+    subjects:
+      - kind: ServiceAccount
+        name: weave-net
+        namespace: kube-system
+ - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+      namespace: kube-system
+    rules:
+      - apiGroups:
+          - <span class="token string">&apos;&apos;</span>
+        resourceNames:
+          - weave-net
+        resources:
+          - configmaps
+        verbs:
+          - get
+          - update
+      - apiGroups:
+          - <span class="token string">&apos;&apos;</span>
+        resources:
+          - configmaps
+        verbs:
+          - create
+ - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+      namespace: kube-system
+    roleRef:
+      kind: Role
+      name: weave-net
+      apiGroup: rbac.authorization.k8s.io
+    subjects:
+      - kind: ServiceAccount
+        name: weave-net
+        namespace: kube-system
+ - apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: weave-net
+      annotations:
+        cloud.weave.works/launcher-info: <span class="token operator">|</span>-
+          <span class="token punctuation">{</span>
+            <span class="token string">&quot;original-request&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+              <span class="token string">&quot;url&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/k8s/v1.10/net.yaml?k8s-version=v1.16.0&quot;</span>,
+              <span class="token string">&quot;date&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Mon Oct 28 2019 18:38:09 GMT+0000 (UTC)&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">&quot;email-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;support@weave.works&quot;</span>
+          <span class="token punctuation">}</span>
+      labels:
+        name: weave-net
+      namespace: kube-system
+    spec:
+      minReadySeconds: <span class="token number">5</span>
+      selector:
+        matchLabels:
+          name: weave-net
+      template:
+        metadata:
+          labels:
+            name: weave-net
+        spec:
+          containers:
+            - name: weave
+              command:
+                - /home/weave/launch.sh
+              env:
+                - name: IPALLOC_RANGE
+                  value: <span class="token number">10.32</span>.0.0/24
+                - name: <span class="token environment constant">HOSTNAME</span>
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: spec.nodeName
+              image: <span class="token string">&apos;docker.io/weaveworks/weave-kube:2.6.0&apos;</span>
+              readinessProbe:
+                httpGet:
+                  host: <span class="token number">127.0</span>.0.1
+                  path: /status
+                  port: <span class="token number">6784</span>
+              resources:
+                requests:
+                  cpu: 10m
+              securityContext:
+                privileged: <span class="token boolean">true</span>
+              volumeMounts:
+                - name: weavedb
+                  mountPath: /weavedb
+                - name: cni-bin
+                  mountPath: /host/opt
+                - name: cni-bin2
+                  mountPath: /host/home
+                - name: cni-conf
+                  mountPath: /host/etc
+                - name: dbus
+                  mountPath: /host/var/lib/dbus
+                - name: lib-modules
+                  mountPath: /lib/modules
+                - name: xtables-lock
+                  mountPath: /run/xtables.lock
+            - name: weave-npc
+              env:
+                - name: <span class="token environment constant">HOSTNAME</span>
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: spec.nodeName
+              image: <span class="token string">&apos;docker.io/weaveworks/weave-npc:2.6.0&apos;</span>
+              resources:
+                requests:
+                  cpu: 10m
+              securityContext:
+                privileged: <span class="token boolean">true</span>
+              volumeMounts:
+                - name: xtables-lock
+                  mountPath: /run/xtables.lock
+          hostNetwork: <span class="token boolean">true</span>
+          hostPID: <span class="token boolean">true</span>
+          restartPolicy: Always
+          securityContext:
+            seLinuxOptions: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+          serviceAccountName: weave-net
+          tolerations:
+            - effect: NoSchedule
+              operator: Exists
+          volumes:
+            - name: weavedb
+              hostPath:
+                path: /var/lib/weave
+            - name: cni-bin
+              hostPath:
+                path: /opt
+            - name: cni-bin2
+              hostPath:
+                path: /home
+            - name: cni-conf
+              hostPath:
+                path: /etc
+            - name: dbus
+              hostPath:
+                path: /var/lib/dbus
+            - name: lib-modules
+              hostPath:
+                path: /lib/modules
+            - name: xtables-lock
+              hostPath:
+                path: /run/xtables.lock
+                type: FileOrCreate
+      updateStrategy:
+        type: RollingUpdate
+</code></pre>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/" target="_blank">kubernetes Using RBAC Authorization</a></li>
+<li><a href="https://thorsten-hans.com/custom-resource-definitions-with-rbac-for-serviceaccounts" target="_blank">Extend Kubernetes with Custom Resource Definitions and RBAC for ServiceAccounts</a></li>
+<li><a href="https://www.cncf.io/blog/2018/08/01/demystifying-rbac-in-kubernetes/" target="_blank">Demystifying RBAC in Kubernetes</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-12 08:31:53
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Kubernetes-NetworkPolicy.html" class="navigation navigation-prev " aria-label="Previous page: NetworkPolicy">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kubernetes-RBAC-principle.html" class="navigation navigation-next " aria-label="Next page: 原理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"RBAC","level":"1.10.14","depth":2,"next":{"title":"原理","level":"1.10.14.1","depth":3,"path":"对象/RBAC/kubernetes-RBAC-principle.md","ref":"对象/RBAC/kubernetes-RBAC-principle.md","articles":[]},"previous":{"title":"NetworkPolicy","level":"1.10.13","depth":2,"path":"对象/Kubernetes-NetworkPolicy.md","ref":"对象/Kubernetes-NetworkPolicy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"对象/RBAC/README.md","mtime":"2022-08-12T08:31:53.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

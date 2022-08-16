@@ -1,0 +1,1553 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>垃圾回收 · Kubernetes Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="宗勋 - zongxun">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-change_girls/girls.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-holi-theme.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../kubernetes-kube-apiserver.html" />
+    
+    
+    <link rel="prev" href="kubernetes-kubelet-configuration.html" />
+    
+
+    <link href="http://smoothies.com.cn/rss" title="Kubernetes Docs" rel="alternate" type="application/rss+xml" />
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/docker-docs/Overview.html" target="_blank" class="custom-link">Docker</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/kubernetes-docs/Overview.html" target="_blank" class="custom-link">Kubernetes</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/go-docs/Overview.html" target="_blank" class="custom-link">Go</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/prometheus-docs/Overview.html" target="_blank" class="custom-link">Prometheus</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-command-docs/Overview.html" target="_blank" class="custom-link">Command</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/shell-docs/Overview.html" target="_blank" class="custom-link">Shell</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/linux-docs/Overview.html" target="_blank" class="custom-link">Linux</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/gitbook-docs/Overview.html" target="_blank" class="custom-link">Gitbook</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://smoothies.com.cn/python-docs/Overview.html" target="_blank" class="custom-link">Python</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://ghostwritten.gitbook.io/kubernetes-exam-in-action/" target="_blank" class="custom-link">Exam</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../Overview.html">
+            
+                <a href="../../Overview.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../工具/">
+            
+                <a href="../../工具/">
+            
+                    
+                    工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../概念/">
+            
+                <a href="../../概念/">
+            
+                    
+                    概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../升级/">
+            
+                <a href="../../升级/">
+            
+                    
+                    升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../日志/">
+            
+                <a href="../../日志/">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../网络/">
+            
+                <a href="../../网络/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../资源/">
+            
+                <a href="../../资源/">
+            
+                    
+                    资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../资源/kubernetes-yum.html">
+            
+                <a href="../../资源/kubernetes-yum.html">
+            
+                    
+                    Yum
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../部署/">
+            
+                <a href="../../部署/">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../部署/kubernetes-minikube-deploy.html">
+            
+                <a href="../../部署/kubernetes-minikube-deploy.html">
+            
+                    
+                    minikube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../部署/kubernetes-manually-deploy.html">
+            
+                <a href="../../部署/kubernetes-manually-deploy.html">
+            
+                    
+                    手动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../对象/">
+            
+                <a href="../../对象/">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../对象/Deployment/">
+            
+                <a href="../../对象/Deployment/">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-skill.html">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                <a href="../../对象/Deployment/kubernetes-client-go-deployment.html">
+            
+                    
+                    开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-strategies.html">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                <a href="../../对象/Deployment/kubernetes-deployment-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../对象/Kubernetes-DaemonSet.html">
+            
+                <a href="../../对象/Kubernetes-DaemonSet.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../对象/kubernetes-PersistentVolume.html">
+            
+                <a href="../../对象/kubernetes-PersistentVolume.html">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../对象/Kubernetes-StatefulSet.html">
+            
+                <a href="../../对象/Kubernetes-StatefulSet.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../对象/Kubernetes-Job.html">
+            
+                <a href="../../对象/Kubernetes-Job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../对象/Runtimeclass/">
+            
+                <a href="../../对象/Runtimeclass/">
+            
+                    
+                    Runtimeclass
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.6.1" data-path="../../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                <a href="../../对象/Runtimeclass/kubernetes-object-RuntimeClass-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                <a href="../../对象/Kubernetes-PodSecurityPolicy.html">
+            
+                    
+                    PodSecurityPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../对象/Kubernetes-ConfigMaps.html">
+            
+                <a href="../../对象/Kubernetes-ConfigMaps.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../../对象/Pod/">
+            
+                <a href="../../对象/Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.9.1" data-path="../../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                <a href="../../对象/Pod/Kubernetes-Pod-Probes.html">
+            
+                    
+                    Probes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9.2" data-path="../../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                <a href="../../对象/Pod/Kubernetes-Pod-SecurityContext.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../../对象/kubernetes-Secrets.html">
+            
+                <a href="../../对象/kubernetes-Secrets.html">
+            
+                    
+                    secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../../对象/Kubernetes-Ingress.html">
+            
+                <a href="../../对象/Kubernetes-Ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../../对象/Kubernetes-Service.html">
+            
+                <a href="../../对象/Kubernetes-Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../../对象/Kubernetes-NetworkPolicy.html">
+            
+                <a href="../../对象/Kubernetes-NetworkPolicy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../../对象/RBAC/">
+            
+                <a href="../../对象/RBAC/">
+            
+                    
+                    RBAC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.14.1" data-path="../../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                <a href="../../对象/RBAC/kubernetes-RBAC-principle.html">
+            
+                    
+                    原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../../对象/Auditing/">
+            
+                <a href="../../对象/Auditing/">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.15.1" data-path="../../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                <a href="../../对象/Auditing/kubernetes-Auditing-practice.html">
+            
+                    
+                    实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../存储/">
+            
+                <a href="../../存储/">
+            
+                    
+                    存储
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-introduce-ClexVolume-and-CSI.html">
+            
+                    
+                    FlexVolume CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../存储/kubernetes-storage-write-CSI.html">
+            
+                <a href="../../存储/kubernetes-storage-write-CSI.html">
+            
+                    
+                    编写 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                <a href="../../存储/kuberentes-storage-volumes-principle.html">
+            
+                    
+                    Volumes 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../策略/">
+            
+                <a href="../../策略/">
+            
+                    
+                    策略
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../策略/OPA/">
+            
+                <a href="../../策略/OPA/">
+            
+                    
+                    OPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                <a href="../../策略/kubernetes-policy-ResourceQuota.html">
+            
+                    
+                    ResourceQuota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../策略/kubernetes-policy-QoS.html">
+            
+                <a href="../../策略/kubernetes-policy-QoS.html">
+            
+                    
+                    QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../策略/kubernetes-policy-LimitRange.html">
+            
+                <a href="../../策略/kubernetes-policy-LimitRange.html">
+            
+                    
+                    LimitRange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../Kubeadm/">
+            
+                <a href="../Kubeadm/">
+            
+                    
+                    Kubeadm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1.1" data-path="../Kubeadm/kubeadm-command.html">
+            
+                <a href="../Kubeadm/kubeadm-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../Kubernetes-Kube-Proxy.html">
+            
+                <a href="../Kubernetes-Kube-Proxy.html">
+            
+                    
+                    Kube proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../Kubectl/">
+            
+                <a href="../Kubectl/">
+            
+                    
+                    Kubectl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.3.1" data-path="../Kubectl/kubectl-command.html">
+            
+                <a href="../Kubectl/kubectl-command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Kubelet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.4.1" data-path="kubernetes-kubelet-configuration.html">
+            
+                <a href="kubernetes-kubelet-configuration.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.4.2" data-path="kubernetes-kubelet-trash-recycling.html">
+            
+                <a href="kubernetes-kubelet-trash-recycling.html">
+            
+                    
+                    垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../kubernetes-kube-apiserver.html">
+            
+                <a href="../kubernetes-kube-apiserver.html">
+            
+                    
+                    kube apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../安全/">
+            
+                <a href="../../安全/">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../安全/Falco/">
+            
+                <a href="../../安全/Falco/">
+            
+                    
+                    Falco
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" data-path="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-default-macros.html">
+            
+                    
+                    default macros
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" data-path="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                <a href="../../安全/Falco/kubernetes-Security-falco-rules.html">
+            
+                    
+                    规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../../安全/Apparmor/">
+            
+                <a href="../../安全/Apparmor/">
+            
+                    
+                    Apparmor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                <a href="../../安全/Apparmor/kubernetes-Apparmor-rules.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../../安全/Trivy/">
+            
+                <a href="../../安全/Trivy/">
+            
+                    
+                    Trivy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-scan.html">
+            
+                    
+                    扫描应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                <a href="../../安全/Trivy/Kubernetes-Security-trivy-defined-Policy.html">
+            
+                    
+                    自定义策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../tags.html">
+            
+                <a href="../../tags.html">
+            
+                    
+                    标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >垃圾回收</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#kubelet-&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;"><b></b>kubelet &#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;</a></li><ul><li><span class="title-icon "></span><a href="#1-tips"><b></b>1. Tips</a></li><li><span class="title-icon "></span><a href="#2-experiments"><b></b>2. Experiments</a></li><ul><li><span class="title-icon "></span><a href="#21-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4;---graph-&#x53C2;&#x6570;&#xFF1A;varlibdocker&#xFF09;"><b></b>2.1 &#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4; --graph &#x53C2;&#x6570;&#xFF1A;/var/lib/docker&#xFF09;</a></li><li><span class="title-icon "></span><a href="#22-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker---graph-&#x53C2;&#x6570;&#xFF1A;optdocker&#xFF09;"><b></b>2.2 &#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker --graph &#x53C2;&#x6570;&#xFF1A;/opt/docker&#xFF09;</a></li><li><span class="title-icon "></span><a href="#23-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-per-container-&#x53C2;&#x6570;"><b></b>2.3 &#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B; --maximum-dead-containers-per-container &#x53C2;&#x6570;</a></li><li><span class="title-icon "></span><a href="#24---maximum-dead-containers-per-container-&#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;"><b></b>2.4 --maximum-dead-containers-per-container &#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;</a></li><li><span class="title-icon "></span><a href="#25-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-&#x53C2;&#x6570;"><b></b>2.5 &#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B; --maximum-dead-containers &#x53C2;&#x6570;</a></li><li><span class="title-icon "></span><a href="#26---maximum-dead-containers-&#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;"><b></b>2.6 --maximum-dead-containers &#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;</a></li></ul></ul></ul></div><a href="#kubelet-&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="kubelet-&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;"><a name="kubelet-&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;" class="anchor-navigation-ex-anchor" href="#kubelet-&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>kubelet &#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;</h1><!-- tags --><div id="tags" class="tags"><p><i class="fa fa-tags" aria-hidden="true"></i> <a href="../../tags.html#kubelet">kubelet</a></p></div><!-- tagsstop --><!-- catalog: ~垃圾回收~ -->
+<h2 id="1-tips"><a name="1-tips" class="anchor-navigation-ex-anchor" href="#1-tips"><i class="fa fa-link" aria-hidden="true"></i></a>1. Tips</h2>
+<ol>
+<li><p>Kubernetes&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7531;kubelet&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x6BCF;&#x5206;&#x949F;&#x4F1A;&#x67E5;&#x8BE2;&#x6E05;&#x7406;&#x4E00;&#x6B21;&#x5BB9;&#x5668;&#xFF0C;&#x6BCF;&#x4E94;&#x5206;&#x949F;&#x67E5;&#x8BE2;&#x6E05;&#x7406;&#x4E00;&#x6B21;&#x955C;&#x50CF;&#x3002;&#x5728;kubelet&#x521A;&#x542F;&#x52A8;&#x65F6;&#x5E76;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x8FDB;&#x884C;GC&#xFF0C;&#x5373;&#x7B2C;&#x4E00;&#x6B21;&#x8FDB;&#x884C;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E3A;kubelet&#x542F;&#x52A8;&#x4E00;&#x5206;&#x949F;&#x540E;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x8FDB;&#x884C;&#x955C;&#x50CF;&#x56DE;&#x6536;&#x4E3A;kubelet&#x542F;&#x52A8;&#x4E94;&#x5206;&#x949F;&#x540E;&#x3002;</p>
+</li>
+<li><p>&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x6216;&#x624B;&#x5DE5;&#x8FDB;&#x884C;&#x5BB9;&#x5668;&#x548C;&#x955C;&#x50CF;&#x7684;&#x6E05;&#x7406;&#xFF0C;&#x56E0;&#x4E3A;kubelet&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5BB9;&#x5668;&#x6765;&#x5224;&#x65AD;pod&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x65B9;&#x5F0F;&#x6E05;&#x9664;&#x5BB9;&#x5668;&#x6709;&#x53EF;&#x80FD;&#x5F71;&#x54CD;kubelet&#x7684;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;</p>
+</li>
+<li><p>&#x955C;&#x50CF;&#x7684;&#x56DE;&#x6536;&#x9488;&#x5BF9;node&#x7ED3;&#x70B9;&#x4E0A;&#x7531;docker&#x7BA1;&#x7406;&#x7684;&#x6240;&#x6709;&#x955C;&#x50CF;&#xFF0C;&#x65E0;&#x8BBA;&#x8BE5;&#x955C;&#x50CF;&#x662F;&#x5426;&#x662F;&#x5728;&#x521B;&#x5EFA;pod&#x65F6;pull&#x7684;&#x3002;&#x800C;&#x5BB9;&#x5668;&#x7684;&#x56DE;&#x6536;&#x7B56;&#x7565;&#x53EA;&#x5E94;&#x7528;&#x4E8E;&#x901A;&#x8FC7;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x3002;</p>
+</li>
+<li><p>Kubernetes&#x901A;&#x8FC7;kubelet&#x96C6;&#x6210;&#x7684;<a href="https://github.com/google/cadvisor" target="_blank">cadvisor</a>&#x8FDB;&#x884C;&#x955C;&#x50CF;&#x7684;&#x56DE;&#x6536;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#xFF1A;<code>--image-gc-high-threshold</code>&#x548C;<code>--image-gc-low-threshold</code>&#x3002;&#x5F53;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x955C;&#x50CF;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x8FBE;&#x5230;&#x767E;&#x5206;&#x4E4B;<code>--image-gc-high-threshold</code>&#x65F6;&#x5C06;&#x89E6;&#x53D1;&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF0C;&#x5220;&#x9664;&#x6700;&#x8FD1;&#x6700;&#x4E45;&#x672A;&#x4F7F;&#x7528;&#xFF08;LRU&#xFF0C;Least Recently Used&#xFF09;&#x7684;&#x955C;&#x50CF;&#x76F4;&#x5230;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x964D;&#x4E3A;&#x767E;&#x5206;&#x4E4B;<code>--image-gc-low-threshold</code>&#x6216;&#x65E0;&#x955C;&#x50CF;&#x53EF;&#x5220;&#x4E3A;&#x6B62;&#x3002;&#x9ED8;&#x8BA4;<code>--image-gc-high-threshold</code>&#x4E3A;90&#xFF0C;<code>--image-gc-low-threshold</code>&#x4E3A;80&#x3002;</p>
+</li>
+<li><p>&#x5BB9;&#x5668;&#x7684;&#x56DE;&#x6536;&#x6709;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x8BBE;&#x7F6E;&#xFF1A;<code>--minimum-container-ttl-duration</code>&#xFF0C;<code>--maximum-dead-containers-per-container</code>&#x548C;<code>--maximum-dead-containers</code>&#x3002;&#x4ECE;&#x5BB9;&#x5668;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#x65F6;&#x8D77;&#x7ECF;&#x8FC7;<code>--minimum-container-ttl-duration</code>&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x8BE5;&#x5BB9;&#x5668;&#x6807;&#x8BB0;&#x4E3A;&#x5DF2;&#x8FC7;&#x671F;&#x5C06;&#x6765;&#x53EF;&#x4EE5;&#x88AB;&#x56DE;&#x6536;&#xFF08;&#x53EA;&#x662F;&#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x662F;&#x56DE;&#x6536;&#xFF09;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;<code>1m0s</code>&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6BCF;&#x4E2A;pod&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x4FDD;&#x7559;<code>--maximum-dead-containers-per-container</code>&#x4E2A;&#x5DF2;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#x7684;&#x5BB9;&#x5668;&#x96C6;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;<code>2</code>&#x3002;&#x6574;&#x4E2A;node&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x4FDD;&#x7559;<code>--maximum-dead-containers</code>&#x4E2A;&#x5DF2;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;100&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5173;&#x95ED;&#x5BB9;&#x5668;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B56;&#x7565;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;<code>--minimum-container-ttl-duration</code>&#x8BBE;&#x4E3A;0&#xFF08;&#x8868;&#x793A;&#x65E0;&#x9650;&#x5236;&#xFF09;&#xFF0C;<code>--maximum-dead-containers-per-container</code>&#x548C;<code>--maximum-dead-containers</code>&#x8BBE;&#x4E3A;&#x8D1F;&#x6570;&#x3002;</p>
+</li>
+<li><p><code>--minimum-container-ttl-duration</code>&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5355;&#x4F4D;&#x540E;&#x7F00;&#xFF0C;&#x5982;h&#x8868;&#x793A;&#x5C0F;&#x65F6;&#xFF0C;m&#x8868;&#x793A;&#x5206;&#x949F;&#xFF0C;s&#x8868;&#x793A;&#x79D2;&#x3002;</p>
+</li>
+<li><p>&#x5F53;<code>--maximum-dead-containers-per-container</code>&#x548C;<code>--maximum-dead-containers</code>&#x51B2;&#x7A81;&#x65F6;&#xFF0C;<code>--maximum-dead-containers</code>&#x4F18;&#x5148;&#x8003;&#x8651;&#x3002;</p>
+</li>
+<li><p>&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x7531;kubelet&#x521B;&#x5EFA;&#x7684;&#x4F46;&#x7531;&#x4E8E;&#x67D0;&#x4E9B;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x65E0;&#x540D;&#x5B57;&#xFF08;&#xFF09;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x4F1A;&#x5728;&#x5230;&#x8FBE;GC&#x65F6;&#x95F4;&#x70B9;&#x65F6;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+</li>
+<li><p>&#x56DE;&#x6536;&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x6309;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x6392;&#x5E8F;&#xFF0C;&#x4F18;&#x5148;&#x5220;&#x9664;&#x90A3;&#x4E9B;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x6700;&#x65E9;&#x7684;&#x5BB9;&#x5668;&#x3002;</p>
+</li>
+<li><p>&#x5230;&#x8FBE;GC&#x65F6;&#x95F4;&#x70B9;&#x65F6;&#xFF0C;&#x5177;&#x4F53;&#x7684;GC&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>1&#xFF09;&#x904D;&#x5386;&#x6240;&#x6709;pod&#xFF0C;&#x4F7F;&#x5176;&#x6EE1;&#x8DB3;<code>--maximum-dead-containers-per-container</code>&#xFF1B;</li>
+<li>2&#xFF09;&#x7ECF;&#x8FC7;&#x4E0A;&#x4E00;&#x6B65;&#x540E;&#x5982;&#x679C;&#x4E0D;&#x6EE1;&#x8DB3;<code>--maximum-dead-containers</code>&#xFF0C;&#x8BA1;&#x7B97;&#x503C;X=&#xFF08;<code>--maximum-dead-containers</code>&#xFF09;/&#xFF08;pod&#x603B;&#x6570;&#xFF09;&#xFF0C;&#x518D;&#x904D;&#x5386;&#x6240;&#x6709;pod&#xFF0C;&#x4F7F;&#x5176;&#x6EE1;&#x8DB3;&#x5DF2;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#x7684;&#x5BB9;&#x5668;&#x96C6;&#x4E2A;&#x6570;&#x4E0D;&#x5927;&#x4E8E;X&#x4E14;&#x81F3;&#x5C11;&#x4E3A;1&#xFF1B;</li>
+<li>3&#xFF09;&#x7ECF;&#x8FC7;&#x4EE5;&#x4E0A;&#x4E24;&#x6B65;&#x540E;&#x5982;&#x679C;&#x8FD8;&#x4E0D;&#x6EE1;&#x8DB3;<code>--maximum-dead-containers</code>&#xFF0C;&#x5219;&#x5BF9;&#x6240;&#x6709;&#x5DF2;&#x505C;&#x6B62;&#x7684;&#x5BB9;&#x5668;&#x6392;&#x5E8F;&#xFF0C;&#x4F18;&#x5148;&#x5220;&#x9664;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x6700;&#x65E9;&#x7684;&#x5BB9;&#x5668;&#x76F4;&#x5230;&#x6EE1;&#x8DB3;<code>--maximum-dead-containers</code>&#x4E3A;&#x6B62;&#x3002;</li>
+</ul>
+</li>
+<li><p>&#x5F53;&#x67D0;&#x4E2A;&#x955C;&#x50CF;&#x91CD;&#x65B0;pull&#x6216;&#x542F;&#x52A8;&#x67D0;&#x4E2A;pod&#x7528;&#x5230;&#x8BE5;&#x955C;&#x50CF;&#x65F6;&#xFF0C;&#x8BE5;&#x955C;&#x50CF;&#x7684;&#x6700;&#x8FD1;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x90FD;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;&#x3002;</p>
+</li>
+<li><p>Kubernetes&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5728;<code>1.1.4</code>&#x7248;&#x672C;&#x5F00;&#x59CB;&#x624D;&#x6E10;&#x6E10;&#x5B8C;&#x5584;&#xFF0C;&#x4E4B;&#x524D;&#x7684;&#x7248;&#x672C;&#x5B58;&#x5728;&#x6BD4;&#x8F83;&#x591A;bug&#x751A;&#x81F3;&#x4E0D;&#x80FD;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#x3002;</p>
+</li>
+<li><p>&#x5173;&#x4E8E;&#x5BB9;&#x5668;&#x7684;&#x56DE;&#x6536;&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;pod&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6BD4;&#x5982;&#xFF0C;&#x901A;&#x8FC7;&#x540C;&#x4E00;&#x4E2A;yaml&#x6587;&#x4EF6;create&#x4E00;&#x4E2A;pod&#xFF0C;&#x518D;delete&#x8FD9;&#x4E2A;pod&#xFF0C;&#x7136;&#x540E;&#x518D;create&#x8FD9;&#x4E2A;pod&#xFF0C;&#x6B64;&#x65F6;&#x4E4B;&#x524D;&#x7684;&#x90A3;&#x4E2A;pod&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;&#x5E76;&#x4E0D;&#x4F1A;&#x4F5C;&#x4E3A;&#x65B0;&#x521B;&#x5EFA;pod&#x7684;&#x5DF2;&#x505C;&#x6B62;&#x5BB9;&#x5668;&#x96C6;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E24;&#x4E2A;pod&#x867D;&#x7136;&#x540C;&#x540D;&#xFF0C;&#x4F46;&#x5DF2;&#x7ECF;&#x4E0D;&#x662F;&#x540C;&#x4E00;&#x4E2A;pod&#x4E86;&#x3002;&#x53EA;&#x6709;&#x540C;&#x4E00;&#x4E2A;pod&#x4E2D;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x7531;&#x4E8E;&#x610F;&#x5916;&#x6216;&#x5176;&#x5B83;&#x60C5;&#x51B5;&#x505C;&#x6B62;&#x7684;&#x5BB9;&#x5668;&#x624D;&#x7B97;&#x662F;&#x8FD9;&#x4E2A;pod&#x7684;&#x5DF2;&#x505C;&#x6B62;&#x5BB9;&#x5668;&#x96C6;&#x3002;</p>
+</li>
+</ol>
+<h2 id="2-experiments"><a name="2-experiments" class="anchor-navigation-ex-anchor" href="#2-experiments"><i class="fa fa-link" aria-hidden="true"></i></a>2. Experiments</h2>
+<h3 id="21-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4;---graph-&#x53C2;&#x6570;&#xFF1A;varlibdocker&#xFF09;"><a name="21-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4;---graph-&#x53C2;&#x6570;&#xFF1A;varlibdocker&#xFF09;" class="anchor-navigation-ex-anchor" href="#21-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4;---graph-&#x53C2;&#x6570;&#xFF1A;varlibdocker&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 &#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;docker&#x9ED8;&#x8BA4; --graph &#x53C2;&#x6570;&#xFF1A;/var/lib/docker&#xFF09;</h3>
+<p>&#x7ED3;&#x70B9;&#x4E0A;&#x8FD0;&#x884C;&#x7684;docker&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570; <code>--graph</code> &#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;<code>/var/lib/docker</code>&#xFF0C;&#x6307;&#x5411;<code>/var</code>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x901A;&#x8FC7;<code>df -lh</code>&#x67E5;&#x770B;&#x76EE;&#x524D; <code>/var</code> &#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x4E3A;30%&#xFF0C;&#x542F;&#x52A8;kubelet&#x8BBE;&#x7F6E;&#x955C;&#x50CF;&#x56DE;&#x6536;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">--image-gc-high-threshold<span class="token operator">=</span><span class="token number">40</span> --image-gc-low-threshold<span class="token operator">=</span><span class="token number">35</span>
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x4EFB;&#x610F;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x955C;&#x50CF;&#x7684;pod&#xFF0C;&#x5728;node&#x8282;&#x70B9;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65B0;pull&#x4E86;&#x4E09;&#x4E2A;images&#xFF08;pause&#x955C;&#x50CF;&#x662F;&#x542F;&#x52A8;pod&#x5FC5;&#x9700;&#x7684;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> images
+REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE
+<span class="token number">10.11</span>.150.76:5000/openxxs/iperf   <span class="token number">1.2</span>                 1783511c56f8        <span class="token number">3</span> months ago        <span class="token number">279</span> MB
+<span class="token number">10.11</span>.150.76:5000/centos          <span class="token number">7</span>                   5ddf34d4d69b        <span class="token number">8</span> months ago        <span class="token number">172.2</span> MB
+pub.domeos.org/kubernetes/pause   latest              f9d5de079539        <span class="token number">20</span> months ago       <span class="token number">239.8</span> kB
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x67E5;&#x770B;<code>/var</code>&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x8FBE;&#x5230;&#x4E86;41%&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4F7F;&#x7528;<code>10.11.150.76:5000/centos:7</code>&#x955C;&#x50CF;&#x7684;pod&#x5220;&#x9664;&#xFF0C;&#x7B49;&#x5F85;GC&#x7684;&#x955C;&#x50CF;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x3002;&#x7136;&#x800C;&#x4E94;&#x5206;&#x949F;&#x8FC7;&#x53BB;&#x4E86;&#xFF0C;&#x4EC0;&#x4E48;&#x4E8B;&#x60C5;&#x4E5F;&#x6CA1;&#x6709;&#x53D1;&#x751F;=_=!!&#x3002;&#x8FD8;&#x8BB0;&#x5F97; docker rmi &#x955C;&#x50CF;&#x65F6;&#x6709;&#x4E2A;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x662F;&#x4EC0;&#x4E48;&#x5417;&#xFF1F;&#x6CA1;&#x9519;&#xFF0C;&#x8981;&#x6C42;&#x4F7F;&#x7528;&#x8BE5;&#x955C;&#x50CF;&#x7684;&#x5BB9;&#x5668;&#x90FD;&#x5DF2;&#x7ECF;&#x88AB;&#x5220;&#x9664;&#x4E86;&#x624D;&#x53EF;&#x4EE5;&#x3002;&#x524D;&#x9762;&#x5220;&#x9664;pod&#x53EA;&#x662F;&#x505C;&#x6B62;&#x4E86;&#x5BB9;&#x5668;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5C06;&#x5BB9;&#x5668;&#x5220;&#x9664;&#x3002;&#x56E0;&#x6B64;&#x624B;&#x5DE5;&#x5C06;&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;<code>docker rm</code>&#x6389;&#xFF0C;&#x518D;&#x7B49;&#x5F85;&#x4E94;&#x5206;&#x949F;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x955C;&#x50CF;&#x5DF2;&#x7ECF;&#x88AB;&#x5220;&#x9664;&#x56DE;&#x6536;&#x4E86;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> images
+REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE
+<span class="token number">10.11</span>.150.76:5000/openxxs/iperf   <span class="token number">1.2</span>                 1783511c56f8        <span class="token number">3</span> months ago        <span class="token number">279</span> MB
+pub.domeos.org/kubernetes/pause   latest              f9d5de079539        <span class="token number">20</span> months ago       <span class="token number">239.8</span> kB
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;&#x53EA;&#x6709;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5BB9;&#x5668;&#x90FD;&#x88AB;&#x505C;&#x6B62;&#x5E76;&#x5220;&#x9664;&#x56DE;&#x6536;&#x540E;&#xFF0C;&#x624D;&#x80FD;&#x5C06;Kubernetes&#x7684;&#x955C;&#x50CF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B56;&#x7565;&#x5E94;&#x7528;&#x5230;&#x8BE5;&#x955C;&#x50CF;&#x4E0A;&#x3002;</p>
+</blockquote>
+<h3 id="22-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker---graph-&#x53C2;&#x6570;&#xFF1A;optdocker&#xFF09;"><a name="22-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker---graph-&#x53C2;&#x6570;&#xFF1A;optdocker&#xFF09;" class="anchor-navigation-ex-anchor" href="#22-&#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker---graph-&#x53C2;&#x6570;&#xFF1A;optdocker&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 &#x955C;&#x50CF;&#x56DE;&#x6536;&#xFF08;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;docker --graph &#x53C2;&#x6570;&#xFF1A;/opt/docker&#xFF09;</h3>
+<p>  &#x7ED3;&#x70B9;&#x4E0A;&#x8FD0;&#x884C;&#x7684;docker&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;<code>--graph</code>&#x6307;&#x5411; <code>/opt</code> &#x78C1;&#x76D8;&#xFF0C;&#x901A;&#x8FC7; <code>df -lh</code> &#x67E5;&#x770B;&#x76EE;&#x524D; <code>/opt</code> &#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x4E3A; <code>48%</code> &#xFF0C;&#x542F;&#x52A8; <code>kubelet</code> &#x8BBE;&#x7F6E;&#x955C;&#x50CF;&#x56DE;&#x6536;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">--image-gc-high-threshold<span class="token operator">=</span><span class="token number">50</span> --image-gc-low-threshold<span class="token operator">=</span><span class="token number">40</span>
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x4EFB;&#x610F;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x955C;&#x50CF;&#x7684;pod&#xFF0C;&#x5728;node&#x8282;&#x70B9;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65B0;pull&#x4E86;&#x4E09;&#x4E2A;images&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> images
+REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE
+<span class="token number">10.11</span>.150.76:5000/openxxs/iperf   <span class="token number">1.2</span>                 1783511c56f8        <span class="token number">3</span> months ago        <span class="token number">279</span> MB
+<span class="token number">10.11</span>.150.76:5000/centos          <span class="token number">7</span>                   5ddf34d4d69b        <span class="token number">8</span> months ago        <span class="token number">172.2</span> MB
+pub.domeos.org/kubernetes/pause   latest              f9d5de079539        <span class="token number">20</span> months ago       <span class="token number">239.8</span> kB
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x67E5;&#x770B;<code>/opt</code>&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;&#x8FBE;&#x5230;&#x4E86;<code>51%</code>&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4F7F;&#x7528;<code>10.11.150.76:5000/centos:7</code>&#x955C;&#x50CF;&#x7684;pod&#x5220;&#x9664;&#xFF0C;&#x624B;&#x5DE5;&#x5C06;&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;docker rm&#x6389;&#xFF0C;&#x7B49;&#x5F85;GC&#x7684;&#x955C;&#x50CF;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x3002;&#x7136;&#x800C;&#x4E94;&#x5206;&#x949F;&#x8FC7;&#x53BB;&#x4E86;&#xFF0C;&#x5341;&#x5206;&#x949F;&#x8FC7;&#x53BB;&#x4E86;&#xFF0C;docker images&#x65F6;centos&#x955C;&#x50CF;&#x4F9D;&#x65E7;&#x987D;&#x56FA;&#x5730;&#x575A;&#x5B88;&#x5728;&#x9635;&#x5730;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">&#x7ED3;&#x8BBA;&#xFF1A;&#x76EE;&#x524D;Kubernetes&#x7684;&#x955C;&#x50CF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B56;&#x7565;&#x53EF;&#x4EE5;&#x5728;docker  --graph &#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x4E3A; /var/lib/docker &#x65F6;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x5F53; --graph &#x8BBE;&#x7F6E;&#x4E3A;&#x5176;&#x5B83;&#x78C1;&#x76D8;&#x8DEF;&#x5F84;&#x65F6;&#x8FD8;&#x5B58;&#x5728;bug&#x3002;
+</code></pre>
+<p>&#x95EE;&#x9898;&#x53CD;&#x9988;&#x5728; Github &#x7684;&#x76F8;&#x5173; issue &#x91CC;&#xFF1A;<a href="https://github.com/kubernetes/kubernetes/issues/17994" target="_blank">https://github.com/kubernetes/kubernetes/issues/17994</a>&#xFF0C;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x8DDF;&#x8FDB;&#x3002;</p>
+<p>Append: &#x6839;&#x636E;Github&#x4E0A;&#x7684;&#x53CD;&#x9988;&#xFF0C;&#x8FD9;&#x4E2A;bug&#x5C06;&#x5728;&#x540E;&#x7EED;&#x7248;&#x672C;&#x4E2D;&#x89E3;&#x51B3;&#xFF0C;&#x76EE;&#x524D;&#x7248;&#x672C;&#x9700;&#x8981;&#x8BA9;&#x8BBE;&#x7F6E;&#x4E86;--graph&#x7684;&#x955C;&#x50CF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x751F;&#x6548;&#xFF0C;&#x5728;&#x542F;&#x52A8;kubelet&#x65F6;&#x8FD8;&#x9700;&#x8981;&#x52A0;&#x4E0A;&#x53C2;&#x6570; <code>--docker-root=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>docker</span> <span class="token attr-name">--graph&#x53C2;&#x6570;&#x503C;</span><span class="token punctuation">&gt;</span></span></code>&#x3002;</p>
+<h3 id="23-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-per-container-&#x53C2;&#x6570;"><a name="23-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-per-container-&#x53C2;&#x6570;" class="anchor-navigation-ex-anchor" href="#23-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-per-container-&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>2.3 &#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B; --maximum-dead-containers-per-container &#x53C2;&#x6570;</h3>
+<p>&#x542F;&#x52A8;kubelet&#x8BBE;&#x7F6E;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">--maximum-dead-containers-per-container<span class="token operator">=</span><span class="token number">1</span> --minimum-container-ttl-duration<span class="token operator">=</span>30s --maximum-dead-containers<span class="token operator">=</span><span class="token number">100</span>
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EA;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x4E14;&#x8BE5;&#x5BB9;&#x5668;&#x4E00;&#x8FD0;&#x884C;&#x5C31;&#x9000;&#x51FA;&#x7684;pod&#xFF0C;&#x6B64;&#x65F6;&#x5728;node&#x8282;&#x70B9;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BE5;pod&#x4E2D;&#x7684;&#x5BB9;&#x5668;&#x4E0D;&#x65AD;&#x7684;&#x521B;&#x5EFA;&#x9000;&#x51FA;&#x521B;&#x5EFA;&#x9000;&#x51FA;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                    COMMAND             CREATED             STATUS                      PORTS               NAMES
+2fe969499164        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">4</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> seconds ago                        k8s_iperf1.57dfe29d_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_68cc6f03
+555b5e7a8550        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">24</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">22</span> seconds ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_ad4a5e39
+94b30a0b32c2        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">34</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">32</span> seconds ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_4027e3e1
+d458e6a7d396        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            <span class="token number">34</span> seconds ago      Up <span class="token number">33</span> seconds                                   k8s_POD.bdb2e1f5_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_09798975
+</code></pre>
+<p>GC&#x7684;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x5230;&#x8FBE;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x5927;&#x4E8E;30&#x79D2;&#x7684;&#x5DF2;&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x53EA;&#x5269;&#x4E0B;&#x4E00;&#x4E2A;&#xFF08;pause&#x5BB9;&#x5668;&#x4E0D;&#x8BA1;&#x7B97;&#xFF09;&#xFF0C;&#x4E14;&#x5148;&#x521B;&#x5EFA;&#x7684;&#x5BB9;&#x5668;&#x88AB;&#x4F18;&#x5148;&#x5220;&#x9664;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                    COMMAND             CREATED             STATUS                      PORTS               NAMES
+5aae6157aeff        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">46</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">45</span> seconds ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_f126d2a8
+d458e6a7d396        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            <span class="token number">2</span> minutes ago       Up <span class="token number">2</span> minutes                                    k8s_POD.bdb2e1f5_test-gc-pod-exit_default_92e8bd05-e9e6-11e5-974c-782bcb2a316a_09798975
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;Kubernetes&#x5BB9;&#x5668;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;<code>--maximum-dead-containers-per-container</code>&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x53EF;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;</p>
+</blockquote>
+<h3 id="24---maximum-dead-containers-per-container-&#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;"><a name="24---maximum-dead-containers-per-container-&#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;" class="anchor-navigation-ex-anchor" href="#24---maximum-dead-containers-per-container-&#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;"><i class="fa fa-link" aria-hidden="true"></i></a>2.4 --maximum-dead-containers-per-container &#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x5BB9;&#x5668;&#x96C6;</h3>
+<p>&#x542F;&#x52A8;kubelet&#x8BBE;&#x7F6E;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">--maximum-dead-containers-per-container<span class="token operator">=</span><span class="token number">1</span> --minimum-container-ttl-duration<span class="token operator">=</span>30s --maximum-dead-containers<span class="token operator">=</span><span class="token number">100</span>
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x5BB9;&#x5668;&#x4E14;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x4E00;&#x8FD0;&#x884C;&#x5C31;&#x9000;&#x51FA;&#x7684;pod&#xFF0C;&#x6B64;&#x65F6;&#x5728;node&#x8282;&#x70B9;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BE5;pod&#x4E2D;&#x7684;&#x5BB9;&#x5668;&#x4E0D;&#x65AD;&#x7684;&#x521B;&#x5EFA;&#x9000;&#x51FA;&#x521B;&#x5EFA;&#x9000;&#x51FA;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                    COMMAND             CREATED             STATUS                      PORTS               NAMES
+dec04bd28a03        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">7</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">6</span> seconds ago                        k8s_iperf1.57dfe29d_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_830a9375
+7c94d4a963a7        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">7</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">6</span> seconds ago                        k8s_iperf3.5c8de29f_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_975d44d3
+4f3e7e8ddfd5        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">8</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">7</span> seconds ago                        k8s_iperf2.5a36e29e_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_d024eb06
+cb48cf2ba133        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">12</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">11</span> seconds ago                       k8s_iperf3.5c8de29f_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_b5ff7373
+ec2941f046f0        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">13</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">12</span> seconds ago                       k8s_iperf2.5a36e29e_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_69b1a996
+f831e8ed5687        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">13</span> seconds ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">12</span> seconds ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_fbc02e2e
+ee972a4537fc        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            <span class="token number">14</span> seconds ago      Up <span class="token number">13</span> seconds                                   k8s_POD.bdb2e1f5_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_85b3c032
+</code></pre>
+<p>GC&#x7684;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x5230;&#x8FBE;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x5927;&#x4E8E;30&#x79D2;&#x7684;&#x5DF2;&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x5269;&#x4E0B;&#x4E09;&#x4E2A;&#xFF08;pause&#x5BB9;&#x5668;&#x4E0D;&#x8BA1;&#x7B97;&#xFF09;&#xFF0C;&#x4E14;&#x8FD9;&#x4E09;&#x4E2A;&#x5BB9;&#x5668;&#x6B63;&#x597D;&#x662F;&#x4E00;&#x7EC4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                    COMMAND             CREATED              STATUS                      PORTS               NAMES
+e4351e6855ae        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">51</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">50</span> seconds ago                       k8s_iperf3.5c8de29f_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_263dd820
+990baa6e6a7a        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">52</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">51</span> seconds ago                       k8s_iperf2.5a36e29e_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_b16b5eaa
+c6916fb06d65        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">53</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">51</span> seconds ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_1d8ea284
+ee972a4537fc        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            About a minute ago   Up About a minute                               k8s_POD.bdb2e1f5_test-gc-pod-exit_default_d1677c09-e9e7-11e5-974c-782bcb2a316a_85b3c032
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;<code>--maximum-dead-containers-per-container</code> &#x7684;&#x8BA1;&#x6570;&#x9488;&#x5BF9;&#x4E00;&#x4E2A;pod&#x5185;&#x7684;&#x5BB9;&#x5668;&#x96C6;&#x800C;&#x4E0D;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+</blockquote>
+<h3 id="25-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-&#x53C2;&#x6570;"><a name="25-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-&#x53C2;&#x6570;" class="anchor-navigation-ex-anchor" href="#25-&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B;---maximum-dead-containers-&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>2.5 &#x5BB9;&#x5668;&#x56DE;&#x6536;&#x4E4B; --maximum-dead-containers &#x53C2;&#x6570;</h3>
+<p>&#x542F;&#x52A8;kubelet&#x8BBE;&#x7F6E;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">--maximum-dead-containers-per-container<span class="token operator">=</span><span class="token number">2</span> --minimum-container-ttl-duration<span class="token operator">=</span>30s --maximum-dead-containers<span class="token operator">=</span><span class="token number">3</span>
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x5BB9;&#x5668;&#x7684;pod&#xFF0C;&#x518D;&#x5220;&#x9664;&#x8BE5;pod&#xFF0C;&#x518D;&#x521B;&#x5EFA;&#x8BE5;pod&#xFF0C;&#x518D;&#x5220;&#x9664;&#x8BE5;pod&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4EA7;&#x751F;&#x4E86;8&#x4E2A;&#x5DF2;&#x9000;&#x51FA;&#x5BB9;&#x5668;&#xFF08;&#x5305;&#x62EC;&#x4E24;&#x4E2A;pause&#x5BB9;&#x5668;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                    COMMAND             CREATED             STATUS                              PORTS               NAMES
+a28625d189df        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">1</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> Less than a second ago                       k8s_iperf3.5c8de29f_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_48c11200
+97aca44f0deb        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">2</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">1</span> seconds ago                                k8s_iperf2.5a36e29e_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_df34f48d
+4e57b6c839ae        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">3</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> seconds ago                                k8s_iperf1.57dfe29d_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_afd622b2
+12588fce1433        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            <span class="token number">3</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> Less than a second ago                       k8s_POD.bdb2e1f5_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_c9d4cbaa
+621ed207d452        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">4</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">3</span> seconds ago                                k8s_iperf3.5c8de29f_test-gc-pod-exit_default_c5cbddbb-e9ee-11e5-974c-782bcb2a316a_a91278cd
+023c10fad4fd        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">5</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">4</span> seconds ago                                k8s_iperf2.5a36e29e_test-gc-pod-exit_default_c5cbddbb-e9ee-11e5-974c-782bcb2a316a_6cc03f37
+756eb7bb4b53        <span class="token number">10.11</span>.150.76:5000/centos:7               <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">5</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">4</span> seconds ago                                k8s_iperf1.57dfe29d_test-gc-pod-exit_default_c5cbddbb-e9ee-11e5-974c-782bcb2a316a_83312ec2
+d54bdc22773e        pub.domeos.org/kubernetes/pause:latest   <span class="token string">&quot;/pause&quot;</span>            <span class="token number">6</span> seconds ago       Exited <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token number">3</span> seconds ago                                k8s_POD.bdb2e1f5_test-gc-pod-exit_default_c5cbddbb-e9ee-11e5-974c-782bcb2a316a_ccb57220
+</code></pre>
+<p>GC&#x7684;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x5230;&#x8FBE;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5DF2;&#x9000;&#x51FA;&#x5BB9;&#x5668;&#x53EA;&#x5269;&#x4E0B;&#x4E86;&#x4E09;&#x4E2A;&#xFF0C;pause&#x5BB9;&#x5668;&#x4E5F;&#x88AB;&#x56DE;&#x6536;&#x4E86;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                        COMMAND             CREATED             STATUS                     PORTS               NAMES
+a28625d189df        <span class="token number">10.11</span>.150.76:5000/centos:7   <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">2</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> minutes ago                       k8s_iperf3.5c8de29f_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_48c11200
+97aca44f0deb        <span class="token number">10.11</span>.150.76:5000/centos:7   <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">2</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> minutes ago                       k8s_iperf2.5a36e29e_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_df34f48d
+4e57b6c839ae        <span class="token number">10.11</span>.150.76:5000/centos:7   <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">2</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> minutes ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_afd622b2
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;Kubernetes&#x5BB9;&#x5668;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684; --maximum-dead-containers&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x53EF;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF1B;pause&#x5BB9;&#x5668;&#x4E5F;&#x4F5C;&#x4E3A;&#x53EF;&#x56DE;&#x6536;&#x5BB9;&#x5668;&#x88AB;&#x7BA1;&#x7406;&#x7740;&#xFF1B;Tips&#x7B2C;11&#x6761;&#x7B2C;3&#xFF09;&#x70B9;&#x3002;</p>
+</blockquote>
+<h3 id="26---maximum-dead-containers-&#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;"><a name="26---maximum-dead-containers-&#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;" class="anchor-navigation-ex-anchor" href="#26---maximum-dead-containers-&#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>2.6 --maximum-dead-containers &#x5BF9;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x8BA1;&#x6570;</h3>
+<p>&#x5728;&#x7B2C;5&#x4E2A;&#x5B9E;&#x9A8C;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x624B;&#x5DE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<code>container</code>&#xFF0C;&#x7B49;&#x5F85;GC&#x7684;&#x5BB9;&#x5668;&#x56DE;&#x6536;&#x65F6;&#x95F4;&#x70B9;&#x5230;&#x8FBE;&#xFF0C;&#x4E00;&#x5206;&#x949F;&#x8FC7;&#x53BB;&#x4E86;&#xFF0C;&#x4E24;&#x5206;&#x949F;&#x8FC7;&#x53BB;&#x4E86;&#xFF0C;<code>docker ps -a</code> &#x663E;&#x793A;&#x7684;&#x4F9D;&#x7136;&#x662F;4&#x4E2A;&#x5BB9;&#x5668;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">docker</span> run -it <span class="token number">10.11</span>.150.76:5000/openxxs/iperf:1.2 /bin/sh
+sh-4.2<span class="token comment"># exit</span>
+<span class="token builtin class-name">exit</span>
+
+$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE                                 COMMAND             CREATED             STATUS                      PORTS               NAMES
+939b932dc7db        <span class="token number">10.11</span>.150.76:5000/openxxs/iperf:1.2   <span class="token string">&quot;/bin/sh&quot;</span>           <span class="token number">2</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">2</span> minutes ago                        backstabbing_aryabhata
+a28625d189df        <span class="token number">10.11</span>.150.76:5000/centos:7            <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">12</span> minutes ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">12</span> minutes ago                       k8s_iperf3.5c8de29f_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_48c11200
+97aca44f0deb        <span class="token number">10.11</span>.150.76:5000/centos:7            <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">12</span> minutes ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">12</span> minutes ago                       k8s_iperf2.5a36e29e_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_df34f48d
+4e57b6c839ae        <span class="token number">10.11</span>.150.76:5000/centos:7            <span class="token string">&quot;/bin/bash&quot;</span>         <span class="token number">12</span> minutes ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">12</span> minutes ago                       k8s_iperf1.57dfe29d_test-gc-pod-exit_default_c7612b59-e9ee-11e5-974c-782bcb2a316a_afd622b2
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;Kubernetes&#x5BB9;&#x5668;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x7B56;&#x7565;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x975E;kubelet&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;&#x3002;</p>
+</blockquote>
+<p>&#x8F6C;&#x81EA;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.cnblogs.com/openxxs/p/5275051.html" target="_blank">Kubernetes&#x4E2D;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ghostwritten &#x6D59;ICP&#x5907;2020032454&#x53F7; 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-08-15 09:40:03
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="kubernetes-kubelet-configuration.html" class="navigation navigation-prev " aria-label="Previous page: 配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../kubernetes-kube-apiserver.html" class="navigation navigation-next " aria-label="Next page: kube apiserver">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"垃圾回收","level":"1.13.4.2","depth":3,"next":{"title":"kube apiserver","level":"1.13.5","depth":2,"path":"组件/kubernetes-kube-apiserver.md","ref":"组件/kubernetes-kube-apiserver.md","articles":[]},"previous":{"title":"配置","level":"1.13.4.1","depth":3,"path":"组件/Kubelet/kubernetes-kubelet-configuration.md","ref":"组件/Kubelet/kubernetes-kubelet-configuration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["3-ba","accordion","advanced-emoji","anchor-navigation-ex","baidu-tongji","code","change_girls","custom-favicon","donate","expandable-chapters-small","edit-link","flexible-alerts","github-buttons","github","insert-logo","musicxml","prism","prism-themes","pageview-count","-highlight","-search","-lunr","rss","search-plus","splitter","-sharing","sharing-plus","sidebar-style","simple-mind-map","youtube","theme-default","tags","tbfed-pagefooter"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"宗勋","title":"《Kubernetes Docs》"},"tbfed-pagefooter":{"copyright":"Copyright &copy ghostwritten 浙ICP备2020032454号 2022","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"css":["prism-themes/themes/prism-holi-theme.css"],"lang":{"shell":"bash"}},"youtube":{},"github":{"url":"https://github.com/Ghostwritten"},"baidu-tongji":{"url":"https://hm.baidu.com/hm.js","token":"55e7dfe47f4dc1c018d4042fdfa62565"},"splitter":{},"change_girls":{"time":10,"urls":["https://pic3.zhimg.com/v2-6c577f651fe7e2213fff03c5f4dfb31e_r.jpg","https://pic3.zhimg.com/v2-7709a47d063e542afdc756fbc51ea0ba_r.jpg","https://pic1.zhimg.com/v2-1a0b00ef73bfe88a55e263417641c4f4_r.jpg","https://pic3.zhimg.com/v2-ae52e6f527d832f299057d58c0a444d2_r.jpg","https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg","https://pic2.zhimg.com/v2-9a7fb904940b062e74034c4195107ea9_r.jpg","https://pic3.zhimg.com/v2-3fa14950c42f9ff71c640462521da902_r.jpg","https://pic3.zhimg.com/v2-150d6818db64ed647f4566613f0a26be_r.jpg","https://pic3.zhimg.com/v2-62c950e007ffaa22bf8dfaa40ee5c976_r.jpg","https://pic4.zhimg.com/v2-91a8c8f53d08282ef2ac1d7b9440928f_r.jpg"]},"accordion":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"donate":{"alipay":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/aplipay.png?raw=true","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://github.com/Ghostwritten/kubernetes-docs/blob/gh-pages/assets/imgs/wechat.png?raw=true","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["kubernetes"],"title":"Kubernetes Docs","description":"This is the best book ever.","author":"宗勋","feed_url":"http://smoothies.com.cn/rss","site_url":"https://smoothies.com.cn/kubernetes-docs/","managingEditor":"writer@smoothies.com.cn (Zong Xun)","webMaster":"webmaster@smoothies.com.cn (Zong Xun)"},"musicxml":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":"assets/imgs/kubernetes.ico","pageview-count":{},"prism-themes":{},"github-buttons":{"buttons":[{"user":"Ghostwritten","repo":"kubernetes-docs","type":"star","count":true,"size":"small"}]},"custom-favicon":{},"tags":{"placement":"top"},"3-ba":{"configuration":"auto","token":"9ffc0dce8d7079aceab6b0bc18eb626b"},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Danger"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":false,"twitter":true,"pocket":false,"google":false,"qzone":false},"simple-mind-map":{"autoFit":true,"linkShape":"diagonal","preset":"default","style":{},"type":"markdown"},"edit-link":{"label":"Edit","base":"https://github.com/Ghostwritten/kubernetes-docs/edit/master/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"insert-logo":{"style":"background: none; max-height: 120px; min-height: 120px","url":"https://pic2.zhimg.com/v2-51a570e2117156d7bb4507ec9a652f1d_r.jpg"},"search-plus":{}},"theme":"default","author":"宗勋 - zongxun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes Docs","language":"zh-hans","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Docker":"https://smoothies.com.cn/docker-docs/Overview.html","Blog":"https://smoothies.com.cn","Kubernetes":"https://smoothies.com.cn/kubernetes-docs/Overview.html","Go":"https://smoothies.com.cn/go-docs/Overview.html","Prometheus":"https://smoothies.com.cn/prometheus-docs/Overview.html","Command":"https://smoothies.com.cn/linux-command-docs/Overview.html","Shell":"https://smoothies.com.cn/shell-docs/Overview.html","Linux":"https://smoothies.com.cn/linux-docs/Overview.html","Gitbook":"https://smoothies.com.cn/gitbook-docs/Overview.html","Python":"https://smoothies.com.cn/python-docs/Overview.html","Exam":"https://ghostwritten.gitbook.io/kubernetes-exam-in-action/"}},"gitbook":"*","description":"这是一本关于 [Kubernetes](https://kubernetes.io/) 的书籍"},"file":{"path":"组件/Kubelet/kubernetes-kubelet-trash-recycling.md","mtime":"2022-08-15T09:40:03.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-16T11:19:20.779Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu-tongji/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-change_girls/girls.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/osmd.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/musicxml.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-musicxml/promise.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-simple-mind-map/bundle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
