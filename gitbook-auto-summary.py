@@ -63,6 +63,7 @@ def mdfile_in_dir(dire):
 def markdown_title_name(dire, base_dir,filename):
     path_filename = os.path.join(os.path.relpath(dire, base_dir), filename)
     firstline=''
+    #f = open(path_filename,'r',encoding = "ISO-8859-1")
     f = open(path_filename,'r')
     lines = f.readlines()
     for line in lines:

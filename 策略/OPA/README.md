@@ -1,6 +1,7 @@
 #  Open Policy Agent(OPA) 
 tags: OPA,策略
 
+
 ## 1. OPA 介绍
 开放策略代理（OPA，发音为“ oh-pa”）是一个开放源代码的通用策略引擎，它统一了整个堆栈中的策略执行。OPA提供了一种高级的声明性语言，使您可以将策略指定为代码和简单的API，以减轻软件决策的负担。您可以使用OPA在微服务，Kubernetes，CI / CD管道，API网关等中实施策略。
 
@@ -10,7 +11,8 @@ OPA 首次进入 `CNCF` 并成为 `sandbox` 级别的项目是在 2018 年， �
 
 
 **透过现象看本质，策略就是一组规则，请求发送到引擎，引擎根据规则来进行决策**。OPA 并不负责具体任务的执行，它仅负责决策，需要决策的请求通过 JSON 的方式传递给 OPA ，在 OPA 决策后，也会将结果以 JSON 的形式返回。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2021051700011275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20b25d903a074023b733093e6fbc63f8.png)
+
 
 ##  2. OPA 解决了哪些问题
 OPA通过评估查询输入以及针对策略和数据来生成策略决策。OPA和Rego是域无关的，因此您可以描述策略中几乎所有类型的不变式。例如：
@@ -34,7 +36,8 @@ OPA 的出现可以将各处配置的策略进行统一，极大的**降低了�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bb6e1d6149d3406f92ea406d150d0a55.png?)
 
 假设您在具有以下系统的组织中工作：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210517000934441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0ae926de00e34e6492d4f81ea2597857.png)
+
 系统中包含三种组件：
 
  - 服务器暴露零层或多个协议（例如，http，ssh等等）
@@ -44,7 +47,7 @@ OPA 的出现可以将各处配置的策略进行统一，极大的**降低了�
 所有服务器，网络和端口均由脚本设置。该脚本接收系统的JSON表示作为输入：
 
 
-```c
+```bash
 {
     "servers": [
         {"id": "app", "protocols": ["https", "ssh"], "ports": ["p1", "p2", "p3"]},
@@ -206,7 +209,7 @@ public_server[server] {                             # a server exists in the pub
 
 执行：
 
-```c
+```bash
 root@master:~/cks/opa# ./opa eval "1*2+3"
 {
   "result": [
@@ -226,7 +229,7 @@ root@master:~/cks/opa# ./opa eval "1*2+3"
 }
 ```
 
-```c
+```bash
 root@master:~/cks/opa# ./opa eval -i input.json -d example.rego "data.example.violation[x]"
 {
   "result": [
@@ -314,7 +317,7 @@ OPA包括一个交互式外壳程序或REPL（读取-评估-打印循环）。�
 
 当您在REPL中输入语句时，OPA会对它们进行评估并打印结果。
 
-```c
+```bash
 > true
 true
 > 3.14
@@ -447,7 +450,7 @@ OPA策略以称为Rego的高级声明性语言表示。Rego（发音为“ ray-g
 
 > below以下示例是交互式的！如果在包含服务器，网络和端口的上方编辑输入数据，则输出将在下面更改。同样，如果您在下面的示例中编辑查询或规则，则输出将更改。在通读本节时，请尝试更改输入，查询和规则，并观察输出的差异。
 
-������也可以使用以下命令在您的计算机上本地运行它们opa eval，这是设置说明。
+也可以使用以下命令在您的计算机上本地运行它们opa eval，这是设置说明。
 
 
 ### 8.1 参考
@@ -457,7 +460,7 @@ OPA策略以称为Rego的高级声明性语言表示。Rego（发音为“ ray-g
 input.servers
 ```
 
-```c
+```bash
 [
   {
     "id": "app",
@@ -538,7 +541,7 @@ undefined decision
 input.servers[0].id == "app"
 ```
 
-```c
+```bash
 true
 ```
 OPA包括一组内置函数，可用于执行常见操作，例如字符串操作，正则表达式匹配，算术，聚合等。
@@ -547,7 +550,7 @@ OPA包括一组内置函数，可用于执行常见操作，例如字符串操�
 count(input.servers[0].protocols) >= 1
 ```
 
-```c
+```bash
 true
 ```
 有关现成的OPA支持的内置功能的完整列表，请参阅“[策略参考](https://www.openpolicyagent.org/docs/latest/policy-reference/)”页面。
@@ -558,12 +561,12 @@ true
 input.servers[0].id == "app"; input.servers[0].protocols[0] == "https"
 ```
 
-```c
+```bash
 true
 ```
 您可以;通过将表达式分成多行来省略（AND）运算符。以下查询与上一个查询具有相同的含义：
 
-```c
+```bash
 input.servers[0].id == "app"
 input.servers[0].protocols[0] == "https"
 ```
@@ -682,7 +685,7 @@ p := s.protocols[0]
 p == "https"
 ```
 
-```c
+```bash
 +---------+-------------------------------------------------------------------+
 |    p    |                                 s                                 |
 +---------+-------------------------------------------------------------------+
@@ -717,7 +720,7 @@ x := 1
 x != y  # y has not been assigned a value
 ```
 
-```c
+```bash
 2 errors occurred:
 2:1: rego_unsafe_var_error: var _ is unsafe
 2:1: rego_unsafe_var_error: var y is unsafe
@@ -1101,4 +1104,5 @@ go run main.go example.rego 'data.example.violation' < input.json
  - [openpolicyagent官网](https://www.openpolicyagent.org/docs/latest/)
  - [Open Policy Agent: What Is OPA and How It Works (Examples)](https://spacelift.io/blog/what-is-open-policy-agent-and-how-it-works)
  - [Open Policy Agent: Authorization in a Cloud Native World](https://www.aquasec.com/cloud-native-academy/cloud-native-applications/open-policy-agent-authorization-in-a-cloud-native-world/)
+ - moeLove
 
